@@ -1,0 +1,57 @@
+{
+  "version": "0.3.0",
+  "configurations": [
+    {
+      "name": "Flutter Dev (Web)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "args": [
+        "--dart-define=ENV=dev",
+        "--web-port",
+        "8080",
+        "--web-hostname",
+        "localhost"
+      ],
+      "deviceId": "chrome"
+    },
+    {
+      "name": "Flutter Dev (Linux)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "args": [
+        "--dart-define=ENV=dev"
+      ]
+    },
+    {
+      "name": "Flutter Dev (Windows)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "args": [
+        "--dart-define=ENV=dev"
+      ]
+    },
+    {
+      "name": "Flutter Dev (Android)",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "args": [
+        "--flavor",
+        "dev",
+        "--dart-define=ENV=dev",
+        "--track-widget-creation",
+        "--no-enable-impeller"
+      ],
+      "deviceId": "CPH2325",
+      "attachToExistingApp": false,
+      "showDebuggerOnStart": true
+    },
+  ]
+}

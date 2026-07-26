@@ -1,0 +1,6 @@
+{
+    "github-actions.workflows.pinned.workflows": [
+        ".github/workflows/dev_deploy_sftp.yml",
+        ".github/workflows/prod_deploy.yml"
+    ]
+}
