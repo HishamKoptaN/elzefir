@@ -1,3 +1,4 @@
+import 'package:alzefr/core/utils/extensions/responsive_icon_extension%20.dart';
 import 'package:alzefr/core/widgets/custom_image.dart';
 import 'package:alzefr/features/products/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
@@ -36,30 +37,71 @@ class _ProductCardState extends State<ProductCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: EdgeInsets.all(20.w),
-            decoration: const BoxDecoration(
-              color: Color(0xFFFFF1EA),
-              borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
-            ),
-            child: Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(16),
-                    bottom: Radius.zero,
-                  ),
-                  child: Container(
-                    height: 310.h,
-                    width: double.infinity,
-                    color: Colors.grey.shade300,
-                    child: CustomImage(
-                      image: widget.product.image,
-                      fit: BoxFit.cover,
+          GestureDetector(
+            onTap: () {
+              showGeneralDialog(
+                context: context,
+                barrierDismissible: true,
+                barrierLabel: "Close",
+                barrierColor: Colors.black87,
+                pageBuilder: (_, __, ___) {
+                  return Center(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: InteractiveViewer(
+                        minScale: 1,
+                        maxScale: 4,
+                        child: CustomImage(
+                          image: widget.product.image,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.all(20.w),
+              decoration: const BoxDecoration(
+                color: Color(0xFFFFF1EA),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+              ),
+              child: Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(16),
+                      bottom: Radius.zero,
+                    ),
+                    child: Container(
+                      height: 310.h,
+                      width: double.infinity,
+                      color: Colors.grey.shade300,
+                      child: CustomImage(
+                        image: widget.product.image,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  Positioned(
+                    top: 12.h,
+                    right: 12.w,
+                    child: Container(
+                      padding: EdgeInsets.all(8.w),
+                      decoration: BoxDecoration(
+                        color: Colors.black45,
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: Icon(
+                        Icons.zoom_in,
+                        size: 14.iconRes,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Padding(

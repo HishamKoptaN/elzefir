@@ -49,7 +49,7 @@ class Footer extends StatelessWidget {
         Expanded(
           flex: 3,
           child: Column(
-            crossAxisAlignment: .center,
+            crossAxisAlignment: .start,
             children: [
               Row(
                 children: [
@@ -236,9 +236,11 @@ class Footer extends StatelessWidget {
 
   Widget _buildMobileLayout(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: .start,
+      crossAxisAlignment: .start,
       children: [
         Row(
+          mainAxisAlignment: .start,
           children: [
             Container(
               padding: const EdgeInsets.all(6),
@@ -273,7 +275,7 @@ class Footer extends StatelessWidget {
         Wrap(
           spacing: 6,
           runSpacing: 6,
-          crossAxisAlignment: WrapCrossAlignment.start,
+          crossAxisAlignment: .start,
           children: [
             _buildBadge('طازج يومياً 🐟'),
             _buildBadge('توصيل سريع 🚚'),
@@ -418,7 +420,7 @@ class Footer extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 4.h),
           child: Row(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: .min,
             children: [
               Container(
                 padding: EdgeInsets.all(8.sp),
