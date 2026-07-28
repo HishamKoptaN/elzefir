@@ -42,6 +42,7 @@ class RestaurantAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         crossAxisAlignment: .end,
         textBaseline: .ideographic,
+        spacing: 10.w,
         children: [
           _NavItem(title: "المنيو", onTap: onMenu),
           _NavItem(title: "من نحن", onTap: onAbout),
@@ -285,16 +286,17 @@ class _NavItemState extends State<_NavItem> {
       },
       cursor: SystemMouseCursors.click,
       child: InkWell(
-        borderRadius: BorderRadius.circular(12),
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 180),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          padding: EdgeInsets.symmetric(vertical: 2.0.h, horizontal: 8.0.w),
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: active ? const Color(0xFF0F3A75) : Colors.transparent,
-                width: 2.5,
+                color: active
+                    ? context.colorScheme.primary
+                    : context.colorScheme.primary.withValues(alpha: 0.5),
+                width: active ? 5.h : 2.0.h,
               ),
             ),
           ),
