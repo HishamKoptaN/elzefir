@@ -25,16 +25,19 @@ jobs:
           --release \
           --pwa-strategy=none
       - run: sudo apt-get update && sudo apt-get install -y lftp
-      - run: lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" \
-          -p 21 "82.197.83.233" <<EOF
+      - name: Deploy via FTP
+        run: |
+          lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" -p 21 "82.197.83.233" <<EOF
           set ftp:ssl-allow no
           set ftp:passive-mode on
           set net:max-retries 5
           set net:timeout 60
+
           mirror -R \
-          --delete \
-          --overwrite \
-          ./build/web/ \
-          /public_html/alzefr/
-          quit
+            --delete \
+            --overwrite \
+            ./build/web/ \
+            public_html/alzefr/
+
+          bye
           EOF
