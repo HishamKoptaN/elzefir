@@ -55,11 +55,12 @@ extension HomeEventPatterns on HomeEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Get value)?  get,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Get value)?  get,TResult Function( _SelectCategoryId value)?  selectCategoryId,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get(_that);case _:
+return get(_that);case _SelectCategoryId() when selectCategoryId != null:
+return selectCategoryId(_that);case _:
   return orElse();
 
 }
@@ -77,11 +78,12 @@ return get(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Get value)  get,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Get value)  get,required TResult Function( _SelectCategoryId value)  selectCategoryId,}){
 final _that = this;
 switch (_that) {
 case _Get():
-return get(_that);case _:
+return get(_that);case _SelectCategoryId():
+return selectCategoryId(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -98,11 +100,12 @@ return get(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Get value)?  get,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Get value)?  get,TResult? Function( _SelectCategoryId value)?  selectCategoryId,}){
 final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get(_that);case _:
+return get(_that);case _SelectCategoryId() when selectCategoryId != null:
+return selectCategoryId(_that);case _:
   return null;
 
 }
@@ -119,10 +122,11 @@ return get(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  get,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  get,TResult Function( int? id)?  selectCategoryId,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get();case _:
+return get();case _SelectCategoryId() when selectCategoryId != null:
+return selectCategoryId(_that.id);case _:
   return orElse();
 
 }
@@ -140,10 +144,11 @@ return get();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  get,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  get,required TResult Function( int? id)  selectCategoryId,}) {final _that = this;
 switch (_that) {
 case _Get():
-return get();case _:
+return get();case _SelectCategoryId():
+return selectCategoryId(_that.id);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -160,10 +165,11 @@ return get();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  get,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  get,TResult? Function( int? id)?  selectCategoryId,}) {final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get();case _:
+return get();case _SelectCategoryId() when selectCategoryId != null:
+return selectCategoryId(_that.id);case _:
   return null;
 
 }
@@ -202,6 +208,72 @@ String toString() {
 
 
 
+
+/// @nodoc
+
+
+class _SelectCategoryId implements HomeEvent {
+  const _SelectCategoryId({required this.id});
+  
+
+ final  int? id;
+
+/// Create a copy of HomeEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SelectCategoryIdCopyWith<_SelectCategoryId> get copyWith => __$SelectCategoryIdCopyWithImpl<_SelectCategoryId>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SelectCategoryId&&(identical(other.id, id) || other.id == id));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id);
+
+@override
+String toString() {
+  return 'HomeEvent.selectCategoryId(id: $id)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SelectCategoryIdCopyWith<$Res> implements $HomeEventCopyWith<$Res> {
+  factory _$SelectCategoryIdCopyWith(_SelectCategoryId value, $Res Function(_SelectCategoryId) _then) = __$SelectCategoryIdCopyWithImpl;
+@useResult
+$Res call({
+ int? id
+});
+
+
+
+
+}
+/// @nodoc
+class __$SelectCategoryIdCopyWithImpl<$Res>
+    implements _$SelectCategoryIdCopyWith<$Res> {
+  __$SelectCategoryIdCopyWithImpl(this._self, this._then);
+
+  final _SelectCategoryId _self;
+  final $Res Function(_SelectCategoryId) _then;
+
+/// Create a copy of HomeEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? id = freezed,}) {
+  return _then(_SelectCategoryId(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$HomeState {
@@ -323,11 +395,11 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( HomeResEntity? homeRes,  bool? loading)?  loaded,TResult Function()?  loading,TResult Function()?  success,TResult Function( ErrorInfo errorInfo)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( HomeResEntity? homeRes,  bool? loading,  int? selectedCategoryId)?  loaded,TResult Function()?  loading,TResult Function()?  success,TResult Function( ErrorInfo errorInfo)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loaded() when loaded != null:
-return loaded(_that.homeRes,_that.loading);case _Loading() when loading != null:
+return loaded(_that.homeRes,_that.loading,_that.selectedCategoryId);case _Loading() when loading != null:
 return loading();case _Success() when success != null:
 return success();case _Failure() when failure != null:
 return failure(_that.errorInfo);case _:
@@ -348,11 +420,11 @@ return failure(_that.errorInfo);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( HomeResEntity? homeRes,  bool? loading)  loaded,required TResult Function()  loading,required TResult Function()  success,required TResult Function( ErrorInfo errorInfo)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( HomeResEntity? homeRes,  bool? loading,  int? selectedCategoryId)  loaded,required TResult Function()  loading,required TResult Function()  success,required TResult Function( ErrorInfo errorInfo)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loaded():
-return loaded(_that.homeRes,_that.loading);case _Loading():
+return loaded(_that.homeRes,_that.loading,_that.selectedCategoryId);case _Loading():
 return loading();case _Success():
 return success();case _Failure():
 return failure(_that.errorInfo);case _:
@@ -372,11 +444,11 @@ return failure(_that.errorInfo);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( HomeResEntity? homeRes,  bool? loading)?  loaded,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( ErrorInfo errorInfo)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( HomeResEntity? homeRes,  bool? loading,  int? selectedCategoryId)?  loaded,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( ErrorInfo errorInfo)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loaded() when loaded != null:
-return loaded(_that.homeRes,_that.loading);case _Loading() when loading != null:
+return loaded(_that.homeRes,_that.loading,_that.selectedCategoryId);case _Loading() when loading != null:
 return loading();case _Success() when success != null:
 return success();case _Failure() when failure != null:
 return failure(_that.errorInfo);case _:
@@ -423,11 +495,12 @@ String toString() {
 
 
 class _Loaded implements HomeState {
-  const _Loaded({this.homeRes, this.loading});
+  const _Loaded({this.homeRes, this.loading, this.selectedCategoryId = null});
   
 
  final  HomeResEntity? homeRes;
  final  bool? loading;
+@JsonKey() final  int? selectedCategoryId;
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
@@ -439,16 +512,16 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.homeRes, homeRes) || other.homeRes == homeRes)&&(identical(other.loading, loading) || other.loading == loading));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.homeRes, homeRes) || other.homeRes == homeRes)&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.selectedCategoryId, selectedCategoryId) || other.selectedCategoryId == selectedCategoryId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,homeRes,loading);
+int get hashCode => Object.hash(runtimeType,homeRes,loading,selectedCategoryId);
 
 @override
 String toString() {
-  return 'HomeState.loaded(homeRes: $homeRes, loading: $loading)';
+  return 'HomeState.loaded(homeRes: $homeRes, loading: $loading, selectedCategoryId: $selectedCategoryId)';
 }
 
 
@@ -459,7 +532,7 @@ abstract mixin class _$LoadedCopyWith<$Res> implements $HomeStateCopyWith<$Res> 
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
 @useResult
 $Res call({
- HomeResEntity? homeRes, bool? loading
+ HomeResEntity? homeRes, bool? loading, int? selectedCategoryId
 });
 
 
@@ -476,11 +549,12 @@ class __$LoadedCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? homeRes = freezed,Object? loading = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? homeRes = freezed,Object? loading = freezed,Object? selectedCategoryId = freezed,}) {
   return _then(_Loaded(
 homeRes: freezed == homeRes ? _self.homeRes : homeRes // ignore: cast_nullable_to_non_nullable
 as HomeResEntity?,loading: freezed == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
-as bool?,
+as bool?,selectedCategoryId: freezed == selectedCategoryId ? _self.selectedCategoryId : selectedCategoryId // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 

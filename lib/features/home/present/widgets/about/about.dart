@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/widgets/custom_image.dart';
 
@@ -69,56 +70,50 @@ class _ContentSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(48),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'من نحن',
-            style: TextStyle(color: const Color(0xFF406182), fontSize: 16),
+            textAlign: .start,
+            style: TextStyle(color: const Color(0xFF406182), fontSize: 24.sp),
           ),
-
-          const SizedBox(height: 16),
-
-          const Text(
+          Text(
             'مطعم الزفر للمأكولات البحرية',
             textAlign: TextAlign.right,
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 40.sp,
               fontWeight: FontWeight.bold,
               color: Color(0xFF28180D),
             ),
           ),
-
-          const SizedBox(height: 24),
-
-          const Text(
+          SizedBox(height: 24.h),
+          Text(
             'في مطعم الزفر نقدم أفضل أنواع الأسماك والمأكولات البحرية الطازجة، '
             'المحضرة يوميًا بأجود المكونات وعلى أيدي أمهر الطهاة. هدفنا أن نقدم '
             'تجربة مميزة تجمع بين الطعم الأصيل والجودة العالية والخدمة الممتازة.',
             textAlign: TextAlign.right,
             style: TextStyle(
-              fontSize: 16,
-              height: 1.7,
+              fontSize: 20.sp,
+              height: 2.6.h,
               color: Color(0xFF42474D),
             ),
           ),
-
-          const SizedBox(height: 32),
-
-          Align(
-            alignment: AlignmentDirectional.centerEnd,
-            child: FilledButton(
-              onPressed: () {},
-              style: FilledButton.styleFrom(
-                backgroundColor: primary,
-                foregroundColor: Colors.white,
-                minimumSize: const Size(150, 48),
-                elevation: 0,
-                shape: const StadiumBorder(),
-              ),
-              child: const Text('اعرف المزيد', style: TextStyle(fontSize: 16)),
-            ),
-          ),
+          SizedBox(height: 90.h),
+          // Align(
+          //   alignment: AlignmentDirectional.centerEnd,
+          //   child: FilledButton(
+          //     onPressed: () {},
+          //     style: FilledButton.styleFrom(
+          //       backgroundColor: primary,
+          //       foregroundColor: Colors.white,
+          //       minimumSize: Size(150.w, 70.h),
+          //       elevation: 0,
+          //       shape: const StadiumBorder(),
+          //     ),
+          //     child: Text('اعرف المزيد', style: TextStyle(fontSize: 16.sp)),
+          //   ),
+          // ),
         ],
       ),
     );

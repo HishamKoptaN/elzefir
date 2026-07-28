@@ -28,6 +28,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             );
           });
         },
+        selectCategoryId: (id) {
+          state.mapOrNull(
+            loaded: (loadedState) {
+              emit(loadedState.copyWith(selectedCategoryId: id));
+            },
+          );
+        },
       );
     });
   }

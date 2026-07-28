@@ -52,6 +52,7 @@ class CustomImage extends StatelessWidget {
         : Image.asset(
             image,
             fit: fit,
+            matchTextDirection: true,
             errorBuilder: (_, __, ___) {
               return Container(
                 color: backgroundColor,

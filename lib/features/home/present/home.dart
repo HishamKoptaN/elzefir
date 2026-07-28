@@ -1,6 +1,7 @@
 import 'package:alzefr/core/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 import '../../../core/di/dependency_injection.dart';
+import '../../notifications/present/bloc/notifications_bloc.dart';
 import 'bloc/home_bloc.dart';
 import 'widgets/body_widget.dart';
 
@@ -16,6 +17,7 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     getIt<HomeBloc>().add(HomeEvent.get());
+    getIt<NotificationsBloc>().add(NotificationsEvent.watch());
   }
 
   @override

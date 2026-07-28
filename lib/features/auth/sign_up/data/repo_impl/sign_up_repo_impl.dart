@@ -52,7 +52,7 @@ class SignUpRepoImpl implements SignUpRepo {
     final res = await _api.signUp(
       signUpReqEntity.toModel(
         idToken: idToken,
-        fcmToken: await FirebaseMessagingService.getFcmToken(),
+        // fcmToken: await FirebaseMessagingService.getFcmToken(),
         device: await DeviceService.getDeviceInfo(),
       ),
     );

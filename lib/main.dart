@@ -1,6 +1,4 @@
-import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:universal_io/io.dart';
 import 'alzafr_dash.dart';
 import 'config/env_config.dart';
 import 'core/globals/database/shared_pref_helper.dart';
@@ -16,38 +14,25 @@ import 'package:intl/intl_standalone.dart';
 import 'core/globals/database/shared_pref_keys.dart';
 import 'core/services/pusher_service.dart';
 import 'features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
-import 'features/firebase_messaging/firebase_messaging_service.dart';
 import 'core/widgets/custom_error_widget.dart';
 import 'core/di/dependency_injection.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   try {
+    WidgetsFlutterBinding.ensureInitialized();
     if (Firebase.apps.isEmpty) {
       await Firebase.initializeApp(options: EnvConfig.config.firebaseOptions);
-      await FirebaseMessagingService.initialize();
-      if (!Platform.isWindows) {
-        await FirebaseAppCheck.instance.activate(
-          providerWeb: kDebugMode
-              ? WebDebugProvider()
-              : ReCaptchaV3Provider('6LcQ_DotAAAAAGm3hdCoCZxm06RUxzgJFRRxdxXA'),
-        );
-      }
+      // await FirebaseMessagingService.initialize();
     }
-  } catch (e, st) {
-    debugPrint('🔥 Firebase init error: $e');
-    debugPrint('$st');
-  }
-  HydratedBloc.storage = await HydratedStorage.build(
-    storageDirectory: kIsWeb
-        ? HydratedStorageDirectory.web
-        : HydratedStorageDirectory((await getTemporaryDirectory()).path),
-  );
-  Bloc.observer = AppBlocObserver();
-  configureDependencies();
-  await ScreenUtil.ensureScreenSize();
-  try {
+    HydratedBloc.storage = await HydratedStorage.build(
+      storageDirectory: kIsWeb
+          ? HydratedStorageDirectory.web
+          : HydratedStorageDirectory((await getTemporaryDirectory()).path),
+    );
+    Bloc.observer = AppBlocObserver();
+    configureDependencies();
+    await ScreenUtil.ensureScreenSize();
     await findSystemLocale();
     intl.Intl.defaultLocale = 'ar';
     usePathUrlStrategy();
@@ -64,12 +49,10 @@ Future<void> main() async {
     getIt<AuthBloc>().add(AuthEvent.check(onComplete: completer));
     await completer.future;
     runApp(const AlzafrDash());
-  } catch (error, stackTrace) {
-    _handleError(
-      error: error,
-      stackTrace: stackTrace,
-      context: 'app initialization',
-    );
+  } catch (e, st) {
+    debugPrint('🔥 Firebase init error: $e');
+    debugPrint('$st');
+    _handleError(error: e, stackTrace: st, context: 'app initialization');
   }
 }
 

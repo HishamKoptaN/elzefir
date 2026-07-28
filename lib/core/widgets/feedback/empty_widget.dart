@@ -1,3 +1,4 @@
+import 'package:alzefr/core/utils/extensions/responsive_icon_extension%20.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,13 +10,14 @@ class EmptyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
+      heightFactor: 2.h,
       child: Column(
-        mainAxisAlignment: .center,
+        mainAxisAlignment: .spaceAround,
         crossAxisAlignment: .center,
         mainAxisSize: .min,
         spacing: 16.h,
         children: [
-          Icon(icon, size: 40, color: const Color(0xFF878791)),
+          Icon(icon, size: 30.iconRes, color: const Color(0xFF878791)),
           Text(
             text,
             style: TextStyle(

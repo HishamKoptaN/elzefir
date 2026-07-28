@@ -74,8 +74,6 @@ import '../../features/categories/domain/use_cases/categories_use_cases.dart'
     as _i900;
 import '../../features/categories/present/blocs/bloc/categories_bloc.dart'
     as _i332;
-import '../../features/firebase_messaging/firebase_messaging_service.dart'
-    as _i368;
 import '../../features/home/data/data_sources/home_api.dart' as _i927;
 import '../../features/home/data/data_sources/home_data_src.dart' as _i861;
 import '../../features/home/data/data_sources/home_data_src_Imp.dart' as _i105;
@@ -176,9 +174,6 @@ _i174.GetIt init(
   gh.lazySingleton<_i158.TokenStorage>(() => _i158.TokenStorage());
   gh.lazySingleton<_i749.FirebaseAuthService>(
     () => _i749.FirebaseAuthService(),
-  );
-  gh.lazySingleton<_i368.FirebaseMessagingService>(
-    () => _i368.FirebaseMessagingService(),
   );
   gh.singleton<_i158.AuthInterceptor>(
     () => _i158.AuthInterceptor(gh<_i158.TokenStorage>()),

@@ -16,38 +16,77 @@ abstract class AppColors {
 
 class LightColors extends AppColors {
   const LightColors();
+  @override
+  Color get primary {
+    return const Color(0xFF002B49);
+  }
 
   @override
-  Color get primary => const Color(0xFF0F1E2E);
+  Color get primaryLight {
+    return const Color(0xFFD7CCC8);
+  }
+
   @override
-  Color get primaryLight => const Color(0xFFD7CCC8);
+  Color get onPrimary {
+    return Colors.white;
+  }
+
   @override
-  Color get onPrimary => Colors.white;
+  Color get background {
+    return const Color(0xFFF5EAD8);
+  }
+
   @override
-  Color get background => const Color(0xFFF5EAD8);
+  Color get surface {
+    return Colors.white;
+  }
+
   @override
-  Color get surface => Colors.white;
+  Color get textPrimary {
+    return const Color(0xFF212121);
+  }
+
   @override
-  Color get textPrimary => const Color(0xFF212121);
-  @override
-  Color get textSecondary => const Color(0xFF757575);
+  Color get textSecondary {
+    return const Color(0xFF757575);
+  }
 }
 
 class DarkColors extends AppColors {
   const DarkColors();
 
   @override
-  Color get primary => const Color(0xFFD7CCC8);
+  Color get primary {
+    return const Color(0xFFD7CCC8);
+  }
+
   @override
-  Color get primaryLight => const Color(0xFFD7CCC8);
+  Color get primaryLight {
+    return const Color(0xFFD7CCC8);
+  }
+
   @override
-  Color get onPrimary => Colors.black;
+  Color get onPrimary {
+    return Colors.black;
+  }
+
   @override
-  Color get background => const Color(0xFF121212);
+  Color get background {
+    return const Color(0xFF121212);
+  }
+
   @override
-  Color get surface => const Color(0xFF1E1E1E);
+  Color get surface {
+    return const Color(0xFF1E1E1E);
+  }
+
   @override
-  Color get textPrimary => const Color(0xFFECEFF1);
+  Color get textPrimary {
+    return const Color(0xFFECEFF1);
+  }
+
   @override
-  Color get textSecondary => const Color(0xFFB0BEC5);
+  Color get textSecondary {
+    return const Color(0xFFB0BEC5);
+  }
 }

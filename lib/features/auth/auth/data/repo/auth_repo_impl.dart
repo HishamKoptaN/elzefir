@@ -57,7 +57,7 @@ class AuthRepoImpl implements AuthRepo {
       final res = await _api.authToken(
         exchangeToken: ExchangeTokenReqBodyModel(
           idToken: await _tokenService.getIdToken(forceRefresh: true),
-          fcmToken: await FirebaseMessagingService.getFcmToken(),
+          // fcmToken: await FirebaseMessagingService.getFcmToken(),
           device: await DeviceService.getDeviceInfo(),
         ),
       );

@@ -1,0 +1,63 @@
+name: Deploy Dev
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  web-deploy:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.24.5"
+          channel: stable
+          architecture: x64
+          cache: true
+      - run: flutter pub get
+      - run: |
+          COMMIT_MSG=$(git log -1 --pretty=%s | sed 's/"/\\"/g')
+          flutter build web \
+          --base-href "/alzefr/" \
+          --dart-define=ENV=dev \
+          --dart-define=COMMIT_MESSAGE="$COMMIT_MSG" \
+          --release \
+          --pwa-strategy=none
+      - id: ssh_deploy
+        continue-on-error: true
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+          ssh -p 65002 \
+            -i private_key.pem \
+            -o StrictHostKeyChecking=no \
+            u943485201@82.197.83.233 \
+            "mkdir -p /home/u943485201/domains/coral-shark-547480.hostingersite.com/public_html/alzefr"
+          rsync -avz --delete \
+            -e "ssh -p 65002 -i private_key.pem -o StrictHostKeyChecking=no" \
+            build/web/ \
+            u943485201@82.197.83.233:/home/u943485201/domains/coral-shark-547480.hostingersite.com/public_html/alzefr/
+          rm -f private_key.pem
+
+      - if: steps.ssh_deploy.outcome == 'failure'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+      - if: steps.ssh_deploy.outcome == 'failure'
+        run: |
+          lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" \
+          -p 21 "82.197.83.233" <<EOF
+
+          set ftp:ssl-allow no
+          set ftp:passive-mode on
+          set net:max-retries 5
+          set net:timeout 60
+          mirror -R \
+            --delete \
+            --overwrite \
+            ./build/web/ \
+            /domains/coral-shark-547480.hostingersite.com/public_html/alzefr/
+
+          quit
+          EOF

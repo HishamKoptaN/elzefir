@@ -37,10 +37,12 @@ class AppTheme {
       ),
       colorScheme: ColorScheme.light(
         primary: _light.primary,
+        onPrimary: Colors.white,
+        secondary: const Color(0xFFFBECE6),
+        tertiary: const Color(0xFFC88A67),
         surface: _light.background,
         surfaceContainer: _light.surface,
         error: AppColors.danger,
-        onPrimary: Colors.white,
         onSurface: _light.textPrimary,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -108,7 +110,9 @@ class AppTheme {
           surfaceTintColor: WidgetStateProperty.all(Colors.transparent),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
-              side: BorderSide(color: _light.textSecondary.withOpacity(0.1)),
+              side: BorderSide(
+                color: _light.textSecondary.withValues(alpha: 0.1),
+              ),
             ),
           ),
           padding: WidgetStateProperty.all(EdgeInsets.symmetric(vertical: 8.h)),

@@ -1,14 +1,18 @@
+import 'package:alzefr/core/widgets/custom_image.dart';
+import 'package:alzefr/generated/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../bloc/home_bloc.dart';
 import 'about/about.dart';
 import 'additions/additions_widget.dart';
 import 'categories_nav.dart';
+import 'footer/footer_widget.dart';
 import 'offer_widget.dart';
 import 'products/products_widget.dart';
-import 'restaurant_app_bar.dart';
+import 'home_app_bar/home_app_bar.dart';
 
 class BodyWidget extends StatefulWidget {
   const BodyWidget({super.key});
@@ -17,7 +21,23 @@ class BodyWidget extends StatefulWidget {
 }
 
 class _BodyWidgetState extends State<BodyWidget> {
-  int selectedCategoryIndex = 0;
+  final ScrollController scrollController = ScrollController();
+  final offerWidget = GlobalKey();
+  final categoriesKey = GlobalKey();
+  final productsKey = GlobalKey();
+  final additionsKey = GlobalKey();
+  final aboutKey = GlobalKey();
+  final contactKey = GlobalKey();
+  void scrollToSection(GlobalKey key) {
+    final context = key.currentContext;
+    if (context == null) return;
+    Scrollable.ensureVisible(
+      context,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -30,19 +50,44 @@ class _BodyWidgetState extends State<BodyWidget> {
             return state.maybeMap(
               loaded: (state) {
                 return Column(
-                  spacing: 24.h,
                   crossAxisAlignment: .center,
+                  spacing: 24.h,
                   children: [
-                    RestaurantAppBar(count: 3),
-                    OfferWidget(),
-                    CategoriesNav(
-                      categories: state.homeRes?.categories ?? [],
-                      selectedIndex: 1,
-                      onChanged: (v) {},
+                    RestaurantAppBar(
+                      onHome: () {
+                        scrollToSection(productsKey);
+                      },
+                      onMenu: () {
+                        scrollToSection(categoriesKey);
+                      },
+                      onAbout: () {
+                        scrollToSection(aboutKey);
+                      },
+                      onContact: () {
+                        scrollToSection(contactKey);
+                      },
                     ),
-                    ProductsSection(products: state.homeRes?.products ?? []),
-                    AdditionsSection(additions: state.homeRes?.additions ?? []),
-                    AboutSection(),
+                    OfferWidget(key: offerWidget),
+                    CategoriesNav(
+                      key: categoriesKey,
+                      categories: state.homeRes?.categories ?? [],
+                      selectedCategoryId: state.selectedCategoryId,
+                      onChanged: (categoryId) {
+                        getIt<HomeBloc>().add(
+                          HomeEvent.selectCategoryId(id: categoryId),
+                        );
+                      },
+                    ),
+                    ProductsSection(
+                      key: productsKey,
+                      products: state.homeRes?.products ?? [],
+                    ),
+                    AdditionsSection(
+                      key: additionsKey,
+                      additions: state.homeRes?.additions ?? [],
+                    ),
+                    AboutSection(key: aboutKey),
+                    Footer(key: contactKey),
                   ],
                 );
               },

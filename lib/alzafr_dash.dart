@@ -11,7 +11,6 @@ import 'core/utils/device_helper.dart';
 
 class AlzafrDash extends StatelessWidget {
   const AlzafrDash({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
