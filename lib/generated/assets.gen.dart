@@ -26,18 +26,12 @@ class $AssetsLogosGen {
   /// File path: assets/logos/logo1.png
   AssetGenImage get logo1 => const AssetGenImage('assets/logos/logo1.png');
 
-  /// File path: assets/logos/logo_transparent.png
-  AssetGenImage get logoTransparent =>
-      const AssetGenImage('assets/logos/logo_transparent.png');
+  /// File path: assets/logos/logo_mark.png
+  AssetGenImage get logoMark =>
+      const AssetGenImage('assets/logos/logo_mark.png');
 
   /// List of all assets
-  List<dynamic> get values => [
-    logoJpg,
-    logoPng,
-    logoSvg,
-    logo1,
-    logoTransparent,
-  ];
+  List<dynamic> get values => [logoJpg, logoPng, logoSvg, logo1, logoMark];
 }
 
 class $AssetsMockGen {

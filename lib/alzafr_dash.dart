@@ -25,7 +25,7 @@ class AlzafrDash extends StatelessWidget {
           bloc: getIt<ThemeCubit>(),
           builder: (context, themeMode) {
             return MaterialApp.router(
-              title: 'Odhia',
+              title: 'الزفر',
               debugShowCheckedModeBanner: false,
               themeMode: themeMode,
               theme: AppTheme.lightTheme,

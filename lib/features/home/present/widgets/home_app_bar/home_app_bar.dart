@@ -59,7 +59,7 @@ class RestaurantAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           CustomImage(
-            image: Assets.logos.logoTransparent.path,
+            image: Assets.logos.logoMark.path,
             height: 95.h,
             width: 95.w,
           ),

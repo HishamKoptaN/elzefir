@@ -32,12 +32,10 @@ jobs:
           set ftp:passive-mode on
           set net:max-retries 5
           set net:timeout 60
-
           mirror -R \
             --delete \
             --overwrite \
             ./build/web/ \
-            public_html/alzefr/
-
+            alzefr/
           bye
           EOF
