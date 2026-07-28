@@ -2,7 +2,7 @@ name: Test SSH
 on:
   push:
     branches:
-      - devs
+      - dev
 jobs:
   test-ssh:
     runs-on: ubuntu-latest
