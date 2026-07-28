@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'features/home/present/widgets/home_app_bar/home_app_bar.dart';
 
 class RestaurantScreen extends StatelessWidget {
   const RestaurantScreen({super.key});
