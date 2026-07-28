@@ -1,0 +1,21 @@
+name: Test SSH
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  test-ssh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test SSH Connection
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+          ssh \
+            -i private_key.pem \
+            -p 65002 \
+            -o StrictHostKeyChecking=no \
+            -o ConnectTimeout=15 \
+            u943485201@82.197.83.233 \
+            "echo '✅ SSH Connected Successfully'; pwd; whoami"
+          rm -f private_key.pem
