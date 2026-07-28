@@ -1,25 +1,33 @@
-name: Test SSH
+name: Test FTP
+
 on:
   push:
     branches:
       - dev
+
 jobs:
-  test-ssh:
+  test-ftp:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Test SSH Connection
+      - name: Install lftp
         run: |
-          - run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+
+      - name: Test FTP Connection
+        run: |
           lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" \
           -p 21 "82.197.83.233" <<EOF
           set ftp:ssl-allow no
           set ftp:passive-mode on
           set net:max-retries 5
           set net:timeout 60
-          mirror -R \
-            --delete \
-            --overwrite \
-            ./build/web/ \
-            /public_html/alzefr/
-          quit
+
+          echo "Connected successfully"
+
+          pwd
+          ls
+
+          bye
           EOF

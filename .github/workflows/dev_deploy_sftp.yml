@@ -24,22 +24,17 @@ jobs:
           --dart-define=COMMIT_MESSAGE="$COMMIT_MSG" \
           --release \
           --pwa-strategy=none
-
-      # تثبيت أداة lftp أولاً قبل استخدامها
-      - name: Install lftp
-        run: sudo apt-get update && sudo apt-get install -y lftp
-
-      - run: |
-          lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" \
+      - run: sudo apt-get update && sudo apt-get install -y lftp
+      - run: lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" \
           -p 21 "82.197.83.233" <<EOF
           set ftp:ssl-allow no
           set ftp:passive-mode on
           set net:max-retries 5
           set net:timeout 60
           mirror -R \
-            --delete \
-            --overwrite \
-            ./build/web/ \
-            /public_html/alzefr/
+          --delete \
+          --overwrite \
+          ./build/web/ \
+          /public_html/alzefr/
           quit
           EOF
