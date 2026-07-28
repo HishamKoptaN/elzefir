@@ -39,7 +39,6 @@ jobs:
             build/web/ \
             u943485201@82.197.83.233:/home/u943485201/domains/coral-shark-547480.hostingersite.com/public_html/alzefr/
           rm -f private_key.pem
-
       - if: steps.ssh_deploy.outcome == 'failure'
         run: |
           sudo apt-get update
@@ -48,7 +47,6 @@ jobs:
         run: |
           lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" \
           -p 21 "82.197.83.233" <<EOF
-
           set ftp:ssl-allow no
           set ftp:passive-mode on
           set net:max-retries 5
@@ -58,6 +56,5 @@ jobs:
             --overwrite \
             ./build/web/ \
             /domains/coral-shark-547480.hostingersite.com/public_html/alzefr/
-
           quit
           EOF
