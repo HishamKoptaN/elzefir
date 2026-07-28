@@ -8,12 +8,27 @@ on:
 jobs:
   test-ftp:
     runs-on: ubuntu-latest
+    environment: dev
 
     steps:
       - name: Install lftp
         run: |
           sudo apt-get update
           sudo apt-get install -y lftp
+
+      - name: Check Secrets
+        run: |
+          if [ -z "${{ secrets.FTP_USERNAME }}" ]; then
+            echo "❌ FTP_USERNAME is empty"
+            exit 1
+          fi
+
+          if [ -z "${{ secrets.FTP_PASSWORD }}" ]; then
+            echo "❌ FTP_PASSWORD is empty"
+            exit 1
+          fi
+
+          echo "✅ FTP secrets loaded successfully"
 
       - name: Test FTP Connection
         run: |
@@ -23,8 +38,6 @@ jobs:
           set ftp:passive-mode on
           set net:max-retries 5
           set net:timeout 60
-
-          echo "Connected successfully"
 
           pwd
           ls
