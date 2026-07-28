@@ -2,7 +2,7 @@ name: Deploy Dev
 on:
   push:
     branches:
-      - devs
+      - dev
 jobs:
   web-deploy:
     runs-on: ubuntu-latest

@@ -1,15 +1,12 @@
 name: Test FTP
-
 on:
   push:
     branches:
-      - dev
-
+      - devs
 jobs:
   test-ftp:
     runs-on: ubuntu-latest
     environment: dev
-
     steps:
       - name: Install lftp
         run: |
@@ -23,9 +20,7 @@ jobs:
           set ftp:passive-mode on
           set net:max-retries 5
           set net:timeout 60
-
           pwd
           ls
-
           bye
           EOF
