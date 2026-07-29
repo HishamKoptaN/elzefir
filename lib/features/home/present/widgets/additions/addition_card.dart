@@ -19,10 +19,10 @@ class _AdditionCardState extends State<AdditionCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 466.w,
+      width: 800.w,
       decoration: BoxDecoration(
         color: const Color(0xFFFFFFFF),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: .circular(12.r),
         border: Border.all(
           color: const Color(0xFFC3C7CE).withValues(alpha: 0.1),
         ),
@@ -35,24 +35,21 @@ class _AdditionCardState extends State<AdditionCard> {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: .start,
         children: [
           Container(
-            padding: const EdgeInsets.all(16),
-            decoration: const BoxDecoration(
+            padding: .all(16.w),
+            decoration: BoxDecoration(
               color: Color(0xFFFFF1EA),
-              borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+              borderRadius: .vertical(top: .circular(12.r)),
             ),
             child: Stack(
               children: [
                 ClipRRect(
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(16),
-                    bottom: Radius.zero,
-                  ),
+                  borderRadius: .vertical(top: .circular(16.r), bottom: .zero),
                   child: Container(
                     height: 224.h,
-                    width: double.infinity,
+                    width: .infinity,
                     color: Colors.grey.shade300,
                     child: CustomImage(
                       image: widget.addition.image,
@@ -64,12 +61,12 @@ class _AdditionCardState extends State<AdditionCard> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(24.w),
+            padding: .all(24.w),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: .start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: .spaceBetween,
                   children: [
                     Text(
                       widget.addition.name,
@@ -78,14 +75,14 @@ class _AdditionCardState extends State<AdditionCard> {
                         fontWeight: FontWeight.w700,
                         color: const Color(0xFF28180D),
                       ),
-                      textAlign: TextAlign.right,
+                      textAlign: .right,
                     ),
                     CategoryBadgeWidget(name: 'اضافات'),
                   ],
                 ),
                 SizedBox(height: 8.h),
                 SizedBox(
-                  width: double.infinity,
+                  width: .infinity,
                   child: Text(
                     widget.addition.description,
                     style: TextStyle(
@@ -93,12 +90,11 @@ class _AdditionCardState extends State<AdditionCard> {
                       height: 1.5,
                       color: const Color(0xFF42474D),
                     ),
-                    textAlign: TextAlign.right,
+                    textAlign: .right,
                     maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                    overflow: .ellipsis,
                   ),
                 ),
-                SizedBox(height: 16.h),
                 PriceWidget(price: widget.addition.price),
               ],
             ),

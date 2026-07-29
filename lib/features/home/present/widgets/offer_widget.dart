@@ -50,10 +50,9 @@ class OfferWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 20),
                       Text(
                         'مطعم أسماك الزفر',
-                        textAlign: TextAlign.right,
+                        textAlign: .right,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 48.sp,
@@ -61,7 +60,7 @@ class OfferWidget extends StatelessWidget {
                           height: 1.15,
                         ),
                       ),
-                      SizedBox(height: 50.h),
+                      SizedBox(height: 25.h),
                       OpenStatusBadge(),
                     ],
                   ),
@@ -97,19 +96,19 @@ class OpenStatusBadge extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: 20.w,
             children: [
               Text(
                 'مفتوح الآن',
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 18.sp,
+                  fontSize: 24.sp,
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(width: 8),
               Container(
-                width: 18.w,
-                height: 18.h,
+                width: 26.w,
+                height: 26.h,
                 decoration: const BoxDecoration(
                   color: Color(0xFF22C55E),
                   shape: BoxShape.circle,

@@ -50,41 +50,41 @@ class _BodyWidgetState extends State<BodyWidget> {
                   crossAxisAlignment: .center,
                   spacing: 24.h,
                   children: [
-                    RestaurantAppBar(
-                      onHome: () {
-                        scrollToSection(productsKey);
-                      },
-                      onMenu: () {
-                        scrollToSection(categoriesKey);
-                      },
-                      onAbout: () {
-                        scrollToSection(aboutKey);
-                      },
-                      onContact: () {
-                        scrollToSection(contactKey);
-                      },
-                    ),
-                    OfferWidget(key: offerWidget),
-                    CategoriesNav(
-                      key: categoriesKey,
-                      categories: state.homeRes?.categories ?? [],
-                      selectedCategoryId: state.selectedCategoryId,
-                      onChanged: (categoryId) {
-                        getIt<HomeBloc>().add(
-                          HomeEvent.selectCategoryId(id: categoryId),
-                        );
-                      },
-                    ),
-                    ProductsSection(
-                      key: productsKey,
-                      products: state.homeRes?.products ?? [],
-                    ),
-                    AdditionsSection(
-                      key: additionsKey,
-                      additions: state.homeRes?.additions ?? [],
-                    ),
-                    AboutSection(key: aboutKey),
-                    Footer(key: contactKey),
+                    // RestaurantAppBar(
+                    //   onHome: () {
+                    //     scrollToSection(productsKey);
+                    //   },
+                    //   onMenu: () {
+                    //     scrollToSection(categoriesKey);
+                    //   },
+                    //   onAbout: () {
+                    //     scrollToSection(aboutKey);
+                    //   },
+                    //   onContact: () {
+                    //     scrollToSection(contactKey);
+                    //   },
+                    // ),
+                    // OfferWidget(key: offerWidget),
+                    // CategoriesNav(
+                    //   key: categoriesKey,
+                    //   categories: state.homeRes?.categories ?? [],
+                    //   selectedCategoryId: state.selectedCategoryId,
+                    //   onChanged: (categoryId) {
+                    //     getIt<HomeBloc>().add(
+                    //       HomeEvent.selectCategoryId(id: categoryId),
+                    //     );
+                    //   },
+                    // ),
+                    // ProductsSection(
+                    //   key: productsKey,
+                    //   products: state.homeRes?.products ?? [],
+                    // ),
+                    // AdditionsSection(
+                    //   key: additionsKey,
+                    //   additions: state.homeRes?.additions ?? [],
+                    // ),
+                    // AboutSection(key: aboutKey),
+                    FooterWidget(key: contactKey),
                   ],
                 );
               },

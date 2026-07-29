@@ -13,8 +13,7 @@ class AdditionsSection extends StatelessWidget {
       builder: (context, constraints) {
         return Wrap(
           runSpacing: 10.h,
-          spacing: 10.w,
-          alignment: WrapAlignment.center,
+          alignment: .center,
           children: additions.map((addition) {
             return AdditionCard(addition: addition);
           }).toList(),

@@ -13,8 +13,7 @@ class ProductsSection extends StatelessWidget {
       builder: (context, constraints) {
         return Wrap(
           runSpacing: 10.h,
-          spacing: 10.w,
-          alignment: WrapAlignment.center,
+          alignment: .center,
           children: products.map((product) {
             return ProductCard(product: product);
           }).toList(),

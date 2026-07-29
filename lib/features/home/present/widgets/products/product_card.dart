@@ -19,10 +19,10 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 466.w,
+      width: 900.w,
       decoration: BoxDecoration(
         color: const Color(0xFFFFFFFF),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: .circular(12.r),
         border: Border.all(
           color: const Color(0xFFC3C7CE).withValues(alpha: 0.1),
         ),
@@ -62,25 +62,25 @@ class _ProductCardState extends State<ProductCard> {
               );
             },
             child: Container(
-              padding: EdgeInsets.all(20.w),
-              decoration: const BoxDecoration(
+              padding: .all(20.w),
+              decoration: BoxDecoration(
                 color: Color(0xFFFFF1EA),
-                borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                borderRadius: .vertical(top: Radius.circular(12.r)),
               ),
               child: Stack(
                 children: [
                   ClipRRect(
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(16),
-                      bottom: Radius.zero,
+                    borderRadius: .vertical(
+                      top: Radius.circular(16.r),
+                      bottom: .zero,
                     ),
                     child: Container(
-                      height: 310.h,
-                      width: double.infinity,
+                      height: 250.h,
+                      width: .infinity,
                       color: Colors.grey.shade300,
                       child: CustomImage(
                         image: widget.product.image,
-                        fit: BoxFit.cover,
+                        fit: .cover,
                       ),
                     ),
                   ),
@@ -88,10 +88,10 @@ class _ProductCardState extends State<ProductCard> {
                     top: 12.h,
                     right: 12.w,
                     child: Container(
-                      padding: EdgeInsets.all(8.w),
+                      padding: .all(8.w),
                       decoration: BoxDecoration(
                         color: Colors.black45,
-                        borderRadius: BorderRadius.circular(20.r),
+                        borderRadius: .circular(20.r),
                       ),
                       child: Icon(
                         Icons.zoom_in,
@@ -105,28 +105,32 @@ class _ProductCardState extends State<ProductCard> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(24.0.w),
+            padding: .all(24.0.w),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: .start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: .spaceBetween,
                   children: [
-                    Text(
-                      widget.product.title,
-                      style: TextStyle(
-                        fontSize: 32.sp,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xFF28180D),
+                    Expanded(
+                      child: Text(
+                        widget.product.title,
+                        maxLines: 2,
+                        style: TextStyle(
+                          fontSize: 32.sp,
+                          fontWeight: .w700,
+                          color: Color(0xFF28180D),
+                          overflow: .ellipsis,
+                        ),
+                        textAlign: .right,
                       ),
-                      textAlign: TextAlign.right,
                     ),
                     CategoryBadgeWidget(name: widget.product.category.name),
                   ],
                 ),
                 SizedBox(height: 8.h),
                 SizedBox(
-                  width: double.infinity,
+                  width: .infinity,
                   child: Text(
                     widget.product.description,
                     style: TextStyle(
@@ -134,12 +138,11 @@ class _ProductCardState extends State<ProductCard> {
                       height: 1.5,
                       color: Color(0xFF42474D),
                     ),
-                    textAlign: TextAlign.right,
+                    textAlign: .right,
                     maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                    overflow: .ellipsis,
                   ),
                 ),
-                SizedBox(height: 16.h),
                 PriceWidget(price: widget.product.price),
               ],
             ),
@@ -162,7 +165,7 @@ class PriceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: .end,
       children: [
         Text(
           price,
@@ -172,14 +175,13 @@ class PriceWidget extends StatelessWidget {
             color: Color(0xFF001629),
           ),
         ),
-        const SizedBox(width: 4),
+        SizedBox(width: 4.w),
         Text(
           'ج.م',
           style: TextStyle(
             fontSize: 18.sp,
-            fontWeight: FontWeight.w600,
+            fontWeight: .w600,
             color: Color(0xFF42474D),
-            letterSpacing: 0.6,
           ),
         ),
       ],

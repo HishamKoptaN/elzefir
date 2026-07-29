@@ -18,7 +18,7 @@ class CategoriesNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: .infinity,
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
       decoration: BoxDecoration(
         border: Border(
@@ -29,9 +29,8 @@ class CategoriesNav extends StatelessWidget {
       ),
       child: Center(
         child: Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 16.w,
-          runSpacing: 12.h,
+          alignment: .center,
+          spacing: 38.w,
           children: [
             CategoryItemWidget(
               title: 'الكل',

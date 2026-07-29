@@ -2,495 +2,320 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
+import 'footer_desk_layout.dart';
+import 'footer_mobile_layout.dart';
 
-class Footer extends StatelessWidget {
-  const Footer({super.key});
-
-  Future<void> _launchUrl(String urlString) async {
-    final Uri url = Uri.parse(urlString);
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    }
+var children = [
+  Text(
+    'تواصل معنا',
+    style: TextStyle(
+      fontFamily: 'Libre Caslon Text',
+      fontSize: 18.sp,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+  ),
+  SizedBox(height: 16.h),
+  buildContactItem(
+    icon: Icons.phone,
+    text: '01008673836',
+    onTap: () {
+      execuateLaunchUrl('tel:+01008673836');
+    },
+  ),
+  SizedBox(height: 10.h),
+  buildFontAwesomeIconsContactItem(
+    FontAwesomeIcons.whatsapp,
+    '01124497981',
+    () {
+      execuateLaunchUrl('tel:+201124497981');
+    },
+  ),
+  SizedBox(height: 10.h),
+  buildContactItem(
+    icon: Icons.location_on,
+    text:
+        'العياط غرب - شارع الجيش - أمام سلم السكة الحديد بجوار صيدلية -د. لويز',
+    onTap: () {
+      execuateLaunchUrl('https://maps.google.com/?q=العياط+شارع+الجيش');
+    },
+  ),
+  SizedBox(height: 10.h),
+  buildContactItem(
+    icon: Icons.email,
+    text: 'info@alzefr.com',
+    onTap: () {
+      execuateLaunchUrl('mailto:info@alzefr.com');
+    },
+  ),
+  SizedBox(height: 20.h),
+  Row(
+    mainAxisAlignment: .center,
+    crossAxisAlignment: .center,
+    spacing: 40.w,
+    children: [
+      buildSocialIcon(Icons.facebook, () {
+        execuateLaunchUrl('https://www.facebook.com/ELZEFIR');
+      }),
+      SizedBox(width: 12.w),
+      buildFontAwesomeSocialIcon(FontAwesomeIcons.tiktok, () {
+        execuateLaunchUrl('https://www.tiktok.com/@elzefir_fish');
+      }),
+      SizedBox(width: 12.w),
+      buildFontAwesomeSocialIcon(FontAwesomeIcons.instagram, () {
+        execuateLaunchUrl('https://www.snapchat.com/@elzefir_fish');
+      }),
+    ],
+  ),
+];
+Future<void> execuateLaunchUrl(String urlString) async {
+  final Uri url = Uri.parse(urlString);
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
   }
+}
+
+class FooterWidget extends StatelessWidget {
+  const FooterWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final bool isDesktop = MediaQuery.of(context).size.width > 800;
     return Container(
       color: const Color(0xFF001629),
-      padding: EdgeInsets.symmetric(vertical: 64.h, horizontal: 40.w),
+      padding: .symmetric(vertical: 34.h, horizontal: 40.w),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: .start,
         children: [
-          isDesktop
-              ? _buildDesktopLayout(context)
-              : _buildMobileLayout(context),
-          SizedBox(height: 48.h),
-          Divider(color: Colors.white24, thickness: 1),
-          SizedBox(height: 24.h),
-          Center(
-            child: Text(
-              "© ${DateTime.now().year} مطعم أسماك الزفر. جميع الحقوق محفوظة.",
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white70, fontSize: 16.sp),
-            ),
-          ),
+          context.isDesk ? FooterDeskLayout() : FooterMobileLayout(),
+          CustomFooterDividerWidget(),
+          CopyRightWidget(),
         ],
       ),
     );
   }
+}
 
-  Widget _buildDesktopLayout(BuildContext context) {
+Widget buildFontAwesomeSocialIcon(FaIconData icon, VoidCallback onTap) {
+  return InkWell(
+    onTap: onTap,
+    borderRadius: BorderRadius.circular(50.r),
+    child: Container(
+      padding: EdgeInsets.all(10.sp),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.08),
+        shape: BoxShape.circle,
+      ),
+      child: FaIcon(icon, color: Colors.white, size: 18.iconRes),
+    ),
+  );
+}
+
+Widget buildSocialIcon(IconData icon, VoidCallback onTap) {
+  return InkWell(
+    onTap: onTap,
+    borderRadius: .circular(50.r),
+    child: Container(
+      padding: .all(30.sp),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.08),
+        shape: BoxShape.circle,
+      ),
+      child: Icon(icon, color: Colors.white, size: 18.iconRes),
+    ),
+  );
+}
+
+class FooterDesktopAboutSection extends StatelessWidget {
+  const FooterDesktopAboutSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 3,
+      child: Column(
+        crossAxisAlignment: .start,
+        children: [
+          FooterTitleWidget(),
+          SizedBox(height: 16.h),
+          FooterDescriptionWidget(),
+          SizedBox(height: 20.h),
+          RestaurantHighlights(),
+        ],
+      ),
+    );
+  }
+}
+
+class FooterTitleWidget extends StatelessWidget {
+  const FooterTitleWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Expanded(
-          flex: 3,
-          child: Column(
-            crossAxisAlignment: .start,
-            children: [
-              Row(
-                children: [
-                  Container(
-                    padding: .all(8.sp),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFACC15).withValues(alpha: 0.15),
-                      shape: .circle,
-                    ),
-                    child: Icon(
-                      Icons.set_meal,
-                      color: const Color(0xFFFACC15),
-                      size: 24.iconRes,
-                    ),
-                  ),
-                  SizedBox(width: 12.w),
-                  Text(
-                    'مطعم أسماك الزفر',
-                    style: TextStyle(
-                      fontFamily: 'Libre Caslon Text',
-                      fontSize: 28.sp,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 16.h),
-              SizedBox(
-                width: 320.w,
-                child: Text(
-                  'نقدم أشهى المأكولات البحرية الطازجة منذ أكثر من 20 عامًا بجودة عالية وأسعار تناسب الجميع.',
-                  style: TextStyle(
-                    color: Colors.white70,
-                    height: 1.6,
-                    fontSize: 22.sp,
-                  ),
-                ),
-              ),
-              SizedBox(height: 20.h),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  _buildBadge('🐟 طازج يومياً'),
-                  _buildBadge('🚚 توصيل سريع'),
-                  _buildBadge('⭐ 7500+ تقييم'),
-                ],
-              ),
-            ],
+        Container(
+          padding: .all(8.sp),
+          decoration: BoxDecoration(
+            color: const Color(0xFFFACC15).withValues(alpha: 0.15),
+            shape: .circle,
+          ),
+          child: Icon(
+            Icons.set_meal,
+            color: const Color(0xFFFACC15),
+            size: 24.iconRes,
           ),
         ),
-        Expanded(
-          flex: 2,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'تواصل معنا',
-                style: TextStyle(
-                  fontFamily: 'Libre Caslon Text',
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: 16.h),
-              _buildContactItem(
-                icon: Icons.phone,
-                text: '01008673836',
-                onTap: () {
-                  _launchUrl('tel:+01008673836');
-                },
-              ),
-              _buildFontAwesomeIconsContactItem(
-                FontAwesomeIcons.whatsapp,
-                '01124497981',
-                () {
-                  _launchUrl('tel:+201124497981');
-                },
-              ),
-
-              _buildContactItem(
-                icon: Icons.location_on,
-                text:
-                    'العياط غرب - شارع الجيش - أمام سلم السكة الحديد بجوار صيدلية -د. لويز',
-                onTap: () {
-                  _launchUrl('https://maps.google.com/?q=العياط+شارع+الجيش');
-                },
-              ),
-              _buildContactItem(
-                icon: Icons.email,
-                text: 'info@alzefr.com',
-                onTap: () {
-                  _launchUrl('mailto:info@alzefr.com');
-                },
-              ),
-              SizedBox(height: 20.h),
-              Row(
-                children: [
-                  _buildSocialIcon(Icons.facebook, () {
-                    _launchUrl('https://www.facebook.com/ELZEFIR');
-                  }),
-                  SizedBox(width: 12.w),
-                  _buildFontAwesomeSocialIcon(FontAwesomeIcons.tiktok, () {
-                    _launchUrl('https://www.tiktok.com/@elzefir_fish');
-                  }),
-                  SizedBox(width: 12.w),
-                  _buildFontAwesomeSocialIcon(FontAwesomeIcons.instagram, () {
-                    _launchUrl('https://www.snapchat.com/@elzefir_fish');
-                  }),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          flex: 2,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'ساعات العمل',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: 16.h),
-              Container(
-                padding: EdgeInsets.all(16.sp),
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.05),
-                  borderRadius: BorderRadius.circular(12.r),
-                  border: Border.all(color: Colors.white10),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.access_time,
-                          color: Color(0xFFFACC15),
-                          size: 16.iconRes,
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          'السبت - الخميس',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.sp,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 4.h),
-                    Padding(
-                      padding: EdgeInsets.only(right: 24.w),
-                      child: Text(
-                        '10:00 ص - 1:00 ص',
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 18.sp,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 8.h),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.h),
-                      child: Divider(color: Colors.white10, height: 1),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+        SizedBox(width: 12.w),
+        Text(
+          'مطعم أسماك الزفر',
+          style: TextStyle(
+            fontSize: 28.sp,
+            fontWeight: .w700,
+            color: Colors.white,
           ),
         ),
       ],
     );
   }
+}
 
-  Widget _buildMobileLayout(BuildContext context) {
-    return Column(
-      mainAxisAlignment: .start,
+Widget buildContactItem({
+  required IconData icon,
+  required String text,
+  required VoidCallback onTap,
+}) {
+  return InkWell(
+    onTap: onTap,
+    child: Row(
+      mainAxisSize: .min,
+      children: [
+        Container(
+          padding: .all(20.sp),
+          margin: .only(left: 8.w),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.08),
+            shape: .circle,
+          ),
+          child: Icon(icon, color: const Color(0xFFFACC15), size: 16.iconRes),
+        ),
+        SizedBox(width: 12.w),
+        Expanded(
+          child: Text(
+            text,
+            overflow: .visible,
+            style: TextStyle(color: Colors.white70, fontSize: 18.sp),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget buildFontAwesomeIconsContactItem(
+  FaIconData icon,
+  String text,
+  VoidCallback onTap,
+) {
+  return InkWell(
+    onTap: onTap,
+    child: Row(
+      mainAxisSize: .min,
+      children: [
+        Container(
+          padding: .all(30.sp),
+          margin: .only(left: 8.w),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.08),
+            shape: .circle,
+          ),
+          child: FaIcon(icon, color: const Color(0xFFFACC15), size: 16.iconRes),
+        ),
+        SizedBox(width: 12.w),
+        Expanded(
+          child: Text(
+            text,
+            overflow: .visible,
+            style: TextStyle(color: Colors.white70, fontSize: 18.sp),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget buildBadge(String text) {
+  return Container(
+    padding: .symmetric(horizontal: 10.w, vertical: 5.h),
+    decoration: BoxDecoration(
+      color: Colors.white.withValues(alpha: 0.06),
+      borderRadius: BorderRadius.circular(20.r),
+      border: .all(color: Colors.white10),
+    ),
+    child: Text(
+      text,
+      style: TextStyle(
+        color: Colors.white70,
+        fontSize: 18.sp,
+        fontWeight: .w500,
+      ),
+    ),
+  );
+}
+
+class RestaurantHighlights extends StatelessWidget {
+  const RestaurantHighlights({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      spacing: 6,
+      runSpacing: 6,
       crossAxisAlignment: .start,
       children: [
-        Row(
-          mainAxisAlignment: .start,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(6),
-              decoration: BoxDecoration(
-                color: const Color(0xFFFACC15).withValues(alpha: 0.15),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                Icons.set_meal,
-                color: Color(0xFFFACC15),
-                size: 20.iconRes,
-              ),
-            ),
-            const SizedBox(width: 10),
-            const Text(
-              'مطعم أسماك الزفر',
-              style: TextStyle(
-                fontFamily: 'Libre Caslon Text',
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-        SizedBox(height: 12.h),
-        Text(
-          'نقدم أشهى المأكولات البحرية الطازجة منذ أكثر من 20 عامًا بجودة عالية وأسعار تناسب الجميع.',
-          style: TextStyle(color: Colors.white70, height: 1.5, fontSize: 13.sp),
-        ),
-        SizedBox(height: 16.h),
-        Wrap(
-          spacing: 6,
-          runSpacing: 6,
-          crossAxisAlignment: .start,
-          children: [
-            _buildBadge('طازج يومياً 🐟'),
-            _buildBadge('توصيل سريع 🚚'),
-            _buildBadge('7500+ تقييم ⭐'),
-          ],
-        ),
-        SizedBox(height: 32.h),
-        Divider(color: Colors.white12),
-        SizedBox(height: 24.h),
-        Text(
-          'تواصل معنا',
-          style: TextStyle(
-            fontFamily: 'Libre Caslon Text',
-            fontSize: 18.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        SizedBox(height: 16.h),
-        _buildContactItem(
-          icon: Icons.phone,
-          text: '01124497981',
-          onTap: () {
-            _launchUrl('tel:+201124497981');
-          },
-        ),
-        _buildContactItem(
-          icon: Icons.location_on,
-          text: 'العياط - شارع الجيش',
-          onTap: () {
-            _launchUrl('https://maps.google.com/?q=العياط+شارع+الجيش');
-          },
-        ),
-        _buildContactItem(
-          icon: Icons.email,
-          text: 'info@alzefr.com',
-          onTap: () {
-            _launchUrl('mailto:info@alzefr.com');
-          },
-        ),
-        SizedBox(height: 24.h),
-        Row(
-          children: [
-            _buildSocialIcon(Icons.facebook, () {}),
-            SizedBox(width: 12.w),
-            _buildFontAwesomeSocialIcon(FontAwesomeIcons.instagram, () {}),
-          ],
-        ),
-        SizedBox(height: 32.h),
-        Divider(color: Colors.white12),
-        SizedBox(height: 24.h),
-        Text(
-          'ساعات العمل',
-          style: TextStyle(
-            fontFamily: 'Libre Caslon Text',
-            fontSize: 24.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        SizedBox(height: 16.h),
-        Container(
-          padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.05),
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.white10),
-          ),
-          child: const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'السبت - الخميس: 10:00 ص - 1:00 ص',
-                style: TextStyle(color: Colors.white70, fontSize: 13),
-              ),
-              SizedBox(height: 8),
-              Divider(color: Colors.white10),
-              SizedBox(height: 8),
-              Text(
-                'الجمعة: 1:00 م - 2:00 ص',
-                style: TextStyle(color: Colors.white70, fontSize: 13),
-              ),
-            ],
-          ),
-        ),
+        buildBadge('طازج يومياً 🐟'),
+        buildBadge('توصيل سريع 🚚'),
+        buildBadge('7500+ تقييم ⭐'),
       ],
     );
   }
+}
 
-  Widget _buildContactItem({
-    required IconData icon,
-    required String text,
-    required VoidCallback onTap,
-  }) {
+class CustomFooterDividerWidget extends StatelessWidget {
+  const CustomFooterDividerWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 12.h),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(0.r),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 4.h),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                padding: EdgeInsets.all(8.sp),
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.08),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  icon,
-                  color: const Color(0xFFFACC15),
-                  size: 16.iconRes,
-                ),
-              ),
-              SizedBox(width: 12.w),
-              Expanded(
-                child: Text(
-                  text,
-                  overflow: .visible,
-                  style: TextStyle(color: Colors.white70, fontSize: 18.sp),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      padding: .symmetric(vertical: 14.h),
+      child: Divider(color: Colors.white12),
     );
   }
+}
 
-  Widget _buildFontAwesomeIconsContactItem(
-    FaIconData icon,
-    String text,
-    VoidCallback onTap,
-  ) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 12.h),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(8.r),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 4.h),
-          child: Row(
-            mainAxisSize: .min,
-            children: [
-              Container(
-                padding: EdgeInsets.all(8.sp),
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.08),
-                  shape: BoxShape.circle,
-                ),
-                child: FaIcon(
-                  icon,
-                  color: const Color(0xFFFACC15),
-                  size: 16.iconRes,
-                ),
-              ),
-              SizedBox(width: 12.w),
-              Text(
-                text,
-                style: TextStyle(color: Colors.white70, fontSize: 18.sp),
-              ),
-            ],
-          ),
-        ),
-      ),
+class FooterDescriptionWidget extends StatelessWidget {
+  const FooterDescriptionWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'نقدم أشهى المأكولات البحرية الطازجة منذ أكثر من 20 عامًا بجودة عالية وأسعار تناسب الجميع.',
+      style: TextStyle(color: Colors.white70, height: 1.5, fontSize: 13.sp),
     );
   }
+}
 
-  Widget _buildFontAwesomeSocialIcon(FaIconData icon, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(50.r),
-      child: Container(
-        padding: EdgeInsets.all(10.sp),
-        decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.08),
-          shape: BoxShape.circle,
-        ),
-        child: FaIcon(icon, color: Colors.white, size: 18.iconRes),
-      ),
-    );
-  }
+class CopyRightWidget extends StatelessWidget {
+  const CopyRightWidget({super.key});
 
-  Widget _buildSocialIcon(IconData icon, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(50.r),
-      child: Container(
-        padding: EdgeInsets.all(10.sp),
-        decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.08),
-          shape: BoxShape.circle,
-        ),
-        child: Icon(icon, color: Colors.white, size: 18.iconRes),
-      ),
-    );
-  }
-
-  Widget _buildBadge(String text) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.06),
-        borderRadius: BorderRadius.circular(20.r),
-        border: Border.all(color: Colors.white10),
-      ),
+  @override
+  Widget build(BuildContext context) {
+    return Center(
       child: Text(
-        text,
-        style: TextStyle(
-          color: Colors.white70,
-          fontSize: 18.sp,
-          fontWeight: FontWeight.w500,
-        ),
+        "© ${DateTime.now().year} مطعم أسماك الزفر. جميع الحقوق محفوظة.",
+        textAlign: TextAlign.center,
+        style: TextStyle(color: Colors.white70, fontSize: 16.sp),
       ),
     );
   }
