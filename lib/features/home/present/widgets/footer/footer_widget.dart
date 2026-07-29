@@ -12,7 +12,7 @@ var children = [
     'تواصل معنا',
     style: TextStyle(
       fontFamily: 'Libre Caslon Text',
-      fontSize: 18.sp,
+      fontSize: 24.sp,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
@@ -301,7 +301,7 @@ class FooterDescriptionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'نقدم أشهى المأكولات البحرية الطازجة منذ أكثر من 20 عامًا بجودة عالية وأسعار تناسب الجميع.',
-      style: TextStyle(color: Colors.white70, height: 1.5, fontSize: 13.sp),
+      style: TextStyle(color: Colors.white70, height: 1.5, fontSize: 22.sp),
     );
   }
 }
