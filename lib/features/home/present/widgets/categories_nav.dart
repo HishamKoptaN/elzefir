@@ -74,7 +74,7 @@ class CategoryItemWidget extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 350),
         curve: Curves.easeOut,
-        padding: const EdgeInsets.only(bottom: 6),
+        padding: const .only(bottom: 6),
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
@@ -92,10 +92,10 @@ class CategoryItemWidget extends StatelessWidget {
                 ? context.colorScheme.primary
                 : context.colorScheme.primary.withValues(alpha: 0.8),
             fontSize: 24.sp,
-            fontWeight: selected ? FontWeight.bold : FontWeight.w600,
+            fontWeight: selected ? .bold : .w600,
             letterSpacing: 2.5.w,
           ),
-          child: Text(title),
+          child: Text(title, style: context.textTheme.titleMedium),
         ),
       ),
     );

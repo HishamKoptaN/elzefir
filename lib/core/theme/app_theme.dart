@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
+import 'core/text_theme.dart';
 
 class AppTheme {
-  AppTheme._();
+  AppTheme._({required BuildContext context});
   static const AppColors _light = LightColors();
   static const AppColors _dark = DarkColors();
-  static ThemeData get lightTheme {
+  static ThemeData lightTheme(BuildContext context) {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
       fontFamily: 'FreeSerif',
       scaffoldBackgroundColor: _light.background,
+      textTheme: getLightTextTheme(context: context),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         linearMinHeight: 2,
         color: Colors.white,
@@ -25,13 +27,6 @@ class AppTheme {
         ),
       ),
       cardTheme: CardThemeData(color: _light.surface, elevation: 4),
-      textTheme: TextTheme(
-        bodyLarge: TextStyle(
-          fontWeight: FontWeight.w400,
-          fontSize: 24.sp,
-          color: _light.textPrimary,
-        ),
-      ),
       tooltipTheme: TooltipThemeData(
         textStyle: TextStyle(color: Colors.white, fontSize: 18.sp),
       ),

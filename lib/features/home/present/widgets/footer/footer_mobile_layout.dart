@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import '../../../../../core/utils/extensions/theme_ext.dart';
 import 'contacts_items.dart';
 import 'footer_widget.dart';
 
@@ -23,12 +24,7 @@ class FooterMobileLayout extends StatelessWidget implements FooterWidget {
         CustomFooterDividerWidget(),
         Text(
           'ساعات العمل',
-          style: TextStyle(
-            fontFamily: 'Libre Caslon Text',
-            fontSize: 24.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+          style: context.textTheme.headlineLarge?.copyWith(color: Colors.white),
         ),
         SizedBox(height: 16.h),
         Container(
@@ -43,7 +39,9 @@ class FooterMobileLayout extends StatelessWidget implements FooterWidget {
             children: [
               Text(
                 'السبت - الخميس: 10:00 ص - 1:00 ص',
-                style: TextStyle(color: Colors.white70, fontSize: 20.sp),
+                style: context.textTheme.bodyLarge?.copyWith(
+                  color: Colors.white70,
+                ),
               ),
               CustomFooterDividerWidget(),
             ],

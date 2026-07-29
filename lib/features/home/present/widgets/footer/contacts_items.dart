@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import '../../../../../core/utils/extensions/theme_ext.dart';
 import 'footer_widget.dart';
 
 class FooterContactsItems extends StatelessWidget {
@@ -14,15 +15,11 @@ class FooterContactsItems extends StatelessWidget {
       children: [
         Text(
           'تواصل معنا',
-          style: TextStyle(
-            fontFamily: 'Libre Caslon Text',
-            fontSize: 24.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+          style: context.textTheme.headlineLarge?.copyWith(color: Colors.white),
         ),
         SizedBox(height: 16.h),
         buildContactItem(
+          context: context,
           icon: Icons.phone,
           text: '01008673836',
           onTap: () {
@@ -31,6 +28,7 @@ class FooterContactsItems extends StatelessWidget {
         ),
         SizedBox(height: 10.h),
         buildFontAwesomeIconsContactItem(
+          context,
           FontAwesomeIcons.whatsapp,
           '01124497981',
           () {
@@ -39,6 +37,7 @@ class FooterContactsItems extends StatelessWidget {
         ),
         SizedBox(height: 10.h),
         buildContactItem(
+          context: context,
           icon: Icons.location_on,
           text:
               'العياط غرب - شارع الجيش - أمام سلم السكة الحديد بجوار صيدلية -د. لويز',
@@ -48,6 +47,7 @@ class FooterContactsItems extends StatelessWidget {
         ),
         SizedBox(height: 10.h),
         buildContactItem(
+          context: context,
           icon: Icons.email,
           text: 'info@alzefr.com',
           onTap: () {

@@ -8,8 +8,6 @@ class CustomImage extends StatelessWidget {
   const CustomImage({
     super.key,
     required this.image,
-    this.height,
-    this.width,
     this.aspectRatio,
     this.fit = BoxFit.cover,
     this.borderRadius = const BorderRadius.all(Radius.circular(16)),
@@ -17,8 +15,6 @@ class CustomImage extends StatelessWidget {
   });
 
   final String image;
-  final double? height;
-  final double? width;
   final double? aspectRatio;
   final BoxFit fit;
   final BorderRadius borderRadius;
@@ -34,14 +30,20 @@ class CustomImage extends StatelessWidget {
         ? CachedNetworkImage(
             imageUrl: image,
             fit: fit,
-            placeholder: (_, _) => _placeholder(),
-            errorWidget: (_, _, _) => _errorWidget(),
+            placeholder: (_, _) {
+              return _placeholder();
+            },
+            errorWidget: (_, _, _) {
+              return _errorWidget();
+            },
           )
         : Image.asset(
             image,
             fit: fit,
             matchTextDirection: true,
-            errorBuilder: (_, _, _) => _errorWidget(),
+            errorBuilder: (_, _, _) {
+              return _errorWidget();
+            },
           );
 
     Widget content = ClipRRect(borderRadius: borderRadius, child: imageWidget);
@@ -49,7 +51,7 @@ class CustomImage extends StatelessWidget {
       content = AspectRatio(aspectRatio: aspectRatio!, child: content);
     }
 
-    return SizedBox(height: height, width: width, child: content);
+    return SizedBox(child: content);
   }
 
   Widget _placeholder() {

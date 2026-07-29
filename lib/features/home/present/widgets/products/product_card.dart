@@ -3,6 +3,7 @@ import 'package:alzefr/core/widgets/custom_image.dart';
 import 'package:alzefr/features/products/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/utils/extensions/theme_ext.dart';
 import 'category_badge_widget.dart';
 
 class ProductCard extends StatefulWidget {
@@ -35,7 +36,7 @@ class _ProductCardState extends State<ProductCard> {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: .start,
         children: [
           GestureDetector(
             onTap: () {
@@ -53,7 +54,7 @@ class _ProductCardState extends State<ProductCard> {
                         maxScale: 4,
                         child: CustomImage(
                           image: widget.product.image,
-                          fit: BoxFit.contain,
+                          fit: .contain,
                         ),
                       ),
                     ),
@@ -70,8 +71,8 @@ class _ProductCardState extends State<ProductCard> {
               child: Stack(
                 children: [
                   ClipRRect(
-                    child: Container(
-                      height: 250.h,
+                    child: SizedBox(
+                      height: 280.h,
                       width: .infinity,
                       child: CustomImage(
                         image: widget.product.image,
@@ -81,7 +82,7 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                   Positioned(
                     top: 12.h,
-                    right: 12.w,
+                    right: 40.w,
                     child: Container(
                       padding: .all(8.w),
                       decoration: BoxDecoration(
@@ -111,11 +112,8 @@ class _ProductCardState extends State<ProductCard> {
                       child: Text(
                         widget.product.title,
                         maxLines: 2,
-                        style: TextStyle(
-                          fontSize: 32.sp,
-                          fontWeight: .w700,
+                        style: context.textTheme.titleLarge?.copyWith(
                           color: Color(0xFF28180D),
-                          overflow: .ellipsis,
                         ),
                         textAlign: .right,
                       ),
@@ -128,9 +126,7 @@ class _ProductCardState extends State<ProductCard> {
                   width: .infinity,
                   child: Text(
                     widget.product.description,
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      height: 1.5,
+                    style: context.textTheme.bodyLarge?.copyWith(
                       color: Color(0xFF42474D),
                     ),
                     textAlign: .right,
@@ -164,20 +160,19 @@ class PriceWidget extends StatelessWidget {
       children: [
         Text(
           price,
-          style: TextStyle(
-            fontSize: 28.sp,
-            fontWeight: FontWeight.w700,
+          style: context.textTheme.titleLarge?.copyWith(
             color: Color(0xFF001629),
           ),
         ),
         SizedBox(width: 4.w),
         Text(
           'ج.م',
-          style: TextStyle(
-            fontSize: 18.sp,
-            fontWeight: .w600,
-            color: Color(0xFF42474D),
+          style: context.textTheme.titleMedium?.copyWith(
+            color: Color(0xFF001629),
           ),
+          // style: TextStyle(
+          //   color: Color(0xFF42474D),
+          // ),
         ),
       ],
     );

@@ -1,4 +1,1 @@
-class AppDimensions {
-  static const double padding = 16;
-  static const double buttonHeight = 48;
-}
+class AppDimensions {}

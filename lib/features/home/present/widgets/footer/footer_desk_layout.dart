@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
-import 'footer_mobile_layout.dart';
 import 'footer_widget.dart';
 
 class FooterDeskLayout extends StatelessWidget implements FooterWidget {

@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
+import '../../../../../core/utils/extensions/theme_ext.dart';
 import 'footer_desk_layout.dart';
 import 'footer_mobile_layout.dart';
 
@@ -107,11 +108,7 @@ class FooterTitleWidget extends StatelessWidget {
         SizedBox(width: 12.w),
         Text(
           'مطعم أسماك الزفر',
-          style: TextStyle(
-            fontSize: 28.sp,
-            fontWeight: .w700,
-            color: Colors.white,
-          ),
+          style: context.textTheme.titleLarge?.copyWith(color: Colors.white),
         ),
       ],
     );
@@ -119,6 +116,7 @@ class FooterTitleWidget extends StatelessWidget {
 }
 
 Widget buildContactItem({
+  required BuildContext context,
   required IconData icon,
   required String text,
   required VoidCallback onTap,
@@ -142,7 +140,9 @@ Widget buildContactItem({
           child: Text(
             text,
             overflow: .visible,
-            style: TextStyle(color: Colors.white70, fontSize: 18.sp),
+            style: context.textTheme.labelLarge?.copyWith(
+              color: Colors.white70,
+            ),
           ),
         ),
       ],
@@ -151,6 +151,7 @@ Widget buildContactItem({
 }
 
 Widget buildFontAwesomeIconsContactItem(
+  BuildContext context,
   FaIconData icon,
   String text,
   VoidCallback onTap,
@@ -174,7 +175,9 @@ Widget buildFontAwesomeIconsContactItem(
           child: Text(
             text,
             overflow: .visible,
-            style: TextStyle(color: Colors.white70, fontSize: 18.sp),
+            style: context.textTheme.labelLarge?.copyWith(
+              color: Colors.white70,
+            ),
           ),
         ),
       ],
@@ -182,7 +185,7 @@ Widget buildFontAwesomeIconsContactItem(
   );
 }
 
-Widget buildBadge(String text) {
+Widget buildBadge({required BuildContext context, required String text}) {
   return Container(
     padding: .symmetric(horizontal: 10.w, vertical: 5.h),
     decoration: BoxDecoration(
@@ -192,11 +195,7 @@ Widget buildBadge(String text) {
     ),
     child: Text(
       text,
-      style: TextStyle(
-        color: Colors.white70,
-        fontSize: 18.sp,
-        fontWeight: .w500,
-      ),
+      style: context.textTheme.labelLarge?.copyWith(color: Colors.white70),
     ),
   );
 }
@@ -211,9 +210,9 @@ class RestaurantHighlights extends StatelessWidget {
       runSpacing: 6,
       crossAxisAlignment: .start,
       children: [
-        buildBadge('طازج يومياً 🐟'),
-        buildBadge('توصيل سريع 🚚'),
-        buildBadge('7500+ تقييم ⭐'),
+        buildBadge(context: context, text: 'طازج يومياً 🐟'),
+        buildBadge(context: context, text: 'توصيل سريع 🚚'),
+        buildBadge(context: context, text: '7500+ تقييم ⭐'),
       ],
     );
   }
@@ -238,7 +237,7 @@ class FooterDescriptionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'نقدم أشهى المأكولات البحرية الطازجة منذ أكثر من 20 عامًا بجودة عالية وأسعار تناسب الجميع.',
-      style: TextStyle(color: Colors.white70, height: 1.5, fontSize: 22.sp),
+      style: context.textTheme.bodyLarge?.copyWith(color: Colors.white70),
     );
   }
 }
@@ -252,7 +251,7 @@ class CopyRightWidget extends StatelessWidget {
       child: Text(
         "© ${DateTime.now().year} مطعم أسماك الزفر. جميع الحقوق محفوظة.",
         textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.white70, fontSize: 16.sp),
+        style: context.textTheme.bodyLarge?.copyWith(color: Colors.white70),
       ),
     );
   }

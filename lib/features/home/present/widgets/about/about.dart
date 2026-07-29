@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/custom_image.dart';
 
 class AboutSection extends StatelessWidget {
@@ -17,8 +18,10 @@ class AboutSection extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
             color: const Color(0xFFFFEADE),
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: const Color(0xFFC3C7CE).withOpacity(.1)),
+            borderRadius: .circular(12),
+            border: Border.all(
+              color: const Color(0xFFC3C7CE).withValues(alpha: .1),
+            ),
             boxShadow: const [
               BoxShadow(
                 blurRadius: 2,
@@ -30,7 +33,7 @@ class AboutSection extends StatelessWidget {
           child: isMobile
               ? Column(children: const [_ImageSection(), _ContentSection()])
               : SizedBox(
-                  height: 380,
+                  height: 440.h,
                   child: const Row(
                     children: [
                       Expanded(child: _ImageSection()),
@@ -62,13 +65,10 @@ class _ImageSection extends StatelessWidget {
 
 class _ContentSection extends StatelessWidget {
   const _ContentSection();
-
-  static const Color primary = Color(0xFF001629);
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(48),
+      padding: EdgeInsets.all(48.w),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,44 +76,27 @@ class _ContentSection extends StatelessWidget {
           Text(
             'من نحن',
             textAlign: .start,
-            style: TextStyle(color: const Color(0xFF406182), fontSize: 24.sp),
+            style: context.textTheme.headlineLarge?.copyWith(
+              color: const Color(0xFF406182),
+            ),
           ),
           Text(
             'مطعم الزفر للمأكولات البحرية',
             textAlign: TextAlign.right,
-            style: TextStyle(
-              fontSize: 40.sp,
-              fontWeight: FontWeight.bold,
+            style: context.textTheme.titleLarge?.copyWith(
               color: Color(0xFF28180D),
             ),
           ),
-          SizedBox(height: 24.h),
+          SizedBox(height: 18.h),
           Text(
             'في مطعم الزفر نقدم أفضل أنواع الأسماك والمأكولات البحرية الطازجة، '
             'المحضرة يوميًا بأجود المكونات وعلى أيدي أمهر الطهاة. هدفنا أن نقدم '
             'تجربة مميزة تجمع بين الطعم الأصيل والجودة العالية والخدمة الممتازة.',
             textAlign: TextAlign.right,
-            style: TextStyle(
-              fontSize: 20.sp,
-              height: 2.6.h,
+            style: context.textTheme.bodyLarge?.copyWith(
               color: Color(0xFF42474D),
             ),
           ),
-          SizedBox(height: 90.h),
-          // Align(
-          //   alignment: AlignmentDirectional.centerEnd,
-          //   child: FilledButton(
-          //     onPressed: () {},
-          //     style: FilledButton.styleFrom(
-          //       backgroundColor: primary,
-          //       foregroundColor: Colors.white,
-          //       minimumSize: Size(150.w, 70.h),
-          //       elevation: 0,
-          //       shape: const StadiumBorder(),
-          //     ),
-          //     child: Text('اعرف المزيد', style: TextStyle(fontSize: 16.sp)),
-          //   ),
-          // ),
         ],
       ),
     );

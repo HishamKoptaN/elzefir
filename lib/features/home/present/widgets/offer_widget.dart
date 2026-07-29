@@ -1,5 +1,7 @@
+import 'package:alzefr/generated/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../core/widgets/custom_image.dart';
 import 'dart:ui';
 
@@ -12,17 +14,17 @@ class OfferWidget extends StatelessWidget {
       borderRadius: BorderRadius.circular(12),
       child: SizedBox(
         height: 450.h,
-        width: double.infinity,
+        width: .infinity,
         child: Stack(
-          fit: StackFit.expand,
+          fit: .expand,
           textDirection: .rtl,
           children: [
-            CustomImage(image: 'assets/mock/offer.png', fit: BoxFit.cover),
+            CustomImage(image: Assets.mock.offer.path, fit: .cover),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+              padding: const .symmetric(horizontal: 16, vertical: 6),
               decoration: BoxDecoration(
                 color: const Color(0xFFd87459).withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: .circular(30),
                 border: Border.all(
                   color: const Color(0xFFd87459).withValues(alpha: 0.3),
                 ),
@@ -31,8 +33,8 @@ class OfferWidget extends StatelessWidget {
             DecoratedBox(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
+                  begin: .centerLeft,
+                  end: .centerRight,
                   colors: [
                     primary.withValues(alpha: .9),
                     primary.withValues(alpha: .0),
@@ -53,11 +55,8 @@ class OfferWidget extends StatelessWidget {
                       Text(
                         'مطعم أسماك الزفر',
                         textAlign: .right,
-                        style: TextStyle(
+                        style: context.textTheme.displayLarge?.copyWith(
                           color: Colors.white,
-                          fontSize: 48.sp,
-                          fontWeight: FontWeight.bold,
-                          height: 1.15,
                         ),
                       ),
                       SizedBox(height: 25.h),
@@ -82,9 +81,9 @@ class OpenStatusBadge extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(9999),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+        filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 7.h),
+          padding: EdgeInsets.symmetric(horizontal: 34.w, vertical: 7.h),
           decoration: BoxDecoration(
             color: Colors.black.withValues(alpha: 0.45),
             borderRadius: BorderRadius.circular(9999),
@@ -100,9 +99,8 @@ class OpenStatusBadge extends StatelessWidget {
             children: [
               Text(
                 'مفتوح الآن',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 24.sp,
+                style: context.textTheme.labelLarge?.copyWith(
+                  fontWeight: .w600,
                   color: Colors.white,
                 ),
               ),

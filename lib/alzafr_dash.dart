@@ -28,7 +28,7 @@ class AlzafrDash extends StatelessWidget {
               title: 'الزفر',
               debugShowCheckedModeBanner: false,
               themeMode: themeMode,
-              theme: AppTheme.lightTheme,
+              theme: AppTheme.lightTheme(context),
               darkTheme: AppTheme.darkTheme,
               locale: const Locale('ar'),
               supportedLocales: [Locale('ar', 'EG')],
@@ -49,21 +49,9 @@ class AlzafrDash extends StatelessWidget {
                 return const Locale('ar', 'EG');
               },
               builder: (context, child) {
-                return MediaQuery(
-                  data: MediaQuery.of(context).copyWith(
-                    textScaler: TextScaler.linear(
-                      AppResponsive.responsive(
-                        context,
-                        mobile: 3,
-                        tablet: 2,
-                        desktop: 1,
-                      ),
-                    ),
-                  ),
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: child!,
-                  ),
+                return Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: child!,
                 );
               },
               routerConfig: AppRouter.router,

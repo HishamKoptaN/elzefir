@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../../core/di/dependency_injection.dart';
+import '../../../../../core/utils/device_helper.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
@@ -50,17 +51,18 @@ class RestaurantAppBar extends StatelessWidget implements PreferredSizeWidget {
           Spacer(),
           Text(
             "أسماك الزفر",
-            style: TextStyle(
-              fontSize: 44.sp,
-              fontWeight: FontWeight.bold,
+            style: context.textTheme.displayLarge?.copyWith(
               color: Color(0xFF002B49),
             ),
           ),
-          CustomImage(
-            image: Assets.logos.logoMark.path,
-            fit: .contain,
-            // height: 100.h,
-            width: 180.w,
+          SizedBox(
+            height: AppResponsive.responsive(
+              context,
+              desktop: 140.h,
+              tablet: 105.h,
+              mobile: 50.h,
+            ),
+            child: CustomImage(image: Assets.logos.logoMark.path, fit: .cover),
           ),
           Spacer(flex: 2),
         ],
@@ -302,10 +304,16 @@ class _NavItemState extends State<_NavItem> {
             duration: const Duration(milliseconds: 180),
             style: TextStyle(
               fontSize: 40.sp,
-              fontWeight: FontWeight.bold,
+              fontWeight: .bold,
               color: context.colorScheme.primary,
             ),
-            child: Text(widget.title, style: TextStyle(fontSize: 36.sp)),
+            child: Text(
+              widget.title,
+              style: context.textTheme.labelLarge?.copyWith(
+                fontWeight: .bold,
+                color: context.colorScheme.primary,
+              ),
+            ),
           ),
         ),
       ),

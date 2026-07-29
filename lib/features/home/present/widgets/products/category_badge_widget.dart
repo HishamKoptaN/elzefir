@@ -16,10 +16,8 @@ class CategoryBadgeWidget extends StatelessWidget {
       ),
       child: Text(
         name,
-        style: TextStyle(
+        style: context.textTheme.titleSmall?.copyWith(
           color: context.colorScheme.tertiary,
-          fontSize: 16.sp,
-          fontWeight: FontWeight.bold,
         ),
       ),
     );
