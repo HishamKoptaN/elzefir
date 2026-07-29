@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../utils/extensions/responsive_icon_extension .dart';
 
 class CustomImage extends StatelessWidget {
   const CustomImage({
@@ -7,15 +10,16 @@ class CustomImage extends StatelessWidget {
     required this.image,
     this.height,
     this.width,
-    this.aspectRatio = 1,
+    this.aspectRatio,
     this.fit = BoxFit.cover,
     this.borderRadius = const BorderRadius.all(Radius.circular(16)),
     this.backgroundColor = const Color(0xffF5F5F5),
   });
+
   final String image;
   final double? height;
   final double? width;
-  final double aspectRatio;
+  final double? aspectRatio;
   final BoxFit fit;
   final BorderRadius borderRadius;
   final Color backgroundColor;
@@ -26,48 +30,45 @@ class CustomImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final child = _isNetwork
+    final Widget imageWidget = _isNetwork
         ? CachedNetworkImage(
             imageUrl: image,
             fit: fit,
-            placeholder: (_, __) {
-              return Container(
-                color: backgroundColor,
-                alignment: Alignment.center,
-                child: const SizedBox(
-                  width: 22,
-                  height: 22,
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                ),
-              );
-            },
-            errorWidget: (_, __, ___) {
-              return Container(
-                color: backgroundColor,
-                alignment: Alignment.center,
-                child: const Icon(Icons.broken_image_outlined, size: 34),
-              );
-            },
+            placeholder: (_, _) => _placeholder(),
+            errorWidget: (_, _, _) => _errorWidget(),
           )
         : Image.asset(
             image,
             fit: fit,
             matchTextDirection: true,
-            errorBuilder: (_, __, ___) {
-              return Container(
-                color: backgroundColor,
-                alignment: Alignment.center,
-                child: const Icon(Icons.broken_image_outlined, size: 34),
-              );
-            },
+            errorBuilder: (_, _, _) => _errorWidget(),
           );
-    return SizedBox(
-      height: height,
-      width: width ?? double.infinity,
-      child: AspectRatio(
-        aspectRatio: aspectRatio,
-        child: ClipRRect(borderRadius: borderRadius, child: child),
+
+    Widget content = ClipRRect(borderRadius: borderRadius, child: imageWidget);
+    if (aspectRatio != null) {
+      content = AspectRatio(aspectRatio: aspectRatio!, child: content);
+    }
+
+    return SizedBox(height: height, width: width, child: content);
+  }
+
+  Widget _placeholder() {
+    return Container(
+      color: backgroundColor,
+      alignment: Alignment.center,
+      child: SizedBox(
+        height: 22.h,
+        width: 22.w,
+        child: const CircularProgressIndicator(strokeWidth: 2),
       ),
+    );
+  }
+
+  Widget _errorWidget() {
+    return Container(
+      color: backgroundColor,
+      alignment: Alignment.center,
+      child: Icon(Icons.broken_image_outlined, size: 34.iconRes),
     );
   }
 }

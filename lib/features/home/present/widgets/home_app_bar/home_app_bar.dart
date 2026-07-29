@@ -51,19 +51,17 @@ class RestaurantAppBar extends StatelessWidget implements PreferredSizeWidget {
           Text(
             "أسماك الزفر",
             style: TextStyle(
-              fontSize: 38.sp,
-              wordSpacing: 0.1,
-              letterSpacing: 0.1,
+              fontSize: 44.sp,
               fontWeight: FontWeight.bold,
               color: Color(0xFF002B49),
             ),
           ),
           CustomImage(
             image: Assets.logos.logoMark.path,
-            height: 95.h,
-            width: 95.w,
+            fit: .contain,
+            // height: 100.h,
+            width: 180.w,
           ),
-
           Spacer(flex: 2),
         ],
       ),

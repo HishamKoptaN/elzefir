@@ -51,12 +51,12 @@ class OfferWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 20),
-                      const Text(
+                      Text(
                         'مطعم أسماك الزفر',
                         textAlign: TextAlign.right,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 48,
+                          fontSize: 48.sp,
                           fontWeight: FontWeight.bold,
                           height: 1.15,
                         ),
