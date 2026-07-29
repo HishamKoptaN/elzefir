@@ -55,7 +55,7 @@ class AlzafrDash extends StatelessWidget {
                       AppResponsive.responsive(
                         context,
                         mobile: 3,
-                        tablet: 1,
+                        tablet: 2,
                         desktop: 1,
                       ),
                     ),

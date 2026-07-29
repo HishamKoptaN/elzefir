@@ -100,7 +100,7 @@ class RestaurantAppBar extends StatelessWidget implements PreferredSizeWidget {
                           (state.unreadCount ?? 0) > 0
                               ? Icons.notifications_active
                               : Icons.notifications,
-                          size: 22.iconRes,
+                          size: 20.iconRes,
                           color: context.colorScheme.primary,
                         ),
                         onPressed: () {
@@ -301,11 +301,11 @@ class _NavItemState extends State<_NavItem> {
           child: AnimatedDefaultTextStyle(
             duration: const Duration(milliseconds: 180),
             style: TextStyle(
-              fontSize: 30.sp,
+              fontSize: 40.sp,
               fontWeight: FontWeight.bold,
               color: context.colorScheme.primary,
             ),
-            child: Text(widget.title),
+            child: Text(widget.title, style: TextStyle(fontSize: 36.sp)),
           ),
         ),
       ),

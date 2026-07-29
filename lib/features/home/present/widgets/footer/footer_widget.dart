@@ -7,69 +7,6 @@ import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
 import 'footer_desk_layout.dart';
 import 'footer_mobile_layout.dart';
 
-var children = [
-  Text(
-    'تواصل معنا',
-    style: TextStyle(
-      fontFamily: 'Libre Caslon Text',
-      fontSize: 24.sp,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-  ),
-  SizedBox(height: 16.h),
-  buildContactItem(
-    icon: Icons.phone,
-    text: '01008673836',
-    onTap: () {
-      execuateLaunchUrl('tel:+01008673836');
-    },
-  ),
-  SizedBox(height: 10.h),
-  buildFontAwesomeIconsContactItem(
-    FontAwesomeIcons.whatsapp,
-    '01124497981',
-    () {
-      execuateLaunchUrl('tel:+201124497981');
-    },
-  ),
-  SizedBox(height: 10.h),
-  buildContactItem(
-    icon: Icons.location_on,
-    text:
-        'العياط غرب - شارع الجيش - أمام سلم السكة الحديد بجوار صيدلية -د. لويز',
-    onTap: () {
-      execuateLaunchUrl('https://maps.google.com/?q=العياط+شارع+الجيش');
-    },
-  ),
-  SizedBox(height: 10.h),
-  buildContactItem(
-    icon: Icons.email,
-    text: 'info@alzefr.com',
-    onTap: () {
-      execuateLaunchUrl('mailto:info@alzefr.com');
-    },
-  ),
-  SizedBox(height: 20.h),
-  Row(
-    mainAxisAlignment: .center,
-    crossAxisAlignment: .center,
-    spacing: 40.w,
-    children: [
-      buildSocialIcon(Icons.facebook, () {
-        execuateLaunchUrl('https://www.facebook.com/ELZEFIR');
-      }),
-      SizedBox(width: 12.w),
-      buildFontAwesomeSocialIcon(FontAwesomeIcons.tiktok, () {
-        execuateLaunchUrl('https://www.tiktok.com/@elzefir_fish');
-      }),
-      SizedBox(width: 12.w),
-      buildFontAwesomeSocialIcon(FontAwesomeIcons.instagram, () {
-        execuateLaunchUrl('https://www.snapchat.com/@elzefir_fish');
-      }),
-    ],
-  ),
-];
 Future<void> execuateLaunchUrl(String urlString) async {
   final Uri url = Uri.parse(urlString);
   if (await canLaunchUrl(url)) {

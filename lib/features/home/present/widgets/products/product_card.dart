@@ -44,7 +44,7 @@ class _ProductCardState extends State<ProductCard> {
                 barrierDismissible: true,
                 barrierLabel: "Close",
                 barrierColor: Colors.black87,
-                pageBuilder: (_, __, ___) {
+                pageBuilder: (_, _, _) {
                   return Center(
                     child: GestureDetector(
                       onTap: () {},
@@ -70,14 +70,9 @@ class _ProductCardState extends State<ProductCard> {
               child: Stack(
                 children: [
                   ClipRRect(
-                    borderRadius: .vertical(
-                      top: Radius.circular(16.r),
-                      bottom: .zero,
-                    ),
                     child: Container(
                       height: 250.h,
                       width: .infinity,
-                      color: Colors.grey.shade300,
                       child: CustomImage(
                         image: widget.product.image,
                         fit: .cover,

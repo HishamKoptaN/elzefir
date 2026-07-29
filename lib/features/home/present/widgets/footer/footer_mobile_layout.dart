@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import 'contacts_items.dart';
 import 'footer_widget.dart';
 
 class FooterMobileLayout extends StatelessWidget implements FooterWidget {
@@ -19,7 +19,7 @@ class FooterMobileLayout extends StatelessWidget implements FooterWidget {
         RestaurantHighlights(),
         CustomFooterDividerWidget(),
         SizedBox(height: 16.h),
-        ...children,
+        const FooterContactsItems(),
         CustomFooterDividerWidget(),
         Text(
           'ساعات العمل',
