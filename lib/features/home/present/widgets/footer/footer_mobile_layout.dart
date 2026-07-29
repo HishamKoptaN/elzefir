@@ -12,21 +12,18 @@ class FooterMobileLayout extends StatelessWidget implements FooterWidget {
     return Column(
       mainAxisAlignment: .start,
       crossAxisAlignment: .start,
+      spacing: 12.h,
       children: [
         FooterTitleWidget(),
-        SizedBox(height: 12.h),
         FooterDescriptionWidget(),
-        SizedBox(height: 16.h),
         RestaurantHighlights(),
         CustomFooterDividerWidget(),
-        SizedBox(height: 16.h),
         const FooterContactsItems(),
         CustomFooterDividerWidget(),
         Text(
           'ساعات العمل',
           style: context.textTheme.headlineLarge?.copyWith(color: Colors.white),
         ),
-        SizedBox(height: 16.h),
         Container(
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(

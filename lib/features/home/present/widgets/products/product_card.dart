@@ -126,7 +126,7 @@ class _ProductCardState extends State<ProductCard> {
                   width: .infinity,
                   child: Text(
                     widget.product.description,
-                    style: context.textTheme.bodyLarge?.copyWith(
+                    style: context.textTheme.bodySmall?.copyWith(
                       color: Color(0xFF42474D),
                     ),
                     textAlign: .right,
