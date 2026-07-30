@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../responsive/app_responsive.dart';
 import '../../responsive/device_helper.dart';
+import '../../responsive/responsive_extensions.dart';
 import '../../utils/extensions/scaled.dart';
 import 'custom_text_form_field.dart';
 
@@ -31,8 +32,7 @@ class CustomSearchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: height ?? 50.h.scaled(context),
-      width: AppResponsive.responsive(
-        context,
+      width: context.responsive(
         mobile: width ?? double.infinity,
         tablet: (width ?? 700.w) * 1.3,
         desktop: (width ?? 700.w) * 1.5,
@@ -68,8 +68,7 @@ class CustomSearchWidget extends StatelessWidget {
               prefixIcon ??
               Icon(
                 Icons.search,
-                size: AppResponsive.responsive(
-                  context,
+                size: context.responsive(
                   mobile: 80.r.scaled(context),
                   tablet: 35.r.scaled(context),
                   desktop: 35.r.scaled(context),
@@ -83,8 +82,7 @@ class CustomSearchWidget extends StatelessWidget {
                   ? IconButton(
                       icon: Icon(
                         Icons.clear,
-                        size: AppResponsive.responsive(
-                          context,
+                        size: context.responsive(
                           mobile: 80.r.scaled(context),
                           tablet: 35.r.scaled(context),
                           desktop: 35.r.scaled(context),

@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/responsive/app_responsive.dart';
 import '../../core/responsive/device_helper.dart';
+import '../../core/responsive/responsive_extensions.dart';
 
 class AuthSizes {
   static double fieldWidth(BuildContext context) {
-    return AppResponsive.responsive(
-      context,
+    return context.responsive(
       mobile: MediaQuery.of(context).size.width * .9,
       tablet: 600.w,
       desktop: 600.w,
@@ -15,8 +15,7 @@ class AuthSizes {
   }
 
   static double fieldHeight(BuildContext context) {
-    return AppResponsive.responsive(
-      context,
+    return context.responsive(
       mobile: 65.h,
       tablet: 65.h,
       desktop: 65.h,

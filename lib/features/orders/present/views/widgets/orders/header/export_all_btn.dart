@@ -26,12 +26,7 @@ class ExportAllBtn extends StatelessWidget {
               children: [
                 Icon(
                   Icons.file_download,
-                  size: AppResponsive.responsive(
-                    context,
-                    mobile: 70.r.scaled(context),
-                    tablet: 28.r.scaled(context),
-                    desktop: 28.r.scaled(context),
-                  ),
+                  size: 20,
                   color: canExport
                       ? Colors.black
                       : Colors.grey.withOpacity(0.5),

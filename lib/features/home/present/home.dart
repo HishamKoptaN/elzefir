@@ -1,3 +1,4 @@
+import 'package:alzefr/core/responsive/responsive_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -52,8 +53,7 @@ class _HomeViewState extends State<HomeView> {
               elevation: 10,
               width:
                   MediaQuery.sizeOf(context).width *
-                  AppResponsive.responsive(
-                    context,
+                  context.responsive(
                     mobile: 0.5,
                     tablet: 1 / 3,
                     desktop: 0.25,

@@ -46,12 +46,7 @@ class DateFilterView extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.calendar_today,
-                      size: AppResponsive.responsive(
-                        context,
-                        mobile: 70.r.scaled(context),
-                        tablet: 28.r.scaled(context),
-                        desktop: 28.r.scaled(context),
-                      ),
+                      size: 24,
                     ),
                     SizedBox(width: 6.w),
                     Text(
@@ -77,12 +72,7 @@ class DateFilterView extends StatelessWidget {
                       IconButton(
                         icon: Icon(
                           Icons.close,
-                          size: AppResponsive.responsive(
-                            context,
-                            mobile: 70.r.scaled(context),
-                            tablet: 28.r.scaled(context),
-                            desktop: 28.r.scaled(context),
-                          ),
+                          size: 25,
                           color: Colors.red,
                         ),
                         onPressed: () {

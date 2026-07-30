@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../features/orders/present/views/orders_widget.dart';
 import '../data/entities/meta_entity.dart';
 import '../responsive/app_responsive.dart';
+import '../responsive/responsive_extensions.dart';
 import '../theme/app_colors.dart';
 import '../responsive/device_helper.dart';
 import '../utils/extensions/scaled.dart';
@@ -23,8 +24,7 @@ class CustomPaginationWidget<T extends BlocBase> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final activePage = currentPage ?? meta.currentPage ?? 0;
-    final sized = AppResponsive.responsive(
-      context,
+    final sized = context.responsive(
       mobile: 110.w.scaled(context),
       tablet: 40.w.scaled(context),
       desktop: 40.w.scaled(context),

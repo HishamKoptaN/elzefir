@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../responsive/app_responsive.dart';
+import '../../responsive/responsive_extensions.dart';
 
 extension ResponsiveFontExtension on num {
   double rf(BuildContext context) {
-    return AppResponsive.responsive(
-      context,
+    return context.responsive(
       mobile: this * 1,
       tablet: this * 0.5,
       desktop: this * 0.5,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/responsive/app_responsive.dart';
 import '../../../../../core/responsive/device_helper.dart';
+import '../../../../../core/responsive/responsive_extensions.dart';
 import '../../../../products/domain/entities/product_entity.dart';
 import 'product_card.dart';
 
@@ -12,8 +13,7 @@ class ProductsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        double crossAxisCount = AppResponsive.responsive(
-          context,
+        double crossAxisCount = context.responsive(
           mobile: 2,
           tablet: 3,
           desktop: 4,

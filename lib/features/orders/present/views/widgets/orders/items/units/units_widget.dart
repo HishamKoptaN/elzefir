@@ -150,12 +150,7 @@ class UnitsWidget extends StatelessWidget {
                           tooltip: "حفظ الاستيكر كـ pdf",
                           icon: Icon(
                             Icons.picture_as_pdf,
-                            size: AppResponsive.responsive(
-                              context,
-                              mobile: 54.r.scaled(context),
-                              tablet: 26.r.scaled(context),
-                              desktop: 26.r.scaled(context),
-                            ),
+                            size: 20,
                             color: unit.isGeneratedPdf
                                 ? Colors.green
                                 : Colors.red,
@@ -177,12 +172,7 @@ class UnitsWidget extends StatelessWidget {
                           tooltip: "حفظ الاستيكر كصورة PNG",
                           icon: Icon(
                             Icons.photo_sharp,
-                            size: AppResponsive.responsive(
-                              context,
-                              mobile: 54.r.scaled(context),
-                              tablet: 26.r.scaled(context),
-                              desktop: 26.r.scaled(context),
-                            ),
+                            size: 20,
                             color: Colors.blue.shade700,
                           ),
                           color: Colors.blue.shade700,
@@ -199,12 +189,7 @@ class UnitsWidget extends StatelessWidget {
                               : "معاينة الاستيكر",
                           icon: Icon(
                             Icons.visibility,
-                            size: AppResponsive.responsive(
-                              context,
-                              mobile: 58.r.scaled(context),
-                              tablet: 30.r.scaled(context),
-                              desktop: 30.r.scaled(context),
-                            ),
+                             size: 20,
                           ),
                           color: Colors.grey.shade700,
                           padding: EdgeInsets.zero,
@@ -215,12 +200,7 @@ class UnitsWidget extends StatelessWidget {
                           tooltip: "طباعة الاستيكر مباشرة",
                           icon: Icon(
                             Icons.print,
-                            size: AppResponsive.responsive(
-                              context,
-                              mobile: 58.r.scaled(context),
-                              tablet: 30.r.scaled(context),
-                              desktop: 30.r.scaled(context),
-                            ),
+                           size: 20,
                           ),
                           color: Colors.grey.shade700,
                           padding: EdgeInsets.zero,
@@ -258,12 +238,7 @@ class UnitsWidget extends StatelessWidget {
                           constraints: BoxConstraints(),
                           icon: Icon(
                             Icons.picture_as_pdf,
-                            size: AppResponsive.responsive(
-                              context,
-                              mobile: 58.r.scaled(context),
-                              tablet: 30.r.scaled(context),
-                              desktop: 30.r.scaled(context),
-                            ),
+                            size: 20,
                             color: validLink(unit) ? Colors.red : Colors.grey,
                           ),
                           onPressed: () {
@@ -278,12 +253,7 @@ class UnitsWidget extends StatelessWidget {
                           onPressed: () {},
                           icon: Icon(
                             Icons.visibility,
-                            size: AppResponsive.responsive(
-                              context,
-                              mobile: 65.r.scaled(context),
-                              tablet: 35.r.scaled(context),
-                              desktop: 35.r.scaled(context),
-                            ),
+                            size: 20,
                           ),
                           color: Colors.grey.shade700,
                         ),
@@ -309,12 +279,7 @@ class UnitsWidget extends StatelessWidget {
                           },
                           icon: FaIcon(
                             FontAwesomeIcons.googleDrive,
-                            size: AppResponsive.responsive(
-                              context,
-                              mobile: 50.r.scaled(context),
-                              tablet: 22.r.scaled(context),
-                              desktop: 22.r.scaled(context),
-                            ),
+                            size: 20,
                             color:
                                 (unit.documentationLink != null &&
                                     unit.documentationLink!.isNotEmpty)

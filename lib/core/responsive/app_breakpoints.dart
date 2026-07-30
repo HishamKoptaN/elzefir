@@ -1,5 +1,7 @@
 class Breakpoints {
-  static const double mobile = 600;
-  static const double tablet = 800;
-  static const double desktop = 1200;
+  const Breakpoints._();
+
+  static const double mobileMin = 0;
+  static const double tabletMin = 500;
+  static const double desktopMin = 1000;
 }

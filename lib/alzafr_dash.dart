@@ -63,15 +63,3 @@ class AlzafrDash extends StatelessWidget {
   }
 }
 
-enum DeviceType { mobile, tablet, desktop }
-
-DeviceType getDeviceType(BoxConstraints constraints) {
-  double width = constraints.maxWidth;
-  if (width >= 1024) {
-    return DeviceType.desktop;
-  } else if (width >= 600) {
-    return DeviceType.tablet;
-  } else {
-    return DeviceType.mobile;
-  }
-}

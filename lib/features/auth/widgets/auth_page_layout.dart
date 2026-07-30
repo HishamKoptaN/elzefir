@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../core/responsive/app_responsive.dart';
 import '../../../core/responsive/device_helper.dart';
+import '../../../core/responsive/responsive_extensions.dart';
 import '../../../core/utils/extensions/theme_ext.dart';
 
 class AuthPageLayout extends StatelessWidget {
@@ -29,8 +30,7 @@ class AuthPageLayout extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/logos/logo_solid.png',
-                scale: AppResponsive.responsive(
-                  context,
+                scale: context.responsive(
                   mobile: 1.2,
                   tablet: 1,
                   desktop: 1,

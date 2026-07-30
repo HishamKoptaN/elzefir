@@ -43,12 +43,7 @@ class SidebarLogoutWidget extends StatelessWidget {
               Icon(
                 Icons.logout,
                 color: Colors.red,
-                size: AppResponsive.responsive(
-                  context,
-                  mobile: 14,
-                  tablet: 16,
-                  desktop: 16,
-                ),
+                size: 20,
               ),
             ],
           ),
