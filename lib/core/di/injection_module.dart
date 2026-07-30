@@ -1,4 +1,5 @@
 import 'package:event_bus/event_bus.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:injectable/injectable.dart';
@@ -13,6 +14,8 @@ abstract class InjectionModule {
   InternetConnection get connectionChecker => InternetConnection();
   @singleton
   FirebaseApp get firebaseApp => Firebase.app();
+  @singleton
+  FirebaseAnalytics get firebaseAnalytics => FirebaseAnalytics.instance;
   @singleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
   @singleton

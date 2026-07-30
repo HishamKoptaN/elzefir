@@ -73,6 +73,7 @@ dependencies:
   font_awesome_flutter: ^11.0.0
   flutter_gen_runner: ^5.15.0
   to_arabic_number: ^1.0.1
+  firebase_analytics: ^12.4.5
 dev_dependencies:
   retrofit_generator: ^10.0.1
   build_runner: ^2.6.0

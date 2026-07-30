@@ -28,53 +28,50 @@ class ProdFirebaseOptions {
     }
   }
 
+
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCmJJAaYFuJtWCm7LBCR5PeBOGLtFxVW4Y',
-    appId: '1:534866637562:web:b9fad965efe18bccb4cf43',
-    messagingSenderId: '534866637562',
-    projectId: 'odhia-acf3b',
-    authDomain: 'odhia-acf3b.firebaseapp.com',
-    storageBucket: 'odhia-acf3b.firebasestorage.app',
-    measurementId: 'G-HYJ7LGSVBF',
+    apiKey: 'AIzaSyCusHoAiX9Dpogg_1UQzw_IicBhb3NBrVM',
+    appId: '1:843078461358:web:7be639247388b1a464ca3f',
+    messagingSenderId: '843078461358',
+    projectId: 'alzefr',
+    authDomain: 'alzefr.firebaseapp.com',
+    storageBucket: 'alzefr.firebasestorage.app',
+    measurementId: 'G-CQTX2QHYTZ',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCHJKsnD0hQOguFR1KYsG2cQ04TPaU1IaA',
-    appId: '1:534866637562:android:ab555d0ba1126de6b4cf43',
-    messagingSenderId: '534866637562',
-    projectId: 'odhia-acf3b',
-    storageBucket: 'odhia-acf3b.firebasestorage.app',
+    apiKey: 'AIzaSyAnYX3yfrQEValt_uZoDMxVmMJcCTTP1HA',
+    appId: '1:843078461358:android:8a47ed1499f94ac264ca3f',
+    messagingSenderId: '843078461358',
+    projectId: 'alzefr',
+    storageBucket: 'alzefr.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC-V2Qgl1zwKfkVwZeSP2An5cv_iJuczw4',
-    appId: '1:534866637562:ios:6ab0afa834bd9cc2b4cf43',
-    messagingSenderId: '534866637562',
-    projectId: 'odhia-acf3b',
-    storageBucket: 'odhia-acf3b.firebasestorage.app',
-    iosClientId:
-        '534866637562-32ttjvfag8sjnko83crjiu7ec1vgjacg.apps.googleusercontent.com',
-    iosBundleId: 'com.example.odhiaDash',
+    apiKey: 'AIzaSyABEcWPhYvWGigFPQIwRAUJMZPr4_llBeU',
+    appId: '1:843078461358:ios:ad08d247a38ca31164ca3f',
+    messagingSenderId: '843078461358',
+    projectId: 'alzefr',
+    storageBucket: 'alzefr.firebasestorage.app',
+    iosBundleId: 'com.example.alzefr',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyC-V2Qgl1zwKfkVwZeSP2An5cv_iJuczw4',
-    appId: '1:534866637562:ios:6ab0afa834bd9cc2b4cf43',
-    messagingSenderId: '534866637562',
-    projectId: 'odhia-acf3b',
-    storageBucket: 'odhia-acf3b.firebasestorage.app',
-    iosClientId:
-        '534866637562-32ttjvfag8sjnko83crjiu7ec1vgjacg.apps.googleusercontent.com',
-    iosBundleId: 'com.example.odhiaDash',
+    apiKey: 'AIzaSyABEcWPhYvWGigFPQIwRAUJMZPr4_llBeU',
+    appId: '1:843078461358:ios:ad08d247a38ca31164ca3f',
+    messagingSenderId: '843078461358',
+    projectId: 'alzefr',
+    storageBucket: 'alzefr.firebasestorage.app',
+    iosBundleId: 'com.example.alzefr',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCmJJAaYFuJtWCm7LBCR5PeBOGLtFxVW4Y',
-    appId: '1:534866637562:web:6a19109b5e7bf175b4cf43',
-    messagingSenderId: '534866637562',
-    projectId: 'odhia-acf3b',
-    authDomain: 'odhia-acf3b.firebaseapp.com',
-    storageBucket: 'odhia-acf3b.firebasestorage.app',
-    measurementId: 'G-528D0X40P1',
+    apiKey: 'AIzaSyCusHoAiX9Dpogg_1UQzw_IicBhb3NBrVM',
+    appId: '1:843078461358:web:04c947a1b6b8235c64ca3f',
+    messagingSenderId: '843078461358',
+    projectId: 'alzefr',
+    authDomain: 'alzefr.firebaseapp.com',
+    storageBucket: 'alzefr.firebasestorage.app',
+    measurementId: 'G-Z54WPY82TN',
   );
 }

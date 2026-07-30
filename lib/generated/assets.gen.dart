@@ -14,14 +14,15 @@ import 'package:flutter/widgets.dart';
 class $AssetsLogosGen {
   const $AssetsLogosGen();
 
+  /// File path: assets/logos/circle_logo.png
+  AssetGenImage get circleLogo =>
+      const AssetGenImage('assets/logos/circle_logo.png');
+
   /// File path: assets/logos/logo.jpg
   AssetGenImage get logoJpg => const AssetGenImage('assets/logos/logo.jpg');
 
   /// File path: assets/logos/logo.png
   AssetGenImage get logoPng => const AssetGenImage('assets/logos/logo.png');
-
-  /// File path: assets/logos/logo.svg
-  String get logoSvg => 'assets/logos/logo.svg';
 
   /// File path: assets/logos/logo1.png
   AssetGenImage get logo1 => const AssetGenImage('assets/logos/logo1.png');
@@ -31,7 +32,13 @@ class $AssetsLogosGen {
       const AssetGenImage('assets/logos/logo_mark.png');
 
   /// List of all assets
-  List<dynamic> get values => [logoJpg, logoPng, logoSvg, logo1, logoMark];
+  List<AssetGenImage> get values => [
+    circleLogo,
+    logoJpg,
+    logoPng,
+    logo1,
+    logoMark,
+  ];
 }
 
 class $AssetsMockGen {

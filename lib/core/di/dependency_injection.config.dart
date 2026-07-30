@@ -11,6 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i361;
 import 'package:event_bus/event_bus.dart' as _i1017;
+import 'package:firebase_analytics/firebase_analytics.dart' as _i398;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:firebase_core/firebase_core.dart' as _i982;
 import 'package:get_it/get_it.dart' as _i174;
@@ -131,6 +132,7 @@ import '../../features/profile/domain/repo/profile_repo.dart' as _i364;
 import '../../features/profile/domain/use_cases/profile_use_cases.dart'
     as _i995;
 import '../../features/profile/present/bloc/profile_bloc.dart' as _i475;
+import '../analytics/analytics_service.dart' as _i726;
 import '../events/pusher_event_bus.dart' as _i235;
 import '../networking/network_info.dart' as _i303;
 import '../services/auth_storage_service.dart' as _i250;
@@ -162,6 +164,9 @@ _i174.GetIt init(
     () => injectionModule.connectionChecker,
   );
   gh.singleton<_i982.FirebaseApp>(() => injectionModule.firebaseApp);
+  gh.singleton<_i398.FirebaseAnalytics>(
+    () => injectionModule.firebaseAnalytics,
+  );
   gh.singleton<_i59.FirebaseAuth>(() => injectionModule.firebaseAuth);
   gh.singleton<_i235.PusherEventBus>(() => _i235.PusherEventBus());
   gh.singleton<_i611.ThemeCubit>(() => _i611.ThemeCubit());
@@ -200,6 +205,9 @@ _i174.GetIt init(
   gh.singleton<_i361.Dio>(
     () => dioModule.s3Dio(gh<_i158.LoggingInterceptor>()),
     instanceName: 's3Dio',
+  );
+  gh.singleton<_i726.AnalyticsService>(
+    () => _i726.FirebaseAnalyticsService(gh<_i398.FirebaseAnalytics>()),
   );
   gh.singleton<_i361.Dio>(
     () => dioModule.authDio(
