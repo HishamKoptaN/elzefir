@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../utils/device_helper.dart';
+import '../responsive/app_responsive.dart';
+import '../responsive/device_helper.dart';
 
 class CustomClearTemplateDateBtn extends StatelessWidget {
   const CustomClearTemplateDateBtn({super.key, required this.onTap});

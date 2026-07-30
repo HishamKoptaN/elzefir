@@ -7,7 +7,7 @@ import 'core/di/dependency_injection.dart';
 import 'core/routing/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/theme_cubit.dart';
-import 'core/utils/device_helper.dart';
+import 'core/responsive/device_helper.dart';
 
 class AlzafrDash extends StatelessWidget {
   const AlzafrDash({super.key});

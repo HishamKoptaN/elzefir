@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/data/entities/meta_entity.dart';
-import '../../../../core/utils/device_helper.dart' as dh;
+import '../../../../core/responsive/device_helper.dart' as dh;
 import '../../../../core/utils/extensions/scaled.dart';
 import '../../../../core/widgets/custom_pagination_widget.dart';
 import '../../../../core/widgets/forms/custom_search_field.dart';
@@ -196,12 +196,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                         visualDensity: VisualDensity.compact,
                         icon: Icon(
                           Icons.zoom_out,
-                          size: dh.DeviceHelper.icon(
-                            context,
-                            mobile: 16,
-                            tablet: 22,
-                            desktop: 22,
-                          ),
+                          size: 16,
                         ),
                         onPressed: () async {
                           setState(() {
@@ -214,12 +209,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                         padding: EdgeInsets.zero,
                         icon: Icon(
                           Icons.zoom_in,
-                          size: dh.DeviceHelper.icon(
-                            context,
-                            mobile: 14,
-                            tablet: 22,
-                            desktop: 22,
-                          ),
+                          size: 14,
                         ),
                         onPressed: () async {
                           setState(() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/utils/device_helper.dart';
+import '../../../../../core/responsive/app_responsive.dart';
+import '../../../../../core/responsive/device_helper.dart';
 import '../../../../products/domain/entities/product_entity.dart';
 import 'product_card.dart';
 

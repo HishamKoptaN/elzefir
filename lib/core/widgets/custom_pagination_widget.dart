@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../features/orders/present/views/orders_widget.dart';
 import '../data/entities/meta_entity.dart';
+import '../responsive/app_responsive.dart';
 import '../theme/app_colors.dart';
-import '../utils/device_helper.dart';
+import '../responsive/device_helper.dart';
 import '../utils/extensions/scaled.dart';
 
 class CustomPaginationWidget<T extends BlocBase> extends StatelessWidget {

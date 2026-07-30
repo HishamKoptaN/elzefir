@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/di/dependency_injection.dart';
+import '../../../../../core/responsive/app_responsive.dart';
 import '../../../../../core/theme/app_colors.dart';
-import '../../../../../core/utils/device_helper.dart';
+import '../../../../../core/responsive/device_helper.dart';
 import '../../../../../core/widgets/custom_dialog/custom_dialog.dart';
 import '../blocs/auth_bloc/auth_bloc.dart';
 

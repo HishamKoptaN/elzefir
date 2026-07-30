@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../device_helper.dart';
+import '../../responsive/app_responsive.dart';
+import '../../responsive/device_helper.dart';
 
 extension DeviceTypeExtension on BuildContext {
   bool get isDesk => DeviceHelper.getDeviceType(this) == DeviceType.desktop;
