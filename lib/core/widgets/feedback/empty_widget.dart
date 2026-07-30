@@ -2,6 +2,8 @@ import 'package:alzefr/core/utils/extensions/responsive_icon_extension%20.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../utils/extensions/theme_ext.dart';
+
 class EmptyWidget extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -20,9 +22,8 @@ class EmptyWidget extends StatelessWidget {
           Icon(icon, size: 30.iconRes, color: const Color(0xFF878791)),
           Text(
             text,
-            style: TextStyle(
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w500,
+            style: context.textTheme.bodyLarge?.copyWith(
+              fontWeight: .bold,
               color: const Color(0xFF878791),
             ),
           ),

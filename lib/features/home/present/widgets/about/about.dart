@@ -81,7 +81,7 @@ class _ContentSection extends StatelessWidget {
             ),
           ),
           Text(
-            'مطعم الزفر للمأكولات البحرية',
+            'مطعم الزفر للاسماك',
             textAlign: TextAlign.right,
             style: context.textTheme.titleLarge?.copyWith(
               color: Color(0xFF28180D),

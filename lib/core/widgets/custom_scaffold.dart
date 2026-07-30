@@ -12,6 +12,7 @@ class CustomScaffold extends StatelessWidget {
   FloatingActionButtonAnimator? floatingActionButtonAnimator;
   FloatingActionButtonLocation? floatingActionButtonLocation;
   Widget? bottomNavigationBar;
+  Widget? endDrawer;
   CustomScaffold({
     super.key,
     required this.body,
@@ -24,6 +25,7 @@ class CustomScaffold extends StatelessWidget {
     this.floatingActionButtonAnimator,
     this.floatingActionButtonLocation,
     this.bottomNavigationBar,
+    this.endDrawer,
   });
 
   @override
@@ -31,6 +33,7 @@ class CustomScaffold extends StatelessWidget {
     return Scaffold(
       appBar: showAppBar ? CustomAppBar(title: title ?? '') : null,
       drawer: drawer,
+      endDrawer: endDrawer,
       backgroundColor: backgroundColor ?? Colors.white,
       body: SafeArea(child: body),
       floatingActionButton: floatingActionButton,

@@ -90,7 +90,7 @@ class RouteConfig {
         name: HomeView.routeName,
         path: '/${HomeView.routeName}',
         builder: (context, state) {
-          return const HomeView();
+          return HomeView();
         },
       ),
       // ShellRoute(

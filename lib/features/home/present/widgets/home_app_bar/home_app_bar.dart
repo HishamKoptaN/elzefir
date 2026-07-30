@@ -9,6 +9,7 @@ import '../../../../../core/utils/device_helper.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../../../core/widgets/app_navigation.dart';
 import '../../../../../core/widgets/custom_image.dart';
 import '../../../../../core/widgets/feedback/empty_widget.dart';
 import '../../../../notifications/domain/entities/notification_entity.dart';
@@ -19,13 +20,11 @@ class RestaurantAppBar extends StatelessWidget implements PreferredSizeWidget {
   const RestaurantAppBar({
     super.key,
     this.count = 0,
-    required this.onHome,
     required this.onMenu,
     required this.onAbout,
     required this.onContact,
   });
 
-  final VoidCallback onHome;
   final VoidCallback onMenu;
   final VoidCallback onAbout;
   final VoidCallback onContact;
@@ -39,32 +38,46 @@ class RestaurantAppBar extends StatelessWidget implements PreferredSizeWidget {
       surfaceTintColor: Colors.transparent,
       toolbarHeight: 140.h,
       titleSpacing: 16.w,
-      centerTitle: true,
-      title: Row(
-        crossAxisAlignment: .end,
-        textBaseline: .ideographic,
-        spacing: 10.w,
+      title: Stack(
+        alignment: .center,
         children: [
-          _NavItem(title: "المنيو", onTap: onMenu),
-          _NavItem(title: "من نحن", onTap: onAbout),
-          _NavItem(title: "تواصل معنا", onTap: onContact),
-          Spacer(),
-          Text(
-            "أسماك الزفر",
-            style: context.textTheme.displayLarge?.copyWith(
-              color: Color(0xFF002B49),
+          Center(
+            child: Row(
+              mainAxisSize: .min,
+              mainAxisAlignment: .center,
+              children: [
+                Text(
+                  "أسماك الزفر",
+                  textAlign: .end,
+                  style: context.textTheme.displayLarge?.copyWith(
+                    color: Color(0xFF002B49),
+                  ),
+                ),
+                // SizedBox(
+                //   height: AppResponsive.responsive(
+                //     context,
+                //     desktop: 140.h,
+                //     tablet: 105.h,
+                //     mobile: 50.h,
+                //   ),
+                //   child: CustomImage(
+                //     image: Assets.logos.logoMark.path,
+                //     fit: .cover,
+                //   ),
+                // ),
+              ],
             ),
           ),
-          SizedBox(
-            height: AppResponsive.responsive(
-              context,
-              desktop: 140.h,
-              tablet: 105.h,
-              mobile: 50.h,
+          if (context.isDesk)
+            Row(
+              crossAxisAlignment: .end,
+              spacing: 10.w,
+              children: AppNavigation.items(
+                onMenu: onMenu,
+                onAbout: onAbout,
+                onContact: onContact,
+              ),
             ),
-            child: CustomImage(image: Assets.logos.logoMark.path, fit: .cover),
-          ),
-          Spacer(flex: 2),
         ],
       ),
       actions: [
@@ -245,77 +258,12 @@ class RestaurantAppBar extends StatelessWidget implements PreferredSizeWidget {
           Text(
             "الإشعارات",
             textAlign: .start,
-            style: TextStyle(
-              color: context.colorScheme.primary,
-              fontSize: 26.sp,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _NavItem extends StatefulWidget {
-  const _NavItem({required this.title, required this.onTap});
-
-  final String title;
-  final VoidCallback onTap;
-
-  @override
-  State<_NavItem> createState() => _NavItemState();
-}
-
-class _NavItemState extends State<_NavItem> {
-  bool hovering = false;
-
-  @override
-  Widget build(BuildContext context) {
-    final active = hovering;
-    return MouseRegion(
-      onEnter: (_) {
-        setState(() {
-          hovering = true;
-        });
-      },
-      onExit: (_) {
-        setState(() {
-          hovering = false;
-        });
-      },
-      cursor: SystemMouseCursors.click,
-      child: InkWell(
-        onTap: widget.onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 180),
-          padding: EdgeInsets.symmetric(vertical: 2.0.h, horizontal: 8.0.w),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: active
-                    ? context.colorScheme.primary
-                    : context.colorScheme.primary.withValues(alpha: 0.5),
-                width: active ? 5.h : 2.0.h,
-              ),
-            ),
-          ),
-          child: AnimatedDefaultTextStyle(
-            duration: const Duration(milliseconds: 180),
-            style: TextStyle(
-              fontSize: 40.sp,
+            style: context.textTheme.titleMedium?.copyWith(
               fontWeight: .bold,
               color: context.colorScheme.primary,
             ),
-            child: Text(
-              widget.title,
-              style: context.textTheme.labelLarge?.copyWith(
-                fontWeight: .bold,
-                color: context.colorScheme.primary,
-              ),
-            ),
           ),
-        ),
+        ],
       ),
     );
   }

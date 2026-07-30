@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../bloc/home_bloc.dart';
 import 'about/about.dart';
-import 'additions/additions_widget.dart';
 import 'categories_nav.dart';
 import 'footer/footer_widget.dart';
 import 'offer_widget.dart';
@@ -12,28 +11,28 @@ import 'products/products_widget.dart';
 import 'home_app_bar/home_app_bar.dart';
 
 class BodyWidget extends StatefulWidget {
-  const BodyWidget({super.key});
+  const BodyWidget({
+    super.key,
+    required this.productsKey,
+    required this.aboutKey,
+    required this.contactKey,
+    required this.offerWidget,
+    required this.onProcudcts,
+    required this.onAbout,
+    required this.onContact,
+  });
+  final GlobalKey productsKey;
+  final GlobalKey aboutKey;
+  final GlobalKey contactKey;
+  final GlobalKey offerWidget;
+  final VoidCallback onProcudcts;
+  final VoidCallback onAbout;
+  final VoidCallback onContact;
   @override
   State<BodyWidget> createState() => _BodyWidgetState();
 }
 
 class _BodyWidgetState extends State<BodyWidget> {
-  final ScrollController scrollController = ScrollController();
-  final offerWidget = GlobalKey();
-  final categoriesKey = GlobalKey();
-  final productsKey = GlobalKey();
-  final additionsKey = GlobalKey();
-  final aboutKey = GlobalKey();
-  final contactKey = GlobalKey();
-  void scrollToSection(GlobalKey key) {
-    final context = key.currentContext;
-    if (context == null) return;
-    Scrollable.ensureVisible(
-      context,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,22 +50,12 @@ class _BodyWidgetState extends State<BodyWidget> {
                   spacing: 24.h,
                   children: [
                     RestaurantAppBar(
-                      onHome: () {
-                        scrollToSection(productsKey);
-                      },
-                      onMenu: () {
-                        scrollToSection(categoriesKey);
-                      },
-                      onAbout: () {
-                        scrollToSection(aboutKey);
-                      },
-                      onContact: () {
-                        scrollToSection(contactKey);
-                      },
+                      onMenu: widget.onProcudcts,
+                      onAbout: widget.onAbout,
+                      onContact: widget.onContact,
                     ),
-                    OfferWidget(key: offerWidget),
+                    OfferWidget(),
                     CategoriesNav(
-                      key: categoriesKey,
                       categories: state.homeRes?.categories ?? [],
                       selectedCategoryId: state.selectedCategoryId,
                       onChanged: (categoryId) {
@@ -76,11 +65,11 @@ class _BodyWidgetState extends State<BodyWidget> {
                       },
                     ),
                     ProductsSection(
-                      key: productsKey,
+                      key: widget.productsKey,
                       products: state.homeRes?.products ?? [],
                     ),
-                    AboutSection(key: aboutKey),
-                    FooterWidget(key: contactKey),
+                    AboutSection(key: widget.aboutKey),
+                    FooterWidget(key: widget.contactKey),
                   ],
                 );
               },

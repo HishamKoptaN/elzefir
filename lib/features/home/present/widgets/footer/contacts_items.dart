@@ -14,7 +14,7 @@ class FooterContactsItems extends StatelessWidget {
       children: [
         Text(
           'تواصل معنا',
-          style: context.textTheme.headlineLarge?.copyWith(color: Colors.white),
+          style: context.textTheme.titleLarge?.copyWith(color: Colors.white),
         ),
         SizedBox(height: 16.h),
         buildContactItem(
