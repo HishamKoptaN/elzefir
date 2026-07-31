@@ -1,7 +1,6 @@
 import 'package:alzefr/core/utils/extensions/responsive_icon_extension%20.dart';
 import 'package:alzefr/core/widgets/custom_image.dart';
 import 'package:alzefr/features/products/domain/entities/product_entity.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/analytics/analytics_service.dart';
@@ -50,7 +49,7 @@ class _ProductCardState extends State<ProductCard> {
               showGeneralDialog(
                 context: context,
                 barrierDismissible: true,
-                barrierLabel: "Close",  
+                barrierLabel: "Close",
                 barrierColor: Colors.black87,
                 pageBuilder: (_, _, _) {
                   return Center(

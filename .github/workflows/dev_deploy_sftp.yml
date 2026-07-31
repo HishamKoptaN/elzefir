@@ -7,35 +7,59 @@ jobs:
   web-deploy:
     runs-on: ubuntu-latest
     environment: dev
-    steps:
+    steps:  
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.44.7"
+          flutter-version: "3.24.5"
           channel: stable
           architecture: x64
           cache: true
       - run: flutter pub get
+      
       - run: |
-          COMMIT_MSG=$(git log -1 --pretty=%s | sed 's/"/\\"/g')
-          flutter build web \
-          --base-href "/alzefr/" \
-          --dart-define=ENV=dev \
-          --dart-define=COMMIT_MESSAGE="$COMMIT_MSG" \
-          --release \
-          --pwa-strategy=none
-      - run: sudo apt-get update && sudo apt-get install -y lftp
-      - name: Deploy via FTP
+             COMMIT_MSG=$(git log -1 --pretty=%s | sed 's/"/\\"/g')
+             flutter build web \
+             --base-href "/dashboard/" \
+             --dart-define=ENV=dev \
+             --dart-define=COMMIT_MESSAGE="$COMMIT_MSG" \
+             --release \
+             --pwa-strategy=none
+      - id: ssh_deploy
+        continue-on-error: true
         run: |
-          lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" -p 21 "82.197.83.233" <<EOF
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+          ssh -p 65002 \
+            -i private_key.pem \
+            -o StrictHostKeyChecking=no \
+            u943485201@82.197.83.233 \
+            "mkdir -p /home/u943485201/domains/hotpink-gnu-383634.hostingersite.com/public_html/dashboard"
+          rsync -avz --delete \
+            -e "ssh -p 65002 -i private_key.pem -o StrictHostKeyChecking=no" \
+            build/web/ \
+            u943485201@82.197.83.233:/home/u943485201/domains/hotpink-gnu-383634.hostingersite.com/public_html/dashboard/
+          rm -f private_key.pem
+
+      - if: steps.ssh_deploy.outcome == 'failure'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+      - if: steps.ssh_deploy.outcome == 'failure'
+        run: |
+          lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" \
+          -p 21 "82.197.83.233" <<EOF
+
           set ftp:ssl-allow no
           set ftp:passive-mode on
           set net:max-retries 5
           set net:timeout 60
+
           mirror -R \
             --delete \
             --overwrite \
             ./build/web/ \
-            alzefr/
-          bye
+            /domains/hotpink-gnu-383634.hostingersite.com/public_html/dashboard/
+
+          quit
           EOF

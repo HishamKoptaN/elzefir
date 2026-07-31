@@ -1,5 +1,5 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'alzafr_dash.dart';
+import 'alzafr.dart';
 import 'config/env_config.dart';
 import 'core/globals/database/shared_pref_helper.dart';
 import 'core/debug/utils/app_observer.dart';
