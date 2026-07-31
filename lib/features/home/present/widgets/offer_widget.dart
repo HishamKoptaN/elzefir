@@ -21,10 +21,9 @@ class OfferWidget extends StatelessWidget {
           children: [
             CustomImage(image: Assets.mock.offer.path, fit: .cover),
             Container(
-              padding: const .symmetric(horizontal: 16, vertical: 6),
+              padding: .symmetric(vertical: 6.h, horizontal: 16.w),
               decoration: BoxDecoration(
                 color: const Color(0xFFd87459).withValues(alpha: 0.2),
-                borderRadius: .circular(30),
                 border: Border.all(
                   color: const Color(0xFFd87459).withValues(alpha: 0.3),
                 ),
