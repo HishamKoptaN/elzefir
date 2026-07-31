@@ -4,7 +4,6 @@ import 'package:alzefr/core/widgets/custom_image.dart';
 import 'package:alzefr/generated/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import '../../../core/di/dependency_injection.dart';
 import '../../../core/utils/extensions/device_type_extension.dart';
 import '../../../core/widgets/app_navigation.dart';
