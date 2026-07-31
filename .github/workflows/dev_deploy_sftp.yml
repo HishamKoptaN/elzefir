@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.24.5"
+          flutter-version: "3.11.4"
           channel: stable
           architecture: x64
           cache: true
@@ -20,7 +20,7 @@ jobs:
       - run: |
              COMMIT_MSG=$(git log -1 --pretty=%s | sed 's/"/\\"/g')
              flutter build web \
-             --base-href "/dashboard/" \
+             --base-href "/alzefr/" \
              --dart-define=ENV=dev \
              --dart-define=COMMIT_MESSAGE="$COMMIT_MSG" \
              --release \
@@ -34,11 +34,11 @@ jobs:
             -i private_key.pem \
             -o StrictHostKeyChecking=no \
             u943485201@82.197.83.233 \
-            "mkdir -p /home/u943485201/domains/hotpink-gnu-383634.hostingersite.com/public_html/dashboard"
+            "mkdir -p /home/u943485201/domains/coral-shark-547480.hostingersite.com/public_html/alzefr"
           rsync -avz --delete \
             -e "ssh -p 65002 -i private_key.pem -o StrictHostKeyChecking=no" \
             build/web/ \
-            u943485201@82.197.83.233:/home/u943485201/domains/hotpink-gnu-383634.hostingersite.com/public_html/dashboard/
+            u943485201@82.197.83.233:/home/u943485201/domains/coral-shark-547480.hostingersite.com/public_html/alzefr/
           rm -f private_key.pem
 
       - if: steps.ssh_deploy.outcome == 'failure'
@@ -59,7 +59,7 @@ jobs:
             --delete \
             --overwrite \
             ./build/web/ \
-            /domains/hotpink-gnu-383634.hostingersite.com/public_html/dashboard/
+            /domains/coral-shark-547480.hostingersite.com/public_html/alzefr/
 
           quit
           EOF
