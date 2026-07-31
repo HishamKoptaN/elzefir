@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/responsive/app_responsive.dart';
-import '../../../../../core/responsive/device_helper.dart';
 import '../../../../../core/responsive/responsive_extensions.dart';
 import '../../../../products/domain/entities/product_entity.dart';
 import 'product_card.dart';
@@ -24,7 +22,7 @@ class ProductsSection extends StatelessWidget {
           itemCount: products.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount.toInt(),
-            childAspectRatio: 0.61,
+            childAspectRatio: 0.67,
           ),
           itemBuilder: (_, i) {
             return ProductCard(product: products[i]);
