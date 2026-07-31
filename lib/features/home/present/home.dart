@@ -1,4 +1,7 @@
 import 'package:alzefr/core/responsive/responsive_extensions.dart';
+import 'package:alzefr/core/utils/extensions/theme_ext.dart';
+import 'package:alzefr/core/widgets/custom_image.dart';
+import 'package:alzefr/generated/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -46,34 +49,73 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       // showAppBar: false,
       backgroundColor: const Color(0xFFFFFFFF),
+      
       drawer: !context.isDesk
           ? Drawer(
-              elevation: 10,
+              elevation: 12,
+              backgroundColor: Colors.white,
               width:
                   MediaQuery.sizeOf(context).width *
-                  context.responsive(
-                    mobile: 0.5,
-                    tablet: 1 / 3,
-                    desktop: 0.25,
-                  ),
-              child: Column(
-                mainAxisAlignment: .start,
-                crossAxisAlignment: .start,
-                spacing: 12.h,
-                children: [
-                  Gap(10.h),
-                  ...AppNavigation.items(
-                    onMenu: () {
-                      scrollToSection(productsKey);
-                    },
-                    onAbout: () {
-                      scrollToSection(aboutKey);
-                    },
-                    onContact: () {
-                      scrollToSection(contactKey);
-                    },
-                  ),
-                ],
+                  context.responsive(mobile: .78, tablet: .45, desktop: .3),
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 24.w,
+                        vertical: 24.h,
+                      ),
+                      decoration: const BoxDecoration(color: Color(0xFFFFF8F3)),
+                      child: AspectRatio(
+                        aspectRatio: 2.5,
+                        child: CustomImage(
+                          image: Assets.logos.circleLogo.path,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: Divider(height: 1, color: Colors.grey.shade200),
+                    ),
+                    SizedBox(height: 16.h),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        padding: EdgeInsets.symmetric(horizontal: 12.w),
+                        child: Column(
+                          spacing: 8.h,
+                          children: AppNavigation.items(
+                            onMenu: () {
+                              Navigator.pop(context);
+                              scrollToSection(productsKey);
+                            },
+                            onAbout: () {
+                              Navigator.pop(context);
+                              scrollToSection(aboutKey);
+                            },
+                            onContact: () {
+                              Navigator.pop(context);
+                              scrollToSection(contactKey);
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.w,
+                        vertical: 16.h,
+                      ),
+                      child: Text(
+                        "© Alzefr",
+                        style: context.textTheme.bodySmall?.copyWith(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           : null,

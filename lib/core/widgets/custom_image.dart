@@ -40,7 +40,6 @@ class CustomImage extends StatelessWidget {
         : Image.asset(
             image,
             fit: fit,
-            matchTextDirection: true,
             errorBuilder: (_, _, _) {
               return _errorWidget();
             },

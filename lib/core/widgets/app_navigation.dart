@@ -1,3 +1,4 @@
+import 'package:alzefr/core/theme/core/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -62,14 +63,16 @@ class _NavItemState extends State<_NavItem> {
           ),
           child: AnimatedDefaultTextStyle(
             duration: const Duration(milliseconds: 180),
+            textAlign: .start,
             style: TextStyle(
-              fontSize: 40.sp,
+              fontSize: 50.sp.rf(context), 
               fontWeight: .bold,
               color: context.colorScheme.primary,
             ),
             child: Text(
               widget.title,
-              style: context.textTheme.labelLarge?.copyWith(
+              textAlign: .start,
+              style: context.textTheme.headlineMedium?.copyWith(
                 fontWeight: .bold,
                 color: context.colorScheme.primary,
               ),
