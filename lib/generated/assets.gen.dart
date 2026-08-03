@@ -28,8 +28,18 @@ class $AssetsLogosGen {
   AssetGenImage get solidLogo =>
       const AssetGenImage('assets/logos/solid_logo.png');
 
+  /// File path: assets/logos/solid_logo1.png
+  AssetGenImage get solidLogo1 =>
+      const AssetGenImage('assets/logos/solid_logo1.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [logoJpg, logoPng, logoMark, solidLogo];
+  List<AssetGenImage> get values => [
+    logoJpg,
+    logoPng,
+    logoMark,
+    solidLogo,
+    solidLogo1,
+  ];
 }
 
 class $AssetsMockGen {
