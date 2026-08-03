@@ -1,5 +1,5 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'alzafr.dart';
+import 'elzefir.dart';
 import 'config/env_config.dart';
 import 'core/globals/database/shared_pref_helper.dart';
 import 'core/debug/utils/app_observer.dart';
@@ -17,7 +17,6 @@ import 'features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 import 'core/widgets/custom_error_widget.dart';
 import 'core/di/dependency_injection.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-
 Future<void> main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
@@ -55,7 +54,6 @@ Future<void> main() async {
     _handleError(error: e, stackTrace: st, context: 'app initialization');
   }
 }
-
 void _handleError({
   required Object error,
   required StackTrace stackTrace,

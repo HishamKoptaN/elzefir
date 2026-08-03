@@ -1,6 +1,7 @@
-import 'package:alzefr/core/utils/extensions/theme_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/utils/extensions/theme_ext.dart';
 
 class CategoryBadgeWidget extends StatelessWidget {
   final String name;

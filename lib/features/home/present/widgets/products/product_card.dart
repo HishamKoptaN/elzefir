@@ -1,19 +1,16 @@
-import 'package:alzefr/core/utils/extensions/responsive_icon_extension%20.dart';
-import 'package:alzefr/core/widgets/custom_image.dart';
-import 'package:alzefr/features/products/domain/entities/product_entity.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/analytics/analytics_service.dart';
 import '../../../../../core/di/dependency_injection.dart';
+import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../../../core/widgets/custom_image.dart';
+import '../../../../products/domain/entities/product_entity.dart';
 import 'category_badge_widget.dart';
-
 class ProductCard extends StatefulWidget {
   final ProductEntity product;
-
   const ProductCard({super.key, required this.product});
-
   @override
   State<ProductCard> createState() => _ProductCardState();
 }
@@ -177,9 +174,6 @@ class PriceWidget extends StatelessWidget {
           style: context.textTheme.titleMedium?.copyWith(
             color: Color(0xFF001629),
           ),
-          // style: TextStyle(
-          //   color: Color(0xFF42474D),
-          // ),
         ),
       ],
     );

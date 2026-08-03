@@ -24,21 +24,12 @@ class $AssetsLogosGen {
   /// File path: assets/logos/logo.png
   AssetGenImage get logoPng => const AssetGenImage('assets/logos/logo.png');
 
-  /// File path: assets/logos/logo1.png
-  AssetGenImage get logo1 => const AssetGenImage('assets/logos/logo1.png');
-
   /// File path: assets/logos/logo_mark.png
   AssetGenImage get logoMark =>
       const AssetGenImage('assets/logos/logo_mark.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [
-    circleLogo,
-    logoJpg,
-    logoPng,
-    logo1,
-    logoMark,
-  ];
+  List<AssetGenImage> get values => [circleLogo, logoJpg, logoPng, logoMark];
 }
 
 class $AssetsMockGen {
@@ -50,33 +41,11 @@ class $AssetsMockGen {
   /// File path: assets/mock/about.svg
   String get aboutSvg => 'assets/mock/about.svg';
 
-  /// File path: assets/mock/fried_fish_fillet.png
-  AssetGenImage get friedFishFillet =>
-      const AssetGenImage('assets/mock/fried_fish_fillet.png');
+  /// Directory path: assets/mock/kilos
+  $AssetsMockKilosGen get kilos => const $AssetsMockKilosGen();
 
-  /// File path: assets/mock/fried_squid.png
-  AssetGenImage get friedSquid =>
-      const AssetGenImage('assets/mock/fried_squid.png');
-
-  /// File path: assets/mock/fried_tilapia.png
-  AssetGenImage get friedTilapia =>
-      const AssetGenImage('assets/mock/fried_tilapia.png');
-
-  /// File path: assets/mock/grilled_mullet.png
-  AssetGenImage get grilledMullet =>
-      const AssetGenImage('assets/mock/grilled_mullet.png');
-
-  /// File path: assets/mock/grilled_shrimp.png
-  AssetGenImage get grilledShrimp =>
-      const AssetGenImage('assets/mock/grilled_shrimp.png');
-
-  /// File path: assets/mock/grilled_tilapia.png
-  AssetGenImage get grilledTilapia =>
-      const AssetGenImage('assets/mock/grilled_tilapia.png');
-
-  /// File path: assets/mock/grilled_tuna_fish.png
-  AssetGenImage get grilledTunaFish =>
-      const AssetGenImage('assets/mock/grilled_tuna_fish.png');
+  /// Directory path: assets/mock/meals
+  $AssetsMockMealsGen get meals => const $AssetsMockMealsGen();
 
   /// File path: assets/mock/offer.png
   AssetGenImage get offer => const AssetGenImage('assets/mock/offer.png');
@@ -84,34 +53,236 @@ class $AssetsMockGen {
   /// File path: assets/mock/saled.png
   AssetGenImage get saled => const AssetGenImage('assets/mock/saled.png');
 
-  /// File path: assets/mock/sayadieh_rice.png
-  AssetGenImage get sayadiehRice =>
-      const AssetGenImage('assets/mock/sayadieh_rice.png');
+  /// Directory path: assets/mock/sandwiches
+  $AssetsMockSandwichesGen get sandwiches => const $AssetsMockSandwichesGen();
 
-  /// File path: assets/mock/seafood_soup.png
-  AssetGenImage get seafoodSoup =>
-      const AssetGenImage('assets/mock/seafood_soup.png');
+  /// Directory path: assets/mock/side_dishes
+  $AssetsMockSideDishesGen get sideDishes => const $AssetsMockSideDishesGen();
 
   /// File path: assets/mock/tahini.png
   AssetGenImage get tahini => const AssetGenImage('assets/mock/tahini.png');
 
   /// List of all assets
-  List<dynamic> get values => [
-    aboutPng,
-    aboutSvg,
+  List<dynamic> get values => [aboutPng, aboutSvg, offer, saled, tahini];
+}
+
+class $AssetsMockKilosGen {
+  const $AssetsMockKilosGen();
+
+  /// File path: assets/mock/kilos/fried_fish_fillet.png
+  AssetGenImage get friedFishFillet =>
+      const AssetGenImage('assets/mock/kilos/fried_fish_fillet.png');
+
+  /// File path: assets/mock/kilos/fried_jumbo_shrimp.png
+  AssetGenImage get friedJumboShrimp =>
+      const AssetGenImage('assets/mock/kilos/fried_jumbo_shrimp.png');
+
+  /// File path: assets/mock/kilos/fried_local_macaroni.png
+  AssetGenImage get friedLocalMacaroni =>
+      const AssetGenImage('assets/mock/kilos/fried_local_macaroni.png');
+
+  /// File path: assets/mock/kilos/fried_macaroni.png
+  AssetGenImage get friedMacaroni =>
+      const AssetGenImage('assets/mock/kilos/fried_macaroni.png');
+
+  /// File path: assets/mock/kilos/fried_med_shrimp.png
+  AssetGenImage get friedMedShrimp =>
+      const AssetGenImage('assets/mock/kilos/fried_med_shrimp.png');
+
+  /// File path: assets/mock/kilos/fried_mullet.png
+  AssetGenImage get friedMullet =>
+      const AssetGenImage('assets/mock/kilos/fried_mullet.png');
+
+  /// File path: assets/mock/kilos/fried_red_fillet.png
+  AssetGenImage get friedRedFillet =>
+      const AssetGenImage('assets/mock/kilos/fried_red_fillet.png');
+
+  /// File path: assets/mock/kilos/fried_red_mullet.png
+  AssetGenImage get friedRedMullet =>
+      const AssetGenImage('assets/mock/kilos/fried_red_mullet.png');
+
+  /// File path: assets/mock/kilos/fried_small_shrimp.png
+  AssetGenImage get friedSmallShrimp =>
+      const AssetGenImage('assets/mock/kilos/fried_small_shrimp.png');
+
+  /// File path: assets/mock/kilos/fried_squid.png
+  AssetGenImage get friedSquid =>
+      const AssetGenImage('assets/mock/kilos/fried_squid.png');
+
+  /// File path: assets/mock/kilos/fried_tilapia.png
+  AssetGenImage get friedTilapia =>
+      const AssetGenImage('assets/mock/kilos/fried_tilapia.png');
+
+  /// File path: assets/mock/kilos/grilled_fillet.png
+  AssetGenImage get grilledFillet =>
+      const AssetGenImage('assets/mock/kilos/grilled_fillet.png');
+
+  /// File path: assets/mock/kilos/grilled_jumbo_shrimp.png
+  AssetGenImage get grilledJumboShrimp =>
+      const AssetGenImage('assets/mock/kilos/grilled_jumbo_shrimp.png');
+
+  /// File path: assets/mock/kilos/grilled_macaroni.png
+  AssetGenImage get grilledMacaroni =>
+      const AssetGenImage('assets/mock/kilos/grilled_macaroni.png');
+
+  /// File path: assets/mock/kilos/grilled_mackerel.png
+  AssetGenImage get grilledMackerel =>
+      const AssetGenImage('assets/mock/kilos/grilled_mackerel.png');
+
+  /// File path: assets/mock/kilos/grilled_med_shrimp.png
+  AssetGenImage get grilledMedShrimp =>
+      const AssetGenImage('assets/mock/kilos/grilled_med_shrimp.png');
+
+  /// File path: assets/mock/kilos/grilled_mullet.png
+  AssetGenImage get grilledMullet =>
+      const AssetGenImage('assets/mock/kilos/grilled_mullet.png');
+
+  /// File path: assets/mock/kilos/grilled_tilapia.png
+  AssetGenImage get grilledTilapia =>
+      const AssetGenImage('assets/mock/kilos/grilled_tilapia.png');
+
+  /// File path: assets/mock/kilos/grilled_tuna_fish.png
+  AssetGenImage get grilledTunaFish =>
+      const AssetGenImage('assets/mock/kilos/grilled_tuna_fish.png');
+
+  /// File path: assets/mock/kilos/mackerel_sangari.png
+  AssetGenImage get mackerelSangari =>
+      const AssetGenImage('assets/mock/kilos/mackerel_sangari.png');
+
+  /// File path: assets/mock/kilos/shrimp_tagine.png
+  AssetGenImage get shrimpTagine =>
+      const AssetGenImage('assets/mock/kilos/shrimp_tagine.png');
+
+  /// File path: assets/mock/kilos/singari_mullet.png
+  AssetGenImage get singariMullet =>
+      const AssetGenImage('assets/mock/kilos/singari_mullet.png');
+
+  /// File path: assets/mock/kilos/singari_tilapia.png
+  AssetGenImage get singariTilapia =>
+      const AssetGenImage('assets/mock/kilos/singari_tilapia.png');
+
+  /// File path: assets/mock/kilos/tagine_fillet.png
+  AssetGenImage get tagineFillet =>
+      const AssetGenImage('assets/mock/kilos/tagine_fillet.png');
+
+  /// File path: assets/mock/kilos/tagine_mackerel.png
+  AssetGenImage get tagineMackerel =>
+      const AssetGenImage('assets/mock/kilos/tagine_mackerel.png');
+
+  /// File path: assets/mock/kilos/tagine_mullet.png
+  AssetGenImage get tagineMullet =>
+      const AssetGenImage('assets/mock/kilos/tagine_mullet.png');
+
+  /// File path: assets/mock/kilos/tagine_tilapia.png
+  AssetGenImage get tagineTilapia =>
+      const AssetGenImage('assets/mock/kilos/tagine_tilapia.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
     friedFishFillet,
+    friedJumboShrimp,
+    friedLocalMacaroni,
+    friedMacaroni,
+    friedMedShrimp,
+    friedMullet,
+    friedRedFillet,
+    friedRedMullet,
+    friedSmallShrimp,
     friedSquid,
     friedTilapia,
+    grilledFillet,
+    grilledJumboShrimp,
+    grilledMacaroni,
+    grilledMackerel,
+    grilledMedShrimp,
     grilledMullet,
-    grilledShrimp,
     grilledTilapia,
     grilledTunaFish,
-    offer,
-    saled,
-    sayadiehRice,
-    seafoodSoup,
-    tahini,
+    mackerelSangari,
+    shrimpTagine,
+    singariMullet,
+    singariTilapia,
+    tagineFillet,
+    tagineMackerel,
+    tagineMullet,
+    tagineTilapia,
   ];
+}
+
+class $AssetsMockMealsGen {
+  const $AssetsMockMealsGen();
+
+  /// File path: assets/mock/meals/fillet.png
+  AssetGenImage get fillet =>
+      const AssetGenImage('assets/mock/meals/fillet.png');
+
+  /// File path: assets/mock/meals/fried_mullet_meal.png
+  AssetGenImage get friedMulletMeal =>
+      const AssetGenImage('assets/mock/meals/fried_mullet_meal.png');
+
+  /// File path: assets/mock/meals/fried_tilapia_meal.png
+  AssetGenImage get friedTilapiaMeal =>
+      const AssetGenImage('assets/mock/meals/fried_tilapia_meal.png');
+
+  /// File path: assets/mock/meals/grilled_tilapia_meal.png
+  AssetGenImage get grilledTilapiaMeal =>
+      const AssetGenImage('assets/mock/meals/grilled_tilapia_meal.png');
+
+  /// File path: assets/mock/meals/mackerel.png
+  AssetGenImage get mackerel =>
+      const AssetGenImage('assets/mock/meals/mackerel.png');
+
+  /// File path: assets/mock/meals/shrimp.png
+  AssetGenImage get shrimp =>
+      const AssetGenImage('assets/mock/meals/shrimp.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    fillet,
+    friedMulletMeal,
+    friedTilapiaMeal,
+    grilledTilapiaMeal,
+    mackerel,
+    shrimp,
+  ];
+}
+
+class $AssetsMockSandwichesGen {
+  const $AssetsMockSandwichesGen();
+
+  /// File path: assets/mock/sandwiches/fillet.png
+  AssetGenImage get fillet =>
+      const AssetGenImage('assets/mock/sandwiches/fillet.png');
+
+  /// File path: assets/mock/sandwiches/shrimp.png
+  AssetGenImage get shrimp =>
+      const AssetGenImage('assets/mock/sandwiches/shrimp.png');
+
+  /// File path: assets/mock/sandwiches/squid.png
+  AssetGenImage get squid =>
+      const AssetGenImage('assets/mock/sandwiches/squid.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [fillet, shrimp, squid];
+}
+
+class $AssetsMockSideDishesGen {
+  const $AssetsMockSideDishesGen();
+
+  /// File path: assets/mock/side_dishes/rice.png
+  AssetGenImage get rice =>
+      const AssetGenImage('assets/mock/side_dishes/rice.png');
+
+  /// File path: assets/mock/side_dishes/sayadieh_rice.png
+  AssetGenImage get sayadiehRice =>
+      const AssetGenImage('assets/mock/side_dishes/sayadieh_rice.png');
+
+  /// File path: assets/mock/side_dishes/seafood_soup.png
+  AssetGenImage get seafoodSoup =>
+      const AssetGenImage('assets/mock/side_dishes/seafood_soup.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [rice, sayadiehRice, seafoodSoup];
 }
 
 abstract final class Assets {

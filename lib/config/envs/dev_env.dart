@@ -1,4 +1,4 @@
-import 'package:alzefr/config/env_config.dart';
+import 'package:elzefir/config/env_config.dart';
 import 'package:dart_pusher_channels/dart_pusher_channels.dart';
 import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
 import '../env.dart';

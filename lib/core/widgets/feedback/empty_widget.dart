@@ -1,7 +1,7 @@
-import 'package:alzefr/core/utils/extensions/responsive_icon_extension%20.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../utils/extensions/responsive_icon_extension .dart';
 import '../../utils/extensions/theme_ext.dart';
 
 class EmptyWidget extends StatelessWidget {

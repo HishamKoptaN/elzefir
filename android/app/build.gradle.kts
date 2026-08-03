@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.alzefr.app"
+    namespace = "com.elzefir.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -20,7 +20,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.alzefr.app"
+        applicationId = "com.elzefir.app"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

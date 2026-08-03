@@ -28,50 +28,48 @@ class ProdFirebaseOptions {
     }
   }
 
-
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCusHoAiX9Dpogg_1UQzw_IicBhb3NBrVM',
-    appId: '1:843078461358:web:7be639247388b1a464ca3f',
-    messagingSenderId: '843078461358',
-    projectId: 'alzefr',
-    authDomain: 'alzefr.firebaseapp.com',
-    storageBucket: 'alzefr.firebasestorage.app',
-    measurementId: 'G-CQTX2QHYTZ',
+    apiKey: 'AIzaSyDkDmz0_Ee1GOD74Fxw23SYVmzTEP_-Odg',
+    appId: '1:947607550746:web:e8bb6c77a323751a720aa3',
+    messagingSenderId: '947607550746',
+    projectId: 'elzefir-dev',
+    authDomain: 'elzefir-dev.firebaseapp.com',
+    storageBucket: 'elzefir-dev.firebasestorage.app',
+    measurementId: 'G-TTNHN9CD8X',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAnYX3yfrQEValt_uZoDMxVmMJcCTTP1HA',
-    appId: '1:843078461358:android:8a47ed1499f94ac264ca3f',
-    messagingSenderId: '843078461358',
-    projectId: 'alzefr',
-    storageBucket: 'alzefr.firebasestorage.app',
+    apiKey: 'AIzaSyCrQbuzT6edhEEEJj6b1eT2l8cU-NgfTkQ',
+    appId: '1:947607550746:android:a7e5617e9f22e647720aa3',
+    messagingSenderId: '947607550746',
+    projectId: 'elzefir-dev',
+    storageBucket: 'elzefir-dev.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyABEcWPhYvWGigFPQIwRAUJMZPr4_llBeU',
-    appId: '1:843078461358:ios:ad08d247a38ca31164ca3f',
-    messagingSenderId: '843078461358',
-    projectId: 'alzefr',
-    storageBucket: 'alzefr.firebasestorage.app',
-    iosBundleId: 'com.example.alzefr',
+    apiKey: 'AIzaSyAhLHUlSwp1uS33jy4m7necU1nQTg8IgR4',
+    appId: '1:497159259475:ios:b5a6f3acb291baa1b7cda6',
+    messagingSenderId: '497159259475',
+    projectId: 'elzefir-dev',
+    storageBucket: 'elzefir-dev.firebasestorage.app',
+    iosBundleId: 'com.elzefir.restaurant',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyABEcWPhYvWGigFPQIwRAUJMZPr4_llBeU',
-    appId: '1:843078461358:ios:ad08d247a38ca31164ca3f',
-    messagingSenderId: '843078461358',
-    projectId: 'alzefr',
-    storageBucket: 'alzefr.firebasestorage.app',
-    iosBundleId: 'com.example.alzefr',
+    apiKey: 'AIzaSyAhLHUlSwp1uS33jy4m7necU1nQTg8IgR4',
+    appId: '1:497159259475:ios:b5a6f3acb291baa1b7cda6',
+    messagingSenderId: '497159259475',
+    projectId: 'elzefir-dev',
+    storageBucket: 'elzefir-dev.firebasestorage.app',
+    iosBundleId: 'com.elzefir.restaurant',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCusHoAiX9Dpogg_1UQzw_IicBhb3NBrVM',
-    appId: '1:843078461358:web:04c947a1b6b8235c64ca3f',
-    messagingSenderId: '843078461358',
-    projectId: 'alzefr',
-    authDomain: 'alzefr.firebaseapp.com',
-    storageBucket: 'alzefr.firebasestorage.app',
-    measurementId: 'G-Z54WPY82TN',
+    apiKey: 'AIzaSyC9UKhAj5LrK0N6GOFAHw9Ha5ZofkogvRo',
+    appId: '1:497159259475:web:d3b391d8d963dce2b7cda6',
+    messagingSenderId: '497159259475',
+    projectId: 'elzefir-dev',
+    authDomain: 'elzefir-dev.firebaseapp.com',
+    storageBucket: 'elzefir-dev.firebasestorage.app',
+    measurementId: 'G-CDVDNPMP2S',
   );
 }

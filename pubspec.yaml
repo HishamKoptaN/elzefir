@@ -1,5 +1,5 @@
-name: alzefr
-description: "A new Flutter project."
+name: elzefir
+description: "Elzefir app"
 publish_to: "none"
 version: 1.0.0+1
 environment:
@@ -98,6 +98,11 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/mock/
+    - assets/mock/kilos/
+    - assets/mock/meals/
+    - assets/mock/sandwiches/
+    - assets/mock/side_dishes/
+
   fonts:
     - family: NotoNaskhArabic
       fonts:

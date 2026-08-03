@@ -3,5 +3,5 @@
     ".github/workflows/dev_deploy_sftp.yml",
     ".github/workflows/prod_deploy.yml"
   ],
-  "cmake.sourceDirectory": "/home/code/coding/flutter projects/alzefr/windows"
+  "cmake.sourceDirectory": "/home/code/coding/flutter projects/elzefir/windows"
 }

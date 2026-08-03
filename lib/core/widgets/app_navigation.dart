@@ -1,7 +1,7 @@
-import 'package:alzefr/core/theme/core/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../theme/core/text_theme.dart';
 import '../utils/extensions/theme_ext.dart';
 
 class AppNavigation {

@@ -2,32 +2,32 @@
 package_rename_config:
   android:
     app_name: "أسماك الزفر" # اسم التطبيق
-    package_name: "com.alzefr.restaurant" # اسم الحزمة
+    package_name: "net.elzefir.app" # اسم الحزمة
     override_old_package: true # لتجاهل الحزمة القديمة
     lang: "ar" # لغة التطبيق (اختياري)
 
   ios:
     app_name: "أسماك الزفر" # اسم التطبيق
-    bundle_name: "com.alzefr.restaurant" # اسم الحزمة
-    package_name: "com.alzefr.restaurant" # اسم الحزمة
+    bundle_name: "net.elzefir.app" # اسم الحزمة
+    package_name: "net.elzefir.app" # اسم الحزمة
 
   linux:
     app_name: "أسماك الزفر" # اسم التطبيق
-    package_name: "com.alzefr.restaurant" # اسم الحزمة
-    exe_name: "alzefr" # اسم ملف التنفيذ
+    package_name: "net.elzefir.app" # اسم الحزمة
+    exe_name: "elzefir" # اسم ملف التنفيذ
 
   macos:
     app_name: "أسماك الزفر" # اسم التطبيق
-    package_name: "com.alzefr.restaurant" # اسم الحزمة
-    copyright_notice: "© 2024 alzefr" # حقوق الطبع والنشر (اختياري)
+    package_name: "net.elzefir.app" # اسم الحزمة
+    copyright_notice: "© 2024 elzefir" # حقوق الطبع والنشر (اختياري)
 
   web:
     app_name: "أسماك الزفر" # اسم التطبيق
     short_app_name: "أسماك الزفر" # اسم التطبيق المختصر (اختياري)
-    description: "أسماك الزفر" # وصف التطبيق (اختياري)
+    description: "أسماك الزفر" # وصف التطبيق (اختياري )
 
   windows:
     app_name: "أسماك الزفر" # اسم التطبيق
-    organization: "alzefr" # اسم المؤسسة (اختياري)
-    copyright_notice: "© 2024 alzefr" # حقوق الطبع والنشر (اختياري)
-    exe_name: "alzefr" # اسم ملف التنفيذ
+    organization: "elzefir" # اسم المؤسسة (اختياري)
+    copyright_notice: "© 2024 elzefir" # حقوق الطبع والنشر (اختياري)
+    exe_name: "elzefir" # اسم ملف التنفيذ

@@ -35,6 +35,40 @@ class FooterWidget extends StatelessWidget {
   }
 }
 
+class WorkTimeWidget extends StatelessWidget {
+  const WorkTimeWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      runSpacing: 12.h,
+      children: [
+        CustomFooterTitleWidget(title: 'ساعات العمل'),
+        Container(
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.05),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.white10),
+          ),
+          child: Column(
+            crossAxisAlignment: .start,
+            children: [
+              Text(
+                'من السبت الى الخميس : من 9:00 صباحا الى 11:00 مساء',
+                style: context.textTheme.bodyLarge?.copyWith(
+                  color: Colors.white70,
+                ),
+              ),
+              CustomFooterDividerWidget(),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 Widget buildFontAwesomeSocialIcon(FaIconData icon, VoidCallback onTap) {
   return InkWell(
     onTap: onTap,
@@ -106,11 +140,20 @@ class FooterTitleWidget extends StatelessWidget {
           ),
         ),
         SizedBox(width: 12.w),
-        Text(
-          'مطعم أسماك الزفر',
-          style: context.textTheme.titleLarge?.copyWith(color: Colors.white),
-        ),
+        CustomFooterTitleWidget(title: 'مطعم أسماك الزفر'),
       ],
+    );
+  }
+}
+
+class CustomFooterTitleWidget extends StatelessWidget {
+  const CustomFooterTitleWidget({super.key, required this.title});
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: context.textTheme.titleLarge?.copyWith(color: Colors.white),
     );
   }
 }
@@ -211,8 +254,6 @@ class RestaurantHighlights extends StatelessWidget {
       crossAxisAlignment: .start,
       children: [
         buildBadge(context: context, text: 'طازج يومياً 🐟'),
-        buildBadge(context: context, text: 'توصيل سريع 🚚'),
-        buildBadge(context: context, text: '7500+ تقييم ⭐'),
       ],
     );
   }

@@ -1,7 +1,7 @@
-import 'package:alzefr/core/widgets/custom_image.dart';
-import 'package:alzefr/features/products/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/widgets/custom_image.dart';
+import '../../../../products/domain/entities/product_entity.dart';
 import '../products/category_badge_widget.dart';
 import '../products/product_card.dart';
 

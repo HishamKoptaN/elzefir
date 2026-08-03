@@ -1,9 +1,9 @@
-import 'package:alzefr/features/products/data/model/product_model.dart';
-
 import '../../../categories/data/mapper/categories_mapper.dart';
 import '../../../categories/domain/entities/categories_res_entity.dart';
 import '../../domain/entities/product_entity.dart';
 import 'package:to_arabic_number/to_arabic_number.dart';
+
+import '../model/product_model.dart';
 
 extension ProductModelMapper on ProductModel {
   ProductEntity toEntity() {

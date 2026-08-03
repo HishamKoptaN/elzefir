@@ -1,11 +1,11 @@
 {
-    "name": "alzefr",
-    "short_name": "alzefr",
+    "name": "elzefir",
+    "short_name": "elzefir",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#FFFFFF",
     "theme_color": "#FFFFFF",
-    "description": "alzefr",
+    "description": "elzefir",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

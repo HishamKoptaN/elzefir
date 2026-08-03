@@ -1,5 +1,4 @@
-import 'package:alzefr/features/categories/data/mapper/categories_mapper.dart';
-
+import '../../../categories/data/mapper/categories_mapper.dart';
 import '../../../products/data/mapper/products_mapper.dart';
 import '../../domain/entities/home_res_entity.dart';
 import '../model/home_res_model.dart';

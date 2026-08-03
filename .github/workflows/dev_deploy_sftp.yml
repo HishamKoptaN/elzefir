@@ -16,11 +16,10 @@ jobs:
           architecture: x64
           cache: true
       - run: flutter pub get
-      
       - run: |
              COMMIT_MSG=$(git log -1 --pretty=%s | sed 's/"/\\"/g')
              flutter build web \
-             --base-href "/alzefr/" \
+             --base-href "/elzefir/" \
              --dart-define=ENV=dev \
              --dart-define=COMMIT_MESSAGE="$COMMIT_MSG" \
              --release \
@@ -34,11 +33,11 @@ jobs:
             -i private_key.pem \
             -o StrictHostKeyChecking=no \
             u943485201@82.197.83.233 \
-            "mkdir -p /home/u943485201/domains/coral-shark-547480.hostingersite.com/public_html/alzefr"
+            "mkdir -p /home/u943485201/domains/coral-shark-547480.hostingersite.com/public_html/elzefir"
           rsync -avz --delete \
             -e "ssh -p 65002 -i private_key.pem -o StrictHostKeyChecking=no" \
             build/web/ \
-            u943485201@82.197.83.233:/home/u943485201/domains/coral-shark-547480.hostingersite.com/public_html/alzefr/
+            u943485201@82.197.83.233:/home/u943485201/domains/coral-shark-547480.hostingersite.com/public_html/elzefir/
           rm -f private_key.pem
 
       - if: steps.ssh_deploy.outcome == 'failure'
@@ -59,7 +58,7 @@ jobs:
             --delete \
             --overwrite \
             ./build/web/ \
-            /domains/coral-shark-547480.hostingersite.com/public_html/alzefr/
+            /domains/coral-shark-547480.hostingersite.com/public_html/elzefir/
 
           quit
           EOF

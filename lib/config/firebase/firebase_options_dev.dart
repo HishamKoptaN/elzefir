@@ -25,49 +25,49 @@ class DevFirebaseOptions {
     }
   }
 
+
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyC9UKhAj5LrK0N6GOFAHw9Ha5ZofkogvRo',
-    appId: '1:497159259475:web:96d2cba531c94b3bb7cda6',
-    messagingSenderId: '497159259475',
-    projectId: 'alzefr-dev',
-    authDomain: 'alzefr-dev.firebaseapp.com',
-    storageBucket: 'alzefr-dev.firebasestorage.app',
-    measurementId: 'G-ZHQET04H9V',
+    apiKey: 'AIzaSyDkDmz0_Ee1GOD74Fxw23SYVmzTEP_-Odg',
+    appId: '1:947607550746:web:e8bb6c77a323751a720aa3',
+    messagingSenderId: '947607550746',
+    projectId: 'elzefir-dev',
+    authDomain: 'elzefir-dev.firebaseapp.com',
+    storageBucket: 'elzefir-dev.firebasestorage.app',
+    measurementId: 'G-TTNHN9CD8X',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBwj-wjrLwKN93ysxdAgiqhPMyKmsWR490',
-    appId: '1:497159259475:android:e4a6ddca1654e77bb7cda6',
-    messagingSenderId: '497159259475',
-    projectId: 'alzefr-dev',
-    storageBucket: 'alzefr-dev.firebasestorage.app',
+    apiKey: 'AIzaSyCrQbuzT6edhEEEJj6b1eT2l8cU-NgfTkQ',
+    appId: '1:947607550746:android:a7e5617e9f22e647720aa3',
+    messagingSenderId: '947607550746',
+    projectId: 'elzefir-dev',
+    storageBucket: 'elzefir-dev.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAhLHUlSwp1uS33jy4m7necU1nQTg8IgR4',
     appId: '1:497159259475:ios:b5a6f3acb291baa1b7cda6',
     messagingSenderId: '497159259475',
-    projectId: 'alzefr-dev',
-    storageBucket: 'alzefr-dev.firebasestorage.app',
-    iosBundleId: 'com.alzefr.restaurant',
+    projectId: 'elzefir-dev',
+    storageBucket: 'elzefir-dev.firebasestorage.app',
+    iosBundleId: 'com.elzefir.restaurant',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAhLHUlSwp1uS33jy4m7necU1nQTg8IgR4',
     appId: '1:497159259475:ios:b5a6f3acb291baa1b7cda6',
     messagingSenderId: '497159259475',
-    projectId: 'alzefr-dev',
-    storageBucket: 'alzefr-dev.firebasestorage.app',
-    iosBundleId: 'com.alzefr.restaurant',
+    projectId: 'elzefir-dev',
+    storageBucket: 'elzefir-dev.firebasestorage.app',
+    iosBundleId: 'com.elzefir.restaurant',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyC9UKhAj5LrK0N6GOFAHw9Ha5ZofkogvRo',
     appId: '1:497159259475:web:d3b391d8d963dce2b7cda6',
     messagingSenderId: '497159259475',
-    projectId: 'alzefr-dev',
-    authDomain: 'alzefr-dev.firebaseapp.com',
-    storageBucket: 'alzefr-dev.firebasestorage.app',
+    projectId: 'elzefir-dev',
+    authDomain: 'elzefir-dev.firebaseapp.com',
+    storageBucket: 'elzefir-dev.firebasestorage.app',
     measurementId: 'G-CDVDNPMP2S',
   );
 }

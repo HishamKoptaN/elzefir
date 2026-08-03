@@ -44,8 +44,8 @@
       "program": "lib/main.dart",
       "flutterMode": "debug",
       "args": [
-        "--flavor",
-        "dev",
+        // "--flavor",
+        // "dev",
         "--dart-define=ENV=dev",
         "--track-widget-creation",
         "--no-enable-impeller"

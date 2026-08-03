@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../../../core/utils/extensions/theme_ext.dart';
 import 'footer_widget.dart';
 
 class FooterContactsItems extends StatelessWidget {
@@ -12,10 +11,7 @@ class FooterContactsItems extends StatelessWidget {
       crossAxisAlignment: .start,
       runSpacing: 10.h,
       children: [
-        Text(
-          'تواصل معنا',
-          style: context.textTheme.titleLarge?.copyWith(color: Colors.white),
-        ),
+        CustomFooterTitleWidget(title: 'تواصل معنا'),
         SizedBox(height: 16.h),
         buildContactItem(
           context: context,
@@ -48,9 +44,9 @@ class FooterContactsItems extends StatelessWidget {
         buildContactItem(
           context: context,
           icon: Icons.email,
-          text: 'info@alzefr.com',
+          text: 'info@elzefir.com',
           onTap: () {
-            execuateLaunchUrl('mailto:info@alzefr.com');
+            execuateLaunchUrl('mailto:info@elzefir.com');
           },
         ),
         SizedBox(height: 20.h),
