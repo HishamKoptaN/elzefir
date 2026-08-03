@@ -39,7 +39,6 @@ jobs:
             build/web/ \
             u943485201@82.197.83.233:/public_html/elzefir/
           rm -f private_key.pem
-
       - if: steps.ssh_deploy.outcome == 'failure'
         run: |
           sudo apt-get update
@@ -48,17 +47,14 @@ jobs:
         run: |
           lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" \
           -p 21 "82.197.83.233" <<EOF
-
           set ftp:ssl-allow no
           set ftp:passive-mode on
           set net:max-retries 5
           set net:timeout 60
-
           mirror -R \
             --delete \
             --overwrite \
             ./build/web/ \
             /public_html/elzefir/
-
           quit
           EOF

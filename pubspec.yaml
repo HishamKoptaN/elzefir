@@ -102,7 +102,6 @@ flutter:
     - assets/mock/meals/
     - assets/mock/sandwiches/
     - assets/mock/side_dishes/
-
   fonts:
     - family: NotoNaskhArabic
       fonts:

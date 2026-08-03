@@ -53,19 +53,6 @@ class FooterContactsItems extends StatelessWidget {
             execuateLaunchUrl('https://maps.google.com/?q=العياط+شارع+الجيش');
           },
         ),
-        SizedBox(height: 10.h),
-        buildContactItem(
-          context: context,
-          icon: Icon(
-            Icons.email,
-            color: const Color(0xFFFACC15),
-            size: 16.iconRes,
-          ),
-          text: 'info@elzefir.com',
-          onTap: () {
-            execuateLaunchUrl('mailto:info@elzefir.com');
-          },
-        ),
         SizedBox(height: 20.h),
         Row(
           mainAxisAlignment: .center,

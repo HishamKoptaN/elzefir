@@ -1,7 +1,6 @@
 import 'package:elzefir/core/responsive/responsive_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
@@ -155,6 +154,7 @@ Widget buildContactItem({
     onTap: onTap,
     child: Row(
       mainAxisSize: .min,
+      spacing: 20.w,
       children: [
         CircleAvatar(
           radius: context.responsive(
@@ -165,7 +165,6 @@ Widget buildContactItem({
           backgroundColor: Colors.white.withValues(alpha: .08),
           child: icon,
         ),
-        SizedBox(width: 12.w),
         Expanded(
           child: Text(
             text,
