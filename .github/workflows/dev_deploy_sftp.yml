@@ -33,11 +33,11 @@ jobs:
             -i private_key.pem \
             -o StrictHostKeyChecking=no \
             u943485201@82.197.83.233 \
-            "mkdir -p /home/u943485201/domains/coral-shark-547480.hostingersite.com/public_html/elzefir"
+            "mkdir -p /public_html/elzefir"
           rsync -avz --delete \
             -e "ssh -p 65002 -i private_key.pem -o StrictHostKeyChecking=no" \
             build/web/ \
-            u943485201@82.197.83.233:/home/u943485201/domains/coral-shark-547480.hostingersite.com/public_html/elzefir/
+            u943485201@82.197.83.233:/public_html/elzefir/
           rm -f private_key.pem
 
       - if: steps.ssh_deploy.outcome == 'failure'
@@ -58,7 +58,7 @@ jobs:
             --delete \
             --overwrite \
             ./build/web/ \
-            /domains/coral-shark-547480.hostingersite.com/public_html/elzefir/
+            /public_html/elzefir/
 
           quit
           EOF
