@@ -23,7 +23,7 @@ class FooterContactsItems extends StatelessWidget {
           ),
           text: '01008673836',
           onTap: () {
-            execuateLaunchUrl('tel:+01008673836');
+            execuateLaunchUrl('tel:01008673836');
           },
         ),
         SizedBox(height: 10.h),
@@ -36,7 +36,7 @@ class FooterContactsItems extends StatelessWidget {
           ),
           text: '01124497981',
           onTap: () {
-            execuateLaunchUrl('tel:+201124497981');
+            execuateLaunchUrl('https://wa.me/01124497981');
           },
         ),
         SizedBox(height: 10.h),
