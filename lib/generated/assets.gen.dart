@@ -224,6 +224,10 @@ class $AssetsMockMealsGen {
   AssetGenImage get friedTilapiaMeal =>
       const AssetGenImage('assets/mock/meals/fried_tilapia_meal.png');
 
+  /// File path: assets/mock/meals/grilled_mullet.png
+  AssetGenImage get grilledMullet =>
+      const AssetGenImage('assets/mock/meals/grilled_mullet.png');
+
   /// File path: assets/mock/meals/grilled_tilapia_meal.png
   AssetGenImage get grilledTilapiaMeal =>
       const AssetGenImage('assets/mock/meals/grilled_tilapia_meal.png');
@@ -241,6 +245,7 @@ class $AssetsMockMealsGen {
     fillet,
     friedMulletMeal,
     friedTilapiaMeal,
+    grilledMullet,
     grilledTilapiaMeal,
     mackerel,
     shrimp,
@@ -273,6 +278,10 @@ class $AssetsMockSideDishesGen {
   AssetGenImage get rice =>
       const AssetGenImage('assets/mock/side_dishes/rice.png');
 
+  /// File path: assets/mock/side_dishes/rice_with_fillet.png
+  AssetGenImage get riceWithFillet =>
+      const AssetGenImage('assets/mock/side_dishes/rice_with_fillet.png');
+
   /// File path: assets/mock/side_dishes/sayadieh_rice.png
   AssetGenImage get sayadiehRice =>
       const AssetGenImage('assets/mock/side_dishes/sayadieh_rice.png');
@@ -282,7 +291,12 @@ class $AssetsMockSideDishesGen {
       const AssetGenImage('assets/mock/side_dishes/seafood_soup.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [rice, sayadiehRice, seafoodSoup];
+  List<AssetGenImage> get values => [
+    rice,
+    riceWithFillet,
+    sayadiehRice,
+    seafoodSoup,
+  ];
 }
 
 abstract final class Assets {

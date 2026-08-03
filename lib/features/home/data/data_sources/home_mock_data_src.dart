@@ -126,7 +126,7 @@ class HomeMockDataSource {
           title: 'فيليه ابيض مشوي',
           description: 'فيليه ابيض مشوي',
           price: '160',
-          image: Assets.mock.kilos.friedFishFillet.path,
+          image: Assets.mock.kilos.grilledFillet.path,
           category: CategoryModel(id: 1, name: 'أسماك بالكيلو'),
         ),
         ProductModel(
@@ -142,7 +142,7 @@ class HomeMockDataSource {
           title: 'فيليه احمر مشوي',
           description: 'فيليه احمر مشوي',
           price: '170',
-          image: Assets.mock.kilos.friedFishFillet.path,
+          image: Assets.mock.kilos.friedRedFillet.path,
           category: CategoryModel(id: 1, name: 'أسماك بالكيلو'),
         ),
         ProductModel(
@@ -158,7 +158,7 @@ class HomeMockDataSource {
           title: 'فيليه طاجن',
           description: 'فيليه طاجن',
           price: '190',
-          image: Assets.mock.kilos.friedFishFillet.path,
+          image: Assets.mock.kilos.tagineFillet.path,
           category: CategoryModel(id: 1, name: 'أسماك بالكيلو'),
         ),
         ProductModel(
@@ -174,7 +174,7 @@ class HomeMockDataSource {
           title: 'بربوني مقلي',
           description: 'بربوني مقلي',
           price: '160',
-          image: Assets.mock.kilos.friedSquid.path,
+          image: Assets.mock.kilos.friedRedMullet.path,
           category: CategoryModel(id: 1, name: 'أسماك بالكيلو'),
         ),
         ProductModel(
@@ -182,7 +182,7 @@ class HomeMockDataSource {
           title: 'مكرونة بلدي مقلي ',
           description: 'مكرونة بلدي مقلي ',
           price: '150',
-          image: Assets.mock.kilos.friedTilapia.path,
+          image: Assets.mock.kilos.friedLocalMacaroni.path,
           category: CategoryModel(id: 1, name: 'أسماك بالكيلو'),
         ),
         ProductModel(
@@ -198,7 +198,7 @@ class HomeMockDataSource {
           title: 'جمبري وسط مقلي',
           description: 'جمبري وسط مقلي',
           price: '400',
-          image: Assets.mock.kilos.friedMedShrimp.path,
+          image: Assets.mock.kilos.friedSmallShrimp.path,
           category: CategoryModel(id: 1, name: 'أسماك بالكيلو'),
         ),
         ProductModel(
@@ -238,7 +238,7 @@ class HomeMockDataSource {
           title: 'وجبة بوري مشوي',
           description: '1 سمكة بوري 500 جرام + أرز + سلطة طحينة + عيش',
           price: '95',
-          image: Assets.mock.meals.grilledTilapiaMeal.path,
+          image: Assets.mock.meals.grilledMullet.path,
           category: CategoryModel(id: 2, name: 'الوجبات'),
         ),
         ProductModel(
@@ -246,7 +246,7 @@ class HomeMockDataSource {
           title: 'وجبة بوري مقلي',
           description: '1 سمكة بوري 500 جرام + أرز + سلطة طحينة + عيش',
           price: '100',
-          image: Assets.mock.meals.friedTilapiaMeal.path,
+          image: Assets.mock.meals.friedMulletMeal.path,
           category: CategoryModel(id: 2, name: 'الوجبات'),
         ),
         ProductModel(
@@ -254,7 +254,7 @@ class HomeMockDataSource {
           title: 'وجبة بلطي مشوي',
           description: '1 سمكة بلطي 500 جرام + أرز + سلطة طحينة + عيش',
           price: '75',
-          image: Assets.mock.meals.friedTilapiaMeal.path,
+          image: Assets.mock.meals.grilledTilapiaMeal.path,
           category: CategoryModel(id: 2, name: 'الوجبات'),
         ),
         ProductModel(
@@ -270,7 +270,7 @@ class HomeMockDataSource {
           title: 'وجبة ماكريل مشوي',
           description: 'نصف كيلو ماكريل + أرز + سلطة طحينة + عيش',
           price: '65',
-          image: Assets.mock.meals.friedTilapiaMeal.path,
+          image: Assets.mock.meals.mackerel.path,
           category: CategoryModel(id: 2, name: 'الوجبات'),
         ),
         ProductModel(
@@ -278,7 +278,7 @@ class HomeMockDataSource {
           title: 'وجبة فيليه مقلي',
           description: 'ربع كيلو فيليه + أرز + سلطة طحينة + عيش',
           price: '130',
-          image: Assets.mock.meals.friedTilapiaMeal.path,
+          image: Assets.mock.meals.fillet.path,
           category: CategoryModel(id: 2, name: 'الوجبات'),
         ),
         ProductModel(
@@ -326,7 +326,7 @@ class HomeMockDataSource {
           title: 'ارز بالفيليه ',
           description: 'ارز بالفيليه ',
           price: '70',
-          image: Assets.mock.sideDishes.rice.path,
+          image: Assets.mock.sideDishes.riceWithFillet.path,
           category: CategoryModel(id: 3, name: 'اطباق جانبية'),
         ),
         ProductModel(
