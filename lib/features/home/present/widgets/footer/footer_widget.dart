@@ -1,3 +1,4 @@
+import 'package:elzefir/core/responsive/responsive_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -69,32 +70,18 @@ class WorkTimeWidget extends StatelessWidget {
   }
 }
 
-Widget buildFontAwesomeSocialIcon(FaIconData icon, VoidCallback onTap) {
-  return InkWell(
-    onTap: onTap,
-    borderRadius: BorderRadius.circular(50.r),
-    child: Container(
-      padding: EdgeInsets.all(10.sp),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.08),
-        shape: BoxShape.circle,
-      ),
-      child: FaIcon(icon, color: Colors.white, size: 18.iconRes),
-    ),
-  );
-}
-
-Widget buildSocialIcon(IconData icon, VoidCallback onTap) {
+Widget buildSocialIcon({
+  required BuildContext context,
+  required Widget icon,
+  required VoidCallback onTap,
+}) {
   return InkWell(
     onTap: onTap,
     borderRadius: .circular(50.r),
-    child: Container(
-      padding: .all(30.sp),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.08),
-        shape: BoxShape.circle,
-      ),
-      child: Icon(icon, color: Colors.white, size: 18.iconRes),
+    child: CircleAvatar(
+      radius: context.responsive(mobile: 75.r, tablet: 32.5.r, desktop: 27.5.r),
+      backgroundColor: Colors.white.withValues(alpha: .08),
+      child: icon,
     ),
   );
 }
@@ -160,7 +147,7 @@ class CustomFooterTitleWidget extends StatelessWidget {
 
 Widget buildContactItem({
   required BuildContext context,
-  required IconData icon,
+  required Widget icon,
   required String text,
   required VoidCallback onTap,
 }) {
@@ -169,49 +156,14 @@ Widget buildContactItem({
     child: Row(
       mainAxisSize: .min,
       children: [
-        Container(
-          padding: .all(20.sp),
-          margin: .only(left: 8.w),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.08),
-            shape: .circle,
+        CircleAvatar(
+          radius: context.responsive(
+            mobile: 75.r,
+            tablet: 32.5.r,
+            desktop: 27.5.r,
           ),
-          child: Icon(icon, color: const Color(0xFFFACC15), size: 16.iconRes),
-        ),
-        SizedBox(width: 12.w),
-        Expanded(
-          child: Text(
-            text,
-            overflow: .visible,
-            style: context.textTheme.labelLarge?.copyWith(
-              color: Colors.white70,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget buildFontAwesomeIconsContactItem(
-  BuildContext context,
-  FaIconData icon,
-  String text,
-  VoidCallback onTap,
-) {
-  return InkWell(
-    onTap: onTap,
-    child: Row(
-      mainAxisSize: .min,
-      children: [
-        Container(
-          padding: .all(30.sp),
-          margin: .only(left: 8.w),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.08),
-            shape: .circle,
-          ),
-          child: FaIcon(icon, color: const Color(0xFFFACC15), size: 16.iconRes),
+          backgroundColor: Colors.white.withValues(alpha: .08),
+          child: icon,
         ),
         SizedBox(width: 12.w),
         Expanded(

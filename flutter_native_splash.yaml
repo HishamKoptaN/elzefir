@@ -2,7 +2,7 @@
 flutter_native_splash:
   color: "#FFFFFF"
   color_dark: "#FFFFFF"
-  image: assets/logos/logo.png
+  image: assets/logos/solid_logo.png
   android_gravity: center
   ios_content_mode: center
   web: true
@@ -10,7 +10,7 @@ flutter_native_splash:
   android_12:
     color: "#FFFFFF"
     color_dark: "#FFFFFF"
-    image: assets/logos/logo.png
+    image: assets/logos/solid_logo.png
     icon_background_color: "#FFFFFF"
   android: true
   ios: true

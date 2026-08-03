@@ -63,7 +63,7 @@ class _HomeViewState extends State<HomeView> {
                       child: AspectRatio(
                         aspectRatio: 2.5,
                         child: CustomImage(
-                          image: Assets.logos.circleLogo.path,
+                          image: Assets.logos.solidLogo.path,
                           fit: BoxFit.contain,
                         ),
                       ),

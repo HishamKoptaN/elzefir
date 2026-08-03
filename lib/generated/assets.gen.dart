@@ -14,10 +14,6 @@ import 'package:flutter/widgets.dart';
 class $AssetsLogosGen {
   const $AssetsLogosGen();
 
-  /// File path: assets/logos/circle_logo.png
-  AssetGenImage get circleLogo =>
-      const AssetGenImage('assets/logos/circle_logo.png');
-
   /// File path: assets/logos/logo.jpg
   AssetGenImage get logoJpg => const AssetGenImage('assets/logos/logo.jpg');
 
@@ -28,8 +24,12 @@ class $AssetsLogosGen {
   AssetGenImage get logoMark =>
       const AssetGenImage('assets/logos/logo_mark.png');
 
+  /// File path: assets/logos/solid_logo.png
+  AssetGenImage get solidLogo =>
+      const AssetGenImage('assets/logos/solid_logo.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [circleLogo, logoJpg, logoPng, logoMark];
+  List<AssetGenImage> get values => [logoJpg, logoPng, logoMark, solidLogo];
 }
 
 class $AssetsMockGen {
