@@ -87,7 +87,6 @@ class _ContentSection extends StatelessWidget {
               color: Color(0xFF28180D),
             ),
           ),
-          SizedBox(height: 2.h),
           Text(
             'في مطعم الزفر نقدم أفضل أنواع الأسماك والمأكولات البحرية الطازجة، '
             'المحضرة يوميًا بأجود المكونات وعلى أيدي أمهر الطهاة. هدفنا أن نقدم '
