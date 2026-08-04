@@ -10,10 +10,10 @@ class CategoryBadgeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 12.w),
+      padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 16.w),
       decoration: BoxDecoration(
         color: context.colorScheme.secondary,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(12.r),
       ),
       child: Text(
         name,
