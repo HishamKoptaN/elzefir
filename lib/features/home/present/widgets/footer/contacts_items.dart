@@ -36,7 +36,7 @@ class FooterContactsItems extends StatelessWidget {
           ),
           text: '01124497981',
           onTap: () {
-            execuateLaunchUrl('https://wa.me/01124497981');
+            execuateLaunchUrl('https://wa.me/201124497981');
           },
         ),
         SizedBox(height: 10.h),
