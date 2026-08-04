@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/responsive/responsive_extensions.dart';
 import '../../../../products/domain/entities/product_entity.dart';
 import 'product_card.dart';
-
 class ProductsSection extends StatelessWidget {
   const ProductsSection({super.key, required this.products});
   final List<ProductEntity> products;
