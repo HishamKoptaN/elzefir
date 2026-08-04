@@ -5,6 +5,7 @@ import 'env_config.dart';
 import 'models/pusher_config.dart';
 
 abstract class Env {
+  String get webUrl;
   DataSrcMode get dataSourceMode;
   FirebaseOptions get firebaseOptions;
   String get baseUrl;

@@ -1,4 +1,5 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'core/update/present/bloc/update_bloc.dart';
 import 'elzefir.dart';
 import 'config/env_config.dart';
 import 'core/globals/database/shared_pref_helper.dart';
@@ -44,6 +45,9 @@ Future<void> main() async {
       // await SharedPrefHelper.clearAllSecuredData();
     }
     getIt<PusherService>().init();
+    final updateCompleter = Completer();
+    getIt<UpdateBloc>().add(UpdateEvent.check(onComplete: updateCompleter));
+    await updateCompleter.future;
     final completer = Completer();
     getIt<AuthBloc>().add(AuthEvent.check(onComplete: completer));
     await completer.future;

@@ -9,18 +9,31 @@ import '../networking/network_info.dart';
 @module
 abstract class InjectionModule {
   @singleton
-  EventBus get eventBus => EventBus();
+  EventBus get eventBus {
+    return EventBus();
+  }
   @singleton
-  InternetConnection get connectionChecker => InternetConnection();
+  InternetConnection get connectionChecker {
+    return InternetConnection();
+  }
   @singleton
-  FirebaseApp get firebaseApp => Firebase.app();
+  FirebaseApp get firebaseApp {
+    return Firebase.app();
+  }
   @singleton
-  FirebaseAnalytics get firebaseAnalytics => FirebaseAnalytics.instance;
+  FirebaseAnalytics get firebaseAnalytics {
+    return FirebaseAnalytics.instance;
+  }
   @singleton
-  FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+  FirebaseAuth get firebaseAuth {
+    return FirebaseAuth.instance;
+  }
   @singleton
-  NetworkInfo networkInfo(NetworkInfoImpl impl) => impl;
+  NetworkInfo networkInfo(NetworkInfoImpl impl) {
+    return impl;
+  }
   @singleton
-  NetworkInfoImpl networkInfoImpl(InternetConnection connectionChecker) =>
-      NetworkInfoImpl(connectionChecker: connectionChecker);
+  NetworkInfoImpl networkInfoImpl(InternetConnection connectionChecker) {
+    return NetworkInfoImpl(connectionChecker: connectionChecker);
+  }
 }

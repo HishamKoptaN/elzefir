@@ -1,6 +1,6 @@
 part of 'update_bloc.dart';
 
 @freezed
-class UpdateEvent with _$UpdateEvent {
-  const factory UpdateEvent.check() = _Check;
+abstract class UpdateEvent with _$UpdateEvent {
+  const factory UpdateEvent.check({required Completer onComplete}) = _Check;
 }

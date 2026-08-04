@@ -14,30 +14,61 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UpdateEvent {
 
-
+ Completer get onComplete;
+/// Create a copy of UpdateEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateEventCopyWith<UpdateEvent> get copyWith => _$UpdateEventCopyWithImpl<UpdateEvent>(this as UpdateEvent, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateEvent);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateEvent&&const DeepCollectionEquality().equals(other.onComplete, onComplete));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(onComplete));
 
 @override
 String toString() {
-  return 'UpdateEvent()';
+  return 'UpdateEvent(onComplete: $onComplete)';
 }
 
 
 }
 
 /// @nodoc
-class $UpdateEventCopyWith<$Res>  {
-$UpdateEventCopyWith(UpdateEvent _, $Res Function(UpdateEvent) __);
+abstract mixin class $UpdateEventCopyWith<$Res>  {
+  factory $UpdateEventCopyWith(UpdateEvent value, $Res Function(UpdateEvent) _then) = _$UpdateEventCopyWithImpl;
+@useResult
+$Res call({
+ Completer onComplete
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateEventCopyWithImpl<$Res>
+    implements $UpdateEventCopyWith<$Res> {
+  _$UpdateEventCopyWithImpl(this._self, this._then);
+
+  final UpdateEvent _self;
+  final $Res Function(UpdateEvent) _then;
+
+/// Create a copy of UpdateEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? onComplete = freezed,}) {
+  return _then(_self.copyWith(
+onComplete: freezed == onComplete ? _self.onComplete : onComplete // ignore: cast_nullable_to_non_nullable
+as Completer,
+  ));
+}
+
 }
 
 
@@ -119,10 +150,10 @@ return check(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  check,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( Completer onComplete)?  check,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Check() when check != null:
-return check();case _:
+return check(_that.onComplete);case _:
   return orElse();
 
 }
@@ -140,10 +171,10 @@ return check();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  check,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( Completer onComplete)  check,}) {final _that = this;
 switch (_that) {
 case _Check():
-return check();case _:
+return check(_that.onComplete);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -160,10 +191,10 @@ return check();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  check,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( Completer onComplete)?  check,}) {final _that = this;
 switch (_that) {
 case _Check() when check != null:
-return check();case _:
+return check(_that.onComplete);case _:
   return null;
 
 }
@@ -175,33 +206,67 @@ return check();case _:
 
 
 class _Check implements UpdateEvent {
-  const _Check();
+  const _Check({required this.onComplete});
   
 
+@override final  Completer onComplete;
 
-
+/// Create a copy of UpdateEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CheckCopyWith<_Check> get copyWith => __$CheckCopyWithImpl<_Check>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Check);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Check&&const DeepCollectionEquality().equals(other.onComplete, onComplete));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(onComplete));
 
 @override
 String toString() {
-  return 'UpdateEvent.check()';
+  return 'UpdateEvent.check(onComplete: $onComplete)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class _$CheckCopyWith<$Res> implements $UpdateEventCopyWith<$Res> {
+  factory _$CheckCopyWith(_Check value, $Res Function(_Check) _then) = __$CheckCopyWithImpl;
+@override @useResult
+$Res call({
+ Completer onComplete
+});
 
 
+
+
+}
+/// @nodoc
+class __$CheckCopyWithImpl<$Res>
+    implements _$CheckCopyWith<$Res> {
+  __$CheckCopyWithImpl(this._self, this._then);
+
+  final _Check _self;
+  final $Res Function(_Check) _then;
+
+/// Create a copy of UpdateEvent
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? onComplete = freezed,}) {
+  return _then(_Check(
+onComplete: freezed == onComplete ? _self.onComplete : onComplete // ignore: cast_nullable_to_non_nullable
+as Completer,
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$UpdateState {

@@ -6,6 +6,11 @@ import '../firebase/firebase_options_dev.dart';
 
 class DevEnv extends Env {
   @override
+  String get webUrl {
+    return 'https://coral-shark-547480.hostingersite.com/elzefir';
+  }
+
+  @override
   DataSrcMode get dataSourceMode {
     return .mock;
   }
@@ -22,22 +27,22 @@ class DevEnv extends Env {
 
   @override
   String get baseUrl {
-    return 'https://hotpink-gnu-383634.hostingersite.com/api/admin/';
+    return 'https://';
   }
 
   @override
   String get authBaseUrl {
-    return 'https://hotpink-gnu-383634.hostingersite.com/api/auth/';
+    return 'https://';
   }
 
   @override
   String get vapidKey {
-    return 'BJrANZ5ArkykYI3lFQx1dLjaS0KvFh65CrIQmlkE8zakJOAbQHn6h5J78UmCpDZPyoqC-k8caMZNK-HOVswUaeo';
+    return '';
   }
 
   @override
   String get dashboardUrl {
-    return 'https://hotpink-gnu-383634.hostingersite.com';
+    return 'https://';
   }
 
   @override
@@ -45,7 +50,7 @@ class DevEnv extends Env {
     return PusherChannelsOptions.fromCluster(
       scheme: 'wss',
       cluster: 'ap2',
-      key: '3781a6c8a1db2dad0259',
+      key: '',
       port: 443,
     );
   }

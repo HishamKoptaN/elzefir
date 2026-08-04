@@ -20,16 +20,16 @@ class _UpdateApi implements UpdateApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<VersionInfoModel> check() async {
+  Future<VersionInfoModel> check({required int timestamp}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r't': timestamp};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<VersionInfoModel>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'option-categories',
+            '/version.json',
             queryParameters: queryParameters,
             data: _data,
           )

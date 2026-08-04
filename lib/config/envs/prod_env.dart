@@ -6,6 +6,11 @@ import '../firebase/firebase_options_prod.dart';
 
 class ProdEnv implements Env {
   @override
+  String get webUrl {
+    return '';
+  }
+
+  @override
   DataSrcMode get dataSourceMode {
     return .api;
   }
@@ -15,25 +20,25 @@ class ProdEnv implements Env {
   }
   @override
   String get baseUrl {
-    return 'https://odhea.com/api/admin/';
+    return 'https://';
   }
   @override
   String get authBaseUrl {
-    return 'https://odhea.com/api/auth/';
+    return 'https://';
   }
   @override
   bool get enableLogging => false;
   @override
   String get vapidKey =>
-      'BFGt9-pcSAFclpHVnYRhDrm-rSCnYQvFEiejFU6g39v1RnyQnclua7On4BE1-du0OKu4IgMCMv_GVq07nwS8-HU';
+      '';
   @override
-  String get dashboardUrl => 'https://odhea.com';
+  String get dashboardUrl => 'https://';
   @override
   PusherChannelsOptions get pusherChannelsOptions =>
       PusherChannelsOptions.fromCluster(
         scheme: 'wss',
         cluster: 'ap2',
-        key: '20d4b11b8a1794284239',
+        key: '',
         port: 443,
       );
 }

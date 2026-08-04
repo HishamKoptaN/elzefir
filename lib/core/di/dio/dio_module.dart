@@ -6,6 +6,29 @@ import 'api_module.dart';
 
 @module
 abstract class DioModule {
+  @singleton
+  @Named('webDio')
+  Dio webDio() {
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: EnvConfig.config.webUrl,
+        connectTimeout: const Duration(seconds: 30),
+        receiveTimeout: const Duration(seconds: 30),
+        headers: {'Pragma': 'no-cache'},
+      ),
+    );
+    dio.interceptors.add(
+      PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseBody: true,
+        error: true,
+        compact: true,
+      ),
+    );
+
+    return dio;
+  }
   //! default dio
   @singleton
   Dio dio(

@@ -7,7 +7,7 @@ jobs:
   web-deploy:
     runs-on: ubuntu-latest
     environment: dev
-    steps:  
+    steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
