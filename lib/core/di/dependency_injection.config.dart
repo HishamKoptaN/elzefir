@@ -141,6 +141,14 @@ import '../services/token_service.dart' as _i227;
 import '../session/session_manager.dart' as _i432;
 import '../session/session_manager_impl.dart' as _i241;
 import '../theme/theme_cubit.dart' as _i611;
+import '../update/data/data_sources/update_api.dart' as _i180;
+import '../update/data/data_sources/update_data_src.dart' as _i92;
+import '../update/data/data_sources/update_data_src_Imp.dart' as _i625;
+import '../update/data/data_sources/update_mock_data_src.dart' as _i760;
+import '../update/data/repo_impl/update_repo_impl.dart' as _i734;
+import '../update/domain/repo/update_repo.dart' as _i127;
+import '../update/domain/use_cases/update_use_cases.dart' as _i907;
+import '../update/present/bloc/update_bloc.dart' as _i276;
 import 'dio/api_module.dart' as _i158;
 import 'dio/dio_module.dart' as _i374;
 import 'injection_module.dart' as _i212;
@@ -170,6 +178,7 @@ _i174.GetIt init(
   gh.singleton<_i59.FirebaseAuth>(() => injectionModule.firebaseAuth);
   gh.singleton<_i235.PusherEventBus>(() => _i235.PusherEventBus());
   gh.singleton<_i611.ThemeCubit>(() => _i611.ThemeCubit());
+  gh.singleton<_i760.UpdateMockDataSource>(() => _i760.UpdateMockDataSource());
   gh.singleton<_i895.CategoriesMockDataSource>(
     () => _i895.CategoriesMockDataSource(),
   );
@@ -202,6 +211,7 @@ _i174.GetIt init(
     ),
   );
   gh.lazySingleton<_i191.ProfileApi>(() => _i191.ProfileApi(gh<_i361.Dio>()));
+  gh.singleton<_i180.UpdateApi>(() => _i180.UpdateApi(gh<_i361.Dio>()));
   gh.singleton<_i680.CategoriesApi>(() => _i680.CategoriesApi(gh<_i361.Dio>()));
   gh.singleton<_i927.HomeApi>(() => _i927.HomeApi(gh<_i361.Dio>()));
   gh.singleton<_i352.NotificationsApi>(
@@ -227,6 +237,12 @@ _i174.GetIt init(
       mock: gh<_i3.HomeMockDataSource>(),
     ),
   );
+  gh.singleton<_i92.UpdateDataSrc>(
+    () => _i625.UpdateDataSrcImpl(
+      api: gh<_i180.UpdateApi>(),
+      mock: gh<_i760.UpdateMockDataSource>(),
+    ),
+  );
   gh.singleton<_i976.AuthApi>(
     () => _i976.AuthApi(gh<_i361.Dio>(instanceName: 'authDio')),
   );
@@ -241,6 +257,9 @@ _i174.GetIt init(
   );
   gh.lazySingleton<_i685.ResetPassRepo>(
     () => _i1010.ResetPasswordRepositoryImpl(gh<_i59.FirebaseAuth>()),
+  );
+  gh.singleton<_i127.UpdateRepo>(
+    () => _i734.UpdateRepoImpl(gh<_i92.UpdateDataSrc>()),
   );
   gh.singleton<_i154.OrdersStatusesRepo>(
     () => _i360.OrdersStatusesRepoImpl(gh<_i941.OrdersStatusesApi>()),
@@ -294,6 +313,9 @@ _i174.GetIt init(
     () =>
         _i256.ProfileRepoImpl(gh<_i191.ProfileApi>(), gh<_i59.FirebaseAuth>()),
   );
+  gh.singleton<_i907.UpdateUseCases>(
+    () => _i907.UpdateUseCases(updateRepo: gh<_i127.UpdateRepo>()),
+  );
   gh.singleton<_i606.OrdersStatusesUseCases>(
     () => _i606.OrdersStatusesUseCases(
       ordersStatusesRepo: gh<_i154.OrdersStatusesRepo>(),
@@ -326,6 +348,9 @@ _i174.GetIt init(
   );
   gh.singleton<_i475.ProfileBloc>(
     () => _i475.ProfileBloc(gh<_i995.ProfileUseCases>()),
+  );
+  gh.singleton<_i276.UpdateBloc>(
+    () => _i276.UpdateBloc(updateUseCases: gh<_i907.UpdateUseCases>()),
   );
   gh.singleton<_i802.OrdersUseCases>(
     () => _i802.OrdersUseCases(gh<_i808.OrdersRepo>()),

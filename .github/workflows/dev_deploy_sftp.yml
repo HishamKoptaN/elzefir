@@ -25,8 +25,21 @@ jobs:
              --dart-define=COMMIT_MESSAGE="$COMMIT_MSG" \
              --release \
              --pwa-strategy=none
+      - name: Create version.json
+        run: |
+          cat > build/web/version.json <<EOF
+          {
+            "buildNumber": "${{ github.run_number }}"
+          }
+          EOF
       - run: |
-            echo "{\"version\":\"${{ github.run_number }}\"}" > build/web/version.json
+           BUILD_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+           cat > build/web/version.json <<EOF
+           {
+             "buildNumber": ${{ github.run_number }},
+             "buildTime": "$BUILD_TIME"
+           }
+           EOF
       - id: ssh_deploy
         continue-on-error: true
         run: |
