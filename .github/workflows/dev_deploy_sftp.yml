@@ -21,7 +21,7 @@ jobs:
              flutter build web \
              --base-href "/elzefir/" \
              --dart-define=ENV=dev \
-              --dart-define=BUILD_NUMBER=${{ github.run_number }} \
+             --dart-define=BUILD_NUMBER=${{ github.run_number }} \
              --dart-define=COMMIT_MESSAGE="$COMMIT_MSG" \
              --release \
              --pwa-strategy=none
