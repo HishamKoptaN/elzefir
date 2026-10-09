@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefHelper {
@@ -9,13 +8,11 @@ class SharedPrefHelper {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.remove(key);
   }
-
   static Future<void> clearAllData() async {
     debugPrint('SharedPrefHelper : all data has been cleared');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.clear();
   }
-
   //! Saves a [value] with a [key] in the SharedPreferences.
   static Future<void> setData({
     required String key,
@@ -97,35 +94,5 @@ class SharedPrefHelper {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String? value = sharedPreferences.getString(key);
     return value;
-  }
-
-  //! Saves a [value] with a [key] in the FlutterSecureStorage.
-  static Future<void> setSecuredString({
-    required String key,
-    required String value,
-  }) async {
-    const flutterSecureStorage = FlutterSecureStorage();
-    debugPrint(
-      "FlutterSecureStorage : setSecuredString with key : $key and value : $value",
-    );
-    await flutterSecureStorage.write(key: key, value: value);
-  }
-
-  //! Gets an String value from FlutterSecureStorage with given [key].
-  static Future<dynamic> getSecuredString({required String key}) async {
-    try {
-      const flutterSecureStorage = FlutterSecureStorage();
-      debugPrint('FlutterSecureStorage : getSecuredString with key :');
-      return await flutterSecureStorage.read(key: key) ?? '';
-    } catch (e) {
-      print("❌ Error storing token: $e");
-    }
-  }
-
-  //! Removes all keys and values in the FlutterSecureStorage
-  static Future<void> clearAllSecuredData() async {
-    debugPrint('FlutterSecureStorage : all data has been cleared');
-    const flutterSecureStorage = FlutterSecureStorage();
-    await flutterSecureStorage.deleteAll();
   }
 }

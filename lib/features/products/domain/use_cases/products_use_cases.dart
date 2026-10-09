@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import '../../../../../core/networking/api_result.dart';
 import '../../data/model/product_model.dart';
-import '../../data/repo/products_repo.dart';
+import '../repo/products_repo.dart';
 
 @singleton
 class ProductsUseCase {

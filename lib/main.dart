@@ -2,7 +2,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/update/present/bloc/update_bloc.dart';
 import 'elzefir.dart';
 import 'config/env_config.dart';
-import 'core/globals/database/shared_pref_helper.dart';
 import 'core/debug/utils/app_observer.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -12,7 +11,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:intl/intl_standalone.dart';
-import 'core/globals/database/shared_pref_keys.dart';
 import 'core/services/pusher_service.dart';
 import 'features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 import 'core/widgets/custom_error_widget.dart';
@@ -37,10 +35,10 @@ Future<void> main() async {
     intl.Intl.defaultLocale = 'ar';
     usePathUrlStrategy();
     if (kDebugMode) {
-      await SharedPrefHelper.setSecuredString(
-        key: SharedPrefKeys.jwtToken,
-        value: '720|oZpdN9poVxzMRxXUdJU85YYpTYbmQSpjSBX4Vgdgb3de16c1',
-      );
+      // await SharedPrefHelper.setSecuredString(
+      //   key: SharedPrefKeys.jwtToken,
+      //   value: '720|oZpdN9poVxzMRxXUdJU85YYpTYbmQSpjSBX4Vgdgb3de16c1',
+      // );
       // await SharedPrefHelper.clearAllData();
       // await SharedPrefHelper.clearAllSecuredData();
     }
@@ -51,7 +49,7 @@ Future<void> main() async {
     final completer = Completer();
     getIt<AuthBloc>().add(AuthEvent.check(onComplete: completer));
     await completer.future;
-    runApp(const AlzafrDash());
+    runApp(const Alzafr());
   } catch (e, st) {
     debugPrint('🔥 Firebase init error: $e');
     debugPrint('$st');

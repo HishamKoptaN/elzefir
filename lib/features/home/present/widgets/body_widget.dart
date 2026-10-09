@@ -39,7 +39,7 @@ class _BodyWidgetState extends State<BodyWidget> {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12.w),
+        padding: .symmetric(horizontal: 12.w),
         child: BlocBuilder<HomeBloc, HomeState>(
           bloc: getIt<HomeBloc>(),
           builder: (context, state) {

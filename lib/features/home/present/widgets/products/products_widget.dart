@@ -4,6 +4,7 @@ import '../../../../products/domain/entities/product_entity.dart';
 import 'product_card.dart';
 class ProductsSection extends StatelessWidget {
   const ProductsSection({super.key, required this.products});
+  
   final List<ProductEntity> products;
 
   @override
@@ -20,7 +21,7 @@ class ProductsSection extends StatelessWidget {
                 .toInt(),
             childAspectRatio: context.responsive(
               mobile: 0.56,
-              tablet: 0.78,
+              tablet: 0.98,
               desktop: 0.82,
             )
           ),

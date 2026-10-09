@@ -11,7 +11,6 @@ abstract class HomeResModel with _$HomeResModel {
     @JsonKey(name: 'offer_image') String? offerImage,
     @Default([]) List<CategoryModel>? categories,
     @Default([]) List<ProductModel>? products,
-    @Default([]) List<AdditionModel>? additions,
   }) = _HomeResModel;
   factory HomeResModel.fromJson(Map<String, dynamic> json) =>
       _$HomeResModelFromJson(json);

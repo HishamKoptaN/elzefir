@@ -7,8 +7,8 @@ import 'core/di/dependency_injection.dart';
 import 'core/routing/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/theme_cubit.dart';
-class AlzafrDash extends StatelessWidget {
-  const AlzafrDash({super.key});
+class Alzafr extends StatelessWidget {
+  const Alzafr({super.key});
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

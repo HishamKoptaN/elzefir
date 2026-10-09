@@ -2,12 +2,17 @@ import 'package:event_bus/event_bus.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import '../networking/network_info.dart';
 
 @module
 abstract class InjectionModule {
+  @singleton
+  FlutterSecureStorage flutterSecureStorage() {
+    return const FlutterSecureStorage();
+  }
+
   @singleton
   EventBus get eventBus {
     return EventBus();
@@ -27,13 +32,5 @@ abstract class InjectionModule {
   @singleton
   FirebaseAuth get firebaseAuth {
     return FirebaseAuth.instance;
-  }
-  @singleton
-  NetworkInfo networkInfo(NetworkInfoImpl impl) {
-    return impl;
-  }
-  @singleton
-  NetworkInfoImpl networkInfoImpl(InternetConnection connectionChecker) {
-    return NetworkInfoImpl(connectionChecker: connectionChecker);
   }
 }

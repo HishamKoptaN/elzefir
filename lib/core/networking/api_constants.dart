@@ -6,6 +6,7 @@ class ApiConstants {
   static const String logout = "logout";
   //! Apis
   //! orders
+  static const String home = "home";
   static const String filters = "filters";
   static const String orders = "orders";
   static const String ordersStats = "orders/stats";

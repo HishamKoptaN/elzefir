@@ -32,7 +32,6 @@ class ProdEnv implements Env {
   String get vapidKey =>
       '';
   @override
-  String get dashboardUrl => 'https://';
   @override
   PusherChannelsOptions get pusherChannelsOptions =>
       PusherChannelsOptions.fromCluster(

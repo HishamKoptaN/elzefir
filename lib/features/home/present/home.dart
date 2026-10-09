@@ -41,8 +41,6 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // showAppBar: false,
-      backgroundColor: const Color(0xFFFFFFFF),
       drawer: !context.isDesk
           ? Drawer(
               elevation: 12,

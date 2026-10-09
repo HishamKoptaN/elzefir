@@ -56,11 +56,10 @@ class SignUpRepoImpl implements SignUpRepo {
         device: await DeviceService.getDeviceInfo(),
       ),
     );
-    await SharedPrefHelper.setSecuredString(
-      key: SharedPrefKeys.jwtToken,
-      value: res.token!,
-    );
-    await getIt<AuthInterceptor>().updateToken();
+    // await SharedPrefHelper.setSecuredString(
+    //   key: SharedPrefKeys.jwtToken,
+    //   value: res.token!,
+    // );
     await SharedPrefHelper.setData(
       key: SharedPrefKeys.rememberMe,
       value: signUpReqEntity.rememberMe ?? false,

@@ -14,6 +14,16 @@ class AppTheme {
       fontFamily: 'FreeSerif',
       scaffoldBackgroundColor: _light.background,
       textTheme: getLightTextTheme(context: context),
+      colorScheme: ColorScheme.light(
+        primary: _light.primary,
+        onPrimary: Colors.white,
+        secondary: const Color(0xFFFBECE6),
+        tertiary: const Color(0xFFC88A67),
+        surface: _light.background,
+        surfaceContainer: _light.surface,
+        error: AppColors.danger,
+        onSurface: _light.textPrimary,
+      ),
       progressIndicatorTheme: ProgressIndicatorThemeData(
         linearMinHeight: 2,
         color: Colors.white,
@@ -30,21 +40,11 @@ class AppTheme {
       tooltipTheme: TooltipThemeData(
         textStyle: TextStyle(color: Colors.white, fontSize: 18.sp),
       ),
-      colorScheme: ColorScheme.light(
-        primary: _light.primary,
-        onPrimary: Colors.white,
-        secondary: const Color(0xFFFBECE6),
-        tertiary: const Color(0xFFC88A67),
-        surface: _light.background,
-        surfaceContainer: _light.surface,
-        error: AppColors.danger,
-        onSurface: _light.textPrimary,
-      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 14.w),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
-          backgroundColor: _light.primary,
+          backgroundColor: Colors.white,
           foregroundColor: Colors.white,
           disabledBackgroundColor: _light.textSecondary.withValues(alpha: 0.24),
           disabledForegroundColor: _light.textSecondary.withValues(alpha: 0.48),

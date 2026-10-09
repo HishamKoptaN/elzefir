@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
 import '../../../../core/errors/error_handler.dart';
 import '../../../../../core/networking/api_result.dart';
-import '../../data/model/product_model.dart';
-import '../../data/repo/products_repo.dart';
-import '../../data/data_sources/products_api.dart';
+import '../model/product_model.dart';
+import '../../domain/repo/products_repo.dart';
+import '../data_sources/products_api.dart';
 
 @Singleton(as: ProductsRepo)
 class ProductsRepoImpl implements ProductsRepo {

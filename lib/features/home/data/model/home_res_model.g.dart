@@ -19,11 +19,6 @@ _HomeResModel _$HomeResModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
-      additions:
-          (json['additions'] as List<dynamic>?)
-              ?.map((e) => AdditionModel.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
     );
 
 Map<String, dynamic> _$HomeResModelToJson(_HomeResModel instance) =>
@@ -31,5 +26,4 @@ Map<String, dynamic> _$HomeResModelToJson(_HomeResModel instance) =>
       'offer_image': instance.offerImage,
       'categories': instance.categories,
       'products': instance.products,
-      'additions': instance.additions,
     };

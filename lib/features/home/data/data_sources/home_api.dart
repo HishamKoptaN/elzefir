@@ -11,6 +11,6 @@ abstract class HomeApi {
   @factoryMethod
   factory HomeApi(Dio dio) = _HomeApi;
   //! Get
-  @GET(ApiConstants.optionCategories)
+  @GET(ApiConstants.home)
   Future<HomeResModel> get();
 }

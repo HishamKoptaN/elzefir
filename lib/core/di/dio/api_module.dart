@@ -4,36 +4,30 @@ import 'package:injectable/injectable.dart';
 import '../../../config/env.dart';
 import '../../../config/envs/dev_env.dart';
 import '../../../config/envs/prod_env.dart';
-import '../../globals/database/shared_pref_helper.dart';
-import '../../globals/database/shared_pref_keys.dart';
+import '../../services/auth_storage_service.dart';
 
-@module
-abstract class ApiModule {
-  @singleton
-  Env get config {
-    const env = String.fromEnvironment('FLUTTER_ENV', defaultValue: 'dev');
-    if (env == 'prod') {
-      return ProdEnv();
-    }
-    return DevEnv();
-  }
-}
+// @module
+// abstract class ApiModule {
+//   @singleton
+//   Env get config {
+//     const env = String.fromEnvironment('FLUTTER_ENV', defaultValue: 'dev');
+//     if (env == 'prod') {
+//       return ProdEnv();
+//     }
+//     return DevEnv();
+//   }
+// }
 
 @singleton
 class AuthInterceptor extends Interceptor {
-  final TokenStorage tokenStorage;
-  String? _currentToken;
-  AuthInterceptor(this.tokenStorage);
-  Future<void> updateToken() async {
-    _currentToken = await tokenStorage.getToken();
-  }
-
+  final AuthStorageService authStorageService;
+  AuthInterceptor(this.authStorageService);
   @override
   void onRequest(
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    final token = await tokenStorage.getToken();
+    final token = await authStorageService.getToken();
     if (token != null) {
       options.headers['Authorization'] = 'Bearer $token';
     }
@@ -73,14 +67,5 @@ class LanguageInterceptor extends Interceptor {
     RequestInterceptorHandler handler,
   ) async {
     return handler.next(options);
-  }
-}
-
-@lazySingleton
-class TokenStorage {
-  Future<String?> getToken() async {
-    return await SharedPrefHelper.getSecuredString(
-      key: SharedPrefKeys.jwtToken,
-    );
   }
 }

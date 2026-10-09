@@ -9,6 +9,7 @@ import '../../../features/auth/sign_up/present/views/email_view.dart';
 import '../../../features/auth/sign_up/present/views/sign_up_view.dart';
 import '../../../features/auth/reset_password/present/views/reset_pass_view.dart';
 import '../../../features/home/present/home.dart';
+import '../../../features/products/domain/entities/product_entity.dart';
 import '../../utils/extensions/theme_ext.dart';
 import '../app_route.dart';
 import '../middlewares/guards/app_guards.dart';
@@ -93,6 +94,7 @@ class RouteConfig {
           return HomeView();
         },
       ),
+    
       // ShellRoute(
       //   builder: (context, state, child) {
       //     return DashView(child: child);

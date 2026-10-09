@@ -62,7 +62,6 @@ class AuthRepoImpl implements AuthRepo {
         ),
       );
       await _authStorageService.storeJwtToken(res.token);
-      await _authStorageService.updateAuthToken();
       return const ApiResult.success(data: null);
     } catch (e, st) {
       return ApiResult.failure(errorInfo: ErrorHandler.handle(e, st));
@@ -73,7 +72,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<ApiResult<void>> signOut() async {
     try {
       await _api.logout();
-      await SharedPrefHelper.clearAllSecuredData();
+      // await SharedPrefHelper.clearAllSecuredData();
       await SharedPrefHelper.clearAllData();
       return const ApiResult.success(data: null);
     } catch (e, st) {

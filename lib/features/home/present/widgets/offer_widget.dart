@@ -20,7 +20,7 @@ class OfferWidget extends StatelessWidget {
           fit: .expand,
           textDirection: .rtl,
           children: [
-            CustomImage(image: Assets.mock.offer.path, fit: .cover),
+            CustomImage(image: Assets.images.offer.path, fit: .cover),
             Container(
               padding: .symmetric(vertical: 6.h, horizontal: 16.w),
               decoration: BoxDecoration(

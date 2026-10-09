@@ -14,12 +14,12 @@ import 'package:event_bus/event_bus.dart' as _i1017;
 import 'package:firebase_analytics/firebase_analytics.dart' as _i398;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:firebase_core/firebase_core.dart' as _i982;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart'
     as _i161;
 
-import '../../config/env.dart' as _i557;
 import '../../features/auth/auth/data/datasources/auth_api.dart' as _i976;
 import '../../features/auth/auth/data/repo/auth_repo_impl.dart' as _i246;
 import '../../features/auth/auth/domain/repo/auth_repo.dart' as _i610;
@@ -118,9 +118,9 @@ import '../../features/orders_statuses/domain/use_cases/orders_statuses_use_case
 import '../../features/orders_statuses/present/blocs/bloc/orders_statuses_bloc.dart'
     as _i205;
 import '../../features/products/data/data_sources/products_api.dart' as _i832;
-import '../../features/products/data/repo/products_repo.dart' as _i680;
-import '../../features/products/domain/repo_impl/products_repo_impl.dart'
-    as _i1009;
+import '../../features/products/data/repo_impl/products_repo_impl.dart'
+    as _i249;
+import '../../features/products/domain/repo/products_repo.dart' as _i482;
 import '../../features/products/domain/use_cases/products_use_cases.dart'
     as _i956;
 import '../../features/products/present/blocs/bloc/products_bloc.dart' as _i340;
@@ -140,6 +140,7 @@ import '../services/pusher_service.dart' as _i41;
 import '../services/token_service.dart' as _i227;
 import '../session/session_manager.dart' as _i432;
 import '../session/session_manager_impl.dart' as _i241;
+import '../storage/local_storage.dart' as _i329;
 import '../theme/theme_cubit.dart' as _i611;
 import '../update/data/data_sources/update_api.dart' as _i180;
 import '../update/data/repo_impl/update_repo_impl.dart' as _i734;
@@ -149,6 +150,7 @@ import '../update/present/bloc/update_bloc.dart' as _i276;
 import 'dio/api_module.dart' as _i158;
 import 'dio/dio_module.dart' as _i374;
 import 'injection_module.dart' as _i212;
+import 'storage_module.dart' as _i371;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i174.GetIt init(
@@ -157,11 +159,9 @@ _i174.GetIt init(
   _i526.EnvironmentFilter? environmentFilter,
 }) {
   final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
-  final apiModule = _$ApiModule();
   final injectionModule = _$InjectionModule();
+  final storageModule = _$StorageModule();
   final dioModule = _$DioModule();
-  gh.factory<_i250.AuthStorageService>(() => _i250.AuthStorageService());
-  gh.singleton<_i557.Env>(() => apiModule.config);
   gh.singleton<_i158.LoggingInterceptor>(() => _i158.LoggingInterceptor());
   gh.singleton<_i158.LanguageInterceptor>(() => _i158.LanguageInterceptor());
   gh.singleton<_i1017.EventBus>(() => injectionModule.eventBus);
@@ -173,6 +173,10 @@ _i174.GetIt init(
     () => injectionModule.firebaseAnalytics,
   );
   gh.singleton<_i59.FirebaseAuth>(() => injectionModule.firebaseAuth);
+  gh.singleton<_i558.FlutterSecureStorage>(
+    () => injectionModule.flutterSecureStorage(),
+  );
+  gh.singleton<_i329.LocalStorage>(() => storageModule.localStorage());
   gh.singleton<_i235.PusherEventBus>(() => _i235.PusherEventBus());
   gh.singleton<_i611.ThemeCubit>(() => _i611.ThemeCubit());
   gh.singleton<_i895.CategoriesMockDataSource>(
@@ -181,23 +185,100 @@ _i174.GetIt init(
   gh.singleton<_i3.HomeMockDataSource>(() => _i3.HomeMockDataSource());
   gh.singleton<_i310.OrderItemsBloc>(() => _i310.OrderItemsBloc());
   gh.singleton<_i497.DateBloc>(() => _i497.DateBloc());
-  gh.lazySingleton<_i158.TokenStorage>(() => _i158.TokenStorage());
   gh.lazySingleton<_i749.FirebaseAuthService>(
     () => _i749.FirebaseAuthService(),
   );
   gh.lazySingleton<_i432.SessionManager>(() => _i241.SessionManagerImpl());
-  gh.singleton<_i303.NetworkInfoImpl>(
-    () => injectionModule.networkInfoImpl(gh<_i161.InternetConnection>()),
-  );
-  gh.singleton<_i158.AuthInterceptor>(
-    () => _i158.AuthInterceptor(gh<_i158.TokenStorage>()),
-  );
-  gh.singleton<_i41.PusherService>(
-    () => _i41.PusherService(gh<_i158.TokenStorage>(), gh<_i1017.EventBus>()),
-  );
   gh.singleton<_i361.Dio>(
     () => dioModule.s3Dio(gh<_i158.LoggingInterceptor>()),
     instanceName: 's3Dio',
+  );
+  gh.singleton<_i361.Dio>(() => dioModule.webDio(), instanceName: 'webDio');
+  gh.singleton<_i303.NetworkInfoImpl>(
+    () => _i303.NetworkInfoImpl(
+      connectionChecker: gh<_i161.InternetConnection>(),
+    ),
+  );
+  gh.singleton<_i726.AnalyticsService>(
+    () => _i726.FirebaseAnalyticsService(gh<_i398.FirebaseAnalytics>()),
+  );
+  gh.factory<_i250.AuthStorageService>(
+    () => _i250.AuthStorageService(gh<_i329.LocalStorage>()),
+  );
+  gh.lazySingleton<_i685.ResetPassRepo>(
+    () => _i1010.ResetPasswordRepositoryImpl(gh<_i59.FirebaseAuth>()),
+  );
+  gh.lazySingleton<_i227.TokenService>(
+    () => _i227.TokenService(gh<_i59.FirebaseAuth>()),
+  );
+  gh.lazySingleton<_i614.ForgotPassRepo>(
+    () => _i877.ForgotPasswordRepositoryImpl(gh<_i59.FirebaseAuth>()),
+  );
+  gh.lazySingleton<_i992.ResetPassUseCases>(
+    () => _i992.ResetPassUseCases(gh<_i685.ResetPassRepo>()),
+  );
+  gh.singleton<_i180.UpdateApi>(
+    () => _i180.UpdateApi(gh<_i361.Dio>(instanceName: 'webDio')),
+  );
+  gh.singleton<_i41.PusherService>(
+    () => _i41.PusherService(
+      gh<_i250.AuthStorageService>(),
+      gh<_i1017.EventBus>(),
+    ),
+  );
+  gh.singleton<_i158.AuthInterceptor>(
+    () => _i158.AuthInterceptor(gh<_i250.AuthStorageService>()),
+  );
+  gh.singleton<_i361.Dio>(
+    () => dioModule.authDio(
+      gh<_i158.AuthInterceptor>(),
+      gh<_i158.LanguageInterceptor>(),
+      gh<_i158.LoggingInterceptor>(),
+    ),
+    instanceName: 'authDio',
+  );
+  gh.singleton<_i976.AuthApi>(
+    () => _i976.AuthApi(gh<_i361.Dio>(instanceName: 'authDio')),
+  );
+  gh.lazySingleton<_i804.SignInApi>(
+    () => _i804.SignInApi(gh<_i361.Dio>(instanceName: 'authDio')),
+  );
+  gh.lazySingleton<_i552.SignUpApi>(
+    () => _i552.SignUpApi(gh<_i361.Dio>(instanceName: 'authDio')),
+  );
+  gh.lazySingleton<_i871.SignUpRepo>(
+    () => _i509.SignUpRepoImpl(
+      gh<_i227.TokenService>(),
+      gh<_i749.FirebaseAuthService>(),
+      gh<_i552.SignUpApi>(),
+    ),
+  );
+  gh.singleton<_i127.UpdateRepo>(
+    () => _i734.UpdateRepoImpl(updateApi: gh<_i180.UpdateApi>()),
+  );
+  gh.lazySingleton<_i251.SignUpUseCases>(
+    () => _i251.SignUpUseCases(gh<_i871.SignUpRepo>()),
+  );
+  gh.singleton<_i610.AuthRepo>(
+    () => _i246.AuthRepoImpl(
+      gh<_i59.FirebaseAuth>(),
+      gh<_i976.AuthApi>(),
+      gh<_i227.TokenService>(),
+      gh<_i250.AuthStorageService>(),
+    ),
+  );
+  gh.factory<_i629.SendPassResetEmailUseCase>(
+    () => _i629.SendPassResetEmailUseCase(gh<_i614.ForgotPassRepo>()),
+  );
+  gh.lazySingleton<_i191.ResetPassBloc>(
+    () => _i191.ResetPassBloc(gh<_i992.ResetPassUseCases>()),
+  );
+  gh.lazySingleton<_i305.SignInRepo>(
+    () => _i200.SignInRepoImpl(
+      gh<_i749.FirebaseAuthService>(),
+      gh<_i610.AuthRepo>(),
+      gh<_i804.SignInApi>(),
+    ),
   );
   gh.singleton<_i361.Dio>(
     () => dioModule.dio(
@@ -218,13 +299,11 @@ _i174.GetIt init(
     () => _i941.OrdersStatusesApi(gh<_i361.Dio>()),
   );
   gh.singleton<_i832.ProductsApi>(() => _i832.ProductsApi(gh<_i361.Dio>()));
-  gh.singleton<_i361.Dio>(
-    () => dioModule.authDio(
-      gh<_i158.AuthInterceptor>(),
-      gh<_i158.LanguageInterceptor>(),
-      gh<_i158.LoggingInterceptor>(),
-    ),
-    instanceName: 'authDio',
+  gh.singleton<_i907.UpdateUseCases>(
+    () => _i907.UpdateUseCases(updateRepo: gh<_i127.UpdateRepo>()),
+  );
+  gh.factory<_i154.ForgotPassBloc>(
+    () => _i154.ForgotPassBloc(gh<_i629.SendPassResetEmailUseCase>()),
   );
   gh.singleton<_i861.HomeDataSrc>(
     () => _i105.HomeDataSrcImpl(
@@ -232,48 +311,31 @@ _i174.GetIt init(
       mock: gh<_i3.HomeMockDataSource>(),
     ),
   );
-  gh.singleton<_i361.Dio>(() => dioModule.webDio(), instanceName: 'webDio');
-  gh.singleton<_i976.AuthApi>(
-    () => _i976.AuthApi(gh<_i361.Dio>(instanceName: 'authDio')),
+  gh.singleton<_i482.ProductsRepo>(
+    () => _i249.ProductsRepoImpl(gh<_i832.ProductsApi>()),
   );
-  gh.lazySingleton<_i804.SignInApi>(
-    () => _i804.SignInApi(gh<_i361.Dio>(instanceName: 'authDio')),
+  gh.lazySingleton<_i941.SignInUseCases>(
+    () => _i941.SignInUseCases(gh<_i305.SignInRepo>()),
   );
-  gh.lazySingleton<_i552.SignUpApi>(
-    () => _i552.SignUpApi(gh<_i361.Dio>(instanceName: 'authDio')),
+  gh.singleton<_i956.ProductsUseCase>(
+    () => _i956.ProductsUseCase(productsRepo: gh<_i482.ProductsRepo>()),
   );
-  gh.singleton<_i726.AnalyticsService>(
-    () => _i726.FirebaseAnalyticsService(gh<_i398.FirebaseAnalytics>()),
+  gh.singleton<_i151.AuthUseCases>(
+    () => _i151.AuthUseCases(authRepo: gh<_i610.AuthRepo>()),
   );
-  gh.lazySingleton<_i685.ResetPassRepo>(
-    () => _i1010.ResetPasswordRepositoryImpl(gh<_i59.FirebaseAuth>()),
+  gh.lazySingleton<_i226.SignUpBloc>(
+    () => _i226.SignUpBloc(signUpUseCases: gh<_i251.SignUpUseCases>()),
+  );
+  gh.singleton<_i276.UpdateBloc>(
+    () => _i276.UpdateBloc(updateUseCases: gh<_i907.UpdateUseCases>()),
   );
   gh.singleton<_i154.OrdersStatusesRepo>(
     () => _i360.OrdersStatusesRepoImpl(gh<_i941.OrdersStatusesApi>()),
   );
-  gh.lazySingleton<_i227.TokenService>(
-    () => _i227.TokenService(gh<_i59.FirebaseAuth>()),
-  );
-  gh.singleton<_i303.NetworkInfo>(
-    () => injectionModule.networkInfo(gh<_i303.NetworkInfoImpl>()),
-  );
   gh.singleton<_i808.OrdersRepo>(
     () => _i450.OrdersRepoImpl(gh<_i165.OrdersApi>()),
   );
-  gh.singleton<_i610.AuthRepo>(
-    () => _i246.AuthRepoImpl(
-      gh<_i59.FirebaseAuth>(),
-      gh<_i976.AuthApi>(),
-      gh<_i227.TokenService>(),
-      gh<_i250.AuthStorageService>(),
-    ),
-  );
-  gh.lazySingleton<_i614.ForgotPassRepo>(
-    () => _i877.ForgotPasswordRepositoryImpl(gh<_i59.FirebaseAuth>()),
-  );
-  gh.singleton<_i680.ProductsRepo>(
-    () => _i1009.ProductsRepoImpl(gh<_i832.ProductsApi>()),
-  );
+  gh.singleton<_i711.AuthBloc>(() => _i711.AuthBloc(gh<_i151.AuthUseCases>()));
   gh.singleton<_i967.NotificationsRepo>(
     () => _i666.NotificationsRepoImpl(gh<_i352.NotificationsApi>()),
   );
@@ -283,25 +345,23 @@ _i174.GetIt init(
       mock: gh<_i895.CategoriesMockDataSource>(),
     ),
   );
-  gh.lazySingleton<_i992.ResetPassUseCases>(
-    () => _i992.ResetPassUseCases(gh<_i685.ResetPassRepo>()),
-  );
   gh.singleton<_i280.HomeRepo>(
     () => _i886.HomeRepoImpl(gh<_i861.HomeDataSrc>()),
   );
-  gh.singleton<_i180.UpdateApi>(
-    () => _i180.UpdateApi(gh<_i361.Dio>(instanceName: 'webDio')),
-  );
-  gh.lazySingleton<_i305.SignInRepo>(
-    () => _i200.SignInRepoImpl(
-      gh<_i749.FirebaseAuthService>(),
-      gh<_i610.AuthRepo>(),
-      gh<_i804.SignInApi>(),
-    ),
+  gh.lazySingleton<_i913.SignInBloc>(
+    () => _i913.SignInBloc(signInUseCases: gh<_i941.SignInUseCases>()),
   );
   gh.lazySingleton<_i364.ProfileRepo>(
     () =>
         _i256.ProfileRepoImpl(gh<_i191.ProfileApi>(), gh<_i59.FirebaseAuth>()),
+  );
+  gh.singleton<_i340.ProductsBloc>(
+    () => _i340.ProductsBloc(productsUseCases: gh<_i956.ProductsUseCase>()),
+  );
+  gh.singleton<_i617.ProductsMappingBloc>(
+    () => _i617.ProductsMappingBloc(
+      productsUseCases: gh<_i956.ProductsUseCase>(),
+    ),
   );
   gh.singleton<_i606.OrdersStatusesUseCases>(
     () => _i606.OrdersStatusesUseCases(
@@ -311,24 +371,11 @@ _i174.GetIt init(
   gh.singleton<_i357.HomeUseCases>(
     () => _i357.HomeUseCases(homeRepo: gh<_i280.HomeRepo>()),
   );
-  gh.lazySingleton<_i941.SignInUseCases>(
-    () => _i941.SignInUseCases(gh<_i305.SignInRepo>()),
-  );
   gh.singleton<_i995.ProfileUseCases>(
     () => _i995.ProfileUseCases(gh<_i364.ProfileRepo>()),
   );
   gh.singleton<_i298.CategoriesRepo>(
     () => _i773.SallaOptionCategoriesRepoImpl(gh<_i289.CategoriesDataSrc>()),
-  );
-  gh.lazySingleton<_i871.SignUpRepo>(
-    () => _i509.SignUpRepoImpl(
-      gh<_i227.TokenService>(),
-      gh<_i749.FirebaseAuthService>(),
-      gh<_i552.SignUpApi>(),
-    ),
-  );
-  gh.singleton<_i151.AuthUseCases>(
-    () => _i151.AuthUseCases(authRepo: gh<_i610.AuthRepo>()),
   );
   gh.singleton<_i481.HomeBloc>(
     () => _i481.HomeBloc(homeUseCases: gh<_i357.HomeUseCases>()),
@@ -342,41 +389,8 @@ _i174.GetIt init(
   gh.singleton<_i139.NotificationsUseCases>(
     () => _i139.NotificationsUseCases(gh<_i967.NotificationsRepo>()),
   );
-  gh.singleton<_i127.UpdateRepo>(
-    () => _i734.UpdateRepoImpl(updateApi: gh<_i180.UpdateApi>()),
-  );
-  gh.lazySingleton<_i251.SignUpUseCases>(
-    () => _i251.SignUpUseCases(gh<_i871.SignUpRepo>()),
-  );
-  gh.factory<_i629.SendPassResetEmailUseCase>(
-    () => _i629.SendPassResetEmailUseCase(gh<_i614.ForgotPassRepo>()),
-  );
-  gh.singleton<_i956.ProductsUseCase>(
-    () => _i956.ProductsUseCase(productsRepo: gh<_i680.ProductsRepo>()),
-  );
-  gh.singleton<_i711.AuthBloc>(() => _i711.AuthBloc(gh<_i151.AuthUseCases>()));
-  gh.lazySingleton<_i191.ResetPassBloc>(
-    () => _i191.ResetPassBloc(gh<_i992.ResetPassUseCases>()),
-  );
-  gh.lazySingleton<_i913.SignInBloc>(
-    () => _i913.SignInBloc(signInUseCases: gh<_i941.SignInUseCases>()),
-  );
-  gh.singleton<_i340.ProductsBloc>(
-    () => _i340.ProductsBloc(productsUseCases: gh<_i956.ProductsUseCase>()),
-  );
-  gh.singleton<_i617.ProductsMappingBloc>(
-    () => _i617.ProductsMappingBloc(
-      productsUseCases: gh<_i956.ProductsUseCase>(),
-    ),
-  );
-  gh.singleton<_i907.UpdateUseCases>(
-    () => _i907.UpdateUseCases(updateRepo: gh<_i127.UpdateRepo>()),
-  );
   gh.singleton<_i781.NotificationsBloc>(
     () => _i781.NotificationsBloc(gh<_i139.NotificationsUseCases>()),
-  );
-  gh.factory<_i154.ForgotPassBloc>(
-    () => _i154.ForgotPassBloc(gh<_i629.SendPassResetEmailUseCase>()),
   );
   gh.singleton<_i900.CategoriesUseCase>(
     () => _i900.CategoriesUseCase(categoriesRepo: gh<_i298.CategoriesRepo>()),
@@ -386,12 +400,6 @@ _i174.GetIt init(
   );
   gh.singleton<_i1026.OrdersBloc>(
     () => _i1026.OrdersBloc(gh<_i802.OrdersUseCases>()),
-  );
-  gh.lazySingleton<_i226.SignUpBloc>(
-    () => _i226.SignUpBloc(signUpUseCases: gh<_i251.SignUpUseCases>()),
-  );
-  gh.singleton<_i276.UpdateBloc>(
-    () => _i276.UpdateBloc(updateUseCases: gh<_i907.UpdateUseCases>()),
   );
   gh.singleton<_i205.OrdersStatusesBloc>(
     () => _i205.OrdersStatusesBloc(
@@ -406,8 +414,8 @@ _i174.GetIt init(
   return getIt;
 }
 
-class _$ApiModule extends _i158.ApiModule {}
-
 class _$InjectionModule extends _i212.InjectionModule {}
+
+class _$StorageModule extends _i371.StorageModule {}
 
 class _$DioModule extends _i374.DioModule {}

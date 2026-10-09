@@ -1,20 +1,18 @@
 import 'package:injectable/injectable.dart';
-import '../globals/database/shared_pref_helper.dart';
 import '../globals/database/shared_pref_keys.dart';
-import '../di/dependency_injection.dart';
-import '../di/dio/api_module.dart';
+import '../storage/local_storage.dart';
 
 @Injectable()
 class AuthStorageService {
+  final LocalStorage localStorage;
+  AuthStorageService(this.localStorage);
+  Future<String?> getToken() async {
+    return await localStorage.read(key: SharedPrefKeys.jwtToken);
+  }
   Future<void> storeJwtToken(String token) async {
-    await SharedPrefHelper.setSecuredString(
+    await localStorage.write(
       key: SharedPrefKeys.jwtToken,
       value: token,
     );
-    await getIt<AuthInterceptor>().updateToken();
-  }
-
-  Future<void> updateAuthToken() async {
-    await getIt<AuthInterceptor>().updateToken();
   }
 }

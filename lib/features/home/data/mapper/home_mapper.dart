@@ -16,11 +16,6 @@ extension HomeREsModelMapper on HomeResModel {
             return e.toEntity();
           }).toList() ??
           [],
-      additions:
-          additions?.map((e) {
-            return e.toEntity();
-          }).toList() ??
-          [],
     );
   }
 }

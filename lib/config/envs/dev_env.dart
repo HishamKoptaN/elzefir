@@ -12,7 +12,7 @@ class DevEnv extends Env {
 
   @override
   DataSrcMode get dataSourceMode {
-    return .mock;
+    return .api;
   }
 
   @override
@@ -27,22 +27,17 @@ class DevEnv extends Env {
 
   @override
   String get baseUrl {
-    return 'https://';
+    return 'https://https://coral-shark-547480.hostingersite.com/api/user/';
   }
 
   @override
   String get authBaseUrl {
-    return 'https://';
+    return 'https://https://coral-shark-547480.hostingersite.com/auth/';
   }
 
   @override
   String get vapidKey {
     return '';
-  }
-
-  @override
-  String get dashboardUrl {
-    return 'https://';
   }
 
   @override

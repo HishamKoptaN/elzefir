@@ -4,12 +4,12 @@ import 'package:dart_pusher_channels/dart_pusher_channels.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:injectable/injectable.dart';
 import '../../config/env_config.dart';
-import '../di/dio/api_module.dart';
+import 'auth_storage_service.dart';
 
 @singleton
 class PusherService {
   PusherChannelsClient? _client;
-  final TokenStorage _tokenStorage;
+  final AuthStorageService _tokenStorage;
   final EventBus eventBus;
   PusherService(this._tokenStorage, this.eventBus);
   final StreamController<String> statusController =

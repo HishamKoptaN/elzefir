@@ -25,12 +25,12 @@ $UpdateEventCopyWith<UpdateEvent> get copyWith => _$UpdateEventCopyWithImpl<Upda
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateEvent&&const DeepCollectionEquality().equals(other.onComplete, onComplete));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateEvent&&(identical(other.onComplete, onComplete) || other.onComplete == onComplete));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(onComplete));
+int get hashCode => Object.hash(runtimeType,onComplete);
 
 @override
 String toString() {
@@ -62,9 +62,9 @@ class _$UpdateEventCopyWithImpl<$Res>
 
 /// Create a copy of UpdateEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? onComplete = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? onComplete = null,}) {
   return _then(_self.copyWith(
-onComplete: freezed == onComplete ? _self.onComplete : onComplete // ignore: cast_nullable_to_non_nullable
+onComplete: null == onComplete ? _self.onComplete : onComplete // ignore: cast_nullable_to_non_nullable
 as Completer,
   ));
 }
@@ -221,12 +221,12 @@ _$CheckCopyWith<_Check> get copyWith => __$CheckCopyWithImpl<_Check>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Check&&const DeepCollectionEquality().equals(other.onComplete, onComplete));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Check&&(identical(other.onComplete, onComplete) || other.onComplete == onComplete));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(onComplete));
+int get hashCode => Object.hash(runtimeType,onComplete);
 
 @override
 String toString() {
@@ -258,9 +258,9 @@ class __$CheckCopyWithImpl<$Res>
 
 /// Create a copy of UpdateEvent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? onComplete = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? onComplete = null,}) {
   return _then(_Check(
-onComplete: freezed == onComplete ? _self.onComplete : onComplete // ignore: cast_nullable_to_non_nullable
+onComplete: null == onComplete ? _self.onComplete : onComplete // ignore: cast_nullable_to_non_nullable
 as Completer,
   ));
 }

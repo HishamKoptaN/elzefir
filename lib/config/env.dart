@@ -1,8 +1,6 @@
 import 'package:dart_pusher_channels/dart_pusher_channels.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'env_config.dart';
-import 'models/pusher_config.dart';
 
 abstract class Env {
   String get webUrl;
@@ -11,7 +9,6 @@ abstract class Env {
   String get baseUrl;
   String get authBaseUrl;
   String get vapidKey;
-  String get dashboardUrl;
   bool get enableLogging;
   PusherChannelsOptions get pusherChannelsOptions;
 }

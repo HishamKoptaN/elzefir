@@ -94,7 +94,7 @@ class HomeMockDataSource {
           title: 'ماكريل سنجاري',
           description: 'سمك ماكريل سنجاري ',
           price: '170',
-          image: Assets.mock.kilos.mackerelSangari.path,
+          image: Assets.mock.kilos.singariMackerel.path,
           category: CategoryModel(id: 1, name: 'أسماك بالكيلو'),
         ),
         ProductModel(
@@ -126,7 +126,7 @@ class HomeMockDataSource {
           title: 'فيليه ابيض مشوي',
           description: 'فيليه ابيض مشوي',
           price: '160',
-          image: Assets.mock.kilos.grilledFillet.path,
+          image: Assets.mock.kilos.grilledWhiteFillet.path,
           category: CategoryModel(id: 1, name: 'أسماك بالكيلو'),
         ),
         ProductModel(
@@ -134,7 +134,7 @@ class HomeMockDataSource {
           title: 'فيليه ابيض مقلي',
           description: 'فيليه ابيض مقلي',
           price: '170',
-          image: Assets.mock.kilos.friedFishFillet.path,
+          image: Assets.mock.kilos.friedWhiteFillet.path,
           category: CategoryModel(id: 1, name: 'أسماك بالكيلو'),
         ),
         ProductModel(
@@ -150,7 +150,7 @@ class HomeMockDataSource {
           title: 'فيليه احمر مقلي',
           description: 'فيليه احمر مقلي',
           price: '180',
-          image: Assets.mock.kilos.friedFishFillet.path,
+          image: Assets.mock.kilos.friedRedFillet.path,
           category: CategoryModel(id: 1, name: 'أسماك بالكيلو'),
         ),
         ProductModel(
@@ -230,7 +230,7 @@ class HomeMockDataSource {
           title: 'جمبري طاجن',
           description: 'جمبري طاجن',
           price: '500',
-          image: Assets.mock.kilos.shrimpTagine.path,
+          image: Assets.mock.kilos.tagineShrimp.path,
           category: CategoryModel(id: 1, name: 'أسماك بالكيلو'),
         ),
         ProductModel(
@@ -246,7 +246,7 @@ class HomeMockDataSource {
           title: 'وجبة بوري مقلي',
           description: '1 سمكة بوري 500 جرام + أرز + سلطة طحينة + عيش',
           price: '100',
-          image: Assets.mock.meals.friedMulletMeal.path,
+          image: Assets.mock.meals.friedMullet.path,
           category: CategoryModel(id: 2, name: 'الوجبات'),
         ),
         ProductModel(
@@ -254,7 +254,7 @@ class HomeMockDataSource {
           title: 'وجبة بلطي مشوي',
           description: '1 سمكة بلطي 500 جرام + أرز + سلطة طحينة + عيش',
           price: '75',
-          image: Assets.mock.meals.grilledTilapiaMeal.path,
+          image: Assets.mock.meals.grilledTilapia.path,
           category: CategoryModel(id: 2, name: 'الوجبات'),
         ),
         ProductModel(
@@ -262,7 +262,7 @@ class HomeMockDataSource {
           title: 'وجبة بلطي مقلي',
           description: '1 سمكة بلطي 500 جرام + أرز + سلطة طحينة + عيش',
           price: '80',
-          image: Assets.mock.meals.friedTilapiaMeal.path,
+          image: Assets.mock.meals.friedTilapia.path,
           category: CategoryModel(id: 2, name: 'الوجبات'),
         ),
         ProductModel(
@@ -314,11 +314,19 @@ class HomeMockDataSource {
           category: CategoryModel(id: 3, name: 'السندوتشات'),
         ),
         ProductModel(
-          name: 'شوربة سي فود(حمراء-بالكريمة)',
+          name: 'شوربة سي فود(حمراء)',
           title: 'شوربة سي فود',
           description: 'شوربة سي فود',
           price: '70',
-          image: Assets.mock.sideDishes.seafoodSoup.path,
+          image: Assets.mock.sideDishes.redSeafoodSoup.path,
+          category: CategoryModel(id: 3, name: 'اطباق جانبية'),
+        ),
+        ProductModel(
+          name: 'شوربة سي فود(بالكريمة)',
+          title: 'شوربة سي فود',
+          description: 'شوربة سي فود',
+          price: '70',
+          image: Assets.mock.sideDishes.creamySeafoodSoup.path,
           category: CategoryModel(id: 3, name: 'اطباق جانبية'),
         ),
         ProductModel(
@@ -334,7 +342,7 @@ class HomeMockDataSource {
           title: 'ارز بالجمبري ',
           description: 'ارز بالجمبري ',
           price: '130',
-          image: Assets.mock.sideDishes.rice.path,
+          image: Assets.mock.sideDishes.shrimpRice.path,
           category: CategoryModel(id: 3, name: 'اطباق جانبية'),
         ),
         ProductModel(
@@ -344,40 +352,6 @@ class HomeMockDataSource {
           price: '30',
           image: Assets.mock.sideDishes.sayadiehRice.path,
           category: CategoryModel(id: 3, name: 'اطباق جانبية'),
-        ),
-      ],
-      additions: [
-        AdditionModel(
-          id: 1,
-          name: 'طحينة ',
-          title: 'طحينة ',
-          description: 'طحينة ',
-          price: '١٠',
-          image: Assets.mock.tahini.path,
-        ),
-        AdditionModel(
-          id: 2,
-          name: 'سلطة',
-          title: 'سلطة',
-          description: 'سلطة',
-          price: '١٠',
-          image: Assets.mock.saled.path,
-        ),
-        AdditionModel(
-          id: 3,
-          name: 'أرز',
-          title: 'أرز',
-          description: 'أرز',
-          price: '١٠',
-          image: Assets.mock.saled.path,
-        ),
-        AdditionModel(
-          id: 4,
-          name: 'مكرونة',
-          title: 'مكرونة',
-          description: 'مكرونة',
-          price: '١٠',
-          image: Assets.mock.saled.path,
         ),
       ],
     );

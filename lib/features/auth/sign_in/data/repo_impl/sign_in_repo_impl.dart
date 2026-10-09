@@ -30,7 +30,6 @@ class SignInRepoImpl implements SignInRepo {
         key: SharedPrefKeys.rememberMe,
         value: signIn.rememberMe,
       );
-      await getIt<AuthInterceptor>().updateToken();
       return ApiResult.success(data: null);
     } catch (e, s) {
       return ApiResult.failure(errorInfo: ErrorHandler.handle(e, s));

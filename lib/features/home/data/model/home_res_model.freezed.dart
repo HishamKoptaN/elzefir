@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$HomeResModel {
 
-@JsonKey(name: 'offer_image') String? get offerImage; List<CategoryModel>? get categories; List<ProductModel>? get products; List<AdditionModel>? get additions;
+@JsonKey(name: 'offer_image') String? get offerImage; List<CategoryModel>? get categories; List<ProductModel>? get products;
 /// Create a copy of HomeResModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $HomeResModelCopyWith<HomeResModel> get copyWith => _$HomeResModelCopyWithImpl<H
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeResModel&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other.categories, categories)&&const DeepCollectionEquality().equals(other.products, products)&&const DeepCollectionEquality().equals(other.additions, additions));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeResModel&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other.categories, categories)&&const DeepCollectionEquality().equals(other.products, products));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(categories),const DeepCollectionEquality().hash(products),const DeepCollectionEquality().hash(additions));
+int get hashCode => Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(categories),const DeepCollectionEquality().hash(products));
 
 @override
 String toString() {
-  return 'HomeResModel(offerImage: $offerImage, categories: $categories, products: $products, additions: $additions)';
+  return 'HomeResModel(offerImage: $offerImage, categories: $categories, products: $products)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $HomeResModelCopyWith<$Res>  {
   factory $HomeResModelCopyWith(HomeResModel value, $Res Function(HomeResModel) _then) = _$HomeResModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'offer_image') String? offerImage, List<CategoryModel>? categories, List<ProductModel>? products, List<AdditionModel>? additions
+@JsonKey(name: 'offer_image') String? offerImage, List<CategoryModel>? categories, List<ProductModel>? products
 });
 
 
@@ -65,13 +65,12 @@ class _$HomeResModelCopyWithImpl<$Res>
 
 /// Create a copy of HomeResModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? offerImage = freezed,Object? categories = freezed,Object? products = freezed,Object? additions = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? offerImage = freezed,Object? categories = freezed,Object? products = freezed,}) {
   return _then(_self.copyWith(
 offerImage: freezed == offerImage ? _self.offerImage : offerImage // ignore: cast_nullable_to_non_nullable
 as String?,categories: freezed == categories ? _self.categories : categories // ignore: cast_nullable_to_non_nullable
 as List<CategoryModel>?,products: freezed == products ? _self.products : products // ignore: cast_nullable_to_non_nullable
-as List<ProductModel>?,additions: freezed == additions ? _self.additions : additions // ignore: cast_nullable_to_non_nullable
-as List<AdditionModel>?,
+as List<ProductModel>?,
   ));
 }
 
@@ -156,10 +155,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'offer_image')  String? offerImage,  List<CategoryModel>? categories,  List<ProductModel>? products,  List<AdditionModel>? additions)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'offer_image')  String? offerImage,  List<CategoryModel>? categories,  List<ProductModel>? products)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomeResModel() when $default != null:
-return $default(_that.offerImage,_that.categories,_that.products,_that.additions);case _:
+return $default(_that.offerImage,_that.categories,_that.products);case _:
   return orElse();
 
 }
@@ -177,10 +176,10 @@ return $default(_that.offerImage,_that.categories,_that.products,_that.additions
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'offer_image')  String? offerImage,  List<CategoryModel>? categories,  List<ProductModel>? products,  List<AdditionModel>? additions)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'offer_image')  String? offerImage,  List<CategoryModel>? categories,  List<ProductModel>? products)  $default,) {final _that = this;
 switch (_that) {
 case _HomeResModel():
-return $default(_that.offerImage,_that.categories,_that.products,_that.additions);case _:
+return $default(_that.offerImage,_that.categories,_that.products);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +196,10 @@ return $default(_that.offerImage,_that.categories,_that.products,_that.additions
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'offer_image')  String? offerImage,  List<CategoryModel>? categories,  List<ProductModel>? products,  List<AdditionModel>? additions)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'offer_image')  String? offerImage,  List<CategoryModel>? categories,  List<ProductModel>? products)?  $default,) {final _that = this;
 switch (_that) {
 case _HomeResModel() when $default != null:
-return $default(_that.offerImage,_that.categories,_that.products,_that.additions);case _:
+return $default(_that.offerImage,_that.categories,_that.products);case _:
   return null;
 
 }
@@ -212,7 +211,7 @@ return $default(_that.offerImage,_that.categories,_that.products,_that.additions
 @JsonSerializable()
 
 class _HomeResModel implements HomeResModel {
-  const _HomeResModel({@JsonKey(name: 'offer_image') this.offerImage, final  List<CategoryModel>? categories = const [], final  List<ProductModel>? products = const [], final  List<AdditionModel>? additions = const []}): _categories = categories,_products = products,_additions = additions;
+  const _HomeResModel({@JsonKey(name: 'offer_image') this.offerImage, final  List<CategoryModel>? categories = const [], final  List<ProductModel>? products = const []}): _categories = categories,_products = products;
   factory _HomeResModel.fromJson(Map<String, dynamic> json) => _$HomeResModelFromJson(json);
 
 @override@JsonKey(name: 'offer_image') final  String? offerImage;
@@ -234,15 +233,6 @@ class _HomeResModel implements HomeResModel {
   return EqualUnmodifiableListView(value);
 }
 
- final  List<AdditionModel>? _additions;
-@override@JsonKey() List<AdditionModel>? get additions {
-  final value = _additions;
-  if (value == null) return null;
-  if (_additions is EqualUnmodifiableListView) return _additions;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
-}
-
 
 /// Create a copy of HomeResModel
 /// with the given fields replaced by the non-null parameter values.
@@ -257,16 +247,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeResModel&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other._categories, _categories)&&const DeepCollectionEquality().equals(other._products, _products)&&const DeepCollectionEquality().equals(other._additions, _additions));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeResModel&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other._categories, _categories)&&const DeepCollectionEquality().equals(other._products, _products));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(_categories),const DeepCollectionEquality().hash(_products),const DeepCollectionEquality().hash(_additions));
+int get hashCode => Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(_categories),const DeepCollectionEquality().hash(_products));
 
 @override
 String toString() {
-  return 'HomeResModel(offerImage: $offerImage, categories: $categories, products: $products, additions: $additions)';
+  return 'HomeResModel(offerImage: $offerImage, categories: $categories, products: $products)';
 }
 
 
@@ -277,7 +267,7 @@ abstract mixin class _$HomeResModelCopyWith<$Res> implements $HomeResModelCopyWi
   factory _$HomeResModelCopyWith(_HomeResModel value, $Res Function(_HomeResModel) _then) = __$HomeResModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'offer_image') String? offerImage, List<CategoryModel>? categories, List<ProductModel>? products, List<AdditionModel>? additions
+@JsonKey(name: 'offer_image') String? offerImage, List<CategoryModel>? categories, List<ProductModel>? products
 });
 
 
@@ -294,13 +284,12 @@ class __$HomeResModelCopyWithImpl<$Res>
 
 /// Create a copy of HomeResModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? offerImage = freezed,Object? categories = freezed,Object? products = freezed,Object? additions = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? offerImage = freezed,Object? categories = freezed,Object? products = freezed,}) {
   return _then(_HomeResModel(
 offerImage: freezed == offerImage ? _self.offerImage : offerImage // ignore: cast_nullable_to_non_nullable
 as String?,categories: freezed == categories ? _self._categories : categories // ignore: cast_nullable_to_non_nullable
 as List<CategoryModel>?,products: freezed == products ? _self._products : products // ignore: cast_nullable_to_non_nullable
-as List<ProductModel>?,additions: freezed == additions ? _self._additions : additions // ignore: cast_nullable_to_non_nullable
-as List<AdditionModel>?,
+as List<ProductModel>?,
   ));
 }
 

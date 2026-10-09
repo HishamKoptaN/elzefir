@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/analytics/analytics_service.dart';
 import '../../../../../core/di/dependency_injection.dart';
+import '../../../../../core/responsive/responsive_extensions.dart';
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/custom_image.dart';
@@ -75,7 +76,11 @@ class _ProductCardState extends State<ProductCard> {
                 children: [
                   ClipRRect(
                     child: SizedBox(
-                      height: 280.h,
+                      height: context.responsive(
+                        mobile: 280.h,
+                        tablet: 319.h,
+                        desktop: 295.h,
+                      ),
                       width: .infinity,
                       child: CustomImage(
                         image: widget.product.image,
@@ -113,7 +118,7 @@ class _ProductCardState extends State<ProductCard> {
                   children: [
                     Expanded(
                       child: Text(
-                        widget.product.title,
+                        widget.product.name,
                         maxLines: 2,
                         style: context.textTheme.titleLarge?.copyWith(
                           color: Color(0xFF28180D),
@@ -125,9 +130,8 @@ class _ProductCardState extends State<ProductCard> {
                   ],
                 ),
                 SizedBox(height: 8.h),
-                SizedBox(
-                  width: .infinity,
-                  child: Text(
+                if (widget.product.description.isNotEmpty)
+                  Text(
                     widget.product.description,
                     style: context.textTheme.bodySmall?.copyWith(
                       color: Color(0xFF42474D),
@@ -135,7 +139,6 @@ class _ProductCardState extends State<ProductCard> {
                     textAlign: .right,
                     maxLines: 2,
                     overflow: .ellipsis,
-                  ),
                 ),
                 PriceWidget(price: widget.product.price),
               ],
