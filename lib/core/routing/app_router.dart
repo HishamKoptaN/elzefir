@@ -1,11 +1,14 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 import '../../features/auth/auth/present/views/auth_view.dart';
 import '../../features/auth/sign_in/present/views/sign_in_view.dart';
 import '../../features/home/present/home.dart';
 import '../../features/orders/present/views/orders_view.dart';
+import '../../test.dart';
 import '../globals/global_variable.dart';
 import '../di/dependency_injection.dart';
 import 'config/route_config.dart';
@@ -48,7 +51,7 @@ class GoRouterRefreshListenable extends ChangeNotifier {
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: '/${AuthView.routeName}',
+    initialLocation: '/${AdsView.routeName}',
     refreshListenable: GoRouterRefreshListenable([
       GoRouterRefreshStream(getIt<AuthBloc>().stream),
     ]),
@@ -58,20 +61,20 @@ class AppRouter {
     redirect: (context, state) {
       return getIt<AuthBloc>().state.when(
         init: () {
-          return '/${AuthView.routeName}';
+          return '/${AdsView.routeName}';
         },
         loading: () {
-          return '/${AuthView.routeName}';
+          return '/${AdsView.routeName}';
         },
         authenticated: () {
           if (state.matchedLocation == '/${AuthView.routeName}') {
-            return '/${HomeView.routeName}';
+            return '/${AdsView.routeName}';
           }
           return null;
         },
         unauthenticated: () {
           if (state.matchedLocation == '/${AuthView.routeName}') {
-            return '/${HomeView.routeName}';
+            return '/${AdsView.routeName}';
           }
           return null;
         },
