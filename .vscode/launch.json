@@ -2,23 +2,6 @@
   "version": "0.3.0",
   "configurations": [
     {
-      "name": "Flutter Local (Web 🌐)",
-      "type": "dart",
-      "request": "launch",
-      "preLaunchTask": "Start Laravel Server",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "deviceId": "chrome",
-      "args": [
-        "--dart-define=ENV=local",
-        "--web-port",
-        "8080",
-        "--web-hostname",
-        "localhost",
-        "--web-browser-flag=--disable-features=PrivacySandboxAdsApis"
-      ],
-    },
-    {
       "name": "Flutter Dev (Web 🌐)",
       "type": "dart",
       "request": "launch",
@@ -33,24 +16,6 @@
         "--web-browser-flag=--disable-features=PrivacySandboxAdsApis"
       ],
       "deviceId": "chrome"
-    },
-    {
-      "name": "Flutter Local (Android 📱)",
-      "type": "dart",
-      "request": "launch",
-      "preLaunchTask": "Prepare Android Local Env",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "args": [
-        "--flavor",
-        "local",
-        "--dart-define=ENV=local",
-        "--track-widget-creation",
-        "--no-enable-impeller"
-      ],
-      "deviceId": "CPH2325",
-      "attachToExistingApp": false,
-      "showDebuggerOnStart": true
     },
     {
       "name": "Flutter Dev (Android 📱)",
@@ -69,26 +34,5 @@
       "attachToExistingApp": false,
       "showDebuggerOnStart": true
     },
-    {
-      "name": "Flutter Dev (Linux 💻)",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "args": [
-        "--dart-define=ENV=dev"
-      ]
-    },
-    {
-      "name": "Flutter Dev (Windows 🖥️)",
-      "type": "dart",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "flutterMode": "debug",
-      "args": [
-        "--dart-define=ENV=dev"
-      ]
-    },
-   
   ]
 }
