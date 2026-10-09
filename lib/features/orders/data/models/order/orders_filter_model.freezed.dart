@@ -235,7 +235,7 @@ return $default(_that.searchQuery,_that.fromDate,_that.toDate,_that.unifiedValue
 
 
 class _OrdersFilterModel extends OrdersFilterModel {
-  const _OrdersFilterModel({this.searchQuery, this.fromDate, this.toDate, final  List<int> unifiedValueIds = const [], this.selectedStatus, this.product}): _unifiedValueIds = unifiedValueIds,super._();
+  const _OrdersFilterModel({this.searchQuery, this.fromDate, this.toDate,   List<int> unifiedValueIds = const [], this.selectedStatus, this.product}): _unifiedValueIds = unifiedValueIds,super._();
   
 
 @override final  String? searchQuery;

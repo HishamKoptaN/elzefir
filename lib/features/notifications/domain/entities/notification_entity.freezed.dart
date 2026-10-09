@@ -207,7 +207,7 @@ return $default(_that.notifications,_that.meta);case _:
 
 
 class _NotificationsResEntity implements NotificationsResEntity {
-  const _NotificationsResEntity({final  List<NotificationEntity> notifications = const [], this.meta}): _notifications = notifications;
+  const _NotificationsResEntity({  List<NotificationEntity> notifications = const [], this.meta}): _notifications = notifications;
   
 
  final  List<NotificationEntity> _notifications;
@@ -480,7 +480,7 @@ return $default(_that.id,_that.title,_that.body,_that.data,_that.targetUrl,_that
 
 
 class _NotificationEntity implements NotificationEntity {
-  const _NotificationEntity({required this.id, this.title = '', this.body = '', final  Map<String, dynamic> data = const <String, dynamic>{}, this.targetUrl = '', this.createdAt = '', this.imageUrl = '', this.read = false, this.type = NotificationType.info}): _data = data;
+  const _NotificationEntity({required this.id, this.title = '', this.body = '',   Map<String, dynamic> data = const <String, dynamic>{}, this.targetUrl = '', this.createdAt = '', this.imageUrl = '', this.read = false, this.type = NotificationType.info}): _data = data;
   
 
 @override final  String id;

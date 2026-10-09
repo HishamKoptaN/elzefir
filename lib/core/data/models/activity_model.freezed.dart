@@ -218,7 +218,7 @@ return $default(_that.type,_that.action,_that.id,_that.title,_that.description,_
 @JsonSerializable()
 
 class _ActivityModel implements ActivityModel {
-  const _ActivityModel({@JsonKey(name: "type") required this.type, @JsonKey(name: "action") required this.action, @JsonKey(name: "id") required this.id, @JsonKey(name: "title") required this.title, @JsonKey(name: "description") required this.description, @JsonKey(name: "data") required final  Map<String, dynamic>? data, @JsonKey(name: "timestamp") required this.timestamp, @JsonKey(name: "created_at") required this.createdAt, @JsonKey(name: "icon") required this.icon, @JsonKey(name: "color") required this.color}): _data = data;
+  const _ActivityModel({@JsonKey(name: "type") required this.type, @JsonKey(name: "action") required this.action, @JsonKey(name: "id") required this.id, @JsonKey(name: "title") required this.title, @JsonKey(name: "description") required this.description, @JsonKey(name: "data") required   Map<String, dynamic>? data, @JsonKey(name: "timestamp") required this.timestamp, @JsonKey(name: "created_at") required this.createdAt, @JsonKey(name: "icon") required this.icon, @JsonKey(name: "color") required this.color}): _data = data;
   factory _ActivityModel.fromJson(Map<String, dynamic> json) => _$ActivityModelFromJson(json);
 
 @override@JsonKey(name: "type") final  String? type;

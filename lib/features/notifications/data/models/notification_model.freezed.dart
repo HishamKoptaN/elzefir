@@ -222,7 +222,7 @@ return $default(_that.notifications,_that.meta);case _:
 @JsonSerializable()
 
 class _NotificationsResModel implements NotificationsResModel {
-  const _NotificationsResModel({@JsonKey(name: 'data') final  List<NotificationModel>? notifications, @JsonKey(name: 'meta') this.meta}): _notifications = notifications;
+  const _NotificationsResModel({@JsonKey(name: 'data')   List<NotificationModel>? notifications, @JsonKey(name: 'meta') this.meta}): _notifications = notifications;
   factory _NotificationsResModel.fromJson(Map<String, dynamic> json) => _$NotificationsResModelFromJson(json);
 
  final  List<NotificationModel>? _notifications;
@@ -514,7 +514,7 @@ return $default(_that.id,_that.title,_that.body,_that.data,_that.type,_that.read
 @JsonSerializable()
 
 class _NotificationModel implements NotificationModel {
-  const _NotificationModel({@JsonKey(name: 'id') this.id, @JsonKey(name: 'title') this.title, @JsonKey(name: 'body') this.body, final  Map<String, dynamic> data = const <String, dynamic>{}, @JsonKey(name: 'type') this.type, @JsonKey(name: 'read_at') this.readAt, @JsonKey(name: 'created_at') this.createdAt, @JsonKey(name: 'updated_at') this.updatedAt}): _data = data;
+  const _NotificationModel({@JsonKey(name: 'id') this.id, @JsonKey(name: 'title') this.title, @JsonKey(name: 'body') this.body,   Map<String, dynamic> data = const <String, dynamic>{}, @JsonKey(name: 'type') this.type, @JsonKey(name: 'read_at') this.readAt, @JsonKey(name: 'created_at') this.createdAt, @JsonKey(name: 'updated_at') this.updatedAt}): _data = data;
   factory _NotificationModel.fromJson(Map<String, dynamic> json) => _$NotificationModelFromJson(json);
 
 @override@JsonKey(name: 'id') final  int? id;

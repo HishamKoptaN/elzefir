@@ -521,7 +521,7 @@ String toString() {
 
 
 class _Loaded implements NotificationsState {
-  const _Loaded({final  List<NotificationEntity>? notifications, this.unreadCount}): _notifications = notifications;
+  const _Loaded({  List<NotificationEntity>? notifications, this.unreadCount}): _notifications = notifications;
   
 
  final  List<NotificationEntity>? _notifications;

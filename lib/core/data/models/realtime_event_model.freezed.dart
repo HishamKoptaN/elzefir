@@ -243,7 +243,7 @@ return $default(_that.id,_that.orderNum,_that.name,_that.status,_that.totalAmoun
 @JsonSerializable()
 
 class _RealtimeEventModel implements RealtimeEventModel {
-  const _RealtimeEventModel({@JsonKey(name: "id") required this.id, @JsonKey(name: "order_num") required this.orderNum, @JsonKey(name: "name") required this.name, @JsonKey(name: "status") required this.status, @JsonKey(name: "total_amount") required this.totalAmount, @JsonKey(name: "country_code") required this.countryCode, @JsonKey(name: "created_at") required this.createdAt, @JsonKey(name: "updated_at") required this.updatedAt, @JsonKey(name: "package") required this.package, @JsonKey(name: "distribution_country") required this.distributionCountry, @JsonKey(name: "changes") required final  Map<String, dynamic>? changes}): _changes = changes;
+  const _RealtimeEventModel({@JsonKey(name: "id") required this.id, @JsonKey(name: "order_num") required this.orderNum, @JsonKey(name: "name") required this.name, @JsonKey(name: "status") required this.status, @JsonKey(name: "total_amount") required this.totalAmount, @JsonKey(name: "country_code") required this.countryCode, @JsonKey(name: "created_at") required this.createdAt, @JsonKey(name: "updated_at") required this.updatedAt, @JsonKey(name: "package") required this.package, @JsonKey(name: "distribution_country") required this.distributionCountry, @JsonKey(name: "changes") required   Map<String, dynamic>? changes}): _changes = changes;
   factory _RealtimeEventModel.fromJson(Map<String, dynamic> json) => _$RealtimeEventModelFromJson(json);
 
 @override@JsonKey(name: "id") final  int? id;

@@ -916,7 +916,7 @@ String toString() {
 
 
 class _Loaded implements OrdersState {
-  const _Loaded({final  List<OrderEntity>? orders, this.meta, this.isSearching, this.ordersFilter, this.selectAll = true, this.selectedCount = null}): _orders = orders;
+  const _Loaded({  List<OrderEntity>? orders, this.meta, this.isSearching, this.ordersFilter, this.selectAll = true, this.selectedCount = null}): _orders = orders;
   
 
  final  List<OrderEntity>? _orders;

@@ -423,7 +423,7 @@ String toString() {
 
 
 class _Loaded implements OrdersStatusesState {
-  const _Loaded({required final  List<OrderStatusEntity>? ordersStatuses, this.loading}): _ordersStatuses = ordersStatuses;
+  const _Loaded({required   List<OrderStatusEntity>? ordersStatuses, this.loading}): _ordersStatuses = ordersStatuses;
   
 
  final  List<OrderStatusEntity>? _ordersStatuses;

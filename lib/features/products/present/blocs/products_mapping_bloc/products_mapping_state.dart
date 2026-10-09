@@ -4,7 +4,7 @@ part of 'products_mapping_bloc.dart';
 class ProductsMappingState with _$ProductsMappingState {
   const factory ProductsMappingState.initial() = _Initial;
   const factory ProductsMappingState.loaded({
-    required List<ProductModel>? products,
+    required List<ProductModel> products,
   }) = _Loaded;
   const factory ProductsMappingState.loading() = _Loading;
   const factory ProductsMappingState.success() = _Success;

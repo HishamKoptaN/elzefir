@@ -487,7 +487,7 @@ String toString() {
 
 
 class _Loaded implements FiltersState {
-  const _Loaded({final  List<FilterModel>? filters}): _filters = filters;
+  const _Loaded({  List<FilterModel>? filters}): _filters = filters;
   
 
  final  List<FilterModel>? _filters;

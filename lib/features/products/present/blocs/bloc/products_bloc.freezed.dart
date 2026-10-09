@@ -423,7 +423,7 @@ String toString() {
 
 
 class _Loaded implements ProductsState {
-  const _Loaded({required final  List<ProductModel>? products}): _products = products;
+  const _Loaded({required   List<ProductModel>? products}): _products = products;
   
 
  final  List<ProductModel>? _products;

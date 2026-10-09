@@ -211,7 +211,7 @@ return $default(_that.offerImage,_that.categories,_that.products);case _:
 @JsonSerializable()
 
 class _HomeResModel implements HomeResModel {
-  const _HomeResModel({@JsonKey(name: 'offer_image') this.offerImage, final  List<CategoryModel>? categories = const [], final  List<ProductModel>? products = const []}): _categories = categories,_products = products;
+  const _HomeResModel({@JsonKey(name: 'offer_image') this.offerImage,   List<CategoryModel>? categories = const [],   List<ProductModel>? products = const []}): _categories = categories,_products = products;
   factory _HomeResModel.fromJson(Map<String, dynamic> json) => _$HomeResModelFromJson(json);
 
 @override@JsonKey(name: 'offer_image') final  String? offerImage;

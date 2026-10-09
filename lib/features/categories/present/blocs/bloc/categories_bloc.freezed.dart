@@ -423,7 +423,7 @@ String toString() {
 
 
 class _Loaded implements CategoriesState {
-  const _Loaded({required final  List<CategoryEntity>? categories, this.loading}): _categories = categories;
+  const _Loaded({required   List<CategoryEntity>? categories, this.loading}): _categories = categories;
   
 
  final  List<CategoryEntity>? _categories;

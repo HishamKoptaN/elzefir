@@ -207,7 +207,7 @@ return $default(_that.orders,_that.meta);case _:
 
 
 class _OrdersResEntity implements OrdersResEntity {
-  const _OrdersResEntity({final  List<OrderEntity>? orders, this.meta}): _orders = orders;
+  const _OrdersResEntity({  List<OrderEntity>? orders, this.meta}): _orders = orders;
   
 
  final  List<OrderEntity>? _orders;
@@ -528,7 +528,7 @@ return $default(_that.id,_that.referenceId,_that.orderStatus,_that.sallaOrderIte
 
 
 class _OrderEntity implements OrderEntity {
-  const _OrderEntity({this.id, this.referenceId, this.orderStatus, final  List<SallaOrderItemEntity>? sallaOrderItems, this.customer, this.createdAt, this.updatedAt}): _sallaOrderItems = sallaOrderItems;
+  const _OrderEntity({this.id, this.referenceId, this.orderStatus,   List<SallaOrderItemEntity>? sallaOrderItems, this.customer, this.createdAt, this.updatedAt}): _sallaOrderItems = sallaOrderItems;
   
 
 @override final  String? id;
@@ -1451,7 +1451,7 @@ return $default(_that.id,_that.printedName,_that.productName,_that.quantity,_tha
 
 
 class _SallaOrderItemEntity implements SallaOrderItemEntity {
-  const _SallaOrderItemEntity({this.id, this.printedName, this.productName, this.quantity, this.distributionCountry, final  List<UnitEntity>? units, this.additions}): _units = units;
+  const _SallaOrderItemEntity({this.id, this.printedName, this.productName, this.quantity, this.distributionCountry,   List<UnitEntity>? units, this.additions}): _units = units;
   
 
 @override final  String? id;

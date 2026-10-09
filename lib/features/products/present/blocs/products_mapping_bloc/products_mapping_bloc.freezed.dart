@@ -323,7 +323,7 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( List<ProductModel>? products)?  loaded,TResult Function()?  loading,TResult Function()?  success,TResult Function( ErrorInfo apiErrorModel)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( List<ProductModel> products)?  loaded,TResult Function()?  loading,TResult Function()?  success,TResult Function( ErrorInfo apiErrorModel)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loaded() when loaded != null:
@@ -348,7 +348,7 @@ return failure(_that.apiErrorModel);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( List<ProductModel>? products)  loaded,required TResult Function()  loading,required TResult Function()  success,required TResult Function( ErrorInfo apiErrorModel)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( List<ProductModel> products)  loaded,required TResult Function()  loading,required TResult Function()  success,required TResult Function( ErrorInfo apiErrorModel)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loaded():
@@ -372,7 +372,7 @@ return failure(_that.apiErrorModel);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( List<ProductModel>? products)?  loaded,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( ErrorInfo apiErrorModel)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( List<ProductModel> products)?  loaded,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( ErrorInfo apiErrorModel)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loaded() when loaded != null:
@@ -423,16 +423,14 @@ String toString() {
 
 
 class _Loaded implements ProductsMappingState {
-  const _Loaded({required final  List<ProductModel>? products}): _products = products;
+  const _Loaded({required   List<ProductModel> products}): _products = products;
   
 
- final  List<ProductModel>? _products;
- List<ProductModel>? get products {
-  final value = _products;
-  if (value == null) return null;
+ final  List<ProductModel> _products;
+ List<ProductModel> get products {
   if (_products is EqualUnmodifiableListView) return _products;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
+  return EqualUnmodifiableListView(_products);
 }
 
 
@@ -466,7 +464,7 @@ abstract mixin class _$LoadedCopyWith<$Res> implements $ProductsMappingStateCopy
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
 @useResult
 $Res call({
- List<ProductModel>? products
+ List<ProductModel> products
 });
 
 
@@ -483,10 +481,10 @@ class __$LoadedCopyWithImpl<$Res>
 
 /// Create a copy of ProductsMappingState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? products = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? products = null,}) {
   return _then(_Loaded(
-products: freezed == products ? _self._products : products // ignore: cast_nullable_to_non_nullable
-as List<ProductModel>?,
+products: null == products ? _self._products : products // ignore: cast_nullable_to_non_nullable
+as List<ProductModel>,
   ));
 }
 

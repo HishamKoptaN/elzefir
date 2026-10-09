@@ -212,7 +212,7 @@ return $default(_that.id,_that.name,_that.type,_that.values);case _:
 @JsonSerializable()
 
 class _FilterModel implements FilterModel {
-  const _FilterModel({this.id, this.name, this.type, final  List<ValueModel>? values}): _values = values;
+  const _FilterModel({this.id, this.name, this.type,   List<ValueModel>? values}): _values = values;
   factory _FilterModel.fromJson(Map<String, dynamic> json) => _$FilterModelFromJson(json);
 
 @override final  int? id;

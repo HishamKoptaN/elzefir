@@ -222,7 +222,7 @@ return $default(_that.orders,_that.meta);case _:
 @JsonSerializable()
 
 class _OrdersResModel implements OrdersResModel {
-  const _OrdersResModel({@JsonKey(name: "data") final  List<OrderModel>? orders, @JsonKey(name: "meta") this.meta}): _orders = orders;
+  const _OrdersResModel({@JsonKey(name: "data")   List<OrderModel>? orders, @JsonKey(name: "meta") this.meta}): _orders = orders;
   factory _OrdersResModel.fromJson(Map<String, dynamic> json) => _$OrdersResModelFromJson(json);
 
  final  List<OrderModel>? _orders;
@@ -537,7 +537,7 @@ return $default(_that.id,_that.referenceId,_that.sallaOrderStatus,_that.sallaOrd
 @JsonSerializable()
 
 class _OrderModel implements OrderModel {
-  const _OrderModel({@JsonKey(name: "id") this.id, @JsonKey(name: "reference_id") this.referenceId, @JsonKey(name: "salla_order_status") this.sallaOrderStatus, @JsonKey(name: "salla_order_items") final  List<SallaOrderItemModel>? sallaOrderItems, this.customer, @JsonKey(name: "created_at") this.createdAt, @JsonKey(name: "updated_at") this.updatedAt}): _sallaOrderItems = sallaOrderItems;
+  const _OrderModel({@JsonKey(name: "id") this.id, @JsonKey(name: "reference_id") this.referenceId, @JsonKey(name: "salla_order_status") this.sallaOrderStatus, @JsonKey(name: "salla_order_items")   List<SallaOrderItemModel>? sallaOrderItems, this.customer, @JsonKey(name: "created_at") this.createdAt, @JsonKey(name: "updated_at") this.updatedAt}): _sallaOrderItems = sallaOrderItems;
   factory _OrderModel.fromJson(Map<String, dynamic> json) => _$OrderModelFromJson(json);
 
 @override@JsonKey(name: "id") final  int? id;
@@ -1118,7 +1118,7 @@ return $default(_that.id,_that.productName,_that.printedName,_that.units,_that.d
 @JsonSerializable()
 
 class _SallaOrderItemModel implements SallaOrderItemModel {
-  const _SallaOrderItemModel({this.id, this.productName, @JsonKey(name: "printed_name") this.printedName, final  List<UnitModel>? units, @JsonKey(name: "distribution_country") this.distributionCountry, this.additions}): _units = units;
+  const _SallaOrderItemModel({this.id, this.productName, @JsonKey(name: "printed_name") this.printedName,   List<UnitModel>? units, @JsonKey(name: "distribution_country") this.distributionCountry, this.additions}): _units = units;
   factory _SallaOrderItemModel.fromJson(Map<String, dynamic> json) => _$SallaOrderItemModelFromJson(json);
 
 @override final  int? id;

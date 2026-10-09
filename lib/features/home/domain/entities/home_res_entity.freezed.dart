@@ -209,7 +209,7 @@ return $default(_that.offerImage,_that.categories,_that.products,_that.additions
 
 
 class _HomeResEntity implements HomeResEntity {
-  const _HomeResEntity({this.offerImage, final  List<CategoryEntity> categories = const [], final  List<ProductEntity> products = const [], final  List<AdditionEntity> additions = const []}): _categories = categories,_products = products,_additions = additions;
+  const _HomeResEntity({this.offerImage,   List<CategoryEntity> categories = const [],   List<ProductEntity> products = const [],   List<AdditionEntity> additions = const []}): _categories = categories,_products = products,_additions = additions;
   
 
 @override final  String? offerImage;
