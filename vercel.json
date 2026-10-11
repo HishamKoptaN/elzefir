@@ -1,8 +1,9 @@
 {
-    "rewrites": [
+    "redirects": [
         {
             "source": "/(.*)",
-            "destination": "https://elzefir-dbb8d.web.app/$1"
+            "destination": "https://elzefir-dbb8d.web.app/home",
+            "permanent": false
         }
     ]
 }
