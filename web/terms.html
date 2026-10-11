@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الشروط والأحكام | مطعم أسماك الزفر</title>
+  <meta name="description" content="الشروط والأحكام الخاصة باستخدام موقع وتطبيق مطعم أسماك الزفر للمأكولات البحرية. تعرف على حقوقك والتزاماتك وشروط الطلب والتوصيل.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #001629;
+      --primary-light: #0F3A75;
+      --accent: #FACC15;
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 1.25rem 2rem;
+      border-bottom: 3px solid var(--accent);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 4px 12px rgba(0, 22, 41, 0.15);
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: white;
+    }
+    .logo-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .logo-subtitle {
+      font-size: 0.85rem;
+      color: #94A3B8;
+    }
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #E2E8F0;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+    }
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      background-color: rgba(250, 204, 21, 0.1);
+    }
+    main {
+      flex: 1;
+      max-width: 960px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+    .content-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--border);
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(15, 58, 117, 0.1);
+      color: var(--primary-light);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+    .last-updated {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      color: var(--primary-light);
+      margin: 1.75rem 0 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+    p, ul {
+      color: #334155;
+      font-size: 1.02rem;
+      margin-bottom: 1.25rem;
+    }
+    ul {
+      padding-right: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    footer {
+      background-color: var(--primary);
+      color: #94A3B8;
+      padding: 2.5rem 1.5rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      color: #E2E8F0;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    .copyright {
+      font-size: 0.9rem;
+      color: #64748B;
+    }
+    @media (max-width: 768px) {
+      .content-card {
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 1.75rem;
+      }
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="/" class="logo-box">
+        <div>
+          <div class="logo-title">مطعم أسماك الزفر</div>
+          <div class="logo-subtitle">أشهى المأكولات البحرية والأسماك الطازجة</div>
+        </div>
+      </a>
+      <nav>
+        <a href="/">الرئيسية</a>
+        <a href="/about.html">من نحن</a>
+        <a href="/contact.html">تواصل معنا</a>
+        <a href="/privacy.html">سياسة الخصوصية</a>
+        <a href="/terms.html" class="active">الشروط والأحكام</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="content-card">
+      <span class="badge">شروط الاستخدام</span>
+      <h1>الشروط والأحكام</h1>
+      <div class="last-updated">آخر تحديث: 11 أكتوبر 2026</div>
+
+      <p>
+        مرحباً بكم في موقع <strong>مطعم أسماك الزفر</strong>. تنطبق هذه الشروط والأحكام على استخدامك للموقع الإلكتروني وكافة الخدمات والمنتجات الرقمية والطلبات المرتبطة بمطعمنا. باستخدامك لهذا الموقع أو تقديمك لأي طلب عبره، فإنك توافق التزامك الكامل بهذه الشروط.
+      </p>
+
+      <h2>1. الاستخدام المقبول للموقع</h2>
+      <p>
+        يُسمح لك باستخدام هذا الموقع للاطلاع على قائمة المأكولات البحرية والأسماك، معرفة العروض وساعات العمل، وتقديم طلبات الشراء أو التواصل معنا. يُحظر تماماً أي استخدام يهدف إلى تعطيل الموقع، نقل برمجيات ضارة، أو انتهاك حقوق الملكية الفكرية للمطعم.
+      </p>
+
+      <h2>2. قائمة الطعام والأسعار</h2>
+      <p>
+        نحرص في مطعم أسماك الزفر على تحديث أسعار الأسماك والمأكولات البحرية بانتظام لتعكس أسعار السوق اليومية للأسماك الطازجة. جميع الأسعار المعروضة بالجنيه المصري، ونحتفظ بالحق في تعديل الأسعار أو تعديل توافر الأصناف دون إشعار مسبق تبعاً لمواسم الصيد ووفرة الأسماك الطازجة.
+      </p>
+
+      <h2>3. الطلبات والتوصيل</h2>
+      <ul>
+        <li><strong>تأكيد الطلب:</strong> بعد إرسال طلبك عبر الموقع أو الهاتف، يتم تأكيد الطلب وتحديد الوقت المتوقع للطهي والتوصيل.</li>
+        <li><strong>التوصيل:</strong> نبذل قصارى جهدنا لضمان وصول وجبتك ساخنة وطازجة في أسرع وقت ممكن إلى عنوانك المحدد في العياط والمناطق المجاورة.</li>
+        <li><strong>الإلغاء:</strong> نظراً لأن المأكولات البحرية تُحضر وتُطهى خصيصاً فور تأكيد الطلب، فإن إلغاء الطلب يجب أن يتم خلال دقائق معدودة من تأكيده وقبل بدء عملية الطهي.</li>
+      </ul>
+
+      <h2>4. معايير الجودة والسلامة الغذائية</h2>
+      <p>
+        نلتزم في مطعم أسماك الزفر بأعلى معايير النظافة والاشتراطات الصحية المعتمدة. يتم اختيار الأسماك الطازجة يومياً وفحصها بعناية، وتجهيزها في بيئة مطبخ مجهزة بأحدث أدوات الطهي الصحي للحفاظ على القيمة الغذائية والنكهة الفريدة.
+      </p>
+
+      <h2>5. الملكية الفكرية</h2>
+      <p>
+        جميع النصوص، الصور، الشعارات، والتصاميم الواردة في هذا الموقع هي ملك حصري لمطعم أسماك الزفر ومحمية بموجب قوانين حقوق النشر والعلامات التجارية المعمول بها في جمهورية مصر العربية. لا يجوز نسخ أو إعادة استخدام أي جزء من الموقع لأغراض تجارية دون إذن كتابي مسبق.
+      </p>
+
+      <h2>6. إخلاء المسؤولية والحدود القانونية</h2>
+      <p>
+        يتم تقديم الموقع ومحتواه "كما هو". يبذل مطعم أسماك الزفر جهداً مستمراً لضمان دقة المعلومات وتوافر الموقع دون انقطاع، ومع ذلك لا نتحمل مسؤولية أي أعطال تقنية خارجة عن إرادتنا ناتجة عن مشكلات في شبكة الإنترنت أو مزودي الخدمة.
+      </p>
+
+      <h2>7. التعديلات على الشروط والأحكام</h2>
+      <p>
+        يحتفظ مطعم أسماك الزفر بالحق في تعديل هذه الشروط والأحكام في أي وقت. وتكون أي تعديلات نافذة فور نشرها على هذه الصفحة. استمرارك في استخدام الموقع بعد إجراء التعديلات يعد قبولاً صريحاً منك بالشروط المحدثة.
+      </p>
+
+      <h2>8. الاتصال والاستفسارات</h2>
+      <p>لأي استفسارات أو ملاحظات بخصوص الشروط والأحكام، يرجى التواصل معنا:</p>
+      <ul>
+        <li><strong>الهاتف:</strong> 01008673836 / 01124497981</li>
+        <li><strong>العنوان:</strong> العياط غرب - شارع الجيش - أمام سلم السكة الحديد، الجيزة، مصر</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="/">الرئيسية</a>
+        <a href="/about.html">من نحن</a>
+        <a href="/contact.html">تواصل معنا</a>
+        <a href="/privacy.html">سياسة الخصوصية</a>
+        <a href="/terms.html">الشروط والأحكام</a>
+      </div>
+      <div class="copyright">
+        © 2026 مطعم أسماك الزفر. جميع الحقوق محفوظة.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

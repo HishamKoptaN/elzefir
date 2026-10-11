@@ -5,10 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 import '../../features/auth/auth/present/views/auth_view.dart';
-import '../../features/auth/sign_in/present/views/sign_in_view.dart';
 import '../../features/home/present/home.dart';
-import '../../features/orders/present/views/orders_view.dart';
-import '../../test.dart';
 import '../globals/global_variable.dart';
 import '../di/dependency_injection.dart';
 import 'config/route_config.dart';
@@ -51,7 +48,7 @@ class GoRouterRefreshListenable extends ChangeNotifier {
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: '/${AdsView.routeName}',
+    initialLocation: '/${HomeView.routeName}',
     refreshListenable: GoRouterRefreshListenable([
       GoRouterRefreshStream(getIt<AuthBloc>().stream),
     ]),
@@ -59,28 +56,35 @@ class AppRouter {
     debugLogDiagnostics: true,
     routes: RouteConfig.routes,
     redirect: (context, state) {
+      final loc = state.matchedLocation;
       return getIt<AuthBloc>().state.when(
         init: () {
-          return '/${AdsView.routeName}';
+          if (loc == '/' || loc == '/${AuthView.routeName}' || loc == '/ads') {
+            return '/${HomeView.routeName}';
+          }
+          return null;
         },
         loading: () {
-          return '/${AdsView.routeName}';
+          if (loc == '/' || loc == '/${AuthView.routeName}' || loc == '/ads') {
+            return '/${HomeView.routeName}';
+          }
+          return null;
         },
         authenticated: () {
-          if (state.matchedLocation == '/${AuthView.routeName}') {
-            return '/${AdsView.routeName}';
+          if (loc == '/' || loc == '/${AuthView.routeName}' || loc == '/ads') {
+            return '/${HomeView.routeName}';
           }
           return null;
         },
         unauthenticated: () {
-          if (state.matchedLocation == '/${AuthView.routeName}') {
-            return '/${AdsView.routeName}';
+          if (loc == '/' || loc == '/${AuthView.routeName}' || loc == '/ads') {
+            return '/${HomeView.routeName}';
           }
           return null;
         },
         failure: (_) {
-          if (state.matchedLocation == '/${AuthView.routeName}') {
-            return '/${SignInView.routeName}';
+          if (loc == '/' || loc == '/${AuthView.routeName}' || loc == '/ads') {
+            return '/${HomeView.routeName}';
           }
           return null;
         },

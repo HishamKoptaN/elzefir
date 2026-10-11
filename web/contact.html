@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تواصل معنا | مطعم أسماك الزفر</title>
+  <meta name="description" content="تواصل مع مطعم أسماك الزفر. أرقام الهاتف، خدمة التوصيل والواتساب، العنوان، وساعات العمل اليومية في العياط، الجيزة.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #001629;
+      --primary-light: #0F3A75;
+      --accent: #FACC15;
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 1.25rem 2rem;
+      border-bottom: 3px solid var(--accent);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 4px 12px rgba(0, 22, 41, 0.15);
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: white;
+    }
+    .logo-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .logo-subtitle {
+      font-size: 0.85rem;
+      color: #94A3B8;
+    }
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #E2E8F0;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+    }
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      background-color: rgba(250, 204, 21, 0.1);
+    }
+    main {
+      flex: 1;
+      max-width: 960px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+    .content-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--border);
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(15, 58, 117, 0.1);
+      color: var(--primary-light);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      color: var(--primary-light);
+      margin: 1.75rem 0 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+    p {
+      color: #334155;
+      font-size: 1.02rem;
+      margin-bottom: 1.25rem;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin: 1.75rem 0;
+    }
+    .contact-card {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .contact-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    }
+    .contact-card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .contact-card .title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+    .contact-card .detail {
+      font-size: 1rem;
+      color: #334155;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .contact-card a.detail {
+      color: var(--primary-light);
+    }
+    .contact-card a.detail:hover {
+      color: #D97706;
+      text-decoration: underline;
+    }
+    .hours-box {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+    }
+    .hours-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1E40AF;
+      margin-bottom: 0.5rem;
+    }
+    .hours-text {
+      color: #1E3A8A;
+      font-size: 1.05rem;
+      margin: 0;
+    }
+    .social-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: opacity 0.2s;
+    }
+    .social-btn:hover {
+      opacity: 0.9;
+    }
+    .facebook-btn {
+      background: #1877F2;
+      color: white;
+    }
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+    }
+    .instagram-btn {
+      background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+      color: white;
+    }
+    footer {
+      background-color: var(--primary);
+      color: #94A3B8;
+      padding: 2.5rem 1.5rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      color: #E2E8F0;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    .copyright {
+      font-size: 0.9rem;
+      color: #64748B;
+    }
+    @media (max-width: 768px) {
+      .content-card {
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 1.75rem;
+      }
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="/" class="logo-box">
+        <div>
+          <div class="logo-title">مطعم أسماك الزفر</div>
+          <div class="logo-subtitle">أشهى المأكولات البحرية والأسماك الطازجة</div>
+        </div>
+      </a>
+      <nav>
+        <a href="/">الرئيسية</a>
+        <a href="/about.html">من نحن</a>
+        <a href="/contact.html" class="active">تواصل معنا</a>
+        <a href="/privacy.html">سياسة الخصوصية</a>
+        <a href="/terms.html">الشروط والأحكام</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="content-card">
+      <span class="badge">خدمة العملاء والطلبات</span>
+      <h1>تواصل معنا - مطعم أسماك الزفر</h1>
+      <div class="subtitle">نسعد دائماً باستقبال اتصالاتكم وطلباتكم طوال أيام الأسبوع</div>
+
+      <p>
+        سواء كنت ترغب في الاستفسار عن أصناف الأسماك الطازجة المتاحة اليوم، أو تقديم طلب توصيل سريع إلى باب منزلك، أو تجهيز عزومة ومأدبة بحرية خاصة، فإن فريق عمل <strong>مطعم أسماك الزفر</strong> جاهز لخدمتكم ومساعدتكم.
+      </p>
+
+      <h2>بيانات الاتصال المباشرة</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="icon">📞</div>
+          <div class="title">الهاتف المباشر (أورنج)</div>
+          <a href="tel:01008673836" class="detail">01008673836</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">💬</div>
+          <div class="title">واتساب وخدمة العملاء (إتصالات)</div>
+          <a href="https://wa.me/201124497981" class="detail" target="_blank" rel="noopener noreferrer">01124497981</a>
+        </div>
+        <div class="contact-card">
+          <div class="icon">📍</div>
+          <div class="title">العنوان والفرع</div>
+          <div class="detail">العياط غرب - شارع الجيش - أمام سلم السكة الحديد بجوار صيدلية د. لويز - الجيزة</div>
+        </div>
+      </div>
+
+      <h2>ساعات العمل ومواعيد الاستقبال</h2>
+      <div class="hours-box">
+        <div class="hours-title">⏰ مواعيد العمل الرسمية:</div>
+        <p class="hours-text">
+          طوال أيام الأسبوع (من السبت إلى الخميس والجمعة):
+          <br>
+          <strong>من الساعة 9:00 صباحاً وحتى الساعة 11:00 مساءً</strong>
+        </p>
+      </div>
+
+      <h2>تابعنا على منصات التواصل الاجتماعي</h2>
+      <p>تابع أحدث العروض والأسماك الواردة طازجة يومياً عبر صفحاتنا الرسمية:</p>
+      <div class="social-row">
+        <a href="https://www.facebook.com/ELZEFIR" target="_blank" rel="noopener noreferrer" class="social-btn facebook-btn">
+          <span>فيسبوك</span> 👍
+        </a>
+        <a href="https://wa.me/201124497981" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp-btn">
+          <span>واتساب</span> 💬
+        </a>
+        <a href="https://www.instagram.com/@elzefir_fish" target="_blank" rel="noopener noreferrer" class="social-btn instagram-btn">
+          <span>إنستغرام</span> 📸
+        </a>
+        <a href="https://maps.google.com/?q=العياط+شارع+الجيش" target="_blank" rel="noopener noreferrer" class="social-btn" style="background:#0F3A75; color:white;">
+          <span>موقعنا على الخريطة</span> 🗺️
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-links">
+        <a href="/">الرئيسية</a>
+        <a href="/about.html">من نحن</a>
+        <a href="/contact.html">تواصل معنا</a>
+        <a href="/privacy.html">سياسة الخصوصية</a>
+        <a href="/terms.html">الشروط والأحكام</a>
+      </div>
+      <div class="copyright">
+        © 2026 مطعم أسماك الزفر. جميع الحقوق محفوظة.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/di/dependency_injection.dart';
+import '../../../../core/utils/extensions/theme_ext.dart';
 import '../bloc/home_bloc.dart';
 import 'about/about.dart';
 import 'categories_nav.dart';
@@ -74,7 +75,46 @@ class _BodyWidgetState extends State<BodyWidget> {
                 );
               },
               orElse: () {
-                return SizedBox();
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  spacing: 24.h,
+                  children: [
+                    RestaurantAppBar(
+                      onMenu: widget.onProcudcts,
+                      onAbout: widget.onAbout,
+                      onContact: widget.onContact,
+                    ),
+                    const OfferWidget(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 40.h),
+                      child: Center(
+                        child: state.maybeMap(
+                          failure: (f) => Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'تعذر تحميل بعض البيانات حالياً',
+                                style: context.textTheme.titleMedium,
+                              ),
+                              SizedBox(height: 12.h),
+                              ElevatedButton(
+                                onPressed: () {
+                                  getIt<HomeBloc>().add(const HomeEvent.get());
+                                },
+                                child: const Text('إعادة المحاولة'),
+                              ),
+                            ],
+                          ),
+                          orElse: () => CircularProgressIndicator(
+                            color: context.colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                    ),
+                    AboutSection(key: widget.aboutKey),
+                    FooterWidget(key: widget.contactKey),
+                  ],
+                );
               },
             );
           },

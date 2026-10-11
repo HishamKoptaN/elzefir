@@ -10,8 +10,6 @@ import '../../../features/auth/sign_up/present/views/email_view.dart';
 import '../../../features/auth/sign_up/present/views/sign_up_view.dart';
 import '../../../features/auth/reset_password/present/views/reset_pass_view.dart';
 import '../../../features/home/present/home.dart';
-import '../../../features/products/domain/entities/product_entity.dart';
-import '../../../test.dart';
 import '../../utils/extensions/theme_ext.dart';
 import '../app_route.dart';
 import '../middlewares/guards/app_guards.dart';
@@ -19,12 +17,9 @@ import '../middlewares/guards/app_guards.dart';
 class RouteConfig {
   static List<RouteBase> get routes {
     return [
-      appRoute(
-        name: AdsView.routeName,
-        path: '/${AdsView.routeName}',
-        builder: (context, state) {
-          return const AdsView();
-        },
+      GoRoute(
+        path: '/',
+        redirect: (context, state) => '/${HomeView.routeName}',
       ),
       appRoute(
         name: 'loading',

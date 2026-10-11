@@ -21,11 +21,15 @@ import 'features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 import 'core/widgets/custom_error_widget.dart';
 import 'core/di/dependency_injection.dart';
 
+import 'package:flutter/rendering.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
 Future<void> main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
+    if (kIsWeb) {
+      SemanticsBinding.instance.ensureSemantics();
+    }
     if (Firebase.apps.isEmpty) {
       await Firebase.initializeApp(options: EnvConfig.config.firebaseOptions);
       // await FirebaseMessagingService.initialize();

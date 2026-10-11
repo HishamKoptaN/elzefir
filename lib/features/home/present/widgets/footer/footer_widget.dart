@@ -28,8 +28,46 @@ class FooterWidget extends StatelessWidget {
         children: [
           context.isDesk ? FooterDeskLayout() : FooterMobileLayout(),
           CustomFooterDividerWidget(),
+          const Center(child: FooterLegalLinks()),
+          SizedBox(height: 16.h),
           CopyRightWidget(),
         ],
+      ),
+    );
+  }
+}
+
+class FooterLegalLinks extends StatelessWidget {
+  const FooterLegalLinks({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 20.w,
+      runSpacing: 10.h,
+      children: [
+        _buildFooterLink(context, 'الرئيسية', '/'),
+        _buildFooterLink(context, 'من نحن', '/about.html'),
+        _buildFooterLink(context, 'اتصل بنا', '/contact.html'),
+        _buildFooterLink(context, 'سياسة الخصوصية', '/privacy.html'),
+        _buildFooterLink(context, 'الشروط والأحكام', '/terms.html'),
+      ],
+    );
+  }
+
+  Widget _buildFooterLink(BuildContext context, String title, String path) {
+    return InkWell(
+      onTap: () {
+        execuateLaunchUrl(path);
+      },
+      child: Text(
+        title,
+        style: context.textTheme.bodyMedium?.copyWith(
+          color: const Color(0xFFFACC15),
+          decoration: TextDecoration.underline,
+          decorationColor: const Color(0xFFFACC15).withValues(alpha: 0.5),
+        ),
       ),
     );
   }
