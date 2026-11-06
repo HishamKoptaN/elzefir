@@ -9,7 +9,6 @@ import '../../../core/widgets/app_navigation.dart';
 import '../../../core/widgets/custom_image.dart';
 import '../../../generated/assets.gen.dart';
 import '../../notifications/present/bloc/notifications_bloc.dart';
-import '../../test_s3/test_s3_page.dart';
 import 'bloc/home_bloc.dart';
 import 'widgets/body_widget.dart';
 
@@ -46,8 +45,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return TestS3();
-    Scaffold(
+    return Scaffold(
       drawer: !context.isDesk
           ? Drawer(
               elevation: 12,
