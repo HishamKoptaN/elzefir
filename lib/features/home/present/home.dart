@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/di/dependency_injection.dart';
 import '../../../core/responsive/responsive_extensions.dart';
 import '../../../core/utils/extensions/device_type_extension.dart';
@@ -8,14 +9,17 @@ import '../../../core/widgets/app_navigation.dart';
 import '../../../core/widgets/custom_image.dart';
 import '../../../generated/assets.gen.dart';
 import '../../notifications/present/bloc/notifications_bloc.dart';
+import '../../test_s3/test_s3_page.dart';
 import 'bloc/home_bloc.dart';
 import 'widgets/body_widget.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
   static const String routeName = "home";
   @override
   State<HomeView> createState() => _HomeViewState();
 }
+
 class _HomeViewState extends State<HomeView> {
   final offerWidget = GlobalKey();
   final categoriesKey = GlobalKey();
@@ -32,15 +36,18 @@ class _HomeViewState extends State<HomeView> {
       curve: Curves.easeInOut,
     );
   }
+
   @override
   void initState() {
     super.initState();
-    getIt<HomeBloc>().add(HomeEvent.get());
-    getIt<NotificationsBloc>().add(NotificationsEvent.watch());
+    // getIt<HomeBloc>().add(HomeEvent.get());
+    // getIt<NotificationsBloc>().add(NotificationsEvent.watch());
   }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return TestS3();
+    Scaffold(
       drawer: !context.isDesk
           ? Drawer(
               elevation: 12,
@@ -53,10 +60,7 @@ class _HomeViewState extends State<HomeView> {
                   children: [
                     Container(
                       width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 24.w,
-                        vertical: 24.h,
-                      ),
+                      padding: .symmetric(vertical: 24.h, horizontal: 24.w),
                       decoration: const BoxDecoration(color: Color(0xFFFFF8F3)),
                       child: AspectRatio(
                         aspectRatio: 2.5,
@@ -67,13 +71,13 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      padding: .symmetric(horizontal: 20.w),
                       child: Divider(height: 1, color: Colors.grey.shade200),
                     ),
                     SizedBox(height: 16.h),
                     Expanded(
                       child: SingleChildScrollView(
-                        padding: EdgeInsets.symmetric(horizontal: 12.w),
+                        padding: .symmetric(horizontal: 12.w),
                         child: Column(
                           spacing: 8.h,
                           children: AppNavigation.items(

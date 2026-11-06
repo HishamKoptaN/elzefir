@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'order_status_model.dart';
@@ -9,6 +9,7 @@ part of 'order_status_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $OrderStatusModelCopyWith<OrderStatusModel> get copyWith => _$OrderStatusModelCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderStatusModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.sort, sort) || other.sort == sort)&&(identical(other.message, message) || other.message == message)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.color, color) || other.color == color)&&(identical(other.original, original) || other.original == original));
+  final _this = this as OrderStatusModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderStatusModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.slug, _this.slug) || other.slug == _this.slug)&&(identical(other.sort, _this.sort) || other.sort == _this.sort)&&(identical(other.message, _this.message) || other.message == _this.message)&&(identical(other.icon, _this.icon) || other.icon == _this.icon)&&(identical(other.isActive, _this.isActive) || other.isActive == _this.isActive)&&(identical(other.color, _this.color) || other.color == _this.color)&&(identical(other.original, _this.original) || other.original == _this.original));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,type,slug,sort,message,icon,isActive,color,original);
+int get hashCode {
+  final _this = this as OrderStatusModel;
+  return Object.hash(runtimeType,_this.id,_this.name,_this.type,_this.slug,_this.sort,_this.message,_this.icon,_this.isActive,_this.color,_this.original);
+}
 
 @override
 String toString() {
-  return 'OrderStatusModel(id: $id, name: $name, type: $type, slug: $slug, sort: $sort, message: $message, icon: $icon, isActive: $isActive, color: $color, original: $original)';
+  final _this = this as OrderStatusModel;
+  return 'OrderStatusModel(id: ${_this.id}, name: ${_this.name}, type: ${_this.type}, slug: ${_this.slug}, sort: ${_this.sort}, message: ${_this.message}, icon: ${_this.icon}, isActive: ${_this.isActive}, color: ${_this.color}, original: ${_this.original})';
 }
 
 
@@ -66,7 +72,7 @@ class _$OrderStatusModelCopyWithImpl<$Res>
 /// Create a copy of OrderStatusModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,Object? type = freezed,Object? slug = freezed,Object? sort = freezed,Object? message = freezed,Object? icon = freezed,Object? isActive = freezed,Object? color = freezed,Object? original = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(OrderStatusModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
@@ -257,16 +263,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderStatusModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.sort, sort) || other.sort == sort)&&(identical(other.message, message) || other.message == message)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.color, color) || other.color == color)&&(identical(other.original, original) || other.original == original));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderStatusModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.sort, sort) || other.sort == sort)&&(identical(other.message, message) || other.message == message)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.color, color) || other.color == color)&&(identical(other.original, original) || other.original == original));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,type,slug,sort,message,icon,isActive,color,original);
+int get hashCode {
+    return Object.hash(runtimeType,id,name,type,slug,sort,message,icon,isActive,color,original);
+}
 
 @override
 String toString() {
-  return 'OrderStatusModel(id: $id, name: $name, type: $type, slug: $slug, sort: $sort, message: $message, icon: $icon, isActive: $isActive, color: $color, original: $original)';
+    return 'OrderStatusModel(id: $id, name: $name, type: $type, slug: $slug, sort: $sort, message: $message, icon: $icon, isActive: $isActive, color: $color, original: $original)';
 }
 
 
@@ -342,16 +350,21 @@ $OriginalModelCopyWith<OriginalModel> get copyWith => _$OriginalModelCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OriginalModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+  final _this = this as OriginalModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OriginalModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+  final _this = this as OriginalModel;
+  return Object.hash(runtimeType,_this.id,_this.name);
+}
 
 @override
 String toString() {
-  return 'OriginalModel(id: $id, name: $name)';
+  final _this = this as OriginalModel;
+  return 'OriginalModel(id: ${_this.id}, name: ${_this.name})';
 }
 
 
@@ -380,7 +393,7 @@ class _$OriginalModelCopyWithImpl<$Res>
 /// Create a copy of OriginalModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(OriginalModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -543,16 +556,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OriginalModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OriginalModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+    return Object.hash(runtimeType,id,name);
+}
 
 @override
 String toString() {
-  return 'OriginalModel(id: $id, name: $name)';
+    return 'OriginalModel(id: $id, name: $name)';
 }
 
 

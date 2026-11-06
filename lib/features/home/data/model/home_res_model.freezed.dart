@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'home_res_model.dart';
@@ -9,6 +9,7 @@ part of 'home_res_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $HomeResModelCopyWith<HomeResModel> get copyWith => _$HomeResModelCopyWithImpl<H
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeResModel&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other.categories, categories)&&const DeepCollectionEquality().equals(other.products, products));
+  final _this = this as HomeResModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeResModel&&(identical(other.offerImage, _this.offerImage) || other.offerImage == _this.offerImage)&&const DeepCollectionEquality().equals(other.categories, _this.categories)&&const DeepCollectionEquality().equals(other.products, _this.products));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(categories),const DeepCollectionEquality().hash(products));
+int get hashCode {
+  final _this = this as HomeResModel;
+  return Object.hash(runtimeType,_this.offerImage,const DeepCollectionEquality().hash(_this.categories),const DeepCollectionEquality().hash(_this.products));
+}
 
 @override
 String toString() {
-  return 'HomeResModel(offerImage: $offerImage, categories: $categories, products: $products)';
+  final _this = this as HomeResModel;
+  return 'HomeResModel(offerImage: ${_this.offerImage}, categories: ${_this.categories}, products: ${_this.products})';
 }
 
 
@@ -66,7 +72,7 @@ class _$HomeResModelCopyWithImpl<$Res>
 /// Create a copy of HomeResModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? offerImage = freezed,Object? categories = freezed,Object? products = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(HomeResModel(
 offerImage: freezed == offerImage ? _self.offerImage : offerImage // ignore: cast_nullable_to_non_nullable
 as String?,categories: freezed == categories ? _self.categories : categories // ignore: cast_nullable_to_non_nullable
 as List<CategoryModel>?,products: freezed == products ? _self.products : products // ignore: cast_nullable_to_non_nullable
@@ -211,7 +217,7 @@ return $default(_that.offerImage,_that.categories,_that.products);case _:
 @JsonSerializable()
 
 class _HomeResModel implements HomeResModel {
-  const _HomeResModel({@JsonKey(name: 'offer_image') this.offerImage,   List<CategoryModel>? categories = const [],   List<ProductModel>? products = const []}): _categories = categories,_products = products;
+  const _HomeResModel({@JsonKey(name: 'offer_image') this.offerImage,  List<CategoryModel>? categories = const [],  List<ProductModel>? products = const []}): _categories = categories,_products = products;
   factory _HomeResModel.fromJson(Map<String, dynamic> json) => _$HomeResModelFromJson(json);
 
 @override@JsonKey(name: 'offer_image') final  String? offerImage;
@@ -247,16 +253,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeResModel&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other._categories, _categories)&&const DeepCollectionEquality().equals(other._products, _products));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeResModel&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other.categories, _categories)&&const DeepCollectionEquality().equals(other.products, _products));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(_categories),const DeepCollectionEquality().hash(_products));
+int get hashCode {
+    return Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(_categories),const DeepCollectionEquality().hash(_products));
+}
 
 @override
 String toString() {
-  return 'HomeResModel(offerImage: $offerImage, categories: $categories, products: $products)';
+    return 'HomeResModel(offerImage: $offerImage, categories: $categories, products: $products)';
 }
 
 

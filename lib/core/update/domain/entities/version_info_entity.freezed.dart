@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'version_info_entity.dart';
@@ -9,6 +9,7 @@ part of 'version_info_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $VersionInfoEntityCopyWith<VersionInfoEntity> get copyWith => _$VersionInfoEntit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is VersionInfoEntity&&(identical(other.buildNumber, buildNumber) || other.buildNumber == buildNumber)&&(identical(other.message, message) || other.message == message));
+  final _this = this as VersionInfoEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is VersionInfoEntity&&(identical(other.buildNumber, _this.buildNumber) || other.buildNumber == _this.buildNumber)&&(identical(other.message, _this.message) || other.message == _this.message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,buildNumber,message);
+int get hashCode {
+  final _this = this as VersionInfoEntity;
+  return Object.hash(runtimeType,_this.buildNumber,_this.message);
+}
 
 @override
 String toString() {
-  return 'VersionInfoEntity(buildNumber: $buildNumber, message: $message)';
+  final _this = this as VersionInfoEntity;
+  return 'VersionInfoEntity(buildNumber: ${_this.buildNumber}, message: ${_this.message})';
 }
 
 
@@ -63,7 +69,7 @@ class _$VersionInfoEntityCopyWithImpl<$Res>
 /// Create a copy of VersionInfoEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? buildNumber = freezed,Object? message = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(VersionInfoEntity(
 buildNumber: freezed == buildNumber ? _self.buildNumber : buildNumber // ignore: cast_nullable_to_non_nullable
 as String?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -223,16 +229,18 @@ _$VersionInfoEntityCopyWith<_VersionInfoEntity> get copyWith => __$VersionInfoEn
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _VersionInfoEntity&&(identical(other.buildNumber, buildNumber) || other.buildNumber == buildNumber)&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _VersionInfoEntity&&(identical(other.buildNumber, buildNumber) || other.buildNumber == buildNumber)&&(identical(other.message, message) || other.message == message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,buildNumber,message);
+int get hashCode {
+    return Object.hash(runtimeType,buildNumber,message);
+}
 
 @override
 String toString() {
-  return 'VersionInfoEntity(buildNumber: $buildNumber, message: $message)';
+    return 'VersionInfoEntity(buildNumber: $buildNumber, message: $message)';
 }
 
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'date_bloc.dart';
@@ -9,6 +9,7 @@ part of 'date_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $DateEventCopyWith<DateEvent> get copyWith => _$DateEventCopyWithImpl<DateEvent>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DateEvent&&(identical(other.fromDate, fromDate) || other.fromDate == fromDate)&&(identical(other.toDate, toDate) || other.toDate == toDate)&&(identical(other.resyncFromDate, resyncFromDate) || other.resyncFromDate == resyncFromDate));
+  final _this = this as DateEvent;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DateEvent&&(identical(other.fromDate, _this.fromDate) || other.fromDate == _this.fromDate)&&(identical(other.toDate, _this.toDate) || other.toDate == _this.toDate)&&(identical(other.resyncFromDate, _this.resyncFromDate) || other.resyncFromDate == _this.resyncFromDate));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,fromDate,toDate,resyncFromDate);
+int get hashCode {
+  final _this = this as DateEvent;
+  return Object.hash(runtimeType,_this.fromDate,_this.toDate,_this.resyncFromDate);
+}
 
 @override
 String toString() {
-  return 'DateEvent(fromDate: $fromDate, toDate: $toDate, resyncFromDate: $resyncFromDate)';
+  final _this = this as DateEvent;
+  return 'DateEvent(fromDate: ${_this.fromDate}, toDate: ${_this.toDate}, resyncFromDate: ${_this.resyncFromDate})';
 }
 
 
@@ -63,7 +69,7 @@ class _$DateEventCopyWithImpl<$Res>
 /// Create a copy of DateEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? fromDate = freezed,Object? toDate = freezed,Object? resyncFromDate = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(DateEvent.dateRangeChanged(
 fromDate: freezed == fromDate ? _self.fromDate : fromDate // ignore: cast_nullable_to_non_nullable
 as DateTime?,toDate: freezed == toDate ? _self.toDate : toDate // ignore: cast_nullable_to_non_nullable
 as DateTime?,resyncFromDate: freezed == resyncFromDate ? _self.resyncFromDate : resyncFromDate // ignore: cast_nullable_to_non_nullable
@@ -225,16 +231,18 @@ _$DateRangeChangedCopyWith<_DateRangeChanged> get copyWith => __$DateRangeChange
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DateRangeChanged&&(identical(other.fromDate, fromDate) || other.fromDate == fromDate)&&(identical(other.toDate, toDate) || other.toDate == toDate)&&(identical(other.resyncFromDate, resyncFromDate) || other.resyncFromDate == resyncFromDate));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DateRangeChanged&&(identical(other.fromDate, fromDate) || other.fromDate == fromDate)&&(identical(other.toDate, toDate) || other.toDate == toDate)&&(identical(other.resyncFromDate, resyncFromDate) || other.resyncFromDate == resyncFromDate));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,fromDate,toDate,resyncFromDate);
+int get hashCode {
+    return Object.hash(runtimeType,fromDate,toDate,resyncFromDate);
+}
 
 @override
 String toString() {
-  return 'DateEvent.dateRangeChanged(fromDate: $fromDate, toDate: $toDate, resyncFromDate: $resyncFromDate)';
+    return 'DateEvent.dateRangeChanged(fromDate: $fromDate, toDate: $toDate, resyncFromDate: $resyncFromDate)';
 }
 
 
@@ -283,7 +291,7 @@ mixin _$DateState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DateState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is DateState);
 }
 
 
@@ -292,7 +300,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'DateState()';
+    return 'DateState()';
 }
 
 
@@ -478,7 +486,7 @@ class _Initial implements DateState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
 
@@ -487,7 +495,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'DateState.initial()';
+    return 'DateState.initial()';
 }
 
 
@@ -510,7 +518,7 @@ class _Loading implements DateState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
 }
 
 
@@ -519,7 +527,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'DateState.loading()';
+    return 'DateState.loading()';
 }
 
 
@@ -542,7 +550,7 @@ class _Success implements DateState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
 }
 
 
@@ -551,7 +559,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'DateState.success()';
+    return 'DateState.success()';
 }
 
 
@@ -583,16 +591,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.fromDate, fromDate) || other.fromDate == fromDate)&&(identical(other.toDate, toDate) || other.toDate == toDate)&&(identical(other.fromTimePeriod, fromTimePeriod) || other.fromTimePeriod == fromTimePeriod)&&(identical(other.toTimePeriod, toTimePeriod) || other.toTimePeriod == toTimePeriod)&&(identical(other.resyncFromDate, resyncFromDate) || other.resyncFromDate == resyncFromDate));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&(identical(other.fromDate, fromDate) || other.fromDate == fromDate)&&(identical(other.toDate, toDate) || other.toDate == toDate)&&(identical(other.fromTimePeriod, fromTimePeriod) || other.fromTimePeriod == fromTimePeriod)&&(identical(other.toTimePeriod, toTimePeriod) || other.toTimePeriod == toTimePeriod)&&(identical(other.resyncFromDate, resyncFromDate) || other.resyncFromDate == resyncFromDate));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,fromDate,toDate,fromTimePeriod,toTimePeriod,resyncFromDate);
+int get hashCode {
+    return Object.hash(runtimeType,fromDate,toDate,fromTimePeriod,toTimePeriod,resyncFromDate);
+}
 
 @override
 String toString() {
-  return 'DateState.loaded(fromDate: $fromDate, toDate: $toDate, fromTimePeriod: $fromTimePeriod, toTimePeriod: $toTimePeriod, resyncFromDate: $resyncFromDate)';
+    return 'DateState.loaded(fromDate: $fromDate, toDate: $toDate, fromTimePeriod: $fromTimePeriod, toTimePeriod: $toTimePeriod, resyncFromDate: $resyncFromDate)';
 }
 
 
@@ -648,7 +658,7 @@ class _OrderShare implements DateState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderShare);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderShare);
 }
 
 
@@ -657,7 +667,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'DateState.orderShare()';
+    return 'DateState.orderShare()';
 }
 
 
@@ -685,16 +695,18 @@ _$FailureCopyWith<_Failure> get copyWith => __$FailureCopyWithImpl<_Failure>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,apiErrorModel);
+int get hashCode {
+    return Object.hash(runtimeType,apiErrorModel);
+}
 
 @override
 String toString() {
-  return 'DateState.failure(apiErrorModel: $apiErrorModel)';
+    return 'DateState.failure(apiErrorModel: $apiErrorModel)';
 }
 
 

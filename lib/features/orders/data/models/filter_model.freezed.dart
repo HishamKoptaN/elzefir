@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'filter_model.dart';
@@ -9,6 +9,7 @@ part of 'filter_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $FilterModelCopyWith<FilterModel> get copyWith => _$FilterModelCopyWithImpl<Filt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FilterModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.values, values));
+  final _this = this as FilterModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FilterModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.type, _this.type) || other.type == _this.type)&&const DeepCollectionEquality().equals(other.values, _this.values));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,type,const DeepCollectionEquality().hash(values));
+int get hashCode {
+  final _this = this as FilterModel;
+  return Object.hash(runtimeType,_this.id,_this.name,_this.type,const DeepCollectionEquality().hash(_this.values));
+}
 
 @override
 String toString() {
-  return 'FilterModel(id: $id, name: $name, type: $type, values: $values)';
+  final _this = this as FilterModel;
+  return 'FilterModel(id: ${_this.id}, name: ${_this.name}, type: ${_this.type}, values: ${_this.values})';
 }
 
 
@@ -66,7 +72,7 @@ class _$FilterModelCopyWithImpl<$Res>
 /// Create a copy of FilterModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,Object? type = freezed,Object? values = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(FilterModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
@@ -212,7 +218,7 @@ return $default(_that.id,_that.name,_that.type,_that.values);case _:
 @JsonSerializable()
 
 class _FilterModel implements FilterModel {
-  const _FilterModel({this.id, this.name, this.type,   List<ValueModel>? values}): _values = values;
+  const _FilterModel({this.id, this.name, this.type,  List<ValueModel>? values}): _values = values;
   factory _FilterModel.fromJson(Map<String, dynamic> json) => _$FilterModelFromJson(json);
 
 @override final  int? id;
@@ -241,16 +247,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FilterModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._values, _values));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FilterModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.values, _values));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,type,const DeepCollectionEquality().hash(_values));
+int get hashCode {
+    return Object.hash(runtimeType,id,name,type,const DeepCollectionEquality().hash(_values));
+}
 
 @override
 String toString() {
-  return 'FilterModel(id: $id, name: $name, type: $type, values: $values)';
+    return 'FilterModel(id: $id, name: $name, type: $type, values: $values)';
 }
 
 
@@ -308,16 +316,21 @@ $ValueModelCopyWith<ValueModel> get copyWith => _$ValueModelCopyWithImpl<ValueMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ValueModel&&(identical(other.id, id) || other.id == id)&&(identical(other.value, value) || other.value == value));
+  final _this = this as ValueModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ValueModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.value, _this.value) || other.value == _this.value));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,value);
+int get hashCode {
+  final _this = this as ValueModel;
+  return Object.hash(runtimeType,_this.id,_this.value);
+}
 
 @override
 String toString() {
-  return 'ValueModel(id: $id, value: $value)';
+  final _this = this as ValueModel;
+  return 'ValueModel(id: ${_this.id}, value: ${_this.value})';
 }
 
 
@@ -346,7 +359,7 @@ class _$ValueModelCopyWithImpl<$Res>
 /// Create a copy of ValueModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? value = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ValueModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,value: freezed == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -509,16 +522,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ValueModel&&(identical(other.id, id) || other.id == id)&&(identical(other.value, value) || other.value == value));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ValueModel&&(identical(other.id, id) || other.id == id)&&(identical(other.value, value) || other.value == value));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,value);
+int get hashCode {
+    return Object.hash(runtimeType,id,value);
+}
 
 @override
 String toString() {
-  return 'ValueModel(id: $id, value: $value)';
+    return 'ValueModel(id: $id, value: $value)';
 }
 
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'update_order_status_req_entity.dart';
@@ -9,6 +9,7 @@ part of 'update_order_status_req_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $UpdateOrderStatusReqEntityCopyWith<UpdateOrderStatusReqEntity> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateOrderStatusReqEntity&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.statusId, statusId) || other.statusId == statusId));
+  final _this = this as UpdateOrderStatusReqEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateOrderStatusReqEntity&&(identical(other.orderId, _this.orderId) || other.orderId == _this.orderId)&&(identical(other.statusId, _this.statusId) || other.statusId == _this.statusId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,orderId,statusId);
+int get hashCode {
+  final _this = this as UpdateOrderStatusReqEntity;
+  return Object.hash(runtimeType,_this.orderId,_this.statusId);
+}
 
 @override
 String toString() {
-  return 'UpdateOrderStatusReqEntity(orderId: $orderId, statusId: $statusId)';
+  final _this = this as UpdateOrderStatusReqEntity;
+  return 'UpdateOrderStatusReqEntity(orderId: ${_this.orderId}, statusId: ${_this.statusId})';
 }
 
 
@@ -66,7 +72,7 @@ class _$UpdateOrderStatusReqEntityCopyWithImpl<$Res>
 /// Create a copy of UpdateOrderStatusReqEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? orderId = freezed,Object? statusId = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(UpdateOrderStatusReqEntity(
 orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
 as String?,statusId: freezed == statusId ? _self.statusId : statusId // ignore: cast_nullable_to_non_nullable
 as int?,
@@ -229,16 +235,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateOrderStatusReqEntity&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.statusId, statusId) || other.statusId == statusId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateOrderStatusReqEntity&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.statusId, statusId) || other.statusId == statusId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,orderId,statusId);
+int get hashCode {
+    return Object.hash(runtimeType,orderId,statusId);
+}
 
 @override
 String toString() {
-  return 'UpdateOrderStatusReqEntity(orderId: $orderId, statusId: $statusId)';
+    return 'UpdateOrderStatusReqEntity(orderId: $orderId, statusId: $statusId)';
 }
 
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'update_unit_entity.dart';
@@ -9,6 +9,7 @@ part of 'update_unit_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $UpdateUnitEntityCopyWith<UpdateUnitEntity> get copyWith => _$UpdateUnitEntityCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateUnitEntity&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.orderItemId, orderItemId) || other.orderItemId == orderItemId)&&(identical(other.unitId, unitId) || other.unitId == unitId)&&(identical(other.documentationLink, documentationLink) || other.documentationLink == documentationLink)&&(identical(other.formzSubmissionStatus, formzSubmissionStatus) || other.formzSubmissionStatus == formzSubmissionStatus));
+  final _this = this as UpdateUnitEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateUnitEntity&&(identical(other.orderId, _this.orderId) || other.orderId == _this.orderId)&&(identical(other.orderItemId, _this.orderItemId) || other.orderItemId == _this.orderItemId)&&(identical(other.unitId, _this.unitId) || other.unitId == _this.unitId)&&(identical(other.documentationLink, _this.documentationLink) || other.documentationLink == _this.documentationLink)&&(identical(other.formzSubmissionStatus, _this.formzSubmissionStatus) || other.formzSubmissionStatus == _this.formzSubmissionStatus));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,orderId,orderItemId,unitId,documentationLink,formzSubmissionStatus);
+int get hashCode {
+  final _this = this as UpdateUnitEntity;
+  return Object.hash(runtimeType,_this.orderId,_this.orderItemId,_this.unitId,_this.documentationLink,_this.formzSubmissionStatus);
+}
 
 @override
 String toString() {
-  return 'UpdateUnitEntity(orderId: $orderId, orderItemId: $orderItemId, unitId: $unitId, documentationLink: $documentationLink, formzSubmissionStatus: $formzSubmissionStatus)';
+  final _this = this as UpdateUnitEntity;
+  return 'UpdateUnitEntity(orderId: ${_this.orderId}, orderItemId: ${_this.orderItemId}, unitId: ${_this.unitId}, documentationLink: ${_this.documentationLink}, formzSubmissionStatus: ${_this.formzSubmissionStatus})';
 }
 
 
@@ -63,7 +69,7 @@ class _$UpdateUnitEntityCopyWithImpl<$Res>
 /// Create a copy of UpdateUnitEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? orderId = freezed,Object? orderItemId = freezed,Object? unitId = freezed,Object? documentationLink = freezed,Object? formzSubmissionStatus = null,}) {
-  return _then(_self.copyWith(
+  return _then(UpdateUnitEntity(
 orderId: freezed == orderId ? _self.orderId : orderId // ignore: cast_nullable_to_non_nullable
 as int?,orderItemId: freezed == orderItemId ? _self.orderItemId : orderItemId // ignore: cast_nullable_to_non_nullable
 as int?,unitId: freezed == unitId ? _self.unitId : unitId // ignore: cast_nullable_to_non_nullable
@@ -229,16 +235,18 @@ _$UpdateUnitEntityCopyWith<_UpdateUnitEntity> get copyWith => __$UpdateUnitEntit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateUnitEntity&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.orderItemId, orderItemId) || other.orderItemId == orderItemId)&&(identical(other.unitId, unitId) || other.unitId == unitId)&&(identical(other.documentationLink, documentationLink) || other.documentationLink == documentationLink)&&(identical(other.formzSubmissionStatus, formzSubmissionStatus) || other.formzSubmissionStatus == formzSubmissionStatus));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateUnitEntity&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.orderItemId, orderItemId) || other.orderItemId == orderItemId)&&(identical(other.unitId, unitId) || other.unitId == unitId)&&(identical(other.documentationLink, documentationLink) || other.documentationLink == documentationLink)&&(identical(other.formzSubmissionStatus, formzSubmissionStatus) || other.formzSubmissionStatus == formzSubmissionStatus));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,orderId,orderItemId,unitId,documentationLink,formzSubmissionStatus);
+int get hashCode {
+    return Object.hash(runtimeType,orderId,orderItemId,unitId,documentationLink,formzSubmissionStatus);
+}
 
 @override
 String toString() {
-  return 'UpdateUnitEntity(orderId: $orderId, orderItemId: $orderItemId, unitId: $unitId, documentationLink: $documentationLink, formzSubmissionStatus: $formzSubmissionStatus)';
+    return 'UpdateUnitEntity(orderId: $orderId, orderItemId: $orderItemId, unitId: $unitId, documentationLink: $documentationLink, formzSubmissionStatus: $formzSubmissionStatus)';
 }
 
 

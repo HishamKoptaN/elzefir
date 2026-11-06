@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'products_mapping_bloc.dart';
@@ -9,6 +9,7 @@ part of 'products_mapping_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$ProductsMappingEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsMappingEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsMappingEvent);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsMappingEvent()';
+    return 'ProductsMappingEvent()';
 }
 
 
@@ -185,7 +186,7 @@ class _Get implements ProductsMappingEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Get);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Get);
 }
 
 
@@ -194,7 +195,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsMappingEvent.get()';
+    return 'ProductsMappingEvent.get()';
 }
 
 
@@ -212,7 +213,7 @@ mixin _$ProductsMappingState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsMappingState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductsMappingState);
 }
 
 
@@ -221,7 +222,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsMappingState()';
+    return 'ProductsMappingState()';
 }
 
 
@@ -401,7 +402,7 @@ class _Initial implements ProductsMappingState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
 
@@ -410,7 +411,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsMappingState.initial()';
+    return 'ProductsMappingState.initial()';
 }
 
 
@@ -423,7 +424,7 @@ String toString() {
 
 
 class _Loaded implements ProductsMappingState {
-  const _Loaded({required   List<ProductModel> products}): _products = products;
+  const _Loaded({required  List<ProductModel> products}): _products = products;
   
 
  final  List<ProductModel> _products;
@@ -444,16 +445,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other._products, _products));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other.products, _products));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_products));
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_products));
+}
 
 @override
 String toString() {
-  return 'ProductsMappingState.loaded(products: $products)';
+    return 'ProductsMappingState.loaded(products: $products)';
 }
 
 
@@ -505,7 +508,7 @@ class _Loading implements ProductsMappingState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
 }
 
 
@@ -514,7 +517,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsMappingState.loading()';
+    return 'ProductsMappingState.loading()';
 }
 
 
@@ -537,7 +540,7 @@ class _Success implements ProductsMappingState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
 }
 
 
@@ -546,7 +549,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'ProductsMappingState.success()';
+    return 'ProductsMappingState.success()';
 }
 
 
@@ -574,16 +577,18 @@ _$FailureCopyWith<_Failure> get copyWith => __$FailureCopyWithImpl<_Failure>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,apiErrorModel);
+int get hashCode {
+    return Object.hash(runtimeType,apiErrorModel);
+}
 
 @override
 String toString() {
-  return 'ProductsMappingState.failure(apiErrorModel: $apiErrorModel)';
+    return 'ProductsMappingState.failure(apiErrorModel: $apiErrorModel)';
 }
 
 

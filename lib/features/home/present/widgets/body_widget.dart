@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/utils/extensions/theme_ext.dart';
 import '../bloc/home_bloc.dart';
+import '../../../products/present/blocs/bloc/products_bloc.dart';
+import '../../../products/data/mapper/products_mapper.dart';
 import 'about/about.dart';
 import 'categories_nav.dart';
 import 'footer/footer_widget.dart';
@@ -34,6 +37,11 @@ class BodyWidget extends StatefulWidget {
 }
 
 class _BodyWidgetState extends State<BodyWidget> {
+  @override
+  void initState() {
+    super.initState();
+    getIt<ProductsBloc>().add(const ProductsEvent.get());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,83 +49,65 @@ class _BodyWidgetState extends State<BodyWidget> {
       physics: const BouncingScrollPhysics(),
       child: Padding(
         padding: .symmetric(horizontal: 12.w),
-        child: BlocBuilder<HomeBloc, HomeState>(
-          bloc: getIt<HomeBloc>(),
-          builder: (context, state) {
-            return state.maybeMap(
-              loaded: (state) {
-                return Column(
-                  crossAxisAlignment: .center,
-                  spacing: 24.h,
-                  children: [
-                    RestaurantAppBar(
-                      onMenu: widget.onProcudcts,
-                      onAbout: widget.onAbout,
-                      onContact: widget.onContact,
-                    ),
-                    OfferWidget(),
-                    CategoriesNav(
-                      categories: state.homeRes?.categories ?? [],
-                      selectedCategoryId: state.selectedCategoryId,
-                      onChanged: (categoryId) {
-                        getIt<HomeBloc>().add(
-                          HomeEvent.selectCategoryId(id: categoryId),
-                        );
-                      },
-                    ),
-                    ProductsSection(
+        child: Column(
+          crossAxisAlignment: .center,
+          spacing: 24.h,
+          children: [
+            RestaurantAppBar(
+              onMenu: widget.onProcudcts,
+              onAbout: widget.onAbout,
+              onContact: widget.onContact,
+            ),
+            const OfferWidget(),
+            BlocBuilder<ProductsBloc, ProductsState>(
+              bloc: getIt<ProductsBloc>(),
+              builder: (context, state) {
+                return state.maybeMap(
+                  loaded: (state) {
+                    final products =
+                        state.products?.map((e) => e.toEntity()).toList() ?? [];
+                    return ProductsSection(
                       key: widget.productsKey,
-                      products: state.homeRes?.products ?? [],
-                    ),
-                    AboutSection(key: widget.aboutKey),
-                    FooterWidget(key: widget.contactKey),
-                  ],
-                );
-              },
-              orElse: () {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 24.h,
-                  children: [
-                    RestaurantAppBar(
-                      onMenu: widget.onProcudcts,
-                      onAbout: widget.onAbout,
-                      onContact: widget.onContact,
-                    ),
-                    const OfferWidget(),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 40.h),
-                      child: Center(
-                        child: state.maybeMap(
-                          failure: (f) => Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                'تعذر تحميل بعض البيانات حالياً',
-                                style: context.textTheme.titleMedium,
-                              ),
-                              SizedBox(height: 12.h),
-                              ElevatedButton(
-                                onPressed: () {
-                                  getIt<HomeBloc>().add(const HomeEvent.get());
-                                },
-                                child: const Text('إعادة المحاولة'),
-                              ),
-                            ],
+                      products: products,
+                    );
+                  },
+                  failure: (f) => Padding(
+                    padding: EdgeInsets.symmetric(vertical: 40.h),
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'تعذر تحميل المنتجات من فايرستور',
+                            style: context.textTheme.titleMedium,
                           ),
-                          orElse: () => CircularProgressIndicator(
-                            color: context.colorScheme.primary,
+                          SizedBox(height: 12.h),
+                          ElevatedButton(
+                            onPressed: () {
+                              getIt<ProductsBloc>().add(
+                                const ProductsEvent.get(),
+                              );
+                            },
+                            child: const Text('إعادة المحاولة'),
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                    AboutSection(key: widget.aboutKey),
-                    FooterWidget(key: widget.contactKey),
-                  ],
+                  ),
+                  orElse: () => Padding(
+                    padding: EdgeInsets.symmetric(vertical: 40.h),
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: context.colorScheme.primary,
+                      ),
+                    ),
+                  ),
                 );
               },
-            );
-          },
+            ),
+            AboutSection(key: widget.aboutKey),
+            FooterWidget(key: widget.contactKey),
+          ],
         ),
       ),
     );

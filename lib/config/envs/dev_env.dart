@@ -1,13 +1,14 @@
 import 'package:elzefir/config/env_config.dart';
 import 'package:dart_pusher_channels/dart_pusher_channels.dart';
 import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
+
 import '../env.dart';
 import '../firebase/firebase_options_dev.dart';
 
 class DevEnv extends Env {
   @override
   String get webUrl {
-    return 'https://coral-shark-547480.hostingersite.com/elzefir';
+    return 'https://coral-shark-547480.hostingersite.com';
   }
 
   @override
@@ -27,12 +28,12 @@ class DevEnv extends Env {
 
   @override
   String get baseUrl {
-    return 'https://https://coral-shark-547480.hostingersite.com/api/user/';
+    return 'https://coral-shark-547480.hostingersite.com/api/user/';
   }
 
   @override
   String get authBaseUrl {
-    return 'https://https://coral-shark-547480.hostingersite.com/auth/';
+    return 'https://coral-shark-547480.hostingersite.com/auth/';
   }
 
   @override

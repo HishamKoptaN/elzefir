@@ -2,6 +2,7 @@ import 'package:elzefir/core/responsive/responsive_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
@@ -9,9 +10,18 @@ import 'footer_desk_layout.dart';
 import 'footer_mobile_layout.dart';
 
 Future<void> execuateLaunchUrl(String urlString) async {
-  final Uri url = Uri.parse(urlString);
-  if (await canLaunchUrl(url)) {
-    await launchUrl(url);
+  try {
+    final Uri url = urlString.startsWith('/')
+        ? Uri.base.resolve(urlString)
+        : Uri.parse(urlString);
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: .externalApplication);
+    } else {
+      await launchUrl(url, mode: .platformDefault);
+    }
+  } catch (e) {
+    debugPrint('Error launching $urlString: $e');
   }
 }
 
@@ -43,7 +53,7 @@ class FooterLegalLinks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      alignment: WrapAlignment.center,
+      alignment: .center,
       spacing: 20.w,
       runSpacing: 10.h,
       children: [
@@ -65,7 +75,7 @@ class FooterLegalLinks extends StatelessWidget {
         title,
         style: context.textTheme.bodyMedium?.copyWith(
           color: const Color(0xFFFACC15),
-          decoration: TextDecoration.underline,
+          decoration: .underline,
           decorationColor: const Color(0xFFFACC15).withValues(alpha: 0.5),
         ),
       ),
@@ -241,9 +251,7 @@ class RestaurantHighlights extends StatelessWidget {
       spacing: 6,
       runSpacing: 6,
       crossAxisAlignment: .start,
-      children: [
-        buildBadge(context: context, text: 'طازج يومياً 🐟'),
-      ],
+      children: [buildBadge(context: context, text: 'طازج يومياً 🐟')],
     );
   }
 }

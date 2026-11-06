@@ -15,7 +15,7 @@ abstract class RealtimeEventModel with _$RealtimeEventModel {
     @JsonKey(name: "updated_at") required String? updatedAt,
     @JsonKey(name: "package") required PackageModel? package,
     @JsonKey(name: "distribution_country") required DistributionCountry? distributionCountry,
-    @JsonKey(name: "changes") required Map<String, dynamic>? changes,
+    @JsonKey(name: "changes") Map<String, dynamic>? changes,
   }) = _RealtimeEventModel;
 
   factory RealtimeEventModel.fromJson(Map<String, dynamic> json) =>

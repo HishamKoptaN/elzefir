@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'update_bloc.dart';
@@ -9,12 +9,13 @@ part of 'update_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UpdateEvent {
 
- Completer get onComplete;
+ Completer<dynamic> get onComplete;
 /// Create a copy of UpdateEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +26,21 @@ $UpdateEventCopyWith<UpdateEvent> get copyWith => _$UpdateEventCopyWithImpl<Upda
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateEvent&&(identical(other.onComplete, onComplete) || other.onComplete == onComplete));
+  final _this = this as UpdateEvent;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateEvent&&(identical(other.onComplete, _this.onComplete) || other.onComplete == _this.onComplete));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,onComplete);
+int get hashCode {
+  final _this = this as UpdateEvent;
+  return Object.hash(runtimeType,_this.onComplete);
+}
 
 @override
 String toString() {
-  return 'UpdateEvent(onComplete: $onComplete)';
+  final _this = this as UpdateEvent;
+  return 'UpdateEvent(onComplete: ${_this.onComplete})';
 }
 
 
@@ -45,7 +51,7 @@ abstract mixin class $UpdateEventCopyWith<$Res>  {
   factory $UpdateEventCopyWith(UpdateEvent value, $Res Function(UpdateEvent) _then) = _$UpdateEventCopyWithImpl;
 @useResult
 $Res call({
- Completer onComplete
+ Completer<dynamic> onComplete
 });
 
 
@@ -63,9 +69,9 @@ class _$UpdateEventCopyWithImpl<$Res>
 /// Create a copy of UpdateEvent
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? onComplete = null,}) {
-  return _then(_self.copyWith(
+  return _then(UpdateEvent.check(
 onComplete: null == onComplete ? _self.onComplete : onComplete // ignore: cast_nullable_to_non_nullable
-as Completer,
+as Completer<dynamic>,
   ));
 }
 
@@ -150,7 +156,7 @@ return check(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( Completer onComplete)?  check,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( Completer<dynamic> onComplete)?  check,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Check() when check != null:
 return check(_that.onComplete);case _:
@@ -171,7 +177,7 @@ return check(_that.onComplete);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( Completer onComplete)  check,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( Completer<dynamic> onComplete)  check,}) {final _that = this;
 switch (_that) {
 case _Check():
 return check(_that.onComplete);case _:
@@ -191,7 +197,7 @@ return check(_that.onComplete);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( Completer onComplete)?  check,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( Completer<dynamic> onComplete)?  check,}) {final _that = this;
 switch (_that) {
 case _Check() when check != null:
 return check(_that.onComplete);case _:
@@ -209,7 +215,7 @@ class _Check implements UpdateEvent {
   const _Check({required this.onComplete});
   
 
-@override final  Completer onComplete;
+@override final  Completer<dynamic> onComplete;
 
 /// Create a copy of UpdateEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -221,16 +227,18 @@ _$CheckCopyWith<_Check> get copyWith => __$CheckCopyWithImpl<_Check>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Check&&(identical(other.onComplete, onComplete) || other.onComplete == onComplete));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Check&&(identical(other.onComplete, onComplete) || other.onComplete == onComplete));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,onComplete);
+int get hashCode {
+    return Object.hash(runtimeType,onComplete);
+}
 
 @override
 String toString() {
-  return 'UpdateEvent.check(onComplete: $onComplete)';
+    return 'UpdateEvent.check(onComplete: $onComplete)';
 }
 
 
@@ -241,7 +249,7 @@ abstract mixin class _$CheckCopyWith<$Res> implements $UpdateEventCopyWith<$Res>
   factory _$CheckCopyWith(_Check value, $Res Function(_Check) _then) = __$CheckCopyWithImpl;
 @override @useResult
 $Res call({
- Completer onComplete
+ Completer<dynamic> onComplete
 });
 
 
@@ -261,7 +269,7 @@ class __$CheckCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? onComplete = null,}) {
   return _then(_Check(
 onComplete: null == onComplete ? _self.onComplete : onComplete // ignore: cast_nullable_to_non_nullable
-as Completer,
+as Completer<dynamic>,
   ));
 }
 
@@ -277,7 +285,7 @@ mixin _$UpdateState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateState);
 }
 
 
@@ -286,7 +294,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'UpdateState()';
+    return 'UpdateState()';
 }
 
 
@@ -466,7 +474,7 @@ class _Init implements UpdateState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Init);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Init);
 }
 
 
@@ -475,7 +483,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'UpdateState.init()';
+    return 'UpdateState.init()';
 }
 
 
@@ -498,7 +506,7 @@ class _Checking implements UpdateState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Checking);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Checking);
 }
 
 
@@ -507,7 +515,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'UpdateState.checking()';
+    return 'UpdateState.checking()';
 }
 
 
@@ -530,7 +538,7 @@ class _UpToDate implements UpdateState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpToDate);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpToDate);
 }
 
 
@@ -539,7 +547,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'UpdateState.upToDate()';
+    return 'UpdateState.upToDate()';
 }
 
 
@@ -567,16 +575,18 @@ _$AppUpdateAvailableCopyWith<_AppUpdateAvailable> get copyWith => __$AppUpdateAv
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppUpdateAvailable&&(identical(other.versionInfo, versionInfo) || other.versionInfo == versionInfo));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppUpdateAvailable&&(identical(other.versionInfo, versionInfo) || other.versionInfo == versionInfo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,versionInfo);
+int get hashCode {
+    return Object.hash(runtimeType,versionInfo);
+}
 
 @override
 String toString() {
-  return 'UpdateState.appUpdateAvailable(versionInfo: $versionInfo)';
+    return 'UpdateState.appUpdateAvailable(versionInfo: $versionInfo)';
 }
 
 
@@ -642,16 +652,18 @@ _$FailureCopyWith<_Failure> get copyWith => __$FailureCopyWithImpl<_Failure>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.errorInfo, errorInfo) || other.errorInfo == errorInfo));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.errorInfo, errorInfo) || other.errorInfo == errorInfo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,errorInfo);
+int get hashCode {
+    return Object.hash(runtimeType,errorInfo);
+}
 
 @override
 String toString() {
-  return 'UpdateState.failure(errorInfo: $errorInfo)';
+    return 'UpdateState.failure(errorInfo: $errorInfo)';
 }
 
 

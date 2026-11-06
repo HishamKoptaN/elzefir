@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'filters_bloc.dart';
@@ -9,6 +9,7 @@ part of 'filters_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$FiltersEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FiltersEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is FiltersEvent);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'FiltersEvent()';
+    return 'FiltersEvent()';
 }
 
 
@@ -185,7 +186,7 @@ class _Get implements FiltersEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Get);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Get);
 }
 
 
@@ -194,7 +195,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'FiltersEvent.get()';
+    return 'FiltersEvent.get()';
 }
 
 
@@ -212,7 +213,7 @@ mixin _$FiltersState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FiltersState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is FiltersState);
 }
 
 
@@ -221,7 +222,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'FiltersState()';
+    return 'FiltersState()';
 }
 
 
@@ -401,7 +402,7 @@ class _Initial implements FiltersState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
 
@@ -410,7 +411,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'FiltersState.initial()';
+    return 'FiltersState.initial()';
 }
 
 
@@ -433,7 +434,7 @@ class _Loading implements FiltersState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
 }
 
 
@@ -442,7 +443,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'FiltersState.loading()';
+    return 'FiltersState.loading()';
 }
 
 
@@ -465,7 +466,7 @@ class _Success implements FiltersState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
 }
 
 
@@ -474,7 +475,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'FiltersState.success()';
+    return 'FiltersState.success()';
 }
 
 
@@ -487,7 +488,7 @@ String toString() {
 
 
 class _Loaded implements FiltersState {
-  const _Loaded({  List<FilterModel>? filters}): _filters = filters;
+  const _Loaded({ List<FilterModel>? filters}): _filters = filters;
   
 
  final  List<FilterModel>? _filters;
@@ -510,16 +511,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other._filters, _filters));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other.filters, _filters));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_filters));
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_filters));
+}
 
 @override
 String toString() {
-  return 'FiltersState.loaded(filters: $filters)';
+    return 'FiltersState.loaded(filters: $filters)';
 }
 
 
@@ -576,16 +579,18 @@ _$FailureCopyWith<_Failure> get copyWith => __$FailureCopyWithImpl<_Failure>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,apiErrorModel);
+int get hashCode {
+    return Object.hash(runtimeType,apiErrorModel);
+}
 
 @override
 String toString() {
-  return 'FiltersState.failure(apiErrorModel: $apiErrorModel)';
+    return 'FiltersState.failure(apiErrorModel: $apiErrorModel)';
 }
 
 

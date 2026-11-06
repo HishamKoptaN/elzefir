@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'order_status_entity.dart';
@@ -9,6 +9,7 @@ part of 'order_status_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $OrderStatusEntityCopyWith<OrderStatusEntity> get copyWith => _$OrderStatusEntit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderStatusEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.sort, sort) || other.sort == sort)&&(identical(other.message, message) || other.message == message)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.translations, translations) || other.translations == translations)&&(identical(other.original, original) || other.original == original)&&(identical(other.color, color) || other.color == color));
+  final _this = this as OrderStatusEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderStatusEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.slug, _this.slug) || other.slug == _this.slug)&&(identical(other.sort, _this.sort) || other.sort == _this.sort)&&(identical(other.message, _this.message) || other.message == _this.message)&&(identical(other.icon, _this.icon) || other.icon == _this.icon)&&(identical(other.isActive, _this.isActive) || other.isActive == _this.isActive)&&(identical(other.translations, _this.translations) || other.translations == _this.translations)&&(identical(other.original, _this.original) || other.original == _this.original)&&(identical(other.color, _this.color) || other.color == _this.color));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,type,slug,sort,message,icon,isActive,translations,original,color);
+int get hashCode {
+  final _this = this as OrderStatusEntity;
+  return Object.hash(runtimeType,_this.id,_this.name,_this.type,_this.slug,_this.sort,_this.message,_this.icon,_this.isActive,_this.translations,_this.original,_this.color);
+}
 
 @override
 String toString() {
-  return 'OrderStatusEntity(id: $id, name: $name, type: $type, slug: $slug, sort: $sort, message: $message, icon: $icon, isActive: $isActive, translations: $translations, original: $original, color: $color)';
+  final _this = this as OrderStatusEntity;
+  return 'OrderStatusEntity(id: ${_this.id}, name: ${_this.name}, type: ${_this.type}, slug: ${_this.slug}, sort: ${_this.sort}, message: ${_this.message}, icon: ${_this.icon}, isActive: ${_this.isActive}, translations: ${_this.translations}, original: ${_this.original}, color: ${_this.color})';
 }
 
 
@@ -63,7 +69,7 @@ class _$OrderStatusEntityCopyWithImpl<$Res>
 /// Create a copy of OrderStatusEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,Object? type = freezed,Object? slug = freezed,Object? sort = freezed,Object? message = freezed,Object? icon = freezed,Object? isActive = freezed,Object? translations = freezed,Object? original = freezed,Object? color = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(OrderStatusEntity(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
@@ -265,16 +271,18 @@ _$OrderStatusEntityCopyWith<_OrderStatusEntity> get copyWith => __$OrderStatusEn
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderStatusEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.sort, sort) || other.sort == sort)&&(identical(other.message, message) || other.message == message)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.translations, translations) || other.translations == translations)&&(identical(other.original, original) || other.original == original)&&(identical(other.color, color) || other.color == color));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderStatusEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.slug, slug) || other.slug == slug)&&(identical(other.sort, sort) || other.sort == sort)&&(identical(other.message, message) || other.message == message)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.translations, translations) || other.translations == translations)&&(identical(other.original, original) || other.original == original)&&(identical(other.color, color) || other.color == color));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,type,slug,sort,message,icon,isActive,translations,original,color);
+int get hashCode {
+    return Object.hash(runtimeType,id,name,type,slug,sort,message,icon,isActive,translations,original,color);
+}
 
 @override
 String toString() {
-  return 'OrderStatusEntity(id: $id, name: $name, type: $type, slug: $slug, sort: $sort, message: $message, icon: $icon, isActive: $isActive, translations: $translations, original: $original, color: $color)';
+    return 'OrderStatusEntity(id: $id, name: $name, type: $type, slug: $slug, sort: $sort, message: $message, icon: $icon, isActive: $isActive, translations: $translations, original: $original, color: $color)';
 }
 
 
@@ -360,16 +368,21 @@ $OriginalEntityCopyWith<OriginalEntity> get copyWith => _$OriginalEntityCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OriginalEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+  final _this = this as OriginalEntity;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OriginalEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+  final _this = this as OriginalEntity;
+  return Object.hash(runtimeType,_this.id,_this.name);
+}
 
 @override
 String toString() {
-  return 'OriginalEntity(id: $id, name: $name)';
+  final _this = this as OriginalEntity;
+  return 'OriginalEntity(id: ${_this.id}, name: ${_this.name})';
 }
 
 
@@ -398,7 +411,7 @@ class _$OriginalEntityCopyWithImpl<$Res>
 /// Create a copy of OriginalEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(OriginalEntity(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -558,16 +571,18 @@ _$OriginalEntityCopyWith<_OriginalEntity> get copyWith => __$OriginalEntityCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OriginalEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OriginalEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+    return Object.hash(runtimeType,id,name);
+}
 
 @override
 String toString() {
-  return 'OriginalEntity(id: $id, name: $name)';
+    return 'OriginalEntity(id: $id, name: $name)';
 }
 
 
@@ -620,16 +635,21 @@ $TranslationsCopyWith<Translations> get copyWith => _$TranslationsCopyWithImpl<T
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Translations&&(identical(other.ar, ar) || other.ar == ar));
+  final _this = this as Translations;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Translations&&(identical(other.ar, _this.ar) || other.ar == _this.ar));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,ar);
+int get hashCode {
+  final _this = this as Translations;
+  return Object.hash(runtimeType,_this.ar);
+}
 
 @override
 String toString() {
-  return 'Translations(ar: $ar)';
+  final _this = this as Translations;
+  return 'Translations(ar: ${_this.ar})';
 }
 
 
@@ -658,7 +678,7 @@ class _$TranslationsCopyWithImpl<$Res>
 /// Create a copy of Translations
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? ar = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(Translations(
 ar: freezed == ar ? _self.ar : ar // ignore: cast_nullable_to_non_nullable
 as Ar?,
   ));
@@ -828,16 +848,18 @@ _$TranslationsCopyWith<_Translations> get copyWith => __$TranslationsCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Translations&&(identical(other.ar, ar) || other.ar == ar));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Translations&&(identical(other.ar, ar) || other.ar == ar));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,ar);
+int get hashCode {
+    return Object.hash(runtimeType,ar);
+}
 
 @override
 String toString() {
-  return 'Translations(ar: $ar)';
+    return 'Translations(ar: $ar)';
 }
 
 
@@ -901,16 +923,21 @@ $ArCopyWith<Ar> get copyWith => _$ArCopyWithImpl<Ar>(this as Ar, _$identity);
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Ar&&(identical(other.name, name) || other.name == name)&&(identical(other.message, message) || other.message == message));
+  final _this = this as Ar;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Ar&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.message, _this.message) || other.message == _this.message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,message);
+int get hashCode {
+  final _this = this as Ar;
+  return Object.hash(runtimeType,_this.name,_this.message);
+}
 
 @override
 String toString() {
-  return 'Ar(name: $name, message: $message)';
+  final _this = this as Ar;
+  return 'Ar(name: ${_this.name}, message: ${_this.message})';
 }
 
 
@@ -939,7 +966,7 @@ class _$ArCopyWithImpl<$Res>
 /// Create a copy of Ar
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = freezed,Object? message = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(Ar(
 name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -1099,16 +1126,18 @@ _$ArCopyWith<_Ar> get copyWith => __$ArCopyWithImpl<_Ar>(this, _$identity);
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Ar&&(identical(other.name, name) || other.name == name)&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Ar&&(identical(other.name, name) || other.name == name)&&(identical(other.message, message) || other.message == message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,message);
+int get hashCode {
+    return Object.hash(runtimeType,name,message);
+}
 
 @override
 String toString() {
-  return 'Ar(name: $name, message: $message)';
+    return 'Ar(name: $name, message: $message)';
 }
 
 

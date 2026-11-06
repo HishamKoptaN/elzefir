@@ -74,7 +74,7 @@ class FooterContactsItems extends StatelessWidget {
                 size: 18.iconRes,
               ),
               onTap: () {
-                execuateLaunchUrl('https://www.instagram.com/@elzefir_fish');
+                execuateLaunchUrl('https://www.instagram.com/elzefir_fish');
             }),
           ],
         ),

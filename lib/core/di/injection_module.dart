@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -32,5 +33,9 @@ abstract class InjectionModule {
   @singleton
   FirebaseAuth get firebaseAuth {
     return FirebaseAuth.instance;
+  }
+  @singleton
+  FirebaseFirestore get firebaseFirestore {
+    return FirebaseFirestore.instance;
   }
 }

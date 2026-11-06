@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'orders_statuses_bloc.dart';
@@ -9,6 +9,7 @@ part of 'orders_statuses_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$OrdersStatusesEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersStatusesEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersStatusesEvent);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersStatusesEvent()';
+    return 'OrdersStatusesEvent()';
 }
 
 
@@ -185,7 +186,7 @@ class _Get implements OrdersStatusesEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Get);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Get);
 }
 
 
@@ -194,7 +195,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersStatusesEvent.get()';
+    return 'OrdersStatusesEvent.get()';
 }
 
 
@@ -212,7 +213,7 @@ mixin _$OrdersStatusesState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersStatusesState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersStatusesState);
 }
 
 
@@ -221,7 +222,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersStatusesState()';
+    return 'OrdersStatusesState()';
 }
 
 
@@ -401,7 +402,7 @@ class _Initial implements OrdersStatusesState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
 
@@ -410,7 +411,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersStatusesState.initial()';
+    return 'OrdersStatusesState.initial()';
 }
 
 
@@ -423,7 +424,7 @@ String toString() {
 
 
 class _Loaded implements OrdersStatusesState {
-  const _Loaded({required   List<OrderStatusEntity>? ordersStatuses, this.loading}): _ordersStatuses = ordersStatuses;
+  const _Loaded({required  List<OrderStatusEntity>? ordersStatuses, this.loading}): _ordersStatuses = ordersStatuses;
   
 
  final  List<OrderStatusEntity>? _ordersStatuses;
@@ -447,16 +448,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other._ordersStatuses, _ordersStatuses)&&(identical(other.loading, loading) || other.loading == loading));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other.ordersStatuses, _ordersStatuses)&&(identical(other.loading, loading) || other.loading == loading));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_ordersStatuses),loading);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_ordersStatuses),loading);
+}
 
 @override
 String toString() {
-  return 'OrdersStatusesState.loaded(ordersStatuses: $ordersStatuses, loading: $loading)';
+    return 'OrdersStatusesState.loaded(ordersStatuses: $ordersStatuses, loading: $loading)';
 }
 
 
@@ -509,7 +512,7 @@ class _Loading implements OrdersStatusesState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
 }
 
 
@@ -518,7 +521,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersStatusesState.loading()';
+    return 'OrdersStatusesState.loading()';
 }
 
 
@@ -541,7 +544,7 @@ class _Success implements OrdersStatusesState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
 }
 
 
@@ -550,7 +553,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersStatusesState.success()';
+    return 'OrdersStatusesState.success()';
 }
 
 
@@ -578,16 +581,18 @@ _$FailureCopyWith<_Failure> get copyWith => __$FailureCopyWithImpl<_Failure>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,apiErrorModel);
+int get hashCode {
+    return Object.hash(runtimeType,apiErrorModel);
+}
 
 @override
 String toString() {
-  return 'OrdersStatusesState.failure(apiErrorModel: $apiErrorModel)';
+    return 'OrdersStatusesState.failure(apiErrorModel: $apiErrorModel)';
 }
 
 

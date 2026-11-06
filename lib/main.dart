@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:intl/intl_standalone.dart';
 
-import 'core/services/pusher_service.dart';
 import 'features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 import 'core/widgets/custom_error_widget.dart';
 import 'core/di/dependency_injection.dart';
@@ -53,7 +52,6 @@ Future<void> main() async {
       // await SharedPrefHelper.clearAllData();
       // await SharedPrefHelper.clearAllSecuredData();
     }
-    getIt<PusherService>().init();
     final updateCompleter = Completer();
     getIt<UpdateBloc>().add(.check(onComplete: updateCompleter));
     await updateCompleter.future;

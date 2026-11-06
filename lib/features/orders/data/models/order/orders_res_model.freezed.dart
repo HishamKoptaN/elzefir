@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'orders_res_model.dart';
@@ -9,6 +9,7 @@ part of 'orders_res_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -28,16 +29,21 @@ $OrdersResModelCopyWith<OrdersResModel> get copyWith => _$OrdersResModelCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersResModel&&const DeepCollectionEquality().equals(other.orders, orders)&&(identical(other.meta, meta) || other.meta == meta));
+  final _this = this as OrdersResModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersResModel&&const DeepCollectionEquality().equals(other.orders, _this.orders)&&(identical(other.meta, _this.meta) || other.meta == _this.meta));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(orders),meta);
+int get hashCode {
+  final _this = this as OrdersResModel;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.orders),_this.meta);
+}
 
 @override
 String toString() {
-  return 'OrdersResModel(orders: $orders, meta: $meta)';
+  final _this = this as OrdersResModel;
+  return 'OrdersResModel(orders: ${_this.orders}, meta: ${_this.meta})';
 }
 
 
@@ -66,7 +72,7 @@ class _$OrdersResModelCopyWithImpl<$Res>
 /// Create a copy of OrdersResModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? orders = freezed,Object? meta = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(OrdersResModel(
 orders: freezed == orders ? _self.orders : orders // ignore: cast_nullable_to_non_nullable
 as List<OrderModel>?,meta: freezed == meta ? _self.meta : meta // ignore: cast_nullable_to_non_nullable
 as MetaModel?,
@@ -222,7 +228,7 @@ return $default(_that.orders,_that.meta);case _:
 @JsonSerializable()
 
 class _OrdersResModel implements OrdersResModel {
-  const _OrdersResModel({@JsonKey(name: "data")   List<OrderModel>? orders, @JsonKey(name: "meta") this.meta}): _orders = orders;
+  const _OrdersResModel({@JsonKey(name: "data")  List<OrderModel>? orders, @JsonKey(name: "meta") this.meta}): _orders = orders;
   factory _OrdersResModel.fromJson(Map<String, dynamic> json) => _$OrdersResModelFromJson(json);
 
  final  List<OrderModel>? _orders;
@@ -249,16 +255,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrdersResModel&&const DeepCollectionEquality().equals(other._orders, _orders)&&(identical(other.meta, meta) || other.meta == meta));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrdersResModel&&const DeepCollectionEquality().equals(other.orders, _orders)&&(identical(other.meta, meta) || other.meta == meta));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_orders),meta);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_orders),meta);
+}
 
 @override
 String toString() {
-  return 'OrdersResModel(orders: $orders, meta: $meta)';
+    return 'OrdersResModel(orders: $orders, meta: $meta)';
 }
 
 
@@ -326,16 +334,21 @@ $OrderModelCopyWith<OrderModel> get copyWith => _$OrderModelCopyWithImpl<OrderMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderModel&&(identical(other.id, id) || other.id == id)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.sallaOrderStatus, sallaOrderStatus) || other.sallaOrderStatus == sallaOrderStatus)&&const DeepCollectionEquality().equals(other.sallaOrderItems, sallaOrderItems)&&(identical(other.customer, customer) || other.customer == customer)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+  final _this = this as OrderModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrderModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.referenceId, _this.referenceId) || other.referenceId == _this.referenceId)&&(identical(other.sallaOrderStatus, _this.sallaOrderStatus) || other.sallaOrderStatus == _this.sallaOrderStatus)&&const DeepCollectionEquality().equals(other.sallaOrderItems, _this.sallaOrderItems)&&(identical(other.customer, _this.customer) || other.customer == _this.customer)&&(identical(other.createdAt, _this.createdAt) || other.createdAt == _this.createdAt)&&(identical(other.updatedAt, _this.updatedAt) || other.updatedAt == _this.updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,referenceId,sallaOrderStatus,const DeepCollectionEquality().hash(sallaOrderItems),customer,createdAt,updatedAt);
+int get hashCode {
+  final _this = this as OrderModel;
+  return Object.hash(runtimeType,_this.id,_this.referenceId,_this.sallaOrderStatus,const DeepCollectionEquality().hash(_this.sallaOrderItems),_this.customer,_this.createdAt,_this.updatedAt);
+}
 
 @override
 String toString() {
-  return 'OrderModel(id: $id, referenceId: $referenceId, sallaOrderStatus: $sallaOrderStatus, sallaOrderItems: $sallaOrderItems, customer: $customer, createdAt: $createdAt, updatedAt: $updatedAt)';
+  final _this = this as OrderModel;
+  return 'OrderModel(id: ${_this.id}, referenceId: ${_this.referenceId}, sallaOrderStatus: ${_this.sallaOrderStatus}, sallaOrderItems: ${_this.sallaOrderItems}, customer: ${_this.customer}, createdAt: ${_this.createdAt}, updatedAt: ${_this.updatedAt})';
 }
 
 
@@ -364,7 +377,7 @@ class _$OrderModelCopyWithImpl<$Res>
 /// Create a copy of OrderModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? referenceId = freezed,Object? sallaOrderStatus = freezed,Object? sallaOrderItems = freezed,Object? customer = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(OrderModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,referenceId: freezed == referenceId ? _self.referenceId : referenceId // ignore: cast_nullable_to_non_nullable
 as int?,sallaOrderStatus: freezed == sallaOrderStatus ? _self.sallaOrderStatus : sallaOrderStatus // ignore: cast_nullable_to_non_nullable
@@ -537,7 +550,7 @@ return $default(_that.id,_that.referenceId,_that.sallaOrderStatus,_that.sallaOrd
 @JsonSerializable()
 
 class _OrderModel implements OrderModel {
-  const _OrderModel({@JsonKey(name: "id") this.id, @JsonKey(name: "reference_id") this.referenceId, @JsonKey(name: "salla_order_status") this.sallaOrderStatus, @JsonKey(name: "salla_order_items")   List<SallaOrderItemModel>? sallaOrderItems, this.customer, @JsonKey(name: "created_at") this.createdAt, @JsonKey(name: "updated_at") this.updatedAt}): _sallaOrderItems = sallaOrderItems;
+  const _OrderModel({@JsonKey(name: "id") this.id, @JsonKey(name: "reference_id") this.referenceId, @JsonKey(name: "salla_order_status") this.sallaOrderStatus, @JsonKey(name: "salla_order_items")  List<SallaOrderItemModel>? sallaOrderItems, this.customer, @JsonKey(name: "created_at") this.createdAt, @JsonKey(name: "updated_at") this.updatedAt}): _sallaOrderItems = sallaOrderItems;
   factory _OrderModel.fromJson(Map<String, dynamic> json) => _$OrderModelFromJson(json);
 
 @override@JsonKey(name: "id") final  int? id;
@@ -569,16 +582,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderModel&&(identical(other.id, id) || other.id == id)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.sallaOrderStatus, sallaOrderStatus) || other.sallaOrderStatus == sallaOrderStatus)&&const DeepCollectionEquality().equals(other._sallaOrderItems, _sallaOrderItems)&&(identical(other.customer, customer) || other.customer == customer)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderModel&&(identical(other.id, id) || other.id == id)&&(identical(other.referenceId, referenceId) || other.referenceId == referenceId)&&(identical(other.sallaOrderStatus, sallaOrderStatus) || other.sallaOrderStatus == sallaOrderStatus)&&const DeepCollectionEquality().equals(other.sallaOrderItems, _sallaOrderItems)&&(identical(other.customer, customer) || other.customer == customer)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,referenceId,sallaOrderStatus,const DeepCollectionEquality().hash(_sallaOrderItems),customer,createdAt,updatedAt);
+int get hashCode {
+    return Object.hash(runtimeType,id,referenceId,sallaOrderStatus,const DeepCollectionEquality().hash(_sallaOrderItems),customer,createdAt,updatedAt);
+}
 
 @override
 String toString() {
-  return 'OrderModel(id: $id, referenceId: $referenceId, sallaOrderStatus: $sallaOrderStatus, sallaOrderItems: $sallaOrderItems, customer: $customer, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'OrderModel(id: $id, referenceId: $referenceId, sallaOrderStatus: $sallaOrderStatus, sallaOrderItems: $sallaOrderItems, customer: $customer, createdAt: $createdAt, updatedAt: $updatedAt)';
 }
 
 
@@ -663,16 +678,21 @@ $CustomerModelCopyWith<CustomerModel> get copyWith => _$CustomerModelCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomerModel&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.mobile, mobile) || other.mobile == mobile)&&(identical(other.email, email) || other.email == email));
+  final _this = this as CustomerModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomerModel&&(identical(other.fullName, _this.fullName) || other.fullName == _this.fullName)&&(identical(other.mobile, _this.mobile) || other.mobile == _this.mobile)&&(identical(other.email, _this.email) || other.email == _this.email));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,fullName,mobile,email);
+int get hashCode {
+  final _this = this as CustomerModel;
+  return Object.hash(runtimeType,_this.fullName,_this.mobile,_this.email);
+}
 
 @override
 String toString() {
-  return 'CustomerModel(fullName: $fullName, mobile: $mobile, email: $email)';
+  final _this = this as CustomerModel;
+  return 'CustomerModel(fullName: ${_this.fullName}, mobile: ${_this.mobile}, email: ${_this.email})';
 }
 
 
@@ -701,7 +721,7 @@ class _$CustomerModelCopyWithImpl<$Res>
 /// Create a copy of CustomerModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? fullName = freezed,Object? mobile = freezed,Object? email = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CustomerModel(
 fullName: freezed == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
 as String?,mobile: freezed == mobile ? _self.mobile : mobile // ignore: cast_nullable_to_non_nullable
 as int?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
@@ -866,16 +886,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomerModel&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.mobile, mobile) || other.mobile == mobile)&&(identical(other.email, email) || other.email == email));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomerModel&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.mobile, mobile) || other.mobile == mobile)&&(identical(other.email, email) || other.email == email));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,fullName,mobile,email);
+int get hashCode {
+    return Object.hash(runtimeType,fullName,mobile,email);
+}
 
 @override
 String toString() {
-  return 'CustomerModel(fullName: $fullName, mobile: $mobile, email: $email)';
+    return 'CustomerModel(fullName: $fullName, mobile: $mobile, email: $email)';
 }
 
 
@@ -932,16 +954,21 @@ $SallaOrderItemModelCopyWith<SallaOrderItemModel> get copyWith => _$SallaOrderIt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SallaOrderItemModel&&(identical(other.id, id) || other.id == id)&&(identical(other.productName, productName) || other.productName == productName)&&(identical(other.printedName, printedName) || other.printedName == printedName)&&const DeepCollectionEquality().equals(other.units, units)&&(identical(other.distributionCountry, distributionCountry) || other.distributionCountry == distributionCountry)&&(identical(other.additions, additions) || other.additions == additions));
+  final _this = this as SallaOrderItemModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SallaOrderItemModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.productName, _this.productName) || other.productName == _this.productName)&&(identical(other.printedName, _this.printedName) || other.printedName == _this.printedName)&&const DeepCollectionEquality().equals(other.units, _this.units)&&(identical(other.distributionCountry, _this.distributionCountry) || other.distributionCountry == _this.distributionCountry)&&(identical(other.additions, _this.additions) || other.additions == _this.additions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,productName,printedName,const DeepCollectionEquality().hash(units),distributionCountry,additions);
+int get hashCode {
+  final _this = this as SallaOrderItemModel;
+  return Object.hash(runtimeType,_this.id,_this.productName,_this.printedName,const DeepCollectionEquality().hash(_this.units),_this.distributionCountry,_this.additions);
+}
 
 @override
 String toString() {
-  return 'SallaOrderItemModel(id: $id, productName: $productName, printedName: $printedName, units: $units, distributionCountry: $distributionCountry, additions: $additions)';
+  final _this = this as SallaOrderItemModel;
+  return 'SallaOrderItemModel(id: ${_this.id}, productName: ${_this.productName}, printedName: ${_this.printedName}, units: ${_this.units}, distributionCountry: ${_this.distributionCountry}, additions: ${_this.additions})';
 }
 
 
@@ -970,7 +997,7 @@ class _$SallaOrderItemModelCopyWithImpl<$Res>
 /// Create a copy of SallaOrderItemModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? productName = freezed,Object? printedName = freezed,Object? units = freezed,Object? distributionCountry = freezed,Object? additions = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(SallaOrderItemModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,productName: freezed == productName ? _self.productName : productName // ignore: cast_nullable_to_non_nullable
 as String?,printedName: freezed == printedName ? _self.printedName : printedName // ignore: cast_nullable_to_non_nullable
@@ -1118,7 +1145,7 @@ return $default(_that.id,_that.productName,_that.printedName,_that.units,_that.d
 @JsonSerializable()
 
 class _SallaOrderItemModel implements SallaOrderItemModel {
-  const _SallaOrderItemModel({this.id, this.productName, @JsonKey(name: "printed_name") this.printedName,   List<UnitModel>? units, @JsonKey(name: "distribution_country") this.distributionCountry, this.additions}): _units = units;
+  const _SallaOrderItemModel({this.id, this.productName, @JsonKey(name: "printed_name") this.printedName,  List<UnitModel>? units, @JsonKey(name: "distribution_country") this.distributionCountry, this.additions}): _units = units;
   factory _SallaOrderItemModel.fromJson(Map<String, dynamic> json) => _$SallaOrderItemModelFromJson(json);
 
 @override final  int? id;
@@ -1149,16 +1176,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SallaOrderItemModel&&(identical(other.id, id) || other.id == id)&&(identical(other.productName, productName) || other.productName == productName)&&(identical(other.printedName, printedName) || other.printedName == printedName)&&const DeepCollectionEquality().equals(other._units, _units)&&(identical(other.distributionCountry, distributionCountry) || other.distributionCountry == distributionCountry)&&(identical(other.additions, additions) || other.additions == additions));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SallaOrderItemModel&&(identical(other.id, id) || other.id == id)&&(identical(other.productName, productName) || other.productName == productName)&&(identical(other.printedName, printedName) || other.printedName == printedName)&&const DeepCollectionEquality().equals(other.units, _units)&&(identical(other.distributionCountry, distributionCountry) || other.distributionCountry == distributionCountry)&&(identical(other.additions, additions) || other.additions == additions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,productName,printedName,const DeepCollectionEquality().hash(_units),distributionCountry,additions);
+int get hashCode {
+    return Object.hash(runtimeType,id,productName,printedName,const DeepCollectionEquality().hash(_units),distributionCountry,additions);
+}
 
 @override
 String toString() {
-  return 'SallaOrderItemModel(id: $id, productName: $productName, printedName: $printedName, units: $units, distributionCountry: $distributionCountry, additions: $additions)';
+    return 'SallaOrderItemModel(id: $id, productName: $productName, printedName: $printedName, units: $units, distributionCountry: $distributionCountry, additions: $additions)';
 }
 
 
@@ -1218,16 +1247,21 @@ $UnitModelCopyWith<UnitModel> get copyWith => _$UnitModelCopyWithImpl<UnitModel>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnitModel&&(identical(other.id, id) || other.id == id)&&(identical(other.unitNumber, unitNumber) || other.unitNumber == unitNumber)&&(identical(other.executionNumber, executionNumber) || other.executionNumber == executionNumber)&&(identical(other.documentationLink, documentationLink) || other.documentationLink == documentationLink));
+  final _this = this as UnitModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnitModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.unitNumber, _this.unitNumber) || other.unitNumber == _this.unitNumber)&&(identical(other.executionNumber, _this.executionNumber) || other.executionNumber == _this.executionNumber)&&(identical(other.documentationLink, _this.documentationLink) || other.documentationLink == _this.documentationLink));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,unitNumber,executionNumber,documentationLink);
+int get hashCode {
+  final _this = this as UnitModel;
+  return Object.hash(runtimeType,_this.id,_this.unitNumber,_this.executionNumber,_this.documentationLink);
+}
 
 @override
 String toString() {
-  return 'UnitModel(id: $id, unitNumber: $unitNumber, executionNumber: $executionNumber, documentationLink: $documentationLink)';
+  final _this = this as UnitModel;
+  return 'UnitModel(id: ${_this.id}, unitNumber: ${_this.unitNumber}, executionNumber: ${_this.executionNumber}, documentationLink: ${_this.documentationLink})';
 }
 
 
@@ -1256,7 +1290,7 @@ class _$UnitModelCopyWithImpl<$Res>
 /// Create a copy of UnitModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? unitNumber = freezed,Object? executionNumber = freezed,Object? documentationLink = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(UnitModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,unitNumber: freezed == unitNumber ? _self.unitNumber : unitNumber // ignore: cast_nullable_to_non_nullable
 as int?,executionNumber: freezed == executionNumber ? _self.executionNumber : executionNumber // ignore: cast_nullable_to_non_nullable
@@ -1423,16 +1457,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UnitModel&&(identical(other.id, id) || other.id == id)&&(identical(other.unitNumber, unitNumber) || other.unitNumber == unitNumber)&&(identical(other.executionNumber, executionNumber) || other.executionNumber == executionNumber)&&(identical(other.documentationLink, documentationLink) || other.documentationLink == documentationLink));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UnitModel&&(identical(other.id, id) || other.id == id)&&(identical(other.unitNumber, unitNumber) || other.unitNumber == unitNumber)&&(identical(other.executionNumber, executionNumber) || other.executionNumber == executionNumber)&&(identical(other.documentationLink, documentationLink) || other.documentationLink == documentationLink));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,unitNumber,executionNumber,documentationLink);
+int get hashCode {
+    return Object.hash(runtimeType,id,unitNumber,executionNumber,documentationLink);
+}
 
 @override
 String toString() {
-  return 'UnitModel(id: $id, unitNumber: $unitNumber, executionNumber: $executionNumber, documentationLink: $documentationLink)';
+    return 'UnitModel(id: $id, unitNumber: $unitNumber, executionNumber: $executionNumber, documentationLink: $documentationLink)';
 }
 
 
@@ -1490,16 +1526,21 @@ $ValueModelCopyWith<ValueModel> get copyWith => _$ValueModelCopyWithImpl<ValueMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ValueModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+  final _this = this as ValueModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ValueModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+  final _this = this as ValueModel;
+  return Object.hash(runtimeType,_this.id,_this.name);
+}
 
 @override
 String toString() {
-  return 'ValueModel(id: $id, name: $name)';
+  final _this = this as ValueModel;
+  return 'ValueModel(id: ${_this.id}, name: ${_this.name})';
 }
 
 
@@ -1528,7 +1569,7 @@ class _$ValueModelCopyWithImpl<$Res>
 /// Create a copy of ValueModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(ValueModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -1691,16 +1732,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ValueModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ValueModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+    return Object.hash(runtimeType,id,name);
+}
 
 @override
 String toString() {
-  return 'ValueModel(id: $id, name: $name)';
+    return 'ValueModel(id: $id, name: $name)';
 }
 
 
@@ -1756,16 +1799,21 @@ $CookingMethodModelCopyWith<CookingMethodModel> get copyWith => _$CookingMethodM
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CookingMethodModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+  final _this = this as CookingMethodModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CookingMethodModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+  final _this = this as CookingMethodModel;
+  return Object.hash(runtimeType,_this.id,_this.name);
+}
 
 @override
 String toString() {
-  return 'CookingMethodModel(id: $id, name: $name)';
+  final _this = this as CookingMethodModel;
+  return 'CookingMethodModel(id: ${_this.id}, name: ${_this.name})';
 }
 
 
@@ -1794,7 +1842,7 @@ class _$CookingMethodModelCopyWithImpl<$Res>
 /// Create a copy of CookingMethodModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(CookingMethodModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -1957,16 +2005,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CookingMethodModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CookingMethodModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name);
+int get hashCode {
+    return Object.hash(runtimeType,id,name);
+}
 
 @override
 String toString() {
-  return 'CookingMethodModel(id: $id, name: $name)';
+    return 'CookingMethodModel(id: $id, name: $name)';
 }
 
 

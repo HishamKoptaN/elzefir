@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'orders_filter_model.dart';
@@ -9,6 +9,7 @@ part of 'orders_filter_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -25,16 +26,21 @@ $OrdersFilterModelCopyWith<OrdersFilterModel> get copyWith => _$OrdersFilterMode
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersFilterModel&&(identical(other.searchQuery, searchQuery) || other.searchQuery == searchQuery)&&(identical(other.fromDate, fromDate) || other.fromDate == fromDate)&&(identical(other.toDate, toDate) || other.toDate == toDate)&&const DeepCollectionEquality().equals(other.unifiedValueIds, unifiedValueIds)&&(identical(other.selectedStatus, selectedStatus) || other.selectedStatus == selectedStatus)&&(identical(other.product, product) || other.product == product));
+  final _this = this as OrdersFilterModel;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersFilterModel&&(identical(other.searchQuery, _this.searchQuery) || other.searchQuery == _this.searchQuery)&&(identical(other.fromDate, _this.fromDate) || other.fromDate == _this.fromDate)&&(identical(other.toDate, _this.toDate) || other.toDate == _this.toDate)&&const DeepCollectionEquality().equals(other.unifiedValueIds, _this.unifiedValueIds)&&(identical(other.selectedStatus, _this.selectedStatus) || other.selectedStatus == _this.selectedStatus)&&(identical(other.product, _this.product) || other.product == _this.product));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,searchQuery,fromDate,toDate,const DeepCollectionEquality().hash(unifiedValueIds),selectedStatus,product);
+int get hashCode {
+  final _this = this as OrdersFilterModel;
+  return Object.hash(runtimeType,_this.searchQuery,_this.fromDate,_this.toDate,const DeepCollectionEquality().hash(_this.unifiedValueIds),_this.selectedStatus,_this.product);
+}
 
 @override
 String toString() {
-  return 'OrdersFilterModel(searchQuery: $searchQuery, fromDate: $fromDate, toDate: $toDate, unifiedValueIds: $unifiedValueIds, selectedStatus: $selectedStatus, product: $product)';
+  final _this = this as OrdersFilterModel;
+  return 'OrdersFilterModel(searchQuery: ${_this.searchQuery}, fromDate: ${_this.fromDate}, toDate: ${_this.toDate}, unifiedValueIds: ${_this.unifiedValueIds}, selectedStatus: ${_this.selectedStatus}, product: ${_this.product})';
 }
 
 
@@ -63,7 +69,7 @@ class _$OrdersFilterModelCopyWithImpl<$Res>
 /// Create a copy of OrdersFilterModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? searchQuery = freezed,Object? fromDate = freezed,Object? toDate = freezed,Object? unifiedValueIds = null,Object? selectedStatus = freezed,Object? product = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(OrdersFilterModel(
 searchQuery: freezed == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable
 as String?,fromDate: freezed == fromDate ? _self.fromDate : fromDate // ignore: cast_nullable_to_non_nullable
 as DateTime?,toDate: freezed == toDate ? _self.toDate : toDate // ignore: cast_nullable_to_non_nullable
@@ -235,7 +241,7 @@ return $default(_that.searchQuery,_that.fromDate,_that.toDate,_that.unifiedValue
 
 
 class _OrdersFilterModel extends OrdersFilterModel {
-  const _OrdersFilterModel({this.searchQuery, this.fromDate, this.toDate,   List<int> unifiedValueIds = const [], this.selectedStatus, this.product}): _unifiedValueIds = unifiedValueIds,super._();
+  const _OrdersFilterModel({this.searchQuery, this.fromDate, this.toDate,  List<int> unifiedValueIds = const [], this.selectedStatus, this.product}): _unifiedValueIds = unifiedValueIds,super._();
   
 
 @override final  String? searchQuery;
@@ -261,16 +267,18 @@ _$OrdersFilterModelCopyWith<_OrdersFilterModel> get copyWith => __$OrdersFilterM
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrdersFilterModel&&(identical(other.searchQuery, searchQuery) || other.searchQuery == searchQuery)&&(identical(other.fromDate, fromDate) || other.fromDate == fromDate)&&(identical(other.toDate, toDate) || other.toDate == toDate)&&const DeepCollectionEquality().equals(other._unifiedValueIds, _unifiedValueIds)&&(identical(other.selectedStatus, selectedStatus) || other.selectedStatus == selectedStatus)&&(identical(other.product, product) || other.product == product));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrdersFilterModel&&(identical(other.searchQuery, searchQuery) || other.searchQuery == searchQuery)&&(identical(other.fromDate, fromDate) || other.fromDate == fromDate)&&(identical(other.toDate, toDate) || other.toDate == toDate)&&const DeepCollectionEquality().equals(other.unifiedValueIds, _unifiedValueIds)&&(identical(other.selectedStatus, selectedStatus) || other.selectedStatus == selectedStatus)&&(identical(other.product, product) || other.product == product));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,searchQuery,fromDate,toDate,const DeepCollectionEquality().hash(_unifiedValueIds),selectedStatus,product);
+int get hashCode {
+    return Object.hash(runtimeType,searchQuery,fromDate,toDate,const DeepCollectionEquality().hash(_unifiedValueIds),selectedStatus,product);
+}
 
 @override
 String toString() {
-  return 'OrdersFilterModel(searchQuery: $searchQuery, fromDate: $fromDate, toDate: $toDate, unifiedValueIds: $unifiedValueIds, selectedStatus: $selectedStatus, product: $product)';
+    return 'OrdersFilterModel(searchQuery: $searchQuery, fromDate: $fromDate, toDate: $toDate, unifiedValueIds: $unifiedValueIds, selectedStatus: $selectedStatus, product: $product)';
 }
 
 

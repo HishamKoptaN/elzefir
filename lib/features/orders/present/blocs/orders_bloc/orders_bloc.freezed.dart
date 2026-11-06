@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'orders_bloc.dart';
@@ -9,6 +9,7 @@ part of 'orders_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -20,7 +21,7 @@ mixin _$OrdersEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersEvent);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersEvent);
 }
 
 
@@ -29,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersEvent()';
+    return 'OrdersEvent()';
 }
 
 
@@ -221,16 +222,18 @@ _$GetCopyWith<_Get> get copyWith => __$GetCopyWithImpl<_Get>(this, _$identity);
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Get&&(identical(other.page, page) || other.page == page)&&(identical(other.perPage, perPage) || other.perPage == perPage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Get&&(identical(other.page, page) || other.page == page)&&(identical(other.perPage, perPage) || other.perPage == perPage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,page,perPage);
+int get hashCode {
+    return Object.hash(runtimeType,page,perPage);
+}
 
 @override
 String toString() {
-  return 'OrdersEvent.get(page: $page, perPage: $perPage)';
+    return 'OrdersEvent.get(page: $page, perPage: $perPage)';
 }
 
 
@@ -289,16 +292,18 @@ _$FilterCopyWith<_Filter> get copyWith => __$FilterCopyWithImpl<_Filter>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Filter&&(identical(other.ordersFilter, ordersFilter) || other.ordersFilter == ordersFilter)&&(identical(other.perPage, perPage) || other.perPage == perPage));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Filter&&(identical(other.ordersFilter, ordersFilter) || other.ordersFilter == ordersFilter)&&(identical(other.perPage, perPage) || other.perPage == perPage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,ordersFilter,perPage);
+int get hashCode {
+    return Object.hash(runtimeType,ordersFilter,perPage);
+}
 
 @override
 String toString() {
-  return 'OrdersEvent.filter(ordersFilter: $ordersFilter, perPage: $perPage)';
+    return 'OrdersEvent.filter(ordersFilter: $ordersFilter, perPage: $perPage)';
 }
 
 
@@ -368,16 +373,18 @@ _$UpdateOrderLinkCopyWith<_UpdateOrderLink> get copyWith => __$UpdateOrderLinkCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateOrderLink&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.orderItemId, orderItemId) || other.orderItemId == orderItemId)&&(identical(other.unitId, unitId) || other.unitId == unitId)&&(identical(other.documentationLink, documentationLink) || other.documentationLink == documentationLink));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateOrderLink&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.orderItemId, orderItemId) || other.orderItemId == orderItemId)&&(identical(other.unitId, unitId) || other.unitId == unitId)&&(identical(other.documentationLink, documentationLink) || other.documentationLink == documentationLink));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,orderId,orderItemId,unitId,documentationLink);
+int get hashCode {
+    return Object.hash(runtimeType,orderId,orderItemId,unitId,documentationLink);
+}
 
 @override
 String toString() {
-  return 'OrdersEvent.updateOrderLink(orderId: $orderId, orderItemId: $orderItemId, unitId: $unitId, documentationLink: $documentationLink)';
+    return 'OrdersEvent.updateOrderLink(orderId: $orderId, orderItemId: $orderItemId, unitId: $unitId, documentationLink: $documentationLink)';
 }
 
 
@@ -440,16 +447,18 @@ _$ToggleUnitCopyWith<_ToggleUnit> get copyWith => __$ToggleUnitCopyWithImpl<_Tog
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ToggleUnit&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.orderItemId, orderItemId) || other.orderItemId == orderItemId)&&(identical(other.unitId, unitId) || other.unitId == unitId)&&(identical(other.isSelected, isSelected) || other.isSelected == isSelected));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ToggleUnit&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.orderItemId, orderItemId) || other.orderItemId == orderItemId)&&(identical(other.unitId, unitId) || other.unitId == unitId)&&(identical(other.isSelected, isSelected) || other.isSelected == isSelected));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,orderId,orderItemId,unitId,isSelected);
+int get hashCode {
+    return Object.hash(runtimeType,orderId,orderItemId,unitId,isSelected);
+}
 
 @override
 String toString() {
-  return 'OrdersEvent.toggleUnit(orderId: $orderId, orderItemId: $orderItemId, unitId: $unitId, isSelected: $isSelected)';
+    return 'OrdersEvent.toggleUnit(orderId: $orderId, orderItemId: $orderItemId, unitId: $unitId, isSelected: $isSelected)';
 }
 
 
@@ -511,16 +520,18 @@ _$updateUnitCopyWith<_updateUnit> get copyWith => __$updateUnitCopyWithImpl<_upd
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _updateUnit&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.orderItemId, orderItemId) || other.orderItemId == orderItemId)&&(identical(other.unitId, unitId) || other.unitId == unitId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _updateUnit&&(identical(other.orderId, orderId) || other.orderId == orderId)&&(identical(other.orderItemId, orderItemId) || other.orderItemId == orderItemId)&&(identical(other.unitId, unitId) || other.unitId == unitId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,orderId,orderItemId,unitId);
+int get hashCode {
+    return Object.hash(runtimeType,orderId,orderItemId,unitId);
+}
 
 @override
 String toString() {
-  return 'OrdersEvent.updateUnit(orderId: $orderId, orderItemId: $orderItemId, unitId: $unitId)';
+    return 'OrdersEvent.updateUnit(orderId: $orderId, orderItemId: $orderItemId, unitId: $unitId)';
 }
 
 
@@ -579,16 +590,18 @@ _$ToggleSelectAllCopyWith<_ToggleSelectAll> get copyWith => __$ToggleSelectAllCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ToggleSelectAll&&(identical(other.v, v) || other.v == v));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ToggleSelectAll&&(identical(other.v, v) || other.v == v));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,v);
+int get hashCode {
+    return Object.hash(runtimeType,v);
+}
 
 @override
 String toString() {
-  return 'OrdersEvent.toggleSelectAll(v: $v)';
+    return 'OrdersEvent.toggleSelectAll(v: $v)';
 }
 
 
@@ -635,7 +648,7 @@ mixin _$OrdersState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersState);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is OrdersState);
 }
 
 
@@ -644,7 +657,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersState()';
+    return 'OrdersState()';
 }
 
 
@@ -830,7 +843,7 @@ class _Initial implements OrdersState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
 
@@ -839,7 +852,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersState.initial()';
+    return 'OrdersState.initial()';
 }
 
 
@@ -862,7 +875,7 @@ class _Loading implements OrdersState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
 }
 
 
@@ -871,7 +884,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersState.loading()';
+    return 'OrdersState.loading()';
 }
 
 
@@ -894,7 +907,7 @@ class _Success implements OrdersState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success);
 }
 
 
@@ -903,7 +916,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersState.success()';
+    return 'OrdersState.success()';
 }
 
 
@@ -916,7 +929,7 @@ String toString() {
 
 
 class _Loaded implements OrdersState {
-  const _Loaded({  List<OrderEntity>? orders, this.meta, this.isSearching, this.ordersFilter, this.selectAll = true, this.selectedCount = null}): _orders = orders;
+  const _Loaded({ List<OrderEntity>? orders, this.meta, this.isSearching, this.ordersFilter, this.selectAll = true, this.selectedCount = null}): _orders = orders;
   
 
  final  List<OrderEntity>? _orders;
@@ -944,16 +957,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other._orders, _orders)&&(identical(other.meta, meta) || other.meta == meta)&&(identical(other.isSearching, isSearching) || other.isSearching == isSearching)&&(identical(other.ordersFilter, ordersFilter) || other.ordersFilter == ordersFilter)&&(identical(other.selectAll, selectAll) || other.selectAll == selectAll)&&(identical(other.selectedCount, selectedCount) || other.selectedCount == selectedCount));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other.orders, _orders)&&(identical(other.meta, meta) || other.meta == meta)&&(identical(other.isSearching, isSearching) || other.isSearching == isSearching)&&(identical(other.ordersFilter, ordersFilter) || other.ordersFilter == ordersFilter)&&(identical(other.selectAll, selectAll) || other.selectAll == selectAll)&&(identical(other.selectedCount, selectedCount) || other.selectedCount == selectedCount));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_orders),meta,isSearching,ordersFilter,selectAll,selectedCount);
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_orders),meta,isSearching,ordersFilter,selectAll,selectedCount);
+}
 
 @override
 String toString() {
-  return 'OrdersState.loaded(orders: $orders, meta: $meta, isSearching: $isSearching, ordersFilter: $ordersFilter, selectAll: $selectAll, selectedCount: $selectedCount)';
+    return 'OrdersState.loaded(orders: $orders, meta: $meta, isSearching: $isSearching, ordersFilter: $ordersFilter, selectAll: $selectAll, selectedCount: $selectedCount)';
 }
 
 
@@ -1022,7 +1037,7 @@ class _OrderShare implements OrdersState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderShare);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _OrderShare);
 }
 
 
@@ -1031,7 +1046,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'OrdersState.orderShare()';
+    return 'OrdersState.orderShare()';
 }
 
 
@@ -1059,16 +1074,18 @@ _$FailureCopyWith<_Failure> get copyWith => __$FailureCopyWithImpl<_Failure>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.apiErrorModel, apiErrorModel) || other.apiErrorModel == apiErrorModel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,apiErrorModel);
+int get hashCode {
+    return Object.hash(runtimeType,apiErrorModel);
+}
 
 @override
 String toString() {
-  return 'OrdersState.failure(apiErrorModel: $apiErrorModel)';
+    return 'OrdersState.failure(apiErrorModel: $apiErrorModel)';
 }
 
 

@@ -52,7 +52,7 @@ class _ImageSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CustomImage(
-      image: 'assets/mock/about.png',
+      image: 'assets/images/about.png',
       aspectRatio: 1.45,
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(12),
