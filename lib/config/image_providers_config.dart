@@ -1,4 +1,5 @@
+import 'env_config.dart';
+
 class ImageProvidersConfig {
-  static const String cloudinaryBaseUrl =
-      "https://res.cloudinary.com/your-cloud-name/image/upload/";
+  static String get publicUrl => EnvConfig.config.publicUrl;
 }

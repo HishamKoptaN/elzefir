@@ -27,6 +27,10 @@ class ProdEnv implements Env {
     return 'https://';
   }
   @override
+  String get publicUrl {
+    return 'https://';
+  }
+  @override
   bool get enableLogging => false;
   @override
   String get vapidKey =>

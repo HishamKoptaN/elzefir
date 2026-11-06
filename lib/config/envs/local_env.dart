@@ -36,6 +36,11 @@ class LocalEnv extends Env {
   }
 
   @override
+  String get publicUrl {
+    return 'http://localhost:8000/storage/';
+  }
+
+  @override
   String get vapidKey {
     return '';
   }

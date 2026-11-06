@@ -8,6 +8,7 @@ abstract class Env {
   FirebaseOptions get firebaseOptions;
   String get baseUrl;
   String get authBaseUrl;
+  String get publicUrl;
   String get vapidKey;
   bool get enableLogging;
   PusherChannelsOptions get pusherChannelsOptions;
