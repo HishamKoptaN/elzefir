@@ -1,5 +1,16 @@
 {
   "projects": {
-    "default": "elzefir-dbb8d"
-  }
+    "default": "elzefir-dbb8d",
+    "dev": "elzefir-dev"
+  },
+  "targets": {
+    "elzefir-dev": {
+      "hosting": {
+        "dev": [
+          "elzefir-dev"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
