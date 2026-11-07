@@ -1,0 +1,25 @@
+name: Deploy to Firebase Hosting (dev) on merge
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version-file: pubspec.yaml
+          channel: "stable"
+          cache: true
+      - run: flutter build web --release --dart-define=ENV=dev
+      - name: Deploy to Firebase Hosting (dev)
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ELZEFIR_DEV }}
+        run: |
+          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/firebase-sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/firebase-sa.json"
+          npx -y firebase-tools@latest deploy --only hosting:dev --project elzefir-dev --non-interactive
