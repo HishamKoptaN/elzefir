@@ -1,8 +1,10 @@
-name: Deploy to Firebase Hosting on merge
+name: Deploy to Firebase Hosting (prod) on merge
+
 on:
   push:
     branches:
       - prod
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -14,9 +16,10 @@ jobs:
           channel: "stable"
           cache: true
       - run: flutter build web --release --dart-define=ENV=prod
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ELZEFIR_DBB8D }}
-          channelId: live
-          projectId: elzefir-dbb8d
+      - name: Deploy to Firebase Hosting (prod)
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ELZEFIR_DBB8D }}
+        run: |
+          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/firebase-sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/firebase-sa.json"
+          npx -y firebase-tools@latest deploy --only hosting:prod --project elzefir-dbb8d --non-interactive
