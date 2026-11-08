@@ -1,9 +1,10 @@
-name: Deploy to Firebase Hosting (prod) on merge
+name: Deploy to Firebase Hosting on merge
 
 on:
   push:
     branches:
-      - prod
+      - prods
+      - devs
 
 jobs:
   build_and_deploy:
