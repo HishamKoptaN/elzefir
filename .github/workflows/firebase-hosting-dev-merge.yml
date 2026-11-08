@@ -9,10 +9,9 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    environment: dev
+    environment: ${{ github.ref_name }}
     steps:
-      - name: Validate Firebase service account secret
-        env:
+      - env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
           if [ -z "$FIREBASE_SERVICE_ACCOUNT" ]; then
