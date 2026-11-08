@@ -7,7 +7,7 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    environment: ${{ github.ref }}
+    environment: ${{ github.env }}
     steps:
       - env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
