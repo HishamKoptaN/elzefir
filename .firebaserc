@@ -10,6 +10,13 @@
           "elzefir-dev"
         ]
       }
+    },
+    "elzefir-dbb8d": {
+      "hosting": {
+        "prod": [
+          "elzefir-dbb8d"
+        ]
+      }
     }
   },
   "etags": {}
