@@ -21,6 +21,7 @@
   },
   "hosting": [
     {
+      "target": "prod",
       "public": "build/web",
       "ignore": [
         "firebase.json",
