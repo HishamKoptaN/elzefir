@@ -11,6 +11,16 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/.gitkeep
+  String get aGitkeep => 'assets/icons/.gitkeep';
+
+  /// List of all assets
+  List<String> get values => [aGitkeep];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -327,6 +337,7 @@ class $AssetsMockSideDishesGen {
 }
 
 abstract final class Assets {
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLogosGen logos = $AssetsLogosGen();
   static const $AssetsMockGen mock = $AssetsMockGen();

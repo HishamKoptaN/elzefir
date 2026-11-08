@@ -8,6 +8,7 @@ jobs:
   build_and_preview:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
+    environment: ${{ github.base_ref }}
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
@@ -16,16 +17,9 @@ jobs:
           channel: "stable"
           cache: true
       - run: flutter build web --release --dart-define=ENV=${{ github.base_ref == 'prod' && 'prod' || 'dev' }}
-      - if: ${{ github.base_ref == 'prod' }}
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GREEN_SOUQ_31C75 }}
-          projectId: green-souq-31c75
-      - name: Deploy preview to dev
-        if: ${{ github.base_ref != 'prod' }}
+      - name: Deploy preview
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          projectId: green-market-dev
+          projectId: ${{ vars.PROJECT_ID }}
