@@ -1,18 +1,34 @@
-name: Deploy to Firebase Hosting on merge
+name: Check Firebase Service Account Secrets
 
 on:
   push:
     branches:
       - dev
+      - prod
+  workflow_dispatch:
+
 jobs:
-  build_and_deploy:
+  check-secrets:
     runs-on: ubuntu-latest
-    environment: ${{ github.env }}
+    strategy:
+      matrix:
+        environment: [dev, prod]
+    
+    environment: ${{ matrix.environment }}
+
     steps:
-      - env:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify FIREBASE_SERVICE_ACCOUNT existence in ${{ matrix.environment }}
+        env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
+          echo "Checking environment: ${{ matrix.environment }}"
           if [ -z "$FIREBASE_SERVICE_ACCOUNT" ]; then
-            echo "::error::Secret FIREBASE_SERVICE_ACCOUNT is missing or empty in the prod environment. Add the service account JSON under Settings > Environments > prod > Environment secrets."
+            echo "::error::❌ Error: FIREBASE_SERVICE_ACCOUNT is missing or empty in the '${{ matrix.environment }}' environment!"
+            echo "Please add the service account JSON under Settings > Environments > ${{ matrix.environment }} > Environment secrets."
             exit 1
+          else
+            echo "✅ Success: FIREBASE_SERVICE_ACCOUNT is securely configured in the '${{ matrix.environment }}' environment."
           fi
