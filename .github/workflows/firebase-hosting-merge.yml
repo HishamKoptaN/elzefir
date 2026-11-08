@@ -8,10 +8,9 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    environment: prod
+    environment: ${{ github.ref }}
     steps:
-      - name: Validate Firebase service account secret
-        env:
+      - env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
           if [ -z "$FIREBASE_SERVICE_ACCOUNT" ]; then
@@ -25,8 +24,7 @@ jobs:
           channel: "stable"
           cache: true
       - run: flutter build web --release --dart-define=ENV=prod
-      - name: Deploy to Firebase Hosting (prod)
-        env:
+      - env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
           printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/firebase-sa.json"
