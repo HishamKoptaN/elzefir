@@ -1,13 +1,12 @@
-import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:universal_io/io.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import '../../../../../core/theme/app_colors.dart';
-import '../../../../../core/utils/extensions/device_type_extension.dart';
-import '../../../../../core/widgets/camera_button_widget.dart';
+
+import '../../../../../../core/utils/extensions/device_type_extension.dart';
+import '../../../../../../core/widgets/camera_button_widget.dart';
 
 class ProfileCardWidget extends StatelessWidget {
   final String name;
@@ -33,11 +32,12 @@ class ProfileCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isWide = MediaQuery.sizeOf(context).width > 1024;
     return Container(
       height: 320.h,
-      width: context.isDesk ? 1116.w : double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
-      margin: EdgeInsets.only(top: 25.h),
+      width: double.infinity,
+      padding: .symmetric(horizontal: 20.w),
+      margin: .only(top: 25.h),
       decoration: BoxDecoration(
         color: const Color(0xFFF2F4FB),
         border: Border.all(color: const Color(0xFF3D42DF), width: 1),
@@ -50,10 +50,10 @@ class ProfileCardWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: context.isDesk
+      child: isWide
           ? Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: .spaceBetween,
+              crossAxisAlignment: .center,
               children: [
                 avatar(),
                 Gap(7.5.w),

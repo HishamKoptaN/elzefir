@@ -1,15 +1,13 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:phone_input/phone_input_package.dart';
 
-import '../../../../../core/di/dependency_injection.dart';
-import '../../../../auth/widgets/custom_auth_text_form_field.dart';
-import '../../../domain/entities/profile_entity.dart';
-import '../../bloc/profile_bloc.dart';
+import '../../../../../../core/di/dependency_injection.dart';
+import '../../../../../auth/widgets/custom_auth_text_form_field.dart';
+import '../../../../domain/entities/profile_entity.dart';
+import '../../../bloc/profile_bloc.dart';
 
 class ProfilePhoneWidget extends StatelessWidget {
   final ProfileEntity? profile;
@@ -31,9 +29,7 @@ class ProfilePhoneWidget extends StatelessWidget {
         Container(
           height: 150.h,
           width: 1116.w,
-          decoration: BoxDecoration(
-            color: Color(0xFFFFFFFF),
-          ),
+          decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
           child: Theme(
             data: Theme.of(context).copyWith(
               splashColor: Colors.transparent,
@@ -160,7 +156,7 @@ class ProfilePhoneWidget extends StatelessWidget {
                           focusedErrorBorder: InputBorder.none,
                           disabledBorder: InputBorder.none,
                         ),
-                       
+
                         defaultSearchInputIconColor: Colors.grey,
                         bottomSheetDragHandlerColor: Colors.grey,
                         scrollPhysics: const BouncingScrollPhysics(),
