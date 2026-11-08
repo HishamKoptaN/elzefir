@@ -10,6 +10,10 @@ import '../../../features/auth/sign_up/present/views/email_view.dart';
 import '../../../features/auth/sign_up/present/views/sign_up_view.dart';
 import '../../../features/auth/reset_password/present/views/reset_pass_view.dart';
 import '../../../features/home/present/home.dart';
+import '../../../features/info_pages/present/views/about_view.dart';
+import '../../../features/info_pages/present/views/contact_view.dart';
+import '../../../features/info_pages/present/views/privacy_view.dart';
+import '../../../features/info_pages/present/views/terms_view.dart';
 import '../../utils/extensions/theme_ext.dart';
 import '../app_route.dart';
 import '../middlewares/guards/app_guards.dart';
@@ -96,6 +100,34 @@ class RouteConfig {
         path: '/${HomeView.routeName}',
         builder: (context, state) {
           return HomeView();
+        },
+      ),
+      appRoute(
+        name: AboutView.routeName,
+        path: '/${AboutView.routeName}',
+        builder: (context, state) {
+          return const AboutView();
+        },
+      ),
+      appRoute(
+        name: ContactView.routeName,
+        path: '/${ContactView.routeName}',
+        builder: (context, state) {
+          return const ContactView();
+        },
+      ),
+      appRoute(
+        name: PrivacyView.routeName,
+        path: '/${PrivacyView.routeName}',
+        builder: (context, state) {
+          return const PrivacyView();
+        },
+      ),
+      appRoute(
+        name: TermsView.routeName,
+        path: '/${TermsView.routeName}',
+        builder: (context, state) {
+          return const TermsView();
         },
       ),
 

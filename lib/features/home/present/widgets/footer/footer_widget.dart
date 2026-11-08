@@ -3,9 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../core/routing/utils/navigation_service.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../../info_pages/present/views/about_view.dart';
+import '../../../../info_pages/present/views/contact_view.dart';
+import '../../../../info_pages/present/views/privacy_view.dart';
+import '../../../../info_pages/present/views/terms_view.dart';
+import '../../home.dart';
 import 'footer_desk_layout.dart';
 import 'footer_mobile_layout.dart';
 
@@ -57,19 +63,28 @@ class FooterLegalLinks extends StatelessWidget {
       spacing: 20.w,
       runSpacing: 10.h,
       children: [
-        _buildFooterLink(context, 'الرئيسية', '/'),
-        _buildFooterLink(context, 'من نحن', '/about.html'),
-        _buildFooterLink(context, 'اتصل بنا', '/contact.html'),
-        _buildFooterLink(context, 'سياسة الخصوصية', '/privacy.html'),
-        _buildFooterLink(context, 'الشروط والأحكام', '/terms.html'),
+        _buildFooterLink(context, 'الرئيسية', HomeView.routeName, isHome: true),
+        _buildFooterLink(context, 'من نحن', AboutView.routeName),
+        _buildFooterLink(context, 'اتصل بنا', ContactView.routeName),
+        _buildFooterLink(context, 'سياسة الخصوصية', PrivacyView.routeName),
+        _buildFooterLink(context, 'الشروط والأحكام', TermsView.routeName),
       ],
     );
   }
 
-  Widget _buildFooterLink(BuildContext context, String title, String path) {
+  Widget _buildFooterLink(
+    BuildContext context,
+    String title,
+    String routeName, {
+    bool isHome = false,
+  }) {
     return InkWell(
       onTap: () {
-        execuateLaunchUrl(path);
+        if (isHome) {
+          NavigationService.goNamed(context: context, routeName: routeName);
+        } else {
+          NavigationService.pushNamed(context: context, routeName: routeName);
+        }
       },
       child: Text(
         title,
