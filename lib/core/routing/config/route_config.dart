@@ -22,9 +22,9 @@ class RouteConfig {
   static List<RouteBase> get routes {
     return [
       GoRoute(
-        path: '/',
+        path: HomeView.routeName,
         redirect: (context, state) {
-          return '/${HomeView.routeName}';
+          return HomeView.routeName;
         },
       ),
       appRoute(
