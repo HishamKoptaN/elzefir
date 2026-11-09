@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/di/dependency_injection.dart';
 import '../../../core/responsive/responsive_extensions.dart';
 import '../../../core/utils/extensions/device_type_extension.dart';
 import '../../../core/utils/extensions/theme_ext.dart';

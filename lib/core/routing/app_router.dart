@@ -48,7 +48,7 @@ class GoRouterRefreshListenable extends ChangeNotifier {
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: '/${HomeView.routeName}',
+    initialLocation: HomeView.routeName,
     refreshListenable: GoRouterRefreshListenable([
       GoRouterRefreshStream(getIt<AuthBloc>().stream),
     ]),
