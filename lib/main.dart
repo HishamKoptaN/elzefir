@@ -59,6 +59,7 @@ Future<void> main() async {
     getIt<AuthBloc>().add(.check(onComplete: completer));
     await completer.future;
     runApp(const Elzefir());
+    SemanticsBinding.instance.ensureSemantics();
   } catch (e, st) {
     debugPrint('🔥 Firebase init error: $e');
     debugPrint('$st');
