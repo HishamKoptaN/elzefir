@@ -1,15 +1,8 @@
 {
-    "redirects": [
-        {
-            "source": "/",
-            "destination": "/",
-            "permanent": false
-        }
-    ],
     "rewrites": [
         {
-            "source": "/(.*)",
-            "destination": "/index.html"
+            "source": "/:path*",
+            "destination": "https://elzefir-dbb8d.web.app/:path*"
         }
     ]
 }
