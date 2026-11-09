@@ -8,13 +8,11 @@ import '../../../core/utils/extensions/theme_ext.dart';
 import '../../../core/widgets/app_navigation.dart';
 import '../../../core/widgets/custom_image.dart';
 import '../../../generated/assets.gen.dart';
-import '../../notifications/present/bloc/notifications_bloc.dart';
-import 'bloc/home_bloc.dart';
 import 'widgets/body_widget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
-  static const String routeName = "home";
+  static const String routeName = "/";
   @override
   State<HomeView> createState() => _HomeViewState();
 }

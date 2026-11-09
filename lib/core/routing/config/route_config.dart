@@ -23,7 +23,9 @@ class RouteConfig {
     return [
       GoRoute(
         path: '/',
-        redirect: (context, state) => '/${HomeView.routeName}',
+        redirect: (context, state) {
+          return '/${HomeView.routeName}';
+        },
       ),
       appRoute(
         name: 'loading',
