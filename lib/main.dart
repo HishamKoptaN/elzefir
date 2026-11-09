@@ -56,7 +56,7 @@ Future<void> main() async {
     getIt<UpdateBloc>().add(.check(onComplete: updateCompleter));
     await updateCompleter.future;
     final completer = Completer();
-    getIt<AuthBloc>().add(.check(onComplete: completer));
+    //getIt<AuthBloc>().add(.check(onComplete: completer));
     await completer.future;
     runApp(const Elzefir());
     SemanticsBinding.instance.ensureSemantics();
