@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:intl/intl_standalone.dart';
 
-import 'features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 import 'core/widgets/custom_error_widget.dart';
 import 'core/di/dependency_injection.dart';
 
@@ -55,9 +54,6 @@ Future<void> main() async {
     final updateCompleter = Completer();
     getIt<UpdateBloc>().add(.check(onComplete: updateCompleter));
     await updateCompleter.future;
-    final completer = Completer();
-    //getIt<AuthBloc>().add(.check(onComplete: completer));
-    await completer.future;
     runApp(const Elzefir());
     SemanticsBinding.instance.ensureSemantics();
   } catch (e, st) {

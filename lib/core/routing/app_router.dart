@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 import '../../features/auth/auth/present/views/auth_view.dart';
-import '../../features/home/present/home.dart';
 import '../globals/global_variable.dart';
 import '../di/dependency_injection.dart';
 import 'config/route_config.dart';
@@ -48,7 +47,7 @@ class GoRouterRefreshListenable extends ChangeNotifier {
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: HomeView.routeName,
+    initialLocation: '/',
     refreshListenable: GoRouterRefreshListenable([
       GoRouterRefreshStream(getIt<AuthBloc>().stream),
     ]),
@@ -57,38 +56,10 @@ class AppRouter {
     routes: RouteConfig.routes,
     redirect: (context, state) {
       final loc = state.matchedLocation;
-      return getIt<AuthBloc>().state.when(
-        init: () {
-          if (loc == '/' || loc == '/${AuthView.routeName}' || loc == '/ads') {
-            return '/${HomeView.routeName}';
-          }
-          return null;
-        },
-        loading: () {
-          if (loc == '/' || loc == '/${AuthView.routeName}' || loc == '/ads') {
-            return '/${HomeView.routeName}';
-          }
-          return null;
-        },
-        authenticated: () {
-          if (loc == '/' || loc == '/${AuthView.routeName}' || loc == '/ads') {
-            return '/${HomeView.routeName}';
-          }
-          return null;
-        },
-        unauthenticated: () {
-          if (loc == '/' || loc == '/${AuthView.routeName}' || loc == '/ads') {
-            return '/${HomeView.routeName}';
-          }
-          return null;
-        },
-        failure: (_) {
-          if (loc == '/' || loc == '/${AuthView.routeName}' || loc == '/ads') {
-            return '/${HomeView.routeName}';
-          }
-          return null;
-        },
-      );
+      if (loc == '/${AuthView.routeName}' || loc == '/ads') {
+        return '/';
+      }
+      return null;
     },
     errorBuilder: (context, state) {
       return ErrorPageBuilder.build(context, message: state.error?.toString());
