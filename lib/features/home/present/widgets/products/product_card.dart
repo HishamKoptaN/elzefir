@@ -40,7 +40,6 @@ class _ProductCardState extends State<ProductCard> {
       child: Column(
         crossAxisAlignment: .start,
         children: [
-          Text(widget.product.image),
           GestureDetector(
             onTap: () async {
               await getIt<AnalyticsService>().logEvent(
@@ -73,7 +72,7 @@ class _ProductCardState extends State<ProductCard> {
               padding: .all(20.w),
               decoration: BoxDecoration(
                 color: Color(0xFFFFF1EA),
-                borderRadius: .vertical(top: Radius.circular(12.r)),
+                borderRadius: .vertical(top: .circular(12.r)),
               ),
               child: Stack(
                 children: [
