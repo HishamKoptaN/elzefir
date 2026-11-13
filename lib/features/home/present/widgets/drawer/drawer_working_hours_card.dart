@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DrawerWorkingHoursCard extends StatelessWidget {
@@ -7,51 +6,50 @@ class DrawerWorkingHoursCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-
     return Container(
-      padding: .all(12.r),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: colorScheme.tertiaryContainer.withValues(alpha: 0.5),
-        borderRadius: BorderRadius.circular(14.r),
+        color: const Color(0xFFFFFBEB), // amber-50 / warm
+        borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: colorScheme.tertiary.withValues(alpha: 0.3),
+          color: const Color(0xFFFDE68A), // amber-200
         ),
       ),
       child: Row(
         children: [
           Container(
-            padding: .all(6.r),
+            padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
-              color: colorScheme.tertiaryContainer,
-              borderRadius: BorderRadius.circular(8.r),
+              color: const Color(0xFFFEF3C7), // amber-100
+              borderRadius: BorderRadius.circular(8),
             ),
-            child: FaIcon(
+            child: const FaIcon(
               FontAwesomeIcons.clock,
-              color: colorScheme.tertiary,
-              size: 18.sp,
+              color: Color(0xFFB45309), // amber-700
+              size: 16,
             ),
           ),
-          SizedBox(width: 10.w),
-          Expanded(
+          const SizedBox(width: 10),
+          const Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'مواعيد العمل واستقبال الطلبات',
-                  style: textTheme.bodySmall?.copyWith(
-                    fontSize: 12.sp,
+                  style: TextStyle(
+                    fontFamily: 'Cairo',
+                    fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: colorScheme.onSurface,
+                    color: Color(0xFF1E293B),
                   ),
                 ),
-                SizedBox(height: 2.h),
+                SizedBox(height: 2),
                 Text(
                   'يومياً من 9:00 صباحاً حتى 11:00 مساءً',
-                  style: textTheme.bodySmall?.copyWith(
-                    fontSize: 11.sp,
-                    color: colorScheme.onSurfaceVariant,
+                  style: TextStyle(
+                    fontFamily: 'Cairo',
+                    fontSize: 11,
+                    color: Color(0xFF475569),
                     fontWeight: FontWeight.w500,
                   ),
                 ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,46 +14,40 @@ class DrawerFooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-
     return Container(
-      padding: .symmetric(
-        horizontal: 16.w,
-        vertical: 14.h,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 14,
       ),
       decoration: BoxDecoration(
-        color: colorScheme.surfaceContainerLow,
+        color: const Color(0xFFF8FAFC),
         border: Border(
           top: BorderSide(
-            color: colorScheme.outlineVariant.withValues(alpha: 0.5),
-            width: 1.r,
+            color: Colors.grey.shade200,
+            width: 1,
           ),
         ),
       ),
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: .center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildSocialButton(
-                context: context,
                 icon: FontAwesomeIcons.facebookF,
                 onTap: () {
                   _launch('https://facebook.com');
                 },
               ),
-              SizedBox(width: 14.w),
+              const SizedBox(width: 14),
               _buildSocialButton(
-                context: context,
                 icon: FontAwesomeIcons.instagram,
                 onTap: () {
                   _launch('https://instagram.com');
                 },
               ),
-              SizedBox(width: 14.w),
+              const SizedBox(width: 14),
               _buildSocialButton(
-                context: context,
                 icon: FontAwesomeIcons.locationDot,
                 onTap: () {
                   _launch('https://maps.google.com');
@@ -62,21 +55,23 @@ class DrawerFooterWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 10.h),
-          Text(
+          const SizedBox(height: 10),
+          const Text(
             'Elzefir Seafood © 2025',
-            style: textTheme.bodySmall?.copyWith(
-              fontSize: 11.sp,
+            style: TextStyle(
+              fontFamily: 'Cairo',
+              fontSize: 11,
               fontWeight: FontWeight.bold,
-              color: colorScheme.onSurfaceVariant,
+              color: Color(0xFF64748B),
             ),
           ),
-          SizedBox(height: 2.h),
-          Text(
+          const SizedBox(height: 2),
+          const Text(
             'جميع الحقوق محفوظة • إصدار v1.1.0',
-            style: textTheme.bodySmall?.copyWith(
-              fontSize: 10.sp,
-              color: colorScheme.outline,
+            style: TextStyle(
+              fontFamily: 'Cairo',
+              fontSize: 10,
+              color: Color(0xFF94A3B8),
             ),
           ),
         ],
@@ -85,34 +80,31 @@ class DrawerFooterWidget extends StatelessWidget {
   }
 
   Widget _buildSocialButton({
-    required BuildContext context,
     required FaIconData icon,
     required VoidCallback onTap,
   }) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     return Material(
-      color: colorScheme.surface,
+      color: Colors.white,
       shape: const CircleBorder(),
       elevation: 1,
-      shadowColor: colorScheme.shadow.withValues(alpha: 0.12),
+      shadowColor: Colors.black12,
       child: InkWell(
         customBorder: const CircleBorder(),
         onTap: onTap,
         child: Container(
-          width: 36.r,
-          height: 36.r,
+          width: 36,
+          height: 36,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
-              color: colorScheme.outlineVariant,
+              color: Colors.grey.shade300,
             ),
           ),
           child: Center(
             child: FaIcon(
               icon,
-              size: 15.sp,
-              color: colorScheme.onSurfaceVariant,
+              size: 15,
+              color: const Color(0xFF475569),
             ),
           ),
         ),

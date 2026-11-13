@@ -23,6 +23,7 @@ class BodyWidget extends StatefulWidget {
     required this.onAbout,
     required this.onContact,
   });
+
   final GlobalKey productsKey;
   final GlobalKey aboutKey;
   final GlobalKey contactKey;
@@ -30,6 +31,7 @@ class BodyWidget extends StatefulWidget {
   final VoidCallback onProcudcts;
   final VoidCallback onAbout;
   final VoidCallback onContact;
+
   @override
   State<BodyWidget> createState() => _BodyWidgetState();
 }
@@ -38,7 +40,7 @@ class _BodyWidgetState extends State<BodyWidget> {
   @override
   void initState() {
     super.initState();
-    getIt<ProductsBloc>().add(const .get());
+    getIt<ProductsBloc>().add(const ProductsEvent.get());
   }
 
   @override
@@ -57,58 +59,106 @@ class _BodyWidgetState extends State<BodyWidget> {
               onContact: widget.onContact,
             ),
             const OfferWidget(),
-            BlocBuilder<ProductsBloc, ProductsState>(
-              bloc: getIt<ProductsBloc>(),
-              builder: (context, state) {
-                return state.maybeMap(
-                  loaded: (state) {
-                    final products =
-                        state.products?.map((e) => e.toEntity()).toList() ?? [];
-                    return ProductsSection(
-                      key: widget.productsKey,
-                      products: products,
-                    );
-                  },
-                  failure: (f) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(vertical: 40.h),
-                      child: Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              'تعذر تحميل المنتجات من فايرستور',
-                              style: context.textTheme.titleMedium,
-                            ),
-                            SizedBox(height: 12.h),
-                            ElevatedButton(
-                              onPressed: () {
-                                getIt<ProductsBloc>().add(
-                                  const ProductsEvent.get(),
-                                );
-                              },
-                              child: const Text('إعادة المحاولة'),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                  orElse: () => Padding(
-                    padding: EdgeInsets.symmetric(vertical: 40.h),
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        color: context.colorScheme.primary,
-                      ),
-                    ),
-                  ),
-                );
+            _ProductLayout(
+              productsKey: widget.productsKey,
+              onProductsLoaded: () {
+                getIt<ProductsBloc>().add(const ProductsEvent.get());
               },
             ),
             AboutSection(key: widget.aboutKey),
             FooterWidget(key: widget.contactKey),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _ProductLayout extends StatelessWidget {
+  const _ProductLayout({
+    required this.productsKey,
+    required this.onProductsLoaded,
+  });
+
+  final GlobalKey productsKey;
+  final VoidCallback onProductsLoaded;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: .start,
+      children: [
+        const VerticalDivider(
+          width: 16,
+          thickness: 1,
+          color: Color(0xFFC3C7CE),
+        ),
+        _ProductsColumn(
+          productsKey: productsKey,
+          onProductsLoaded: onProductsLoaded,
+        ),
+      ],
+    );
+  }
+}
+
+class _ProductsColumn extends StatelessWidget {
+  const _ProductsColumn({
+    required this.productsKey,
+    required this.onProductsLoaded,
+  });
+
+  final GlobalKey productsKey;
+  final VoidCallback onProductsLoaded;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 3,
+      child: BlocBuilder<ProductsBloc, ProductsState>(
+        bloc: getIt<ProductsBloc>(),
+        builder: (context, state) {
+          return state.maybeMap(
+            loaded: (state) {
+              final products =
+                  state.products?.map((e) => e.toEntity()).toList() ?? [];
+              return ProductsSection(
+                key: productsKey,
+                products: products,
+                onAssetsLoaded: onProductsLoaded,
+              );
+            },
+            failure: (f) {
+              return Padding(
+                padding: EdgeInsets.symmetric(vertical: 40.h),
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'تعذر تحميل المنتجات من فايرستور',
+                        style: context.textTheme.titleMedium,
+                      ),
+                      SizedBox(height: 12.h),
+                      ElevatedButton(
+                        onPressed: () {
+                          getIt<ProductsBloc>().add(const ProductsEvent.get());
+                        },
+                        child: const Text('إعادة المحاولة'),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+            orElse: () => Padding(
+              padding: EdgeInsets.symmetric(vertical: 40.h),
+              child: const Center(
+                child: CircularProgressIndicator(color: Color(0xFF124370)),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

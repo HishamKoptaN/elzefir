@@ -4,55 +4,55 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../../generated/assets.gen.dart';
 
-class DrawerHeaderWidget extends StatefulWidget {
+class DrawerHeaderWidget extends StatelessWidget {
   const DrawerHeaderWidget({super.key, required this.pulseAnimation});
 
   final Animation<double> pulseAnimation;
 
-  @override
-  State<DrawerHeaderWidget> createState() {
-    return _DrawerHeaderWidgetState();
-  }
-}
+  // Stitch Design Colors
+  static const Color brand50 = Color(0xFFF0F6FA);
+  static const Color brand100 = Color(0xFFE1EEF5);
+  static const Color brand800 = Color(0xFF124370);
+  static const Color emeraldBg = Color(0xFFECFDF5);
+  static const Color emeraldBorder = Color(0xFFA7F3D0);
+  static const Color emeraldText = Color(0xFF065F46);
+  static const Color emeraldDot = Color(0xFF10B981);
 
-class _DrawerHeaderWidgetState extends State<DrawerHeaderWidget> {
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
-          begin: .topCenter,
-          end: .bottomCenter,
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
           colors: [
-            colorScheme.surfaceContainerLow,
-            colorScheme.surfaceContainer,
-            colorScheme.surface,
+            Color(0xFFFDFBF7),
+            Color(0xFFF7F9FC),
+            Colors.white,
           ],
         ),
         border: Border(
           bottom: BorderSide(
-            color: colorScheme.primary.withValues(alpha: 0.1),
-            width: 1.5.r,
+            color: brand50,
+            width: 1.5,
           ),
         ),
       ),
-      padding: .only(
+      padding: EdgeInsets.only(
         top: 14.h,
         bottom: 16.h,
         left: 16.w,
         right: 16.w,
       ),
       child: Stack(
-        alignment: .center,
+        alignment: Alignment.center,
         children: [
+          // Close button
           Positioned(
             left: 0,
             top: 0,
             child: Material(
-              color: colorScheme.primary.withValues(alpha: 0.08),
+              color: brand50,
               shape: const CircleBorder(),
               child: InkWell(
                 customBorder: const CircleBorder(),
@@ -60,35 +60,36 @@ class _DrawerHeaderWidgetState extends State<DrawerHeaderWidget> {
                   Navigator.maybePop(context);
                 },
                 child: Padding(
-                  padding: .all(8.r),
+                  padding: const EdgeInsets.all(8.0),
                   child: FaIcon(
                     FontAwesomeIcons.xmark,
-                    size: 20.sp,
-                    color: colorScheme.primary,
+                    size: 16,
+                    color: brand800,
                   ),
                 ),
               ),
             ),
           ),
           Column(
-            mainAxisSize: .min,
+            mainAxisSize: MainAxisSize.min,
             children: [
+              // Logo Container
               Container(
-                width: 90.r,
-                height: 90.r,
-                padding: .all(6.r),
+                width: 90,
+                height: 90,
+                padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
-                  color: colorScheme.surface,
+                  color: Colors.white,
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: colorScheme.primary.withValues(alpha: 0.2),
-                    width: 2.r,
+                    color: brand100,
+                    width: 2,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: colorScheme.primary.withValues(alpha: 0.08),
-                      blurRadius: 16.r,
-                      offset: Offset(0, 6.h),
+                      color: brand800.withValues(alpha: 0.08),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
                     ),
                   ],
                 ),
@@ -100,60 +101,66 @@ class _DrawerHeaderWidgetState extends State<DrawerHeaderWidget> {
                       return Image.asset(
                         Assets.logos.logoPng.path,
                         fit: BoxFit.contain,
-                        errorBuilder: (_, _, _) => FaIcon(
+                        errorBuilder: (_, _, _) => const FaIcon(
                           FontAwesomeIcons.utensils,
-                          size: 40.sp,
-                          color: colorScheme.primary,
+                          size: 36,
+                          color: brand800,
                         ),
                       );
                     },
                   ),
                 ),
               ),
-              SizedBox(height: 10.h),
+              const SizedBox(height: 10),
+              // Open status pill
               Container(
-                padding: .symmetric(
-                  horizontal: 12.w,
-                  vertical: 4.h,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: colorScheme.tertiaryContainer,
-                  borderRadius: BorderRadius.circular(20.r),
+                  color: emeraldBg,
+                  borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: colorScheme.tertiary.withValues(alpha: 0.5),
+                    color: emeraldBorder,
                   ),
                 ),
                 child: Row(
-                  mainAxisSize: .min,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     FadeTransition(
-                      opacity: widget.pulseAnimation,
+                      opacity: pulseAnimation,
                       child: Container(
-                        width: 8.r,
-                        height: 8.r,
-                        decoration: BoxDecoration(
-                          color: colorScheme.tertiary,
+                        width: 8,
+                        height: 8,
+                        decoration: const BoxDecoration(
+                          color: emeraldDot,
                           shape: BoxShape.circle,
                         ),
                       ),
                     ),
-                    SizedBox(width: 6.w),
-                    Text(
+                    const SizedBox(width: 6),
+                    const Text(
                       'مفتوح الآن لاستقبال الطلبات',
-                      style: textTheme.bodySmall?.copyWith(
+                      style: TextStyle(
+                        fontFamily: 'Cairo',
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: colorScheme.onTertiaryContainer,
+                        color: emeraldText,
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 6.h),
+              const SizedBox(height: 6),
+              // Slogan
               Text(
                 'السمك على أصوله • طازج يومياً',
-                style: textTheme.bodySmall?.copyWith(
+                style: TextStyle(
+                  fontFamily: 'Cairo',
+                  fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: colorScheme.primary.withValues(alpha: 0.75),
+                  color: brand800.withValues(alpha: 0.75),
                 ),
               ),
             ],

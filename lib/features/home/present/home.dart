@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/responsive/responsive_extensions.dart';
 import '../../../core/utils/extensions/device_type_extension.dart';
 import '../../../core/utils/extensions/theme_ext.dart';
-import '../../../core/widgets/app_navigation.dart';
-import '../../../core/widgets/custom_image.dart';
-import '../../../generated/assets.gen.dart';
 import 'widgets/body_widget.dart';
+import 'widgets/drawer/drawer.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -36,80 +32,13 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-    // getIt<HomeBloc>().add(HomeEvent.get());
-    // getIt<NotificationsBloc>().add(NotificationsEvent.watch());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colorScheme.surface,
-      drawer: !context.isDesk
-          ? Drawer(
-              elevation: 12,
-              backgroundColor: Colors.white,
-              width:
-                  MediaQuery.sizeOf(context).width *
-                  context.responsive(mobile: .78, tablet: .45, desktop: .3),
-              child: SafeArea(
-                child: Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      padding: .symmetric(vertical: 24.h, horizontal: 24.w),
-                      decoration: const BoxDecoration(color: Color(0xFFFFF8F3)),
-                      child: AspectRatio(
-                        aspectRatio: 2.5,
-                        child: CustomImage(
-                          image: Assets.logos.solidLogo.path,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: .symmetric(horizontal: 20.w),
-                      child: Divider(height: 1, color: Colors.grey.shade200),
-                    ),
-                    SizedBox(height: 16.h),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        padding: .symmetric(horizontal: 12.w),
-                        child: Column(
-                          spacing: 8.h,
-                          children: AppNavigation.items(
-                            onMenu: () {
-                              Navigator.pop(context);
-                              scrollToSection(productsKey);
-                            },
-                            onAbout: () {
-                              Navigator.pop(context);
-                              scrollToSection(aboutKey);
-                            },
-                            onContact: () {
-                              Navigator.pop(context);
-                              scrollToSection(contactKey);
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20.w,
-                        vertical: 16.h,
-                      ),
-                      child: Text(
-                        "© Elzefir",
-                        style: context.textTheme.bodySmall?.copyWith(
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
-          : null,
+      drawer: !context.isDesk ? ElzefirDrawer() : null,
       body: BodyWidget(
         productsKey: productsKey,
         aboutKey: aboutKey,

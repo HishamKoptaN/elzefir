@@ -56,15 +56,21 @@ class _ElzefirDrawerState extends State<ElzefirDrawer>
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final drawerWidth = context.responsive(
+      mobile: (screenWidth * 0.85).clamp(300.0, 380.0),
+      tablet: 380.0,
+      desktop: 400.0,
+    );
 
     return Drawer(
       elevation: 24,
-      width: MediaQuery.sizeOf(context).width *
-          context.responsive(mobile: .78, tablet: .65, desktop: .3),
-      backgroundColor: colorScheme.surface,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.horizontal(left: Radius.circular(36.r)),
+      width: drawerWidth,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.horizontal(
+          left: Radius.circular(36),
+        ),
       ),
       child: SafeArea(
         child: Column(
@@ -73,10 +79,7 @@ class _ElzefirDrawerState extends State<ElzefirDrawer>
             Expanded(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
-                padding: .symmetric(
-                  horizontal: 16.w,
-                  vertical: 12.h,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -87,16 +90,13 @@ class _ElzefirDrawerState extends State<ElzefirDrawer>
                       onAboutTap: widget.onAboutTap,
                       onBranchesTap: widget.onBranchesTap,
                     ),
-                    SizedBox(height: 16.h),
-                    Divider(
-                      height: 1.h,
-                      color: colorScheme.outlineVariant,
-                    ),
-                    SizedBox(height: 16.h),
+                    const SizedBox(height: 16),
+                    Divider(height: 1, color: Colors.grey.shade200),
+                    const SizedBox(height: 16),
                     const DrawerQuickOrderWidget(),
-                    SizedBox(height: 16.h),
+                    const SizedBox(height: 16),
                     const DrawerWorkingHoursCard(),
-                    SizedBox(height: 8.h),
+                    const SizedBox(height: 8),
                   ],
                 ),
               ),
