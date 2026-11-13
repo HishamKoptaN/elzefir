@@ -38,7 +38,7 @@ class DevEnv extends Env {
 
   @override
   String get publicUrl {
-    return 'https://coral-shark-547480.hostingersite.com/storage/';
+    return 'https://beige-elk-309228.hostingersite.com/storage/';
   }
 
   @override

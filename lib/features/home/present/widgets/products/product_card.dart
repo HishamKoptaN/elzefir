@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../core/analytics/analytics_service.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/responsive/responsive_extensions.dart';
@@ -8,6 +9,7 @@ import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/custom_image.dart';
 import '../../../../products/domain/entities/product_entity.dart';
 import 'category_badge_widget.dart';
+
 class ProductCard extends StatefulWidget {
   final ProductEntity product;
   const ProductCard({super.key, required this.product});
@@ -38,6 +40,7 @@ class _ProductCardState extends State<ProductCard> {
       child: Column(
         crossAxisAlignment: .start,
         children: [
+          Text(widget.product.image),
           GestureDetector(
             onTap: () async {
               await getIt<AnalyticsService>().logEvent(
@@ -139,7 +142,7 @@ class _ProductCardState extends State<ProductCard> {
                     textAlign: .right,
                     maxLines: 2,
                     overflow: .ellipsis,
-                ),
+                  ),
                 PriceWidget(price: widget.product.price),
               ],
             ),

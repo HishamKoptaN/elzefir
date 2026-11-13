@@ -3,6 +3,7 @@ import '../../../categories/domain/entities/categories_res_entity.dart';
 import '../../domain/entities/product_entity.dart';
 import 'package:to_arabic_number/to_arabic_number.dart';
 
+import '../../../../config/image_providers_config.dart';
 import '../model/product_model.dart';
 
 extension ProductModelMapper on ProductModel {
@@ -13,7 +14,7 @@ extension ProductModelMapper on ProductModel {
       title: title ?? '',
       description: description ?? '',
       price: Arabic.number(price ?? ''),
-      image: image ?? '',
+      image: ImageProvidersConfig.resolveImageUrl(image),
       category: category?.toEntity() ?? CategoryEntity(),
     );
   }
@@ -27,7 +28,7 @@ extension AdditionModelMapper on AdditionModel {
       title: title ?? '',
       description: description ?? '',
       price: price ?? '',
-      image: image ?? '',
+      image: ImageProvidersConfig.resolveImageUrl(image),
     );
   }
 }

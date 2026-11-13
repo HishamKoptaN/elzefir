@@ -28,7 +28,7 @@ class ProdEnv implements Env {
   }
   @override
   String get publicUrl {
-    return 'https://';
+    return 'https://beige-elk-309228.hostingersite.com/storage/';
   }
   @override
   bool get enableLogging => false;
