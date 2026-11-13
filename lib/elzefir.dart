@@ -49,10 +49,7 @@ class Elzefir extends StatelessWidget {
                 return const Locale('ar', 'EG');
               },
               builder: (context, child) {
-                return Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: child!,
-                );
+                return Directionality(textDirection: .rtl, child: child!);
               },
               routerConfig: AppRouter.router,
             );

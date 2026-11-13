@@ -43,6 +43,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.colorScheme.surface,
       drawer: !context.isDesk
           ? Drawer(
               elevation: 12,

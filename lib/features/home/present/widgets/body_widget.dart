@@ -4,11 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/utils/extensions/theme_ext.dart';
-import '../bloc/home_bloc.dart';
 import '../../../products/present/blocs/bloc/products_bloc.dart';
 import '../../../products/data/mapper/products_mapper.dart';
 import 'about/about.dart';
-import 'categories_nav.dart';
 import 'footer/footer_widget.dart';
 import 'offer_widget.dart';
 import 'products/products_widget.dart';
@@ -40,7 +38,7 @@ class _BodyWidgetState extends State<BodyWidget> {
   @override
   void initState() {
     super.initState();
-    getIt<ProductsBloc>().add(const ProductsEvent.get());
+    getIt<ProductsBloc>().add(const .get());
   }
 
   @override
@@ -71,29 +69,31 @@ class _BodyWidgetState extends State<BodyWidget> {
                       products: products,
                     );
                   },
-                  failure: (f) => Padding(
-                    padding: EdgeInsets.symmetric(vertical: 40.h),
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'تعذر تحميل المنتجات من فايرستور',
-                            style: context.textTheme.titleMedium,
-                          ),
-                          SizedBox(height: 12.h),
-                          ElevatedButton(
-                            onPressed: () {
-                              getIt<ProductsBloc>().add(
-                                const ProductsEvent.get(),
-                              );
-                            },
-                            child: const Text('إعادة المحاولة'),
-                          ),
-                        ],
+                  failure: (f) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(vertical: 40.h),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'تعذر تحميل المنتجات من فايرستور',
+                              style: context.textTheme.titleMedium,
+                            ),
+                            SizedBox(height: 12.h),
+                            ElevatedButton(
+                              onPressed: () {
+                                getIt<ProductsBloc>().add(
+                                  const ProductsEvent.get(),
+                                );
+                              },
+                              child: const Text('إعادة المحاولة'),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                   orElse: () => Padding(
                     padding: EdgeInsets.symmetric(vertical: 40.h),
                     child: Center(
