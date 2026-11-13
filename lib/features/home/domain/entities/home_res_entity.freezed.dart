@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$HomeResEntity {
 
- String? get offerImage; List<CategoryEntity> get categories; List<ProductEntity> get products; List<AdditionEntity> get additions;
+ String? get offerImage; List<CategoryEntity> get categories; List<ProductEntity> get products; List<AdditionEntity> get additions; WorkingHoursEntity? get workingHours;
 /// Create a copy of HomeResEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $HomeResEntityCopyWith<HomeResEntity> get copyWith => _$HomeResEntityCopyWithImp
 @override
 bool operator ==(Object other) {
   final _this = this as HomeResEntity;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeResEntity&&(identical(other.offerImage, _this.offerImage) || other.offerImage == _this.offerImage)&&const DeepCollectionEquality().equals(other.categories, _this.categories)&&const DeepCollectionEquality().equals(other.products, _this.products)&&const DeepCollectionEquality().equals(other.additions, _this.additions));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeResEntity&&(identical(other.offerImage, _this.offerImage) || other.offerImage == _this.offerImage)&&const DeepCollectionEquality().equals(other.categories, _this.categories)&&const DeepCollectionEquality().equals(other.products, _this.products)&&const DeepCollectionEquality().equals(other.additions, _this.additions)&&(identical(other.workingHours, _this.workingHours) || other.workingHours == _this.workingHours));
 }
 
 
 @override
 int get hashCode {
   final _this = this as HomeResEntity;
-  return Object.hash(runtimeType,_this.offerImage,const DeepCollectionEquality().hash(_this.categories),const DeepCollectionEquality().hash(_this.products),const DeepCollectionEquality().hash(_this.additions));
+  return Object.hash(runtimeType,_this.offerImage,const DeepCollectionEquality().hash(_this.categories),const DeepCollectionEquality().hash(_this.products),const DeepCollectionEquality().hash(_this.additions),_this.workingHours);
 }
 
 @override
 String toString() {
   final _this = this as HomeResEntity;
-  return 'HomeResEntity(offerImage: ${_this.offerImage}, categories: ${_this.categories}, products: ${_this.products}, additions: ${_this.additions})';
+  return 'HomeResEntity(offerImage: ${_this.offerImage}, categories: ${_this.categories}, products: ${_this.products}, additions: ${_this.additions}, workingHours: ${_this.workingHours})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $HomeResEntityCopyWith<$Res>  {
   factory $HomeResEntityCopyWith(HomeResEntity value, $Res Function(HomeResEntity) _then) = _$HomeResEntityCopyWithImpl;
 @useResult
 $Res call({
- String? offerImage, List<CategoryEntity> categories, List<ProductEntity> products, List<AdditionEntity> additions
+ String? offerImage, List<CategoryEntity> categories, List<ProductEntity> products, List<AdditionEntity> additions, WorkingHoursEntity? workingHours
 });
 
 
@@ -68,13 +68,14 @@ class _$HomeResEntityCopyWithImpl<$Res>
 
 /// Create a copy of HomeResEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? offerImage = freezed,Object? categories = null,Object? products = null,Object? additions = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? offerImage = freezed,Object? categories = null,Object? products = null,Object? additions = null,Object? workingHours = freezed,}) {
   return _then(HomeResEntity(
 offerImage: freezed == offerImage ? _self.offerImage : offerImage // ignore: cast_nullable_to_non_nullable
 as String?,categories: null == categories ? _self.categories : categories // ignore: cast_nullable_to_non_nullable
 as List<CategoryEntity>,products: null == products ? _self.products : products // ignore: cast_nullable_to_non_nullable
 as List<ProductEntity>,additions: null == additions ? _self.additions : additions // ignore: cast_nullable_to_non_nullable
-as List<AdditionEntity>,
+as List<AdditionEntity>,workingHours: freezed == workingHours ? _self.workingHours : workingHours // ignore: cast_nullable_to_non_nullable
+as WorkingHoursEntity?,
   ));
 }
 
@@ -159,10 +160,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? offerImage,  List<CategoryEntity> categories,  List<ProductEntity> products,  List<AdditionEntity> additions)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? offerImage,  List<CategoryEntity> categories,  List<ProductEntity> products,  List<AdditionEntity> additions,  WorkingHoursEntity? workingHours)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomeResEntity() when $default != null:
-return $default(_that.offerImage,_that.categories,_that.products,_that.additions);case _:
+return $default(_that.offerImage,_that.categories,_that.products,_that.additions,_that.workingHours);case _:
   return orElse();
 
 }
@@ -180,10 +181,10 @@ return $default(_that.offerImage,_that.categories,_that.products,_that.additions
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? offerImage,  List<CategoryEntity> categories,  List<ProductEntity> products,  List<AdditionEntity> additions)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? offerImage,  List<CategoryEntity> categories,  List<ProductEntity> products,  List<AdditionEntity> additions,  WorkingHoursEntity? workingHours)  $default,) {final _that = this;
 switch (_that) {
 case _HomeResEntity():
-return $default(_that.offerImage,_that.categories,_that.products,_that.additions);case _:
+return $default(_that.offerImage,_that.categories,_that.products,_that.additions,_that.workingHours);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -200,10 +201,10 @@ return $default(_that.offerImage,_that.categories,_that.products,_that.additions
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? offerImage,  List<CategoryEntity> categories,  List<ProductEntity> products,  List<AdditionEntity> additions)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? offerImage,  List<CategoryEntity> categories,  List<ProductEntity> products,  List<AdditionEntity> additions,  WorkingHoursEntity? workingHours)?  $default,) {final _that = this;
 switch (_that) {
 case _HomeResEntity() when $default != null:
-return $default(_that.offerImage,_that.categories,_that.products,_that.additions);case _:
+return $default(_that.offerImage,_that.categories,_that.products,_that.additions,_that.workingHours);case _:
   return null;
 
 }
@@ -215,7 +216,7 @@ return $default(_that.offerImage,_that.categories,_that.products,_that.additions
 
 
 class _HomeResEntity implements HomeResEntity {
-  const _HomeResEntity({this.offerImage,  List<CategoryEntity> categories = const [],  List<ProductEntity> products = const [],  List<AdditionEntity> additions = const []}): _categories = categories,_products = products,_additions = additions;
+  const _HomeResEntity({this.offerImage,  List<CategoryEntity> categories = const [],  List<ProductEntity> products = const [],  List<AdditionEntity> additions = const [], this.workingHours}): _categories = categories,_products = products,_additions = additions;
   
 
 @override final  String? offerImage;
@@ -240,6 +241,7 @@ class _HomeResEntity implements HomeResEntity {
   return EqualUnmodifiableListView(_additions);
 }
 
+@override final  WorkingHoursEntity? workingHours;
 
 /// Create a copy of HomeResEntity
 /// with the given fields replaced by the non-null parameter values.
@@ -251,18 +253,18 @@ _$HomeResEntityCopyWith<_HomeResEntity> get copyWith => __$HomeResEntityCopyWith
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeResEntity&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other.categories, _categories)&&const DeepCollectionEquality().equals(other.products, _products)&&const DeepCollectionEquality().equals(other.additions, _additions));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeResEntity&&(identical(other.offerImage, offerImage) || other.offerImage == offerImage)&&const DeepCollectionEquality().equals(other.categories, _categories)&&const DeepCollectionEquality().equals(other.products, _products)&&const DeepCollectionEquality().equals(other.additions, _additions)&&(identical(other.workingHours, workingHours) || other.workingHours == workingHours));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(_categories),const DeepCollectionEquality().hash(_products),const DeepCollectionEquality().hash(_additions));
+    return Object.hash(runtimeType,offerImage,const DeepCollectionEquality().hash(_categories),const DeepCollectionEquality().hash(_products),const DeepCollectionEquality().hash(_additions),workingHours);
 }
 
 @override
 String toString() {
-    return 'HomeResEntity(offerImage: $offerImage, categories: $categories, products: $products, additions: $additions)';
+    return 'HomeResEntity(offerImage: $offerImage, categories: $categories, products: $products, additions: $additions, workingHours: $workingHours)';
 }
 
 
@@ -273,7 +275,7 @@ abstract mixin class _$HomeResEntityCopyWith<$Res> implements $HomeResEntityCopy
   factory _$HomeResEntityCopyWith(_HomeResEntity value, $Res Function(_HomeResEntity) _then) = __$HomeResEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String? offerImage, List<CategoryEntity> categories, List<ProductEntity> products, List<AdditionEntity> additions
+ String? offerImage, List<CategoryEntity> categories, List<ProductEntity> products, List<AdditionEntity> additions, WorkingHoursEntity? workingHours
 });
 
 
@@ -290,13 +292,14 @@ class __$HomeResEntityCopyWithImpl<$Res>
 
 /// Create a copy of HomeResEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? offerImage = freezed,Object? categories = null,Object? products = null,Object? additions = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? offerImage = freezed,Object? categories = null,Object? products = null,Object? additions = null,Object? workingHours = freezed,}) {
   return _then(_HomeResEntity(
 offerImage: freezed == offerImage ? _self.offerImage : offerImage // ignore: cast_nullable_to_non_nullable
 as String?,categories: null == categories ? _self._categories : categories // ignore: cast_nullable_to_non_nullable
 as List<CategoryEntity>,products: null == products ? _self._products : products // ignore: cast_nullable_to_non_nullable
 as List<ProductEntity>,additions: null == additions ? _self._additions : additions // ignore: cast_nullable_to_non_nullable
-as List<AdditionEntity>,
+as List<AdditionEntity>,workingHours: freezed == workingHours ? _self.workingHours : workingHours // ignore: cast_nullable_to_non_nullable
+as WorkingHoursEntity?,
   ));
 }
 

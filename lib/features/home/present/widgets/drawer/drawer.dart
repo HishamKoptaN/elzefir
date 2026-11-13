@@ -68,9 +68,7 @@ class _ElzefirDrawerState extends State<ElzefirDrawer>
       width: drawerWidth,
       backgroundColor: Colors.white,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.horizontal(
-          left: Radius.circular(36),
-        ),
+        borderRadius: BorderRadius.horizontal(left: Radius.circular(36)),
       ),
       child: SafeArea(
         child: Column(
@@ -97,11 +95,11 @@ class _ElzefirDrawerState extends State<ElzefirDrawer>
                     const SizedBox(height: 16),
                     const DrawerWorkingHoursCard(),
                     const SizedBox(height: 8),
+                    const DrawerFooterWidget(),
                   ],
                 ),
               ),
             ),
-            const DrawerFooterWidget(),
           ],
         ),
       ),

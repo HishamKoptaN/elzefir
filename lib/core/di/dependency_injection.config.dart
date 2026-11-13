@@ -327,6 +327,12 @@ _i174.GetIt init(
   gh.lazySingleton<_i942.SignInUseCases>(
     () => _i942.SignInUseCases(gh<_i305.SignInRepo>()),
   );
+  gh.singleton<_i280.HomeRepo>(
+    () => _i886.HomeRepoImpl(
+      gh<_i861.HomeDataSrc>(),
+      gh<_i974.FirebaseFirestore>(),
+    ),
+  );
   gh.singleton<_i151.AuthUseCases>(
     () => _i151.AuthUseCases(authRepo: gh<_i610.AuthRepo>()),
   );
@@ -351,9 +357,6 @@ _i174.GetIt init(
       api: gh<_i680.CategoriesApi>(),
       mock: gh<_i895.CategoriesMockDataSource>(),
     ),
-  );
-  gh.singleton<_i280.HomeRepo>(
-    () => _i886.HomeRepoImpl(gh<_i861.HomeDataSrc>()),
   );
   gh.lazySingleton<_i913.SignInBloc>(
     () => _i913.SignInBloc(signInUseCases: gh<_i942.SignInUseCases>()),

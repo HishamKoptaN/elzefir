@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../core/widgets/custom_image.dart';
 import 'dart:ui';
 
 import '../../../../generated/assets.gen.dart';
+import '../bloc/home_bloc.dart';
 
 class OfferWidget extends StatelessWidget {
   const OfferWidget({super.key});
@@ -60,7 +62,7 @@ class OfferWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 25.h),
-                      OpenStatusBadge(),
+                      const OpenStatusBadge(),
                     ],
                   ),
                 ),
@@ -78,44 +80,55 @@ class OpenStatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(9999),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 34.w, vertical: 7.h),
-          decoration: BoxDecoration(
-            color: Colors.black.withValues(alpha: 0.45),
-            borderRadius: BorderRadius.circular(9999),
-            border: Border.all(
-              color: Colors.white.withValues(alpha: 0.1),
-              width: 1,
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        final workingHours = state.mapOrNull(
+          loaded: (s) => s.homeRes?.workingHours,
+        );
+        final isOpen = workingHours?.isOpenNow ?? true;
+        final statusText = isOpen ? 'مفتوح الآن' : 'مغلق الآن';
+        final dotColor = isOpen ? const Color(0xFF22C55E) : const Color(0xFFEF4444);
+
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(9999),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 34.w, vertical: 7.h),
+              decoration: BoxDecoration(
+                color: Colors.black.withValues(alpha: 0.45),
+                borderRadius: BorderRadius.circular(9999),
+                border: Border.all(
+                  color: Colors.white.withValues(alpha: 0.1),
+                  width: 1,
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 20.w,
+                children: [
+                  Text(
+                    statusText,
+                    style: context.textTheme.labelLarge?.copyWith(
+                      fontWeight: .w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Container(
+                    width: 26.w,
+                    height: 26.h,
+                    decoration: BoxDecoration(
+                      color: dotColor,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 20.w,
-            children: [
-              Text(
-                'مفتوح الآن',
-                style: context.textTheme.labelLarge?.copyWith(
-                  fontWeight: .w600,
-                  color: Colors.white,
-                ),
-              ),
-              Container(
-                width: 26.w,
-                height: 26.h,
-                decoration: const BoxDecoration(
-                  color: Color(0xFF22C55E),
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

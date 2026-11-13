@@ -53,7 +53,7 @@ class _BodyWidgetState extends State<BodyWidget> {
           crossAxisAlignment: .center,
           spacing: 24.h,
           children: [
-            RestaurantAppBar(
+            HomeAppBar(
               onMenu: widget.onProcudcts,
               onAbout: widget.onAbout,
               onContact: widget.onContact,
