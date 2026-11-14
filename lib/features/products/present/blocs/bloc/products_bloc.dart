@@ -1,9 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../../core/errors/models/error_info.dart';
 import '../../../../../core/networking/api_result.dart';
 import '../../../data/model/product_model.dart';
 import '../../../domain/use_cases/products_use_cases.dart';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'products_bloc.freezed.dart';
 part 'products_event.dart';
@@ -31,5 +33,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         },
       );
     });
+    add(const .get());
   }
 }

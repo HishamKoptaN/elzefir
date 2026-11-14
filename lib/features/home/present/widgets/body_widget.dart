@@ -11,6 +11,7 @@ import 'footer/footer_widget.dart';
 import 'offer_widget.dart';
 import 'products/products_widget.dart';
 import 'home_app_bar/home_app_bar.dart';
+import 'quick_contact/quick_contact_buttons.dart';
 
 class BodyWidget extends StatefulWidget {
   const BodyWidget({
@@ -40,7 +41,6 @@ class _BodyWidgetState extends State<BodyWidget> {
   @override
   void initState() {
     super.initState();
-    getIt<ProductsBloc>().add(const ProductsEvent.get());
   }
 
   @override
@@ -58,11 +58,12 @@ class _BodyWidgetState extends State<BodyWidget> {
               onAbout: widget.onAbout,
               onContact: widget.onContact,
             ),
+            const QuickContactButtons(),
             const OfferWidget(),
             _ProductLayout(
               productsKey: widget.productsKey,
               onProductsLoaded: () {
-                getIt<ProductsBloc>().add(const ProductsEvent.get());
+                getIt<ProductsBloc>().add(const .get());
               },
             ),
             AboutSection(key: widget.aboutKey),
