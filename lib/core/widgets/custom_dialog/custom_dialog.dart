@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../theme/app_colors.dart';
+import '../../utils/extensions/theme_ext.dart';
 import 'dialog_header.dart';
 import 'dialog_footer.dart';
 
@@ -50,7 +50,7 @@ class CustomDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: LightColors().primary,
+      backgroundColor: context.colorScheme.primary,
       insetPadding: EdgeInsets.zero,
       child: IntrinsicWidth(
         child: IntrinsicHeight(

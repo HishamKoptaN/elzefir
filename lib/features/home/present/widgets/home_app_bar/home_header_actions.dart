@@ -31,8 +31,8 @@ class HomeHeaderActions extends StatelessWidget {
               isLabelVisible: unread > 0,
               label: Text('$unread'),
               child: Container(
-                width: 40.r,
                 height: 40.r,
+                width: 40.r,
                 decoration: BoxDecoration(
                   shape: .circle,
                   color: context.colorScheme.slateCardBg,
@@ -41,7 +41,7 @@ class HomeHeaderActions extends StatelessWidget {
                   padding: .zero,
                   icon: FaIcon(
                     FontAwesomeIcons.bell,
-                    size: 20.r,
+                    size: 18.r,
                     color: context.colorScheme.brandNavy,
                   ),
                   onPressed: () {},
@@ -50,33 +50,32 @@ class HomeHeaderActions extends StatelessWidget {
             );
           },
         ),
-        Gap(8.w),
-        Container(
-          width: 40.r,
-          height: 40.r,
-          decoration: BoxDecoration(
-            shape: .circle,
-            color: context.colorScheme.brandNavy,
-            boxShadow: [
-              BoxShadow(
-                color: context.colorScheme.shadow.withValues(alpha: 0.08),
-                blurRadius: 4.r,
-                offset: const Offset(0, 2),
-              ),
-            ],
-          ),
-          child: IconButton(
-            padding: .zero,
-            icon: FaIcon(
-              FontAwesomeIcons.bagShopping,
-              size: 20.r,
-              color: context.colorScheme.onPrimary,
-            ),
-            onPressed: () {},
-          ),
-        ),
+        //Gap(8.w),
+        //Container(
+        //  width: 40.r,
+        //  height: 40.r,
+        //  decoration: BoxDecoration(
+        //    shape: .circle,
+        //    color: context.colorScheme.brandNavy,
+        //    boxShadow: [
+        //      BoxShadow(
+        //        color: context.colorScheme.shadow.withValues(alpha: 0.08),
+        //        blurRadius: 4.r,
+        //        offset: const Offset(0, 2),
+        //      ),
+        //    ],
+        //  ),
+        //  child: IconButton(
+        //    padding: .zero,
+        //    icon: FaIcon(
+        //      FontAwesomeIcons.bagShopping,
+        //      size: 26.r,
+        //      color: context.colorScheme.onPrimary,
+        //    ),
+        //    onPressed: () {},
+        //  ),
+        //),
       ],
     );
   }
 }
-

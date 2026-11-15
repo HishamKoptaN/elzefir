@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../core/widgets/custom_image.dart';
+
 import 'dart:ui';
 
 import '../../../../generated/assets.gen.dart';
@@ -10,13 +13,12 @@ import '../bloc/home_bloc.dart';
 
 class OfferWidget extends StatelessWidget {
   const OfferWidget({super.key});
-  static const Color primary = Color(0xFF001629);
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: .circular(12),
       child: SizedBox(
-        height: 450.h,
+        height: 250.h,
         width: .infinity,
         child: Stack(
           fit: .expand,
@@ -24,7 +26,7 @@ class OfferWidget extends StatelessWidget {
           children: [
             CustomImage(image: Assets.images.offer.path, fit: .cover),
             Container(
-              padding: .symmetric(vertical: 6.h, horizontal: 16.w),
+              padding: .symmetric(vertical: 6.h, horizontal: 2.w),
               decoration: BoxDecoration(
                 color: const Color(0xFFd87459).withValues(alpha: 0.2),
                 border: Border.all(
@@ -38,26 +40,26 @@ class OfferWidget extends StatelessWidget {
                   begin: .centerLeft,
                   end: .centerRight,
                   colors: [
-                    primary.withValues(alpha: .9),
-                    primary.withValues(alpha: .0),
+                    context.colorScheme.primary.withValues(alpha: .9),
+                    context.colorScheme.primary.withValues(alpha: .0),
                   ],
                 ),
               ),
             ),
             Align(
-              alignment: Alignment.centerRight,
+              alignment: .centerRight,
               child: Padding(
-                padding: EdgeInsets.all(30.h),
+                padding: .all(30.h),
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 500),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: .center,
+                    crossAxisAlignment: .start,
                     children: [
                       Text(
                         'مطعم أسماك الزفر',
                         textAlign: .right,
-                        style: context.textTheme.displayLarge?.copyWith(
+                        style: context.textTheme.displaySmall?.copyWith(
                           color: Colors.white,
                         ),
                       ),
@@ -81,32 +83,37 @@ class OpenStatusBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
+      bloc: getIt<HomeBloc>(),
       builder: (context, state) {
         final workingHours = state.mapOrNull(
-          loaded: (s) => s.homeRes?.workingHours,
+          loaded: (s) {
+            return s.homeRes?.workingHours;
+          },
         );
         final isOpen = workingHours?.isOpenNow ?? true;
         final statusText = isOpen ? 'مفتوح الآن' : 'مغلق الآن';
-        final dotColor = isOpen ? const Color(0xFF22C55E) : const Color(0xFFEF4444);
+        final dotColor = isOpen
+            ? const Color(0xFF22C55E)
+            : const Color(0xFFEF4444);
 
         return ClipRRect(
           borderRadius: BorderRadius.circular(9999),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
+            filter: .blur(sigmaX: 1.0, sigmaY: 1.0),
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 34.w, vertical: 7.h),
+              padding: .symmetric(vertical: 7.h, horizontal: 22.w),
               decoration: BoxDecoration(
                 color: Colors.black.withValues(alpha: 0.45),
-                borderRadius: BorderRadius.circular(9999),
+                borderRadius: .circular(9999),
                 border: Border.all(
                   color: Colors.white.withValues(alpha: 0.1),
                   width: 1,
                 ),
               ),
               child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 20.w,
+                mainAxisSize: .min,
+                crossAxisAlignment: .center,
+                spacing: 10.w,
                 children: [
                   Text(
                     statusText,
@@ -116,12 +123,9 @@ class OpenStatusBadge extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: 26.w,
-                    height: 26.h,
-                    decoration: BoxDecoration(
-                      color: dotColor,
-                      shape: BoxShape.circle,
-                    ),
+                    height: 12.r,
+                    width: 12.r,
+                    decoration: BoxDecoration(color: dotColor, shape: .circle),
                   ),
                 ],
               ),

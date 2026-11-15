@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
-import '../../theme/app_colors.dart';
 import '../../utils/extensions/responsive_icon_extension .dart';
+import '../../utils/extensions/theme_ext.dart';
 
 class DialogHeader extends StatelessWidget {
   final String title;
@@ -21,7 +21,7 @@ class DialogHeader extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 18.h),
       decoration: BoxDecoration(
-        color: LightColors().primary,
+        color: context.colorScheme.primary,
         border: Border(
           bottom: BorderSide(
             color: Colors.black.withValues(alpha: 0.3),

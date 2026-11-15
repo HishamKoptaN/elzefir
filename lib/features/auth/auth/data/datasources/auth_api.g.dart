@@ -8,6 +8,7 @@ part of 'auth_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
+// ignore_for_file: type=lint
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter,avoid_unused_constructor_parameters,unreachable_from_main,avoid_redundant_argument_values
 
 class _AuthApi implements AuthApi {
@@ -45,7 +46,8 @@ class _AuthApi implements AuthApi {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = exchangeToken;
+    final _data = <String, dynamic>{};
+    _data.addAll(exchangeToken.toJson());
     final _options = _setStreamType<AuthResModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(

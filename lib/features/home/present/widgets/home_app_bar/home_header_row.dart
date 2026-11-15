@@ -13,7 +13,6 @@ class HomeHeaderRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: .only(bottom: 12.h),
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
@@ -25,8 +24,8 @@ class HomeHeaderRow extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 48.r,
-            height: 48.r,
+            height: 68.r,
+            width: 68.r,
             padding: .all(4.r),
             decoration: BoxDecoration(
               shape: .circle,
@@ -48,7 +47,7 @@ class HomeHeaderRow extends StatelessWidget {
               fit: .contain,
             ),
           ),
-          Gap(12.w),
+          Gap(4.w),
           Expanded(
             child: Column(
               crossAxisAlignment: .start,
@@ -56,9 +55,8 @@ class HomeHeaderRow extends StatelessWidget {
               children: [
                 Text(
                   'أسماك الزفر',
-                  style: context.textTheme.titleLarge?.copyWith(
-                    fontWeight: .w800,
-                    fontSize: 20.sp,
+                  style: context.textTheme.headlineSmall?.copyWith(
+                    fontWeight: .bold,
                     color: context.colorScheme.brandNavy,
                   ),
                 ),
@@ -66,7 +64,6 @@ class HomeHeaderRow extends StatelessWidget {
                   'السمك على أصوله • طازج يومياً',
                   style: context.textTheme.bodySmall?.copyWith(
                     fontWeight: .w500,
-                    fontSize: 12.sp,
                     color: context.colorScheme.slateText,
                   ),
                 ),
@@ -79,4 +76,3 @@ class HomeHeaderRow extends StatelessWidget {
     );
   }
 }
-

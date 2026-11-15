@@ -37,17 +37,17 @@ android {
             dimension = "env"
             applicationIdSuffix = ".local"
             versionNameSuffix = "-local"
-            resValue("string", "app_name", "ابو جنه للدواجن Local")
+            resValue("string", "app_name", "الزفر  Local")
         }
         create("dev") {
             dimension = "env"
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
-            resValue("string", "app_name", "ابو جنه للدواجن Dev")
+            resValue("string", "app_name", "الزفر  Dev")
         }
         create("prod") {
             dimension = "env"
-            resValue("string", "app_name", "ابو جنه للدواجن")
+            resValue("string", "app_name", "الزفر")
         }
     }
 }

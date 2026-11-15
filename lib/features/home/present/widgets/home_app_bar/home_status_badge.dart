@@ -11,11 +11,11 @@ class HomeStatusBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: .symmetric(horizontal: 16.w, vertical: 10.h),
+      padding: .symmetric(vertical: 10.h, horizontal: 16.w),
       decoration: BoxDecoration(
         color: context.colorScheme.statusBadgeBg,
         border: Border.all(color: context.colorScheme.statusBadgeBorder),
-        borderRadius: .circular(16.r),
+        borderRadius: .circular(12.r),
       ),
       child: Row(
         mainAxisAlignment: .spaceBetween,
@@ -24,8 +24,8 @@ class HomeStatusBadge extends StatelessWidget {
             mainAxisSize: .min,
             children: [
               Container(
-                width: 10.r,
-                height: 10.r,
+                height: 12.r,
+                width: 12.r,
                 decoration: BoxDecoration(
                   shape: .circle,
                   color: context.colorScheme.statusDot,
@@ -36,7 +36,6 @@ class HomeStatusBadge extends StatelessWidget {
                 'مفتوح الآن لاستقبال الطلبات',
                 style: context.textTheme.bodySmall?.copyWith(
                   fontWeight: .bold,
-                  fontSize: 12.sp,
                   color: context.colorScheme.statusBadgeText,
                 ),
               ),
@@ -55,7 +54,6 @@ class HomeStatusBadge extends StatelessWidget {
                 '9:00 ص - 11:00 م',
                 style: context.textTheme.bodySmall?.copyWith(
                   fontWeight: .w600,
-                  fontSize: 11.sp,
                   color: context.colorScheme.statusBadgeSchedule,
                 ),
               ),
@@ -66,4 +64,3 @@ class HomeStatusBadge extends StatelessWidget {
     );
   }
 }
-

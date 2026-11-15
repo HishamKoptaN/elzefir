@@ -14,16 +14,18 @@ class QuickWhatsappButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: () async {
-          final uri = Uri.parse('https://wa.me/201124497981');
-          await launchUrl(uri, mode: .externalApplication);
+          await launchUrl(
+            Uri.parse('https://wa.me/201124497981'),
+            mode: .externalApplication,
+          );
         },
-        borderRadius: .circular(16.r),
+        borderRadius: .circular(12.r),
         child: Container(
-          padding: .all(12.r),
+          padding: .all(8.r),
           decoration: BoxDecoration(
             color: context.colorScheme.whatsappBg,
-            border: Border.all(color: context.colorScheme.whatsappBorder),
-            borderRadius: .circular(16.r),
+            border: .all(color: context.colorScheme.whatsappBorder),
+            borderRadius: .circular(12.r),
           ),
           child: Row(
             mainAxisAlignment: .spaceBetween,
@@ -33,19 +35,17 @@ class QuickWhatsappButton extends StatelessWidget {
                 mainAxisSize: .min,
                 children: [
                   Text(
-                    'طلب واتساب',
-                    style: context.textTheme.bodySmall?.copyWith(
-                      fontWeight: .bold,
-                      fontSize: 11.sp,
+                    'واتساب',
+                    style: context.textTheme.labelSmall?.copyWith(
+                      fontWeight: .w100,
                       color: context.colorScheme.whatsappTitle,
                     ),
                   ),
                   Text(
                     '01124497981',
-                    textDirection: TextDirection.ltr,
-                    style: context.textTheme.bodyMedium?.copyWith(
-                      fontWeight: .w800,
-                      fontSize: 12.sp,
+                    textDirection: .ltr,
+                    style: context.textTheme.labelSmall?.copyWith(
+                      fontWeight: .w900,
                       letterSpacing: 0.5,
                       color: context.colorScheme.whatsappSubtitle,
                     ),
@@ -53,8 +53,8 @@ class QuickWhatsappButton extends StatelessWidget {
                 ],
               ),
               Container(
-                width: 32.r,
                 height: 32.r,
+                width: 32.r,
                 decoration: BoxDecoration(
                   shape: .circle,
                   color: context.colorScheme.whatsappIconBg,
@@ -69,7 +69,7 @@ class QuickWhatsappButton extends StatelessWidget {
                 child: Center(
                   child: FaIcon(
                     FontAwesomeIcons.whatsapp,
-                    size: 18.r,
+                    size: 16.r,
                     color: context.colorScheme.onPrimary,
                   ),
                 ),
@@ -81,4 +81,3 @@ class QuickWhatsappButton extends StatelessWidget {
     );
   }
 }
-

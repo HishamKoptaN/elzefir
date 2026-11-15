@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show VerticalDivider, ElevatedButton, CircularProgressIndicator;
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +10,9 @@ import '../../../products/present/blocs/bloc/products_bloc.dart';
 import '../../../products/data/mapper/products_mapper.dart';
 import 'about/about.dart';
 import 'footer/footer_widget.dart';
+import 'home_app_bar/home_status_badge.dart';
 import 'offer_widget.dart';
+import 'products/products_section_header.dart';
 import 'products/products_widget.dart';
 import 'home_app_bar/home_app_bar.dart';
 import 'quick_contact/quick_contact_buttons.dart';
@@ -51,15 +55,17 @@ class _BodyWidgetState extends State<BodyWidget> {
         padding: .symmetric(horizontal: 12.w),
         child: Column(
           crossAxisAlignment: .center,
-          spacing: 24.h,
+          spacing: 12.h,
           children: [
             HomeAppBar(
               onMenu: widget.onProcudcts,
               onAbout: widget.onAbout,
               onContact: widget.onContact,
             ),
-            const QuickContactButtons(),
             const OfferWidget(),
+            const HomeStatusBadge(),
+            const QuickContactButtons(),
+            const ProductsSectionHeader(),
             _ProductLayout(
               productsKey: widget.productsKey,
               onProductsLoaded: () {
@@ -89,11 +95,7 @@ class _ProductLayout extends StatelessWidget {
     return Row(
       crossAxisAlignment: .start,
       children: [
-        const VerticalDivider(
-          width: 16,
-          thickness: 1,
-          color: Color(0xFFC3C7CE),
-        ),
+        VerticalDivider(width: 16.w, thickness: 1, color: Color(0xFFC3C7CE)),
         _ProductsColumn(
           productsKey: productsKey,
           onProductsLoaded: onProductsLoaded,
@@ -122,7 +124,10 @@ class _ProductsColumn extends StatelessWidget {
           return state.maybeMap(
             loaded: (state) {
               final products =
-                  state.products?.map((e) => e.toEntity()).toList() ?? [];
+                  state.products?.map((e) {
+                    return e.toEntity();
+                  }).toList() ??
+                  [];
               return ProductsSection(
                 key: productsKey,
                 products: products,
@@ -131,10 +136,10 @@ class _ProductsColumn extends StatelessWidget {
             },
             failure: (f) {
               return Padding(
-                padding: EdgeInsets.symmetric(vertical: 40.h),
+                padding: .symmetric(vertical: 40.h),
                 child: Center(
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: .min,
                     children: [
                       Text(
                         'تعذر تحميل المنتجات من فايرستور',
@@ -143,7 +148,7 @@ class _ProductsColumn extends StatelessWidget {
                       SizedBox(height: 12.h),
                       ElevatedButton(
                         onPressed: () {
-                          getIt<ProductsBloc>().add(const ProductsEvent.get());
+                          getIt<ProductsBloc>().add(const .get());
                         },
                         child: const Text('إعادة المحاولة'),
                       ),
@@ -152,12 +157,14 @@ class _ProductsColumn extends StatelessWidget {
                 ),
               );
             },
-            orElse: () => Padding(
-              padding: EdgeInsets.symmetric(vertical: 40.h),
-              child: const Center(
-                child: CircularProgressIndicator(color: Color(0xFF124370)),
-              ),
-            ),
+            orElse: () {
+              return Padding(
+                padding: .symmetric(vertical: 40.h),
+                child: const Center(
+                  child: CircularProgressIndicator(color: Color(0xFF124370)),
+                ),
+              );
+            },
           );
         },
       ),

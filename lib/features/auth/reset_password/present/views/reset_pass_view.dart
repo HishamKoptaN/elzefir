@@ -7,7 +7,6 @@ import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/routing/utils/navigation_service.dart';
-import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/widgets/custom_scaffold.dart';
 import '../../../../../core/widgets/feedback/app_snackbar.dart';
 import '../../../widgets/custom_auth_btn.dart';
@@ -62,7 +61,7 @@ class ResetPassView extends StatelessWidget {
                               fontSize: 35.sp,
                               height: 39 / 35,
                               letterSpacing: -0.114286,
-                              color: LightColors().primary,
+                              // color: LightColors().primary,
                             ),
                           ),
                           CustomAuthTextFormField(

@@ -19,7 +19,7 @@ class QuickHotlineButton extends StatelessWidget {
         },
         borderRadius: .circular(16.r),
         child: Container(
-          padding: .all(12.r),
+          padding: .all(8.r),
           decoration: BoxDecoration(
             color: context.colorScheme.hotlineBg,
             border: Border.all(color: context.colorScheme.hotlineBorder),
@@ -33,19 +33,17 @@ class QuickHotlineButton extends StatelessWidget {
                 mainAxisSize: .min,
                 children: [
                   Text(
-                    'الخط الساخن',
-                    style: context.textTheme.bodySmall?.copyWith(
-                      fontWeight: .bold,
-                      fontSize: 11.sp,
+                    'التليفون',
+                    style: context.textTheme.labelSmall?.copyWith(
+                      fontWeight: .w100,
                       color: context.colorScheme.hotlineTitle,
                     ),
                   ),
                   Text(
                     '01008673836',
-                    textDirection: TextDirection.ltr,
-                    style: context.textTheme.bodyMedium?.copyWith(
-                      fontWeight: .w800,
-                      fontSize: 12.sp,
+                    textDirection: .ltr,
+                    style: context.textTheme.labelSmall?.copyWith(
+                      fontWeight: .w900,
                       letterSpacing: 0.5,
                       color: context.colorScheme.hotlineSubtitle,
                     ),
@@ -53,8 +51,8 @@ class QuickHotlineButton extends StatelessWidget {
                 ],
               ),
               Container(
-                width: 32.r,
                 height: 32.r,
+                width: 32.r,
                 decoration: BoxDecoration(
                   shape: .circle,
                   color: context.colorScheme.hotlineIconBg,
@@ -69,7 +67,7 @@ class QuickHotlineButton extends StatelessWidget {
                 child: Center(
                   child: FaIcon(
                     FontAwesomeIcons.phone,
-                    size: 18.r,
+                    size: 16.r,
                     color: context.colorScheme.onPrimary,
                   ),
                 ),
@@ -81,4 +79,3 @@ class QuickHotlineButton extends StatelessWidget {
     );
   }
 }
-

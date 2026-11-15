@@ -7,7 +7,6 @@ import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/data/entities/meta_entity.dart';
 import '../../../../core/responsive/device_helper.dart' as dh;
 import '../../../../core/utils/extensions/scaled.dart';
-import '../../../../core/widgets/custom_pagination_widget.dart';
 import '../../../../core/widgets/forms/custom_search_field.dart';
 import '../../data/models/order/orders_filter_model.dart';
 import '../../domain/entities/orders_res_entity.dart';
@@ -172,18 +171,6 @@ class _OrdersWidgetState extends State<OrdersWidget> {
             Stack(
               alignment: Alignment.center,
               children: [
-                CustomPaginationWidget(
-                  meta: widget.meta,
-                  currentPage: _selectedPage,
-                  onPageChanged: (page) {
-                    setState(() {
-                      _selectedPage = page;
-                    });
-                    getIt<OrdersBloc>().add(
-                      OrdersEvent.get(page: page, perPage: 10),
-                    );
-                  },
-                ),
                 Positioned(
                   left: 0,
                   child: Row(

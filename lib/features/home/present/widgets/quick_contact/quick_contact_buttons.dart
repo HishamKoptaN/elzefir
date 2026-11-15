@@ -10,20 +10,12 @@ class QuickContactButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: .only(top: 4.h),
-      child: Row(
-        children: [
-          const Expanded(
-            child: QuickWhatsappButton(),
-          ),
-          Gap(12.w),
-          const Expanded(
-            child: QuickHotlineButton(),
-          ),
-        ],
-      ),
+    return Row(
+      children: [
+        const Expanded(child: QuickWhatsappButton()),
+        Gap(12.w),
+        const Expanded(child: QuickHotlineButton()),
+      ],
     );
   }
 }
-

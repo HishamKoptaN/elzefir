@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/responsive/app_responsive.dart';
-import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/responsive/device_helper.dart';
 import '../../../../../core/widgets/custom_dialog/custom_dialog.dart';
 import '../blocs/auth_bloc/auth_bloc.dart';
@@ -40,11 +40,7 @@ class SidebarLogoutWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 10.w),
-              Icon(
-                Icons.logout,
-                color: Colors.red,
-                size: 20,
-              ),
+              Icon(Icons.logout, color: Colors.red, size: 20),
             ],
           ),
         ),
@@ -62,10 +58,10 @@ class LogoutDialog extends StatelessWidget {
       backgroundColor: Colors.transparent,
       icon: CircleAvatar(
         radius: 28,
-        backgroundColor: AppColors.danger.withOpacity(0.12),
+        // backgroundColor: AppColors.danger.withOpacity(0.12),
         child: const Icon(
           Icons.logout_rounded,
-          color: AppColors.danger,
+          // color: AppColors.danger,
           size: 28,
         ),
       ),
@@ -90,7 +86,7 @@ class LogoutDialog extends StatelessWidget {
                   Navigator.of(context).pop(false);
                 },
                 style: ElevatedButton.styleFrom(
-                  side: BorderSide(color: AppColors.danger),
+                  // side: BorderSide(color: AppColors.danger),
                   backgroundColor: Colors.transparent,
                   foregroundColor: Colors.white,
                   elevation: 0,
@@ -100,7 +96,7 @@ class LogoutDialog extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 24.sp,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.danger,
+                    // color: AppColors.danger,
                   ),
                 ),
               ),
@@ -113,7 +109,7 @@ class LogoutDialog extends StatelessWidget {
                   Navigator.of(context).pop(true);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.danger,
+                  // backgroundColor: AppColors.danger,
                   foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   elevation: 0,

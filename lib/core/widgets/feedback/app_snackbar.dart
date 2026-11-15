@@ -1,7 +1,6 @@
+import 'package:elzefir/core/utils/extensions/theme_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../theme/app_colors.dart';
 
 enum AppSnackBarType { success, error, warning, info }
 
@@ -80,7 +79,7 @@ class AppSnackBar {
     late final Color iconColor;
     switch (type) {
       case AppSnackBarType.success:
-        backgroundColor = LightColors().primary;
+        backgroundColor = context.colorScheme.primary;
         borderColor = const Color(0xFF4CAF50);
         icon = Icons.check_circle_rounded;
         iconColor = const Color(0xFF4CAF50);

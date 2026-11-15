@@ -1,160 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 
-import '../../../../../core/analytics/analytics_service.dart';
-import '../../../../../core/di/dependency_injection.dart';
-import '../../../../../core/responsive/responsive_extensions.dart';
-import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
-import '../../../../../core/widgets/custom_image.dart';
-import '../../../../products/domain/entities/product_entity.dart';
-import 'category_badge_widget.dart';
 
-class ProductCard extends StatefulWidget {
-  final ProductEntity product;
-  const ProductCard({super.key, required this.product});
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
-  bool isFavorite = false;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 900.w,
-      decoration: BoxDecoration(
-        color: const Color(0xFFFFFFFF),
-        borderRadius: .circular(12.r),
-        border: Border.all(
-          color: const Color(0xFFC3C7CE).withValues(alpha: 0.1),
-        ),
-        boxShadow: const [
-          BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.05),
-            offset: Offset(0, 1),
-            blurRadius: 2,
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: .start,
-        children: [
-          GestureDetector(
-            onTap: () async {
-              await getIt<AnalyticsService>().logEvent(
-                name: 'view_product_image',
-                parameters: {'debug_mode': 1, 'product_id': widget.product.id},
-              );
-              showGeneralDialog(
-                context: context,
-                barrierDismissible: true,
-                barrierLabel: "Close",
-                barrierColor: Colors.black87,
-                pageBuilder: (_, _, _) {
-                  return Center(
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: InteractiveViewer(
-                        minScale: 1,
-                        maxScale: 4,
-                        child: CustomImage(
-                          image: widget.product.image,
-                          fit: .contain,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              );
-            },
-            child: Container(
-              padding: .all(20.w),
-              decoration: BoxDecoration(
-                color: Color(0xFFFFF1EA),
-                borderRadius: .vertical(top: .circular(12.r)),
-              ),
-              child: Stack(
-                children: [
-                  ClipRRect(
-                    child: SizedBox(
-                      height: context.responsive(
-                        mobile: 280.h,
-                        tablet: 319.h,
-                        desktop: 295.h,
-                      ),
-                      width: .infinity,
-                      child: CustomImage(
-                        image: widget.product.image,
-                        fit: .cover,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 12.h,
-                    right: 40.w,
-                    child: Container(
-                      padding: .all(8.w),
-                      decoration: BoxDecoration(
-                        color: Colors.black45,
-                        borderRadius: .circular(20.r),
-                      ),
-                      child: Icon(
-                        Icons.zoom_in,
-                        size: 14.iconRes,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: .all(24.0.w),
-            child: Column(
-              crossAxisAlignment: .start,
-              children: [
-                Row(
-                  mainAxisAlignment: .spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        widget.product.name,
-                        maxLines: 2,
-                        style: context.textTheme.titleLarge?.copyWith(
-                          color: Color(0xFF28180D),
-                        ),
-                        textAlign: .right,
-                      ),
-                    ),
-                    CategoryBadgeWidget(name: widget.product.category.name),
-                  ],
-                ),
-                SizedBox(height: 8.h),
-                if (widget.product.description.isNotEmpty)
-                  Text(
-                    widget.product.description,
-                    style: context.textTheme.bodySmall?.copyWith(
-                      color: Color(0xFF42474D),
-                    ),
-                    textAlign: .right,
-                    maxLines: 2,
-                    overflow: .ellipsis,
-                  ),
-                PriceWidget(price: widget.product.price),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Color accentColorCalc(Color baseColor) {
-    return const Color(0xFFF7E2D5);
-  }
-}
+export 'card/product_card.dart';
 
 class PriceWidget extends StatelessWidget {
   const PriceWidget({super.key, required this.price});
@@ -165,18 +15,22 @@ class PriceWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: .end,
+      crossAxisAlignment: .baseline,
+      textBaseline: TextBaseline.alphabetic,
       children: [
         Text(
           price,
           style: context.textTheme.titleLarge?.copyWith(
-            color: Color(0xFF001629),
+            fontWeight: .w800,
+            color: context.colorScheme.brandNavy,
           ),
         ),
-        SizedBox(width: 4.w),
+        Gap(4.w),
         Text(
           'ج.م',
-          style: context.textTheme.titleMedium?.copyWith(
-            color: Color(0xFF001629),
+          style: context.textTheme.bodyLarge?.copyWith(
+            fontWeight: .w600,
+            color: context.colorScheme.slateText,
           ),
         ),
       ],

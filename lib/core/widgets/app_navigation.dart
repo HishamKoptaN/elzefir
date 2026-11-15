@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../theme/core/text_theme.dart';
 import '../utils/extensions/theme_ext.dart';
 
 class AppNavigation {
@@ -65,7 +64,6 @@ class _NavItemState extends State<_NavItem> {
             duration: const Duration(milliseconds: 180),
             textAlign: .start,
             style: TextStyle(
-              fontSize: 50.sp.rf(context), 
               fontWeight: .bold,
               color: context.colorScheme.primary,
             ),

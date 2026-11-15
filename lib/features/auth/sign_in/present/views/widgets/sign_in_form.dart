@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:gap/gap.dart';
+
 import '../../../../../../core/routing/utils/navigation_service.dart';
 import '../../../../../../core/di/dependency_injection.dart';
-import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../auth_sizes.dart';
 import '../../../../forgot_password/present/views/forgot_pass_view.dart';
@@ -113,7 +113,7 @@ class SignInForm extends StatelessWidget {
                 Text('تذكرني', style: TextStyle(fontSize: 20.sp)),
                 Spacer(),
                 TextButton(
-                  onPressed: () { 
+                  onPressed: () {
                     NavigationService.pushNamed(
                       context: context,
                       routeName: ForgotPassView.routeName,

@@ -14,7 +14,7 @@ class Elzefir extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(1920, 1080),
+      designSize: Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
       ensureScreenSize: true,
@@ -28,8 +28,8 @@ class Elzefir extends StatelessWidget {
               title: 'الزفر',
               debugShowCheckedModeBanner: false,
               themeMode: themeMode,
-              theme: AppTheme.lightTheme(context),
-              darkTheme: AppTheme.darkTheme,
+              theme: AppTheme.theme(context),
+              darkTheme: AppTheme.theme(context),
               locale: const Locale('ar'),
               supportedLocales: [Locale('ar', 'EG')],
               localizationsDelegates: const [

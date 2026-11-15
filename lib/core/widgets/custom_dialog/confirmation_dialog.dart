@@ -1,7 +1,7 @@
+import 'package:elzefir/core/utils/extensions/theme_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../theme/app_colors.dart';
 import 'dialog_header.dart';
 
 class ConfirmationDialog extends StatelessWidget {
@@ -43,7 +43,7 @@ class ConfirmationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: LightColors().primary,
+      backgroundColor: context.colorScheme.primary,
       insetPadding: EdgeInsets.zero,
       child: IntrinsicWidth(
         child: IntrinsicHeight(
@@ -111,7 +111,7 @@ class ConfirmationDialog extends StatelessWidget {
                             vertical: 10.h,
                           ),
                           decoration: BoxDecoration(
-                            color: LightColors().primary,
+                            color: context.colorScheme.primary,
                           ),
                           child: Text(
                             'تأكيد',

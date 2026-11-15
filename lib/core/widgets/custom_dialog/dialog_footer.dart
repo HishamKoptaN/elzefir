@@ -1,7 +1,7 @@
+import 'package:elzefir/core/utils/extensions/theme_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../theme/app_colors.dart';
 
 class DialogFooter extends StatelessWidget {
   final bool showExitBtn;
@@ -28,7 +28,7 @@ class DialogFooter extends StatelessWidget {
               },
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
-                decoration: BoxDecoration(color: LightColors().primary),
+                decoration: BoxDecoration(color: context.colorScheme.primary),
                 child: Text(
                   'إغلاق',
                   style: TextStyle(
