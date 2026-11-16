@@ -5,6 +5,10 @@ extension ColorSchemeStitchExt on ColorScheme {
     return const Color(0xFF124370);
   }
 
+  Color get brandCoral {
+    return const Color(0xFFF47A53);
+  }
+
   Color get slateBorder {
     return const Color(0xFFF1F5F9);
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../../core/utils/extensions/theme_ext.dart';
@@ -15,6 +14,7 @@ class ProductCardPriceRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: .spaceBetween,
+      crossAxisAlignment: .center,
       children: [
         Row(
           mainAxisSize: .min,
@@ -24,8 +24,8 @@ class ProductCardPriceRow extends StatelessWidget {
             Text(
               product.price,
               style: context.textTheme.titleMedium?.copyWith(
-                fontWeight: .w800,
-                fontSize: 14.sp,
+                fontWeight: .w900,
+                fontSize: 18.sp,
                 color: context.colorScheme.brandNavy,
               ),
             ),
@@ -33,12 +33,41 @@ class ProductCardPriceRow extends StatelessWidget {
             Text(
               'ج.م',
               style: context.textTheme.bodySmall?.copyWith(
-                fontWeight: .w600,
-                fontSize: 10.sp,
+                fontWeight: .w700,
+                fontSize: 11.sp,
+                color: context.colorScheme.brandNavy,
+              ),
+            ),
+            Gap(4.w),
+            Text(
+              '/ وجبة',
+              style: context.textTheme.labelSmall?.copyWith(
+                fontSize: 9.sp,
                 color: context.colorScheme.slateText,
               ),
             ),
           ],
+        ),
+        ElevatedButton.icon(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            backgroundColor: context.colorScheme.brandCoral,
+            foregroundColor: Colors.white,
+            padding: .symmetric(horizontal: 12.w, vertical: 6.h),
+            shape: RoundedRectangleBorder(
+              borderRadius: .circular(10.r),
+            ),
+            elevation: 2,
+            shadowColor: context.colorScheme.brandCoral.withValues(alpha: 0.25),
+          ),
+          icon: Icon(Icons.add_shopping_cart, size: 14.sp),
+          label: Text(
+            'إضافة',
+            style: TextStyle(
+              fontWeight: .w700,
+              fontSize: 11.sp,
+            ),
+          ),
         ),
       ],
     );

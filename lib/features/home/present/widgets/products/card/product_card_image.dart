@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../../core/analytics/analytics_service.dart';
 import '../../../../../../core/di/dependency_injection.dart';
@@ -48,43 +49,112 @@ class ProductCardImage extends StatelessWidget {
         width: 112.r,
         decoration: BoxDecoration(
           color: context.colorScheme.slateCardBg,
-          borderRadius: .circular(16.r),
+          borderRadius: .circular(12.r),
           border: Border.all(color: context.colorScheme.slateBorder),
         ),
         child: ClipRRect(
-          borderRadius: .circular(16.r),
+          borderRadius: .circular(12.r),
           child: Stack(
             fit: .expand,
             children: [
               CustomImage(image: product.image, fit: .cover),
+              // Gradient overlay
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.black.withValues(alpha: 0.1),
+                      Colors.transparent,
+                      Colors.black.withValues(alpha: 0.5),
+                    ],
+                  ),
+                ),
+              ),
               if (product.category.name.isNotEmpty)
                 Positioned(
                   top: 6.h,
                   right: 6.w,
                   child: Container(
-                    padding: .symmetric(horizontal: 6.w, vertical: 2.h),
+                    padding: .symmetric(horizontal: 8.w, vertical: 3.h),
                     decoration: BoxDecoration(
-                      color: context.colorScheme.brandNavy,
-                      borderRadius: .circular(6.r),
-                      boxShadow: [
-                        BoxShadow(
-                          color: context.colorScheme.shadow.withValues(
-                            alpha: 0.1,
+                      color: context.colorScheme.brandNavy.withValues(alpha: 0.9),
+                      borderRadius: .circular(20.r),
+                      border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          width: 5.r,
+                          height: 5.r,
+                          decoration: BoxDecoration(
+                            color: context.colorScheme.brandCoral,
+                            shape: BoxShape.circle,
                           ),
-                          blurRadius: 3.r,
-                          offset: const Offset(0, 1),
+                        ),
+                        Gap(4.w),
+                        Text(
+                          badgeLabel,
+                          style: context.textTheme.labelSmall?.copyWith(
+                            fontWeight: .w700,
+                            fontSize: 9.sp,
+                            color: Colors.white,
+                          ),
                         ),
                       ],
                     ),
-                    child: Text(
-                      badgeLabel,
-                      style: context.textTheme.labelSmall?.copyWith(
-                        fontWeight: .w800,
-                        color: context.colorScheme.onPrimary,
-                      ),
-                    ),
                   ),
                 ),
+              // Bottom micro badges
+              Positioned(
+                bottom: 6.h,
+                left: 6.w,
+                right: 6.w,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: .symmetric(horizontal: 6.w, vertical: 2.h),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.4),
+                        borderRadius: .circular(6.r),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.star, size: 10.sp, color: Colors.amber),
+                          Gap(2.w),
+                          Text(
+                            '4.9',
+                            style: TextStyle(
+                              fontSize: 9.sp,
+                              fontWeight: .w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: .symmetric(horizontal: 6.w, vertical: 2.h),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.4),
+                        borderRadius: .circular(6.r),
+                      ),
+                      child: Text(
+                        '500 جم',
+                        style: TextStyle(
+                          fontSize: 8.5.sp,
+                          fontWeight: .w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

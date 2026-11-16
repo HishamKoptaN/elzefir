@@ -9,7 +9,6 @@ import '../../../../../products/domain/entities/product_entity.dart';
 import '../../../../../dish_details/present/views/dish_details_view.dart';
 import 'product_card_image.dart';
 import 'product_card_info.dart';
-import 'product_card_price_row.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.product});
@@ -19,21 +18,19 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        context.goNamed(DishDetailsView.routeName);
-      },
-      borderRadius: .circular(24.r),
+      onTap: () => context.goNamed(DishDetailsView.routeName),
+      borderRadius: .circular(16.r),
       child: Container(
-        padding: .all(14.r),
+        padding: .all(12.r),
         decoration: BoxDecoration(
           color: context.colorScheme.surface,
-          borderRadius: .circular(24.r),
+          borderRadius: .circular(16.r),
           border: Border.all(color: context.colorScheme.slateBorder),
           boxShadow: [
             BoxShadow(
-              color: context.colorScheme.shadow.withValues(alpha: 0.04),
-              blurRadius: 6.r,
-              offset: const Offset(0, 2),
+              color: context.colorScheme.shadow.withValues(alpha: 0.06),
+              blurRadius: 20.r,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
@@ -43,15 +40,7 @@ class ProductCard extends StatelessWidget {
             ProductCardImage(product: product),
             Gap(14.w),
             Expanded(
-              child: Column(
-                crossAxisAlignment: .start,
-                mainAxisAlignment: .spaceBetween,
-                children: [
-                  ProductCardInfo(product: product),
-                  Gap(10.h),
-                  ProductCardPriceRow(product: product),
-                ],
-              ),
+              child: ProductCardInfo(product: product),
             ),
           ],
         ),
