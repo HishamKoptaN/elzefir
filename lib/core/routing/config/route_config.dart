@@ -9,6 +9,7 @@ import '../../../features/auth/sign_in/present/views/sign_in_view.dart';
 import '../../../features/auth/sign_up/present/views/email_view.dart';
 import '../../../features/auth/sign_up/present/views/sign_up_view.dart';
 import '../../../features/auth/reset_password/present/views/reset_pass_view.dart';
+import '../../../features/dish_details/present/views/dish_details_view.dart';
 import '../../../features/home/present/home.dart';
 import '../../../features/info_pages/present/views/about_view.dart';
 import '../../../features/info_pages/present/views/contact_view.dart';
@@ -102,6 +103,13 @@ class RouteConfig {
         path: '/',
         builder: (context, state) {
           return HomeView();
+        },
+      ),
+      appRoute(
+        name: DishDetailsView.routeName,
+        path: '/${DishDetailsView.routeName}',
+        builder: (context, state) {
+          return const DishDetailsView();
         },
       ),
       appRoute(

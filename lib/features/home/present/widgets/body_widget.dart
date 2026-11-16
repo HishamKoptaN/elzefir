@@ -65,13 +65,13 @@ class _BodyWidgetState extends State<BodyWidget> {
             const OfferWidget(),
             const HomeStatusBadge(),
             const QuickContactButtons(),
-            //const ProductsSectionHeader(),
-            //_ProductLayout(
-            //  productsKey: widget.productsKey,
-            //  onProductsLoaded: () {
-            //    getIt<ProductsBloc>().add(const .get());
-            //  },
-            //),
+            const ProductsSectionHeader(),
+            _ProductLayout(
+              productsKey: widget.productsKey,
+              onProductsLoaded: () {
+                getIt<ProductsBloc>().add(const .get());
+              },
+            ),
             AboutSection(key: widget.aboutKey),
             FooterWidget(key: widget.contactKey),
           ],
