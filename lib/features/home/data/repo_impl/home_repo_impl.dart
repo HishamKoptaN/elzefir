@@ -11,6 +11,9 @@ import '../../domain/entities/working_hours_entity.dart';
 
 @Singleton(as: HomeRepo)
 class HomeRepoImpl implements HomeRepo {
+  static const String _settingsCollection = 'settings';
+  static const String _workingHoursDoc = 'working_hours';
+
   final HomeDataSrc homeDataSrc;
   final FirebaseFirestore firestore;
   HomeRepoImpl(this.homeDataSrc, this.firestore);
@@ -21,24 +24,36 @@ class HomeRepoImpl implements HomeRepo {
       final homeRes = await homeDataSrc.get();
       WorkingHoursEntity? workingHours;
       try {
-        final doc = await firestore.collection('settings').doc('working_hours').get();
-        if (doc.exists && doc.data() != null) {
-          final data = doc.data()!;
-          final openMinutes = data['openMinutes'] as int? ?? 540;
-          final closeMinutes = data['closeMinutes'] as int? ?? 1380;
-          final daysDynamic = data['days'] as List<dynamic>? ?? [1, 2, 3, 4, 5, 6, 7];
-          final days = daysDynamic.map((e) => (e as num).toInt()).toList();
-          workingHours = WorkingHoursEntity(
-            openMinutes: openMinutes,
-            closeMinutes: closeMinutes,
-            days: days,
-          );
+        final doc = await firestore
+            .collection(_settingsCollection)
+            .doc(_workingHoursDoc)
+            .get();
+        final data = doc.data();
+        if (doc.exists && data != null) {
+          workingHours = WorkingHoursEntity.fromFirestore(data);
         }
       } catch (_) {}
 
-      return ApiResult.success(data: homeRes.toEntity().copyWith(workingHours: workingHours));
+      return ApiResult.success(
+        data: homeRes.toEntity().copyWith(workingHours: workingHours),
+      );
     } catch (e, s) {
       return ApiResult.failure(errorInfo: ErrorHandler.handle(e, s));
     }
+  }
+
+  @override
+  Stream<WorkingHoursEntity?> watchWorkingHours() {
+    return firestore
+        .collection(_settingsCollection)
+        .doc(_workingHoursDoc)
+        .snapshots()
+        .map((doc) {
+          final data = doc.data();
+          if (!doc.exists || data == null) {
+            return null;
+          }
+          return WorkingHoursEntity.fromFirestore(data);
+        });
   }
 }

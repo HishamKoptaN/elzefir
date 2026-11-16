@@ -19,7 +19,7 @@ class QuickHotlineButton extends StatelessWidget {
         },
         borderRadius: .circular(16.r),
         child: Container(
-          padding: .all(8.r),
+          padding: .symmetric(vertical: 6.h, horizontal: 8.w),
           decoration: BoxDecoration(
             color: context.colorScheme.hotlineBg,
             border: Border.all(color: context.colorScheme.hotlineBorder),
@@ -28,27 +28,30 @@ class QuickHotlineButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: .spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: .start,
-                mainAxisSize: .min,
-                children: [
-                  Text(
-                    'التليفون',
-                    style: context.textTheme.labelSmall?.copyWith(
-                      fontWeight: .w100,
-                      color: context.colorScheme.hotlineTitle,
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: .start,
+                  mainAxisSize: .min,
+                  children: [
+                    Text(
+                      'التليفون',
+                      style: context.textTheme.labelSmall?.copyWith(
+                        fontWeight: .w100,
+                        color: context.colorScheme.hotlineTitle,
+                      ),
                     ),
-                  ),
-                  Text(
-                    '01008673836',
-                    textDirection: .ltr,
-                    style: context.textTheme.labelSmall?.copyWith(
-                      fontWeight: .w900,
-                      letterSpacing: 0.5,
-                      color: context.colorScheme.hotlineSubtitle,
+                    Text(
+                      '01008673836',
+                      textDirection: .ltr,
+                      overflow: .ellipsis,
+                      style: context.textTheme.labelSmall?.copyWith(
+                        fontWeight: .w900,
+                        letterSpacing: 0.5,
+                        color: context.colorScheme.hotlineSubtitle,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Container(
                 height: 32.r,

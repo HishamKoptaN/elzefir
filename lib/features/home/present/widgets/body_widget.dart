@@ -65,13 +65,13 @@ class _BodyWidgetState extends State<BodyWidget> {
             const OfferWidget(),
             const HomeStatusBadge(),
             const QuickContactButtons(),
-            const ProductsSectionHeader(),
-            _ProductLayout(
-              productsKey: widget.productsKey,
-              onProductsLoaded: () {
-                getIt<ProductsBloc>().add(const .get());
-              },
-            ),
+            //const ProductsSectionHeader(),
+            //_ProductLayout(
+            //  productsKey: widget.productsKey,
+            //  onProductsLoaded: () {
+            //    getIt<ProductsBloc>().add(const .get());
+            //  },
+            //),
             AboutSection(key: widget.aboutKey),
             FooterWidget(key: widget.contactKey),
           ],
@@ -95,7 +95,6 @@ class _ProductLayout extends StatelessWidget {
     return Row(
       crossAxisAlignment: .start,
       children: [
-        VerticalDivider(width: 16.w, thickness: 1, color: Color(0xFFC3C7CE)),
         _ProductsColumn(
           productsKey: productsKey,
           onProductsLoaded: onProductsLoaded,

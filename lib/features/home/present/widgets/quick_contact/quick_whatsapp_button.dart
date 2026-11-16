@@ -21,7 +21,7 @@ class QuickWhatsappButton extends StatelessWidget {
         },
         borderRadius: .circular(12.r),
         child: Container(
-          padding: .all(8.r),
+          padding: .symmetric(vertical: 6.h, horizontal: 8.w),
           decoration: BoxDecoration(
             color: context.colorScheme.whatsappBg,
             border: .all(color: context.colorScheme.whatsappBorder),
@@ -30,27 +30,30 @@ class QuickWhatsappButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: .spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: .start,
-                mainAxisSize: .min,
-                children: [
-                  Text(
-                    'واتساب',
-                    style: context.textTheme.labelSmall?.copyWith(
-                      fontWeight: .w100,
-                      color: context.colorScheme.whatsappTitle,
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: .start,
+                  mainAxisSize: .min,
+                  children: [
+                    Text(
+                      'واتساب',
+                      style: context.textTheme.labelSmall?.copyWith(
+                        fontWeight: .w100,
+                        color: context.colorScheme.whatsappTitle,
+                      ),
                     ),
-                  ),
-                  Text(
-                    '01124497981',
-                    textDirection: .ltr,
-                    style: context.textTheme.labelSmall?.copyWith(
-                      fontWeight: .w900,
-                      letterSpacing: 0.5,
-                      color: context.colorScheme.whatsappSubtitle,
+                    Text(
+                      '01124497981',
+                      textDirection: .ltr,
+                      overflow: .ellipsis,
+                      style: context.textTheme.labelSmall?.copyWith(
+                        fontWeight: .w900,
+                        letterSpacing: 0.5,
+                        color: context.colorScheme.whatsappSubtitle,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Container(
                 height: 32.r,

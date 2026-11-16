@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-
 import '../../../../products/domain/entities/product_entity.dart';
 import 'product_card.dart';
-import 'products_section_header.dart';
 
 class ProductsSection extends StatelessWidget {
   const ProductsSection({

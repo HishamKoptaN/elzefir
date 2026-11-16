@@ -67,7 +67,7 @@ class _ContentSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(48.w),
+      padding: EdgeInsets.all(context.isMob ? 20.w : 48.w),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

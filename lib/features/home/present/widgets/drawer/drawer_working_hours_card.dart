@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../bloc/home_bloc.dart';
+
+import '../store_status_builder.dart';
 
 class DrawerWorkingHoursCard extends StatelessWidget {
   const DrawerWorkingHoursCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
-      builder: (context, state) {
-        final workingHours = state.mapOrNull(
-          loaded: (s) => s.homeRes?.workingHours,
-        );
-        final timeText = workingHours?.formattedTime ?? 'يومياً من 9:00 صباحاً حتى 11:00 مساءً';
+    return StoreStatusBuilder(
+      builder: (context, workingHours) {
+        final timeText =
+            workingHours?.formattedTime ??
+            'يومياً من 9:00 صباحاً حتى 11:00 مساءً';
 
         return Container(
           padding: const EdgeInsets.all(12),

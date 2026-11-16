@@ -12,6 +12,7 @@ import '../../../../info_pages/present/views/contact_view.dart';
 import '../../../../info_pages/present/views/privacy_view.dart';
 import '../../../../info_pages/present/views/terms_view.dart';
 import '../../home.dart';
+import '../store_status_builder.dart';
 import 'footer_desk_layout.dart';
 import 'footer_mobile_layout.dart';
 
@@ -38,7 +39,10 @@ class FooterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xFF001629),
-      padding: .symmetric(vertical: 34.h, horizontal: 40.w),
+      padding: .symmetric(
+        vertical: context.isMob ? 24.h : 34.h,
+        horizontal: context.isMob ? 16.w : 40.w,
+      ),
       child: Column(
         crossAxisAlignment: .start,
         children: [
@@ -103,31 +107,85 @@ class WorkTimeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      runSpacing: 12.h,
-      children: [
-        CustomFooterTitleWidget(title: 'ساعات العمل'),
-        Container(
-          padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.05),
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.white10),
-          ),
-          child: Column(
-            crossAxisAlignment: .start,
-            children: [
-              Text(
-                'من السبت الى الخميس : من 9:00 صباحا الى 11:00 مساء',
-                style: context.textTheme.bodyLarge?.copyWith(
-                  color: Colors.white70,
-                ),
+    return StoreStatusBuilder(
+      builder: (context, workingHours) {
+        final workTimeText = workingHours == null
+            ? 'من السبت الى الخميس : من 9:00 صباحا الى 11:00 مساء'
+            : '${workingHours.formattedDays} : ${workingHours.formattedTime}';
+        final isOpen = workingHours?.isOpenNow;
+        final statusText = switch (isOpen) {
+          true => 'مفتوح الآن',
+          false => 'مغلق الآن',
+          null => 'جارٍ التحقق من الحالة',
+        };
+        final statusDotColor = switch (isOpen) {
+          true => const Color(0xFF22C55E),
+          false => const Color(0xFFEF4444),
+          null => const Color(0xFF94A3B8),
+        };
+        final statusTextColor = switch (isOpen) {
+          true => const Color(0xFF86EFAC),
+          false => const Color(0xFFFCA5A5),
+          null => const Color(0xFFCBD5E1),
+        };
+
+        return Wrap(
+          runSpacing: 12.h,
+          children: [
+            CustomFooterTitleWidget(title: 'ساعات العمل'),
+            Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.05),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.white10),
               ),
-              CustomFooterDividerWidget(),
-            ],
-          ),
-        ),
-      ],
+              child: Column(
+                crossAxisAlignment: .start,
+                children: [
+                  Text(
+                    workTimeText,
+                    style: context.textTheme.bodyLarge?.copyWith(
+                      color: Colors.white70,
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Container(
+                    padding: .symmetric(horizontal: 10.w, vertical: 5.h),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.05),
+                      borderRadius: BorderRadius.circular(999),
+                      border: .all(color: Colors.white10),
+                    ),
+                    child: Row(
+                      mainAxisSize: .min,
+                      spacing: 6.w,
+                      children: [
+                        Container(
+                          height: 8.r,
+                          width: 8.r,
+                          decoration: BoxDecoration(
+                            shape: .circle,
+                            color: statusDotColor,
+                          ),
+                        ),
+                        Text(
+                          statusText,
+                          style: context.textTheme.labelMedium?.copyWith(
+                            color: statusTextColor,
+                            fontWeight: .w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  CustomFooterDividerWidget(),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -141,7 +199,7 @@ Widget buildSocialIcon({
     onTap: onTap,
     borderRadius: .circular(50.r),
     child: CircleAvatar(
-      radius: context.responsive(mobile: 75.r, tablet: 32.5.r, desktop: 27.5.r),
+      radius: context.responsive(mobile: 20.r, tablet: 32.5.r, desktop: 27.5.r),
       backgroundColor: Colors.white.withValues(alpha: .08),
       child: icon,
     ),
@@ -221,7 +279,7 @@ Widget buildContactItem({
       children: [
         CircleAvatar(
           radius: context.responsive(
-            mobile: 75.r,
+            mobile: 20.r,
             tablet: 32.5.r,
             desktop: 27.5.r,
           ),

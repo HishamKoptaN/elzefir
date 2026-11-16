@@ -10,10 +10,10 @@ class ProductsSectionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: .all(14.r),
+      padding: .symmetric(vertical: 6.h, horizontal: 8.w),
       decoration: BoxDecoration(
         color: context.colorScheme.surface,
-        borderRadius: .circular(16.r),
+        borderRadius: .circular(12.r),
         border: Border.all(color: context.colorScheme.slateBorder),
         boxShadow: [
           BoxShadow(
@@ -33,7 +33,7 @@ class ProductsSectionHeader extends StatelessWidget {
               Text(
                 'أطباق مميزة والأكثر طلباً',
                 style: context.textTheme.titleSmall?.copyWith(
-                  fontWeight: .w800,
+                  fontWeight: .w600,
                   color: context.colorScheme.brandNavy,
                 ),
               ),
@@ -47,16 +47,16 @@ class ProductsSectionHeader extends StatelessWidget {
             ],
           ),
           Container(
-            padding: .symmetric(horizontal: 10.w, vertical: 4.h),
+            padding: .symmetric(vertical: 4.h, horizontal: 6.w),
             decoration: BoxDecoration(
               color: context.colorScheme.chefChoiceBg,
               border: .all(color: context.colorScheme.chefChoiceBorder),
-              borderRadius: .circular(20.r),
+              borderRadius: .circular(12.r),
             ),
             child: Text(
               'اختيارات الشيف',
               style: context.textTheme.labelSmall?.copyWith(
-                fontWeight: .bold,
+                fontWeight: .w600,
                 color: context.colorScheme.chefChoiceText,
               ),
             ),

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../core/widgets/custom_image.dart';
 
 import 'dart:ui';
 
 import '../../../../generated/assets.gen.dart';
-import '../bloc/home_bloc.dart';
+import 'store_status_builder.dart';
 
 class OfferWidget extends StatelessWidget {
   const OfferWidget({super.key});
@@ -82,22 +80,22 @@ class OpenStatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
-      bloc: getIt<HomeBloc>(),
-      builder: (context, state) {
-        final workingHours = state.mapOrNull(
-          loaded: (s) {
-            return s.homeRes?.workingHours;
-          },
-        );
-        final isOpen = workingHours?.isOpenNow ?? true;
-        final statusText = isOpen ? 'مفتوح الآن' : 'مغلق الآن';
-        final dotColor = isOpen
-            ? const Color(0xFF22C55E)
-            : const Color(0xFFEF4444);
+    return StoreStatusBuilder(
+      builder: (context, workingHours) {
+        final isOpen = workingHours?.isOpenNow;
+        final statusText = switch (isOpen) {
+          true => 'مفتوح الآن',
+          false => 'مغلق الآن',
+          null => 'جارٍ التحقق',
+        };
+        final dotColor = switch (isOpen) {
+          true => const Color(0xFF22C55E),
+          false => const Color(0xFFEF4444),
+          null => const Color(0xFF9CA3AF),
+        };
 
         return ClipRRect(
-          borderRadius: BorderRadius.circular(9999),
+          borderRadius: .circular(9999),
           child: BackdropFilter(
             filter: .blur(sigmaX: 1.0, sigmaY: 1.0),
             child: Container(
