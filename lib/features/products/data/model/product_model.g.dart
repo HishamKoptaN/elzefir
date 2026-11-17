@@ -17,6 +17,9 @@ _ProductModel _$ProductModelFromJson(Map<String, dynamic> json) =>
       category: json['category'] == null
           ? null
           : CategoryModel.fromJson(json['category'] as Map<String, dynamic>),
+      cookingMethods: (json['cookingMethods'] as List<dynamic>?)
+          ?.map((e) => CookingMethodModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ProductModelToJson(_ProductModel instance) =>
@@ -28,6 +31,31 @@ Map<String, dynamic> _$ProductModelToJson(_ProductModel instance) =>
       'description': instance.description,
       'price': instance.price,
       'category': instance.category,
+      'cookingMethods': instance.cookingMethods,
+    };
+
+_CookingMethodModel _$CookingMethodModelFromJson(Map<String, dynamic> json) =>
+    _CookingMethodModel(
+      id: (json['id'] as num?)?.toInt(),
+      image: json['image'] as String?,
+      name: json['name'] as String?,
+      title: json['title'] as String?,
+      description: json['description'] as String?,
+      price: json['price'] as String?,
+      isDefault: json['isDefault'] as bool?,
+      isMostPopular: json['isMostPopular'] as bool?,
+    );
+
+Map<String, dynamic> _$CookingMethodModelToJson(_CookingMethodModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'image': instance.image,
+      'name': instance.name,
+      'title': instance.title,
+      'description': instance.description,
+      'price': instance.price,
+      'isDefault': instance.isDefault,
+      'isMostPopular': instance.isMostPopular,
     };
 
 _AdditionModel _$AdditionModelFromJson(Map<String, dynamic> json) =>

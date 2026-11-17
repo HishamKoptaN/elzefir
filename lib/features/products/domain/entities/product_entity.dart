@@ -13,7 +13,22 @@ abstract class ProductEntity with _$ProductEntity {
     @Default('') String price,
     @Default('') String image,
     @Default(CategoryEntity()) CategoryEntity category,
+    @Default(<CookingMethodEntity>[]) List<CookingMethodEntity> cookingMethods,
   }) = _ProductEntity;
+}
+
+@freezed
+abstract class CookingMethodEntity with _$CookingMethodEntity {
+  const factory CookingMethodEntity({
+    @Default('') String id,
+    @Default('') String name,
+    @Default('') String title,
+    @Default('') String description,
+    @Default('') String price,
+    @Default('') String image,
+    @Default(false) bool isDefault,
+    @Default(false) bool isMostPopular,
+  }) = _CookingMethodEntity;
 }
 
 @freezed

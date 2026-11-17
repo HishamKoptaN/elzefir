@@ -13,9 +13,26 @@ abstract class ProductModel with _$ProductModel {
     String? description,
     String? price,
     CategoryModel? category,
+    List<CookingMethodModel>? cookingMethods,
   }) = _ProductModel;
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);
+}
+
+@freezed
+abstract class CookingMethodModel with _$CookingMethodModel {
+  const factory CookingMethodModel({
+    int? id,
+    String? image,
+    String? name,
+    String? title,
+    String? description,
+    String? price,
+    bool? isDefault,
+    bool? isMostPopular,
+  }) = _CookingMethodModel;
+  factory CookingMethodModel.fromJson(Map<String, dynamic> json) =>
+      _$CookingMethodModelFromJson(json);
 }
 
 @freezed

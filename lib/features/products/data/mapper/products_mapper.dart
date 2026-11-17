@@ -16,6 +16,25 @@ extension ProductModelMapper on ProductModel {
       price: Arabic.number(price ?? ''),
       image: ImageProvidersConfig.resolveImageUrl(image),
       category: category?.toEntity() ?? CategoryEntity(),
+      cookingMethods: cookingMethods
+              ?.map((e) => e.toEntity())
+              .toList() ??
+          const [],
+    );
+  }
+}
+
+extension CookingMethodModelMapper on CookingMethodModel {
+  CookingMethodEntity toEntity() {
+    return CookingMethodEntity(
+      id: id.toString(),
+      name: name ?? '',
+      title: title ?? '',
+      description: description ?? '',
+      price: Arabic.number(price ?? ''),
+      image: ImageProvidersConfig.resolveImageUrl(image),
+      isDefault: isDefault ?? false,
+      isMostPopular: isMostPopular ?? false,
     );
   }
 }
