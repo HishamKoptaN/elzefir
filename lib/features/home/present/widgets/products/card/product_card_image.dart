@@ -58,7 +58,6 @@ class ProductCardImage extends StatelessWidget {
             fit: .expand,
             children: [
               CustomImage(image: product.image, fit: .cover),
-              // Gradient overlay
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -67,7 +66,7 @@ class ProductCardImage extends StatelessWidget {
                     colors: [
                       Colors.black.withValues(alpha: 0.1),
                       Colors.transparent,
-                      Colors.black.withValues(alpha: 0.5),
+                      Colors.black.withValues(alpha: 0.4),
                     ],
                   ),
                 ),
@@ -107,54 +106,6 @@ class ProductCardImage extends StatelessWidget {
                     ),
                   ),
                 ),
-              // Bottom micro badges
-              Positioned(
-                bottom: 6.h,
-                left: 6.w,
-                right: 6.w,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: .symmetric(horizontal: 6.w, vertical: 2.h),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.4),
-                        borderRadius: .circular(6.r),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.star, size: 10.sp, color: Colors.amber),
-                          Gap(2.w),
-                          Text(
-                            '4.9',
-                            style: TextStyle(
-                              fontSize: 9.sp,
-                              fontWeight: .w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: .symmetric(horizontal: 6.w, vertical: 2.h),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.4),
-                        borderRadius: .circular(6.r),
-                      ),
-                      child: Text(
-                        '500 جم',
-                        style: TextStyle(
-                          fontSize: 8.5.sp,
-                          fontWeight: .w500,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
         ),

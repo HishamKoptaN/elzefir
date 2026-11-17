@@ -9,10 +9,6 @@
       "flutterMode": "debug",
       "args": [
         "--dart-define=ENV=dev",
-        "--web-port",
-        "8080",
-        "--web-hostname",
-        "localhost",
         "--web-browser-flag=--disable-features=PrivacySandboxAdsApis"
       ],
       "deviceId": "chrome"

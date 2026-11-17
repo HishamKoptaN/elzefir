@@ -81,7 +81,74 @@ class ProductCardInfo extends StatelessWidget {
             ),
           ],
         ),
+        if (product.cookingMethods.isNotEmpty) ...[
+          Gap(8.h),
+          Container(
+            padding: .only(top: 8.h),
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  color: context.colorScheme.slateBorder,
+                  width: 1,
+                ),
+              ),
+            ),
+            child: Wrap(
+              spacing: 6.w,
+              runSpacing: 4.h,
+              children: product.cookingMethods
+                  .map((method) => _CookingMethodChip(method: method))
+                  .toList(),
+            ),
+          ),
+        ],
       ],
+    );
+  }
+}
+
+class _CookingMethodChip extends StatelessWidget {
+  const _CookingMethodChip({required this.method});
+
+  final CookingMethodEntity method;
+
+  @override
+  Widget build(BuildContext context) {
+    final isFree = method.price.isEmpty ||
+        method.price == '0' ||
+        method.price == 'مجاناً';
+
+    return Container(
+      padding: .symmetric(horizontal: 8.w, vertical: 3.h),
+      decoration: BoxDecoration(
+        color: isFree ? const Color(0xFFECFDF5) : context.colorScheme.slateCardBg,
+        borderRadius: .circular(20.r),
+        border: Border.all(
+          color: isFree ? const Color(0xFFD1FAE5) : context.colorScheme.slateBorder,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: .min,
+        children: [
+          Text(
+            method.name,
+            style: context.textTheme.labelSmall?.copyWith(
+              fontSize: 10.sp,
+              fontWeight: .w600,
+              color: isFree ? const Color(0xFF065F46) : context.colorScheme.brandNavy,
+            ),
+          ),
+          Gap(4.w),
+          Text(
+            isFree ? 'مجاناً' : '+${method.price} ج.م',
+            style: context.textTheme.labelSmall?.copyWith(
+              fontSize: 9.sp,
+              fontWeight: .w700,
+              color: isFree ? const Color(0xFF047857) : context.colorScheme.brandCoral,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
