@@ -11,6 +11,7 @@ import '../../../products/data/mapper/products_mapper.dart';
 import 'about/about.dart';
 import 'footer/footer_widget.dart';
 import 'home_app_bar/home_status_badge.dart';
+import 'menu_prices_section.dart';
 import 'offer_widget.dart';
 import 'products/products_section_header.dart';
 import 'products/products_widget.dart';
@@ -72,6 +73,7 @@ class _BodyWidgetState extends State<BodyWidget> {
                 getIt<ProductsBloc>().add(const .get());
               },
             ),
+            const MenuPricesSection(),
             AboutSection(key: widget.aboutKey),
             FooterWidget(key: widget.contactKey),
           ],
