@@ -18,13 +18,17 @@
   <meta name="author" content="مطعم أسماك الزفر">
   <meta name="theme-color" content="#001629">
 
+  <!-- Canonical -->
+  <link rel="canonical" href="https://elzefir.vercel.app/">
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="restaurant.restaurant">
   <meta property="og:url" content="https://elzefir.vercel.app/">
+  <meta property="og:site_name" content="مطعم أسماك الزفر">
   <meta property="og:title" content="مطعم أسماك الزفر | أشهى المأكولات البحرية والأسماك الطازجة">
   <meta property="og:description"
     content="أفضل الأسماك والمأكولات البحرية الطازجة يومياً في العياط، الجيزة. طواجن سيفود، جمبري، أسماك مشوية ومقلية. خدمة توصيل سريعة: 01008673836">
-  <meta property="og:image" content="splash/img/light-2x.png">
+  <meta property="og:image" content="https://elzefir.vercel.app/splash/img/light-2x.png">
   <meta property="og:locale" content="ar_EG">
 
   <!-- Twitter -->
@@ -33,7 +37,7 @@
   <meta property="twitter:title" content="مطعم أسماك الزفر | أشهى المأكولات البحرية والأسماك الطازجة">
   <meta property="twitter:description"
     content="أفضل الأسماك والمأكولات البحرية الطازجة يومياً في العياط، الجيزة. طواجن سيفود، جمبري، أسماك مشوية ومقلية.">
-  <meta property="twitter:image" content="splash/img/light-2x.png">
+  <meta property="twitter:image" content="https://elzefir.vercel.app/splash/img/light-2x.png">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -125,6 +129,17 @@
       font-family: 'Cairo', system-ui, -apple-system, sans-serif;
     }
 
+    /* Flutter locks the page to the viewport (body position:fixed & overflow:hidden).
+       These overrides keep the document scrollable so the static
+       restaurant content below the app stays reachable for visitors and crawlers. */
+    html,
+    body {
+      height: auto !important;
+      min-height: 100% !important;
+      overflow: visible !important;
+      position: static !important;
+    }
+
     .center {
       margin: 0;
       position: absolute;
@@ -134,18 +149,98 @@
       transform: translate(-50%, -50%);
     }
 
-    /* SEO & Crawling Fallback Container — kept in the DOM for crawlers,
-       visually hidden so only the restaurant logo shows on the splash */
-    #seo-content {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+    /* One viewport of empty space so the Flutter canvas owns the first screen */
+    #app-spacer {
+      height: 100vh;
+    }
+
+    /* Visible restaurant content under the Flutter app (AdSense / SEO friendly) */
+    #site-info {
+      position: relative;
+      z-index: 10;
+      background: #001629;
+      color: #F4F7FA;
+      padding: 48px 20px 28px;
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      line-height: 1.9;
+      user-select: text !important;
+      touch-action: pan-y !important;
+    }
+
+    #site-info .site-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    #site-info h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    #site-info .lead {
+      margin: 0 0 32px;
+      font-size: 17px;
+      color: #C6D3E0;
+    }
+
+    #site-info h2 {
+      margin: 28px 0 8px;
+      font-size: 21px;
+      font-weight: 700;
+      color: #F6C453;
+    }
+
+    #site-info p {
+      margin: 0 0 12px;
+      font-size: 16px;
+      color: #DCE6F0;
+    }
+
+    #site-info a {
+      color: #F6C453;
+      text-decoration: none;
+    }
+
+    #site-info a:hover {
+      text-decoration: underline;
+    }
+
+    #site-info .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    #site-info .info-grid article {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+
+    #site-info .info-grid h2 {
+      margin-top: 0;
+    }
+
+    #site-info .site-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    #site-info .site-links a {
+      font-weight: 600;
+    }
+
+    #site-info .copyright {
+      margin: 18px 0 0;
+      font-size: 14px;
+      color: #9FB0C2;
     }
   </style>
 
@@ -153,11 +248,6 @@
     function removeSplashFromWeb() {
       document.getElementById("splash")?.remove();
       document.getElementById("splash-branding")?.remove();
-      // Hide the semantic preloader once Flutter renders the interactive canvas
-      const seoEl = document.getElementById("seo-content");
-      if (seoEl) {
-        seoEl.style.display = "none";
-      }
       document.body.style.background = "transparent";
     }
   </script>
@@ -175,67 +265,87 @@
     <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="مطعم أسماك الزفر">
   </picture>
 
-  <!-- Semantic HTML Content for Search Engines, Crawlers, and AdSense Bot -->
-  <div id="seo-content" role="region" aria-label="محتوى مطعم أسماك الزفر">
-    <header>
-    </header>
-    <main>
-      <section id="menu-overview">
-        <h2>قائمة المأكولات والأسماك الطازجة</h2>
-        <article>
-          <h3>أجود أنواع الأسماك الطازجة بالكيلو</h3>
-          <p>
-            بلطي طازج ممتاز، بوري فاخر، دنيس، قاروص، وقار، مكرونة سويسي، وبربون. نوفر لكم طرق طهي متعددة ومميزة: شوي على
-            الفحم، شوي سنجاري، شوي ردة، طهي بالزيت والليمون، وقلي ذهبي مقرمش بتتبيلتنا السرية المميزة.
-          </p>
-        </article>
-        <article>
-          <h3>الجمبري والمأكولات البحرية الفاخرة</h3>
-          <p>
-            جمبري جامبو ومقاسات متنوعة مشوي ومقلي وبترفلاي، كاليماري طازج، كابوريا ممتلئة، وجندوفلي. كما نقدم طواجن السي
-            فود الشهية بالصلصة الحمراء أو بالكريمة الغنية، وشوربة السي فود المخلية المفعمة بخيرات البحر.
-          </p>
-        </article>
-        <article>
-          <h3>الوجبات والساندوتشات السريعة</h3>
-          <p>
-            ساندوتشات جمبري وفيليه وكفتة جمبري في خبز طازج، ووجبات سريعة وعائلية متكاملة تضمن إرضاء جميع أفراد الأسرة.
-          </p>
-        </article>
-        <article>
-          <h3>الأطباق الجانبية والمقبلات</h3>
-          <p>
-            أرز صيادية بالبصل المكرمل، أرز بالجمبري، ملوخية بالجمبري، سلطة خضراء بلدي، طحينة سمسم فاخرة، بابا غنوج،
-            باذنجان مخلل، ومخللات طازجة.
-          </p>
-        </article>
-      </section>
+  <!-- Spacer keeps the first screen for the Flutter app -->
+  <div id="app-spacer" aria-hidden="true"></div>
 
-      <section id="restaurant-services">
-        <h2>خدماتنا ومميزاتنا</h2>
+  <!-- Visible static restaurant content: readable by visitors, crawlers and review bots -->
+  <section id="site-info" dir="rtl" lang="ar" aria-labelledby="restaurant-name">
+    <div class="site-wrap">
+      <header>
+        <h1 id="restaurant-name">مطعم أسماك الزفر</h1>
+        <p class="lead">
+          الوجهة الأولى لعشاق المأكولات البحرية والأسماك الطازجة يومياً في العياط، الجيزة. أسماك مشوية ومقلية، طواجن
+          سيفود، وجمبري بأعلى معايير الجودة والنظافة، مع خدمة توصيل سريعة تغطي المدينة والمناطق المجاورة.
+        </p>
+      </header>
+
+      <div class="info-grid">
+        <article>
+          <h2>الأسماك الطازجة بالكيلو</h2>
+          <p>
+            بلطي، بوري، دنيس، قاروص، قار، مكرونة سويسي، وبربون. بطرق طهي متعددة: شوي على الفحم، شوي سنجاري، شوي
+            ردة، طهي بالزيت والليمون، وقلي ذهبي مقرمش.
+          </p>
+        </article>
+        <article>
+          <h2>الجمبري والمأكولات البحرية</h2>
+          <p>
+            جمبري جامبو ومقاسات متنوعة مشوي ومقلي وبترفلاي، كاليماري طازج، كابوريا ممتلئة، وجندوفلي، مع طواجن سيفود
+            بالصلصة الحمراء أو الكريمة وشوربة سيفود غنية.
+          </p>
+        </article>
+        <article>
+          <h2>الوجبات والساندوتشات</h2>
+          <p>
+            ساندوتشات جمبري وفيليه وكفتة جمبري في خبز طازج، ووجبات سريعة وعائلية متكاملة تناسب جميع أفراد الأسرة.
+          </p>
+        </article>
+        <article>
+          <h2>المقبلات والأطباق الجانبية</h2>
+          <p>
+            أرز صيادية بالبصل المكرمل، أرز بالجمبري، ملوخية بالجمبري، سلطة خضراء بلدي، طحينة سمسم، بابا غنوج،
+            ومخللات طازجة.
+          </p>
+        </article>
+      </div>
+
+      <section aria-labelledby="services-title">
+        <h2 id="services-title">خدماتنا ومميزاتنا</h2>
         <p>
           نلتزم بأعلى معايير الجودة والنظافة والاشتراطات الصحية. نوفر صالة طعام مريحة لاستقبال الزوار، وخدمة استلام
-          سريعة من الفرع، بالإضافة إلى خدمة توصيل تغطي مدينة العياط والمناطق المجاورة في أسرع وقت مع تغليف حراري محكم
-          يحافظ على سخونة وجودة الطعام. كما نقوم بتجهيز العزائم والمناسبات الكبرى بأفضل العروض والأسعار.
+          سريعة من الفرع، وخدمة توصيل تغطي مدينة العياط والمناطق المجاورة بتغليف حراري محكم يحافظ على سخونة وجودة
+          الطعام، كما نجهز العزائم والمناسبات الكبرى بأفضل العروض والأسعار.
         </p>
       </section>
 
-      <section id="restaurant-contact">
-        <h2>معلومات الاتصال والموقع وساعات العمل</h2>
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">التواصل والموقع ومواعيد العمل</h2>
         <p>
-          <strong>العنوان:</strong> العياط غرب - شارع الجيش - أمام سلم السكة الحديد بجوار صيدلية د. لويز - الجيزة، مصر.
+          <strong>العنوان:</strong> العياط غرب - شارع الجيش - أمام سلم السكة الحديد بجوار صيدلية د. لويز - الجيزة،
+          مصر.
         </p>
         <p>
-          <strong>أرقام الهاتف المباشرة وخدمة التوصيل:</strong>
+          <strong>الهاتف والتوصيل:</strong>
           <a href="tel:01008673836">01008673836</a> /
-          <a href="tel:01124497981">01124497981</a> (واتساب متاح على الرقم 01124497981)
+          <a href="tel:01124497981">01124497981</a> — واتساب:
+          <a href="https://wa.me/201124497981" rel="noopener">+201124497981</a>
         </p>
         <p>
-          <strong>مواعيد العمل:</strong> من السبت إلى الخميس، من الساعة 9:00 صباحاً وحتى 11:00 مساءً.
+          <strong>مواعيد العمل:</strong> يومياً طوال أيام الأسبوع من الساعة 9:00 صباحاً وحتى 11:00 مساءً.
         </p>
       </section>
-    </main>
-  </div>
+
+      <nav class="site-links" aria-label="روابط الموقع">
+        <a href="/about">عن المطعم</a>
+        <a href="/contact">اتصل بنا</a>
+        <a href="/privacy">سياسة الخصوصية</a>
+        <a href="/terms">الشروط والأحكام</a>
+      </nav>
+
+      <p class="copyright">© 2026 مطعم أسماك الزفر — جميع الحقوق محفوظة.</p>
+    </div>
+  </section>
+
   <script src="flutter_bootstrap.js" async=""></script>
 </body>
 
