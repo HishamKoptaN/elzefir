@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/custom_image.dart';
+import '../restaurant_info_builder.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
@@ -80,12 +81,16 @@ class _ContentSection extends StatelessWidget {
               color: const Color(0xFF406182),
             ),
           ),
-          Text(
-            'مطعم الزفر للاسماك',
-            textAlign: TextAlign.right,
-            style: context.textTheme.titleLarge?.copyWith(
-              color: Color(0xFF28180D),
-            ),
+          RestaurantInfoBuilder(
+            builder: (context, info) {
+              return Text(
+                info.name,
+                textAlign: TextAlign.right,
+                style: context.textTheme.titleLarge?.copyWith(
+                  color: Color(0xFF28180D),
+                ),
+              );
+            },
           ),
           Text(
             'في مطعم الزفر نقدم أفضل أنواع الأسماك والمأكولات البحرية الطازجة، '

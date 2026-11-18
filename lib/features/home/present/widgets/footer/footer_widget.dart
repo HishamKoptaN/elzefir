@@ -12,6 +12,7 @@ import '../../../../info_pages/present/views/contact_view.dart';
 import '../../../../info_pages/present/views/privacy_view.dart';
 import '../../../../info_pages/present/views/terms_view.dart';
 import '../../home.dart';
+import '../restaurant_info_builder.dart';
 import '../store_status_builder.dart';
 import 'footer_desk_layout.dart';
 import 'footer_mobile_layout.dart';
@@ -247,7 +248,11 @@ class FooterTitleWidget extends StatelessWidget {
           ),
         ),
         SizedBox(width: 12.w),
-        CustomFooterTitleWidget(title: 'مطعم أسماك الزفر'),
+        RestaurantInfoBuilder(
+          builder: (context, info) {
+            return CustomFooterTitleWidget(title: info.name);
+          },
+        ),
       ],
     );
   }
@@ -359,10 +364,14 @@ class CopyRightWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        "© ${DateTime.now().year} مطعم أسماك الزفر. جميع الحقوق محفوظة.",
-        textAlign: TextAlign.center,
-        style: context.textTheme.bodyLarge?.copyWith(color: Colors.white70),
+      child: RestaurantInfoBuilder(
+        builder: (context, info) {
+          return Text(
+            "© ${DateTime.now().year} ${info.name}. جميع الحقوق محفوظة.",
+            textAlign: TextAlign.center,
+            style: context.textTheme.bodyLarge?.copyWith(color: Colors.white70),
+          );
+        },
       ),
     );
   }

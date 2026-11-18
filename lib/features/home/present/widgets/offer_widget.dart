@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../core/widgets/custom_image.dart';
 
-import 'dart:ui';
-
 import '../../../../generated/assets.gen.dart';
-import 'store_status_builder.dart';
+import 'restaurant_info_builder.dart';
 
 class OfferWidget extends StatelessWidget {
   const OfferWidget({super.key});
@@ -22,7 +21,14 @@ class OfferWidget extends StatelessWidget {
           fit: .expand,
           textDirection: .rtl,
           children: [
-            CustomImage(image: Assets.images.offer.path, fit: .cover),
+            RestaurantInfoBuilder(
+              builder: (context, info) {
+                return CustomImage(
+                  image: info.offerImage ?? Assets.images.offer.path,
+                  fit: .cover,
+                );
+              },
+            ),
             Container(
               padding: .symmetric(vertical: 6.h, horizontal: 2.w),
               decoration: BoxDecoration(
@@ -54,15 +60,77 @@ class OfferWidget extends StatelessWidget {
                     mainAxisAlignment: .center,
                     crossAxisAlignment: .start,
                     children: [
-                      Text(
-                        'مطعم أسماك الزفر',
-                        textAlign: .right,
-                        style: context.textTheme.displaySmall?.copyWith(
-                          color: Colors.white,
-                        ),
+                      RestaurantInfoBuilder(
+                        builder: (context, info) {
+                          return Column(
+                            mainAxisSize: .min,
+                            crossAxisAlignment: .start,
+                            children: [
+                              Text(
+                                info.name,
+                                textAlign: .right,
+                                maxLines: 1,
+                                overflow: .ellipsis,
+                                style: context.textTheme.displaySmall?.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              SizedBox(height: 8.h),
+                              Text(
+                                info.offerTitle,
+                                textAlign: .right,
+                                maxLines: 2,
+                                overflow: .ellipsis,
+                                style: context.textTheme.titleLarge?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: .bold,
+                                ),
+                              ),
+                              Text(
+                                info.offerDescription,
+                                textAlign: .right,
+                                maxLines: 2,
+                                overflow: .ellipsis,
+                                style: context.textTheme.bodySmall?.copyWith(
+                                  color: Colors.white70,
+                                ),
+                              ),
+                              SizedBox(height: 10.h),
+                              Row(
+                                mainAxisSize: .min,
+                                spacing: 12.w,
+                                children: [
+                                  Text(
+                                    '${info.offerPrice} ج.م',
+                                    style: context.textTheme.titleMedium
+                                        ?.copyWith(
+                                          color: Colors.white,
+                                          fontWeight: .w900,
+                                        ),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      final uri = Uri.https(
+                                        'wa.me',
+                                        '/201124497981',
+                                        {
+                                          'text':
+                                              'مرحباً، أريد طلب ${info.offerTitle}',
+                                        },
+                                      );
+                                      await launchUrl(
+                                        uri,
+                                        mode: .externalApplication,
+                                      );
+                                    },
+                                    child: Text(info.offerCta),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
+                        },
                       ),
-                      SizedBox(height: 25.h),
-                      const OpenStatusBadge(),
                     ],
                   ),
                 ),
@@ -71,66 +139,6 @@ class OfferWidget extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class OpenStatusBadge extends StatelessWidget {
-  const OpenStatusBadge({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return StoreStatusBuilder(
-      builder: (context, workingHours) {
-        final isOpen = workingHours?.isOpenNow;
-        final statusText = switch (isOpen) {
-          true => 'مفتوح الآن',
-          false => 'مغلق الآن',
-          null => 'جارٍ التحقق',
-        };
-        final dotColor = switch (isOpen) {
-          true => const Color(0xFF22C55E),
-          false => const Color(0xFFEF4444),
-          null => const Color(0xFF9CA3AF),
-        };
-
-        return ClipRRect(
-          borderRadius: .circular(9999),
-          child: BackdropFilter(
-            filter: .blur(sigmaX: 1.0, sigmaY: 1.0),
-            child: Container(
-              padding: .symmetric(vertical: 7.h, horizontal: 22.w),
-              decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.45),
-                borderRadius: .circular(9999),
-                border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.1),
-                  width: 1,
-                ),
-              ),
-              child: Row(
-                mainAxisSize: .min,
-                crossAxisAlignment: .center,
-                spacing: 10.w,
-                children: [
-                  Text(
-                    statusText,
-                    style: context.textTheme.labelLarge?.copyWith(
-                      fontWeight: .w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Container(
-                    height: 12.r,
-                    width: 12.r,
-                    decoration: BoxDecoration(color: dotColor, shape: .circle),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }

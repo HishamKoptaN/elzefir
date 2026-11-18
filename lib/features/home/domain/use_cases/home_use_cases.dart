@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../../../core/networking/api_result.dart';
 import '../repo/home_repo.dart';
 import '../entities/home_res_entity.dart';
+import '../entities/restaurant_info_entity.dart';
 import '../entities/working_hours_entity.dart';
 
 @singleton
@@ -16,5 +17,10 @@ class HomeUseCases {
   /// متابعة حالة فتح/غلق المحل من فايرستور بشكل مباشر.
   Stream<WorkingHoursEntity?> watchWorkingHours() {
     return homeRepo.watchWorkingHours();
+  }
+
+  /// الاسم التجاري وعناصر العرض القابلة للتعديل من فايرستور.
+  Stream<RestaurantInfoEntity> watchRestaurantInfo() {
+    return homeRepo.watchRestaurantInfo();
   }
 }
