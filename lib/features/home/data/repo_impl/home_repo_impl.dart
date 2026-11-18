@@ -7,12 +7,14 @@ import '../data_sources/home_data_src.dart';
 import '../mapper/home_mapper.dart';
 import '../../domain/repo/home_repo.dart';
 import '../../domain/entities/home_res_entity.dart';
+import '../../domain/entities/restaurant_info_entity.dart';
 import '../../domain/entities/working_hours_entity.dart';
 
 @Singleton(as: HomeRepo)
 class HomeRepoImpl implements HomeRepo {
   static const String _settingsCollection = 'settings';
   static const String _workingHoursDoc = 'working_hours';
+  static const String _generalDoc = 'general';
 
   final HomeDataSrc homeDataSrc;
   final FirebaseFirestore firestore;
@@ -55,5 +57,21 @@ class HomeRepoImpl implements HomeRepo {
           }
           return WorkingHoursEntity.fromFirestore(data);
         });
+  }
+
+  @override
+  Stream<RestaurantInfoEntity> watchRestaurantInfo() {
+    return firestore
+        .collection(_settingsCollection)
+        .doc(_generalDoc)
+        .snapshots()
+        .map((doc) {
+          final data = doc.data();
+          if (!doc.exists || data == null) {
+            return RestaurantInfoEntity.fallback;
+          }
+          return RestaurantInfoEntity.fromFirestore(data);
+        })
+        .handleError((_) => RestaurantInfoEntity.fallback);
   }
 }

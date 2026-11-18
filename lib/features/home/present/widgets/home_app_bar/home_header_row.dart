@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/custom_image.dart';
 import '../../../../../generated/assets.gen.dart';
+import '../restaurant_info_builder.dart';
 import 'home_header_actions.dart';
 
 class HomeHeaderRow extends StatelessWidget {
@@ -49,25 +50,33 @@ class HomeHeaderRow extends StatelessWidget {
           ),
           Gap(4.w),
           Expanded(
-            child: Column(
-              crossAxisAlignment: .start,
-              mainAxisSize: .min,
-              children: [
-                Text(
-                  'أسماك الزفر',
-                  style: context.textTheme.headlineSmall?.copyWith(
-                    fontWeight: .bold,
-                    color: context.colorScheme.brandNavy,
-                  ),
-                ),
-                Text(
-                  'السمك على أصوله • طازج يومياً',
-                  style: context.textTheme.bodySmall?.copyWith(
-                    fontWeight: .w500,
-                    color: context.colorScheme.slateText,
-                  ),
-                ),
-              ],
+            child: RestaurantInfoBuilder(
+              builder: (context, info) {
+                return Column(
+                  crossAxisAlignment: .start,
+                  mainAxisSize: .min,
+                  children: [
+                    Text(
+                      info.name,
+                      maxLines: 1,
+                      overflow: .ellipsis,
+                      style: context.textTheme.headlineSmall?.copyWith(
+                        fontWeight: .bold,
+                        color: context.colorScheme.brandNavy,
+                      ),
+                    ),
+                    Text(
+                      info.tagline,
+                      maxLines: 1,
+                      overflow: .ellipsis,
+                      style: context.textTheme.bodySmall?.copyWith(
+                        fontWeight: .w500,
+                        color: context.colorScheme.slateText,
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           const HomeHeaderActions(),
