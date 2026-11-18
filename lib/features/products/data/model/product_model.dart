@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../categories/data/model/categories_res_model.dart';
 part 'product_model.freezed.dart';
 part 'product_model.g.dart';
@@ -12,6 +13,7 @@ abstract class ProductModel with _$ProductModel {
     String? title,
     String? description,
     String? price,
+    String? priceUnit,
     CategoryModel? category,
     List<CookingMethodModel>? cookingMethods,
   }) = _ProductModel;

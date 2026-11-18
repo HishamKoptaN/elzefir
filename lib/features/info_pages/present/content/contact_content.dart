@@ -4,7 +4,7 @@ class ContactContent {
   static const String badge = 'خدمة العملاء والطلبات';
   static const String title = 'تواصل معنا - مطعم أسماك الزفر';
   static const String subtitle =
-      'نسعد دائماً باستقبال اتصالاتكم وطلباتكم طوال أيام الأسبوع';
+      'نسعد دائماً باستقبال اتصالاتكم وطلباتكم خلال ساعات العمل';
 
   static const String intro =
       'سواء كنت ترغب في الاستفسار عن أصناف الأسماك الطازجة المتاحة اليوم، أو تقديم طلب توصيل سريع إلى باب منزلك، أو تجهيز عزومة ومأدبة بحرية خاصة، فإن فريق عمل مطعم أسماك الزفر جاهز لخدمتكم ومساعدتكم.';
@@ -21,8 +21,7 @@ class ContactContent {
   static const String mapsUrl = 'https://maps.google.com/?q=العياط+شارع+الجيش';
 
   static const String hoursTitle = 'ساعات العمل ومواعيد الاستقبال';
-  static const String hoursDays =
-      'طوال أيام الأسبوع (من السبت إلى الخميس والجمعة)';
+  static const String hoursDays = 'من السبت إلى الخميس';
   static const String hoursTime =
       'من الساعة 9:00 صباحاً وحتى الساعة 11:00 مساءً';
 

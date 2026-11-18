@@ -15,9 +15,7 @@ class ProductCardImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final badgeLabel = product.category.name.isNotEmpty
-        ? product.category.name
-        : '';
+    final badgeLabel = product.category.name;
 
     return GestureDetector(
       onTap: () async {
@@ -58,32 +56,22 @@ class ProductCardImage extends StatelessWidget {
             fit: .expand,
             children: [
               CustomImage(image: product.image, fit: .cover),
-              Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Colors.black.withValues(alpha: 0.1),
-                      Colors.transparent,
-                      Colors.black.withValues(alpha: 0.4),
-                    ],
-                  ),
-                ),
-              ),
-              if (product.category.name.isNotEmpty)
+              if (badgeLabel.isNotEmpty)
                 Positioned(
                   top: 6.h,
                   right: 6.w,
                   child: Container(
                     padding: .symmetric(horizontal: 8.w, vertical: 3.h),
                     decoration: BoxDecoration(
-                      color: context.colorScheme.brandNavy.withValues(alpha: 0.9),
+                      color: context.colorScheme.brandNavy.withValues(
+                        alpha: 0.9,
+                      ),
                       borderRadius: .circular(20.r),
-                      border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
+                      border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.2),
+                      ),
                     ),
                     child: Row(
-                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
                           width: 5.r,

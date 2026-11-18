@@ -1,6 +1,7 @@
 import '../../../categories/data/mapper/categories_mapper.dart';
 import '../../../categories/domain/entities/categories_res_entity.dart';
 import '../../domain/entities/product_entity.dart';
+
 import 'package:to_arabic_number/to_arabic_number.dart';
 
 import '../../../../config/image_providers_config.dart';
@@ -14,12 +15,11 @@ extension ProductModelMapper on ProductModel {
       title: title ?? '',
       description: description ?? '',
       price: Arabic.number(price ?? ''),
+      priceUnit: priceUnit ?? '',
       image: ImageProvidersConfig.resolveImageUrl(image),
       category: category?.toEntity() ?? CategoryEntity(),
-      cookingMethods: cookingMethods
-              ?.map((e) => e.toEntity())
-              .toList() ??
-          const [],
+      cookingMethods:
+          cookingMethods?.map((e) => e.toEntity()).toList() ?? const [],
     );
   }
 }

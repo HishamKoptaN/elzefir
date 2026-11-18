@@ -24,6 +24,7 @@ class AboutView extends StatelessWidget {
         const InfoSectionWidget(section: AboutContent.mission),
         const InfoSectionTitle(title: AboutContent.featuresTitle),
         const InfoFeatureGrid(features: AboutContent.features),
+        const InfoSectionWidget(section: AboutContent.services),
         const InfoSectionWidget(section: AboutContent.menu),
         const InfoSectionWidget(section: AboutContent.quality),
         const InfoCtaBox(

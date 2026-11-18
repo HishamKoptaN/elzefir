@@ -62,13 +62,39 @@ class WorkingHoursEntity {
     return 'من ${_formatMinutes(openMinutes)} حتى ${_formatMinutes(closeMinutes)}';
   }
 
+  /// ترتيب أيام الأسبوع كما يُعرض للمستخدم (يبدأ بالسبت).
+  static const List<int> _weekOrder = [6, 7, 1, 2, 3, 4, 5];
+
   /// أسماء أيام العمل القادمة من فايرستور.
+  /// تُدمج الأيام المتتالية في مدى واحد (مثال: من السبت إلى الخميس).
   String get formattedDays {
     if (days.length >= 7) {
       return 'يومياً';
     }
-    final sorted = [...days]..sort();
-    return sorted.map((day) => _dayNames[day]).whereType<String>().join('، ');
+    final present = days.toSet();
+    final runs = <List<int>>[];
+    for (final day in _weekOrder) {
+      if (!present.contains(day)) {
+        continue;
+      }
+      final previous = runs.isNotEmpty ? runs.last.last : null;
+      final isSequential =
+          previous != null &&
+          _weekOrder.indexOf(day) == _weekOrder.indexOf(previous) + 1;
+      if (isSequential) {
+        runs.last.add(day);
+      } else {
+        runs.add([day]);
+      }
+    }
+    return runs
+        .map(
+          (run) => run.length == 1
+              ? _dayNames[run.first] ?? ''
+              : 'من ${_dayNames[run.first]} إلى ${_dayNames[run.last]}',
+        )
+        .where((text) => text.isNotEmpty)
+        .join('، ');
   }
 
   /// صيغة مختصرة للمواعيد تناسب المساحات الضيقة.

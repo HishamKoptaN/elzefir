@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductModel {
 
- int? get id; String? get image; String? get name; String? get title; String? get description; String? get price; CategoryModel? get category; List<CookingMethodModel>? get cookingMethods;
+ int? get id; String? get image; String? get name; String? get title; String? get description; String? get price; String? get priceUnit; CategoryModel? get category; List<CookingMethodModel>? get cookingMethods;
 /// Create a copy of ProductModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,20 +30,20 @@ $ProductModelCopyWith<ProductModel> get copyWith => _$ProductModelCopyWithImpl<P
 @override
 bool operator ==(Object other) {
   final _this = this as ProductModel;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.image, _this.image) || other.image == _this.image)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.category, _this.category) || other.category == _this.category)&&const DeepCollectionEquality().equals(other.cookingMethods, _this.cookingMethods));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductModel&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.image, _this.image) || other.image == _this.image)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.priceUnit, _this.priceUnit) || other.priceUnit == _this.priceUnit)&&(identical(other.category, _this.category) || other.category == _this.category)&&const DeepCollectionEquality().equals(other.cookingMethods, _this.cookingMethods));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
   final _this = this as ProductModel;
-  return Object.hash(runtimeType,_this.id,_this.image,_this.name,_this.title,_this.description,_this.price,_this.category,const DeepCollectionEquality().hash(_this.cookingMethods));
+  return Object.hash(runtimeType,_this.id,_this.image,_this.name,_this.title,_this.description,_this.price,_this.priceUnit,_this.category,const DeepCollectionEquality().hash(_this.cookingMethods));
 }
 
 @override
 String toString() {
   final _this = this as ProductModel;
-  return 'ProductModel(id: ${_this.id}, image: ${_this.image}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, category: ${_this.category}, cookingMethods: ${_this.cookingMethods})';
+  return 'ProductModel(id: ${_this.id}, image: ${_this.image}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, priceUnit: ${_this.priceUnit}, category: ${_this.category}, cookingMethods: ${_this.cookingMethods})';
 }
 
 
@@ -54,7 +54,7 @@ abstract mixin class $ProductModelCopyWith<$Res>  {
   factory $ProductModelCopyWith(ProductModel value, $Res Function(ProductModel) _then) = _$ProductModelCopyWithImpl;
 @useResult
 $Res call({
- int? id, String? image, String? name, String? title, String? description, String? price, CategoryModel? category, List<CookingMethodModel>? cookingMethods
+ int? id, String? image, String? name, String? title, String? description, String? price, String? priceUnit, CategoryModel? category, List<CookingMethodModel>? cookingMethods
 });
 
 
@@ -71,7 +71,7 @@ class _$ProductModelCopyWithImpl<$Res>
 
 /// Create a copy of ProductModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? category = freezed,Object? cookingMethods = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? priceUnit = freezed,Object? category = freezed,Object? cookingMethods = freezed,}) {
   return _then(ProductModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
@@ -79,6 +79,7 @@ as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to
 as String?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
+as String?,priceUnit: freezed == priceUnit ? _self.priceUnit : priceUnit // ignore: cast_nullable_to_non_nullable
 as String?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as CategoryModel?,cookingMethods: freezed == cookingMethods ? _self.cookingMethods : cookingMethods // ignore: cast_nullable_to_non_nullable
 as List<CookingMethodModel>?,
@@ -178,10 +179,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price,  CategoryModel? category,  List<CookingMethodModel>? cookingMethods)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price,  String? priceUnit,  CategoryModel? category,  List<CookingMethodModel>? cookingMethods)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductModel() when $default != null:
-return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.category,_that.cookingMethods);case _:
+return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.priceUnit,_that.category,_that.cookingMethods);case _:
   return orElse();
 
 }
@@ -199,10 +200,10 @@ return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price,  CategoryModel? category,  List<CookingMethodModel>? cookingMethods)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price,  String? priceUnit,  CategoryModel? category,  List<CookingMethodModel>? cookingMethods)  $default,) {final _that = this;
 switch (_that) {
 case _ProductModel():
-return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.category,_that.cookingMethods);case _:
+return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.priceUnit,_that.category,_that.cookingMethods);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -219,10 +220,10 @@ return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price,  CategoryModel? category,  List<CookingMethodModel>? cookingMethods)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? image,  String? name,  String? title,  String? description,  String? price,  String? priceUnit,  CategoryModel? category,  List<CookingMethodModel>? cookingMethods)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductModel() when $default != null:
-return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.category,_that.cookingMethods);case _:
+return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_that.price,_that.priceUnit,_that.category,_that.cookingMethods);case _:
   return null;
 
 }
@@ -234,7 +235,7 @@ return $default(_that.id,_that.image,_that.name,_that.title,_that.description,_t
 @JsonSerializable()
 
 class _ProductModel implements ProductModel {
-  const _ProductModel({this.id, this.image, this.name, this.title, this.description, this.price, this.category,  List<CookingMethodModel>? cookingMethods}): _cookingMethods = cookingMethods;
+  const _ProductModel({this.id, this.image, this.name, this.title, this.description, this.price, this.priceUnit, this.category,  List<CookingMethodModel>? cookingMethods}): _cookingMethods = cookingMethods;
   factory _ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);
 
 @override final  int? id;
@@ -243,6 +244,7 @@ class _ProductModel implements ProductModel {
 @override final  String? title;
 @override final  String? description;
 @override final  String? price;
+@override final  String? priceUnit;
 @override final  CategoryModel? category;
  final  List<CookingMethodModel>? _cookingMethods;
 @override List<CookingMethodModel>? get cookingMethods {
@@ -267,18 +269,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductModel&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.category, category) || other.category == category)&&const DeepCollectionEquality().equals(other.cookingMethods, _cookingMethods));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductModel&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.priceUnit, priceUnit) || other.priceUnit == priceUnit)&&(identical(other.category, category) || other.category == category)&&const DeepCollectionEquality().equals(other.cookingMethods, _cookingMethods));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,image,name,title,description,price,category,const DeepCollectionEquality().hash(_cookingMethods));
+    return Object.hash(runtimeType,id,image,name,title,description,price,priceUnit,category,const DeepCollectionEquality().hash(_cookingMethods));
 }
 
 @override
 String toString() {
-    return 'ProductModel(id: $id, image: $image, name: $name, title: $title, description: $description, price: $price, category: $category, cookingMethods: $cookingMethods)';
+    return 'ProductModel(id: $id, image: $image, name: $name, title: $title, description: $description, price: $price, priceUnit: $priceUnit, category: $category, cookingMethods: $cookingMethods)';
 }
 
 
@@ -289,7 +291,7 @@ abstract mixin class _$ProductModelCopyWith<$Res> implements $ProductModelCopyWi
   factory _$ProductModelCopyWith(_ProductModel value, $Res Function(_ProductModel) _then) = __$ProductModelCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, String? image, String? name, String? title, String? description, String? price, CategoryModel? category, List<CookingMethodModel>? cookingMethods
+ int? id, String? image, String? name, String? title, String? description, String? price, String? priceUnit, CategoryModel? category, List<CookingMethodModel>? cookingMethods
 });
 
 
@@ -306,7 +308,7 @@ class __$ProductModelCopyWithImpl<$Res>
 
 /// Create a copy of ProductModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? category = freezed,Object? cookingMethods = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? image = freezed,Object? name = freezed,Object? title = freezed,Object? description = freezed,Object? price = freezed,Object? priceUnit = freezed,Object? category = freezed,Object? cookingMethods = freezed,}) {
   return _then(_ProductModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
@@ -314,6 +316,7 @@ as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to
 as String?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
+as String?,priceUnit: freezed == priceUnit ? _self.priceUnit : priceUnit // ignore: cast_nullable_to_non_nullable
 as String?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as CategoryModel?,cookingMethods: freezed == cookingMethods ? _self._cookingMethods : cookingMethods // ignore: cast_nullable_to_non_nullable
 as List<CookingMethodModel>?,

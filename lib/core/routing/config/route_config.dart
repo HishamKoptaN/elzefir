@@ -15,6 +15,7 @@ import '../../../features/info_pages/present/views/about_view.dart';
 import '../../../features/info_pages/present/views/contact_view.dart';
 import '../../../features/info_pages/present/views/privacy_view.dart';
 import '../../../features/info_pages/present/views/terms_view.dart';
+import '../../../features/products/domain/entities/product_entity.dart';
 import '../../utils/extensions/theme_ext.dart';
 import '../app_route.dart';
 import '../middlewares/guards/app_guards.dart';
@@ -109,7 +110,7 @@ class RouteConfig {
         name: DishDetailsView.routeName,
         path: '/${DishDetailsView.routeName}',
         builder: (context, state) {
-          return const DishDetailsView();
+          return DishDetailsView(product: state.extra as ProductEntity?);
         },
       ),
       appRoute(

@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../products/domain/entities/product_entity.dart';
+
 class DishDetailsView extends StatefulWidget {
-  const DishDetailsView({super.key});
+  const DishDetailsView({super.key, this.product});
 
   static const String routeName = 'dish-details';
+
+  /// المنتج اللي اتفتح من الكارت؛ بيفضل null لو الصفحة اتفتحت لوحدها.
+  final ProductEntity? product;
 
   @override
   State<DishDetailsView> createState() => _DishDetailsViewState();
 }
 
 class _DishDetailsViewState extends State<DishDetailsView> {
-  final double baseKiloPrice = 180.0;
+  static const double _demoUnitPrice = 180.0;
+
+  // السعر والوحدة من بيانات المنتج؛ الكيلو هو الافتراضي للمنتجات القديمة.
+  late final String _priceUnit = widget.product?.priceUnitLabel ?? 'كجم';
+  late final double baseUnitPrice = widget.product == null
+      ? _demoUnitPrice
+      : (widget.product!.priceValue ?? 0);
+  bool get _sellsByWeight =>
+      _priceUnit.contains('كجم') ||
+      _priceUnit.contains('كيلو') ||
+      _priceUnit.contains('جرام');
+
   double currentWeight = 1.0;
   double cookingMethodFee = 15.0; // default singari
   double addonsFee = 0.0;
@@ -27,7 +43,32 @@ class _DishDetailsViewState extends State<DishDetailsView> {
     'bread': false,
   };
 
-  double get total => (baseKiloPrice * currentWeight) + cookingMethodFee + addonsFee;
+  double get total =>
+      (_sellsByWeight ? baseUnitPrice * currentWeight : baseUnitPrice) +
+      cookingMethodFee +
+      addonsFee;
+
+  String get _priceLabel => baseUnitPrice % 1 == 0
+      ? baseUnitPrice.toStringAsFixed(0)
+      : baseUnitPrice.toStringAsFixed(2);
+
+  String get _priceUnitNote =>
+      _sellsByWeight ? 'لكل 1 كجم نيء' : 'لكل $_priceUnit';
+
+  String get _productTitle {
+    final product = widget.product;
+    if (product == null) return 'سمك بوري بلدي فاخر';
+    if (product.name.isNotEmpty) return product.name;
+    return product.title.isNotEmpty ? product.title : 'منتج';
+  }
+
+  String get _productDescription {
+    final description = widget.product?.description ?? '';
+    return description.isNotEmpty ? description : _fallbackDescription;
+  }
+
+  static const String _fallbackDescription =
+      'سمك بوري طازج يومياً من مزارعنا وشواطئنا، غني بالأوميجا 3، يُنظف بعناية فائقة ويُتبل بخلطة الزفر السكندرية الخاصة، ويُحضر جاهزاً للأكل حسب رغبتك.';
 
   @override
   Widget build(BuildContext context) {
@@ -206,7 +247,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'سمك بوري بلدي فاخر',
+                                        _productTitle,
                                         style: textTheme.headlineMedium?.copyWith(color: colorScheme.primary, fontWeight: FontWeight.bold),
                                       ),
                                       SizedBox(height: 4.h),
@@ -231,14 +272,14 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                                       textBaseline: TextBaseline.alphabetic,
                                       children: [
                                         Text(
-                                          '${baseKiloPrice.toInt()}',
+                                          _priceLabel,
                                           style: textTheme.headlineMedium?.copyWith(color: colorScheme.primary, fontWeight: FontWeight.bold),
                                         ),
                                         SizedBox(width: 2.w),
                                         Text('ج.م', style: textTheme.bodySmall?.copyWith(color: colorScheme.onSurfaceVariant, fontWeight: FontWeight.bold)),
                                       ],
                                     ),
-                                    Text('لكل 1 كجم نيء', style: textTheme.labelSmall?.copyWith(color: colorScheme.outline)),
+                                    Text(_priceUnitNote, style: textTheme.labelSmall?.copyWith(color: colorScheme.outline)),
                                   ],
                                 ),
                               ],
@@ -251,7 +292,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                                 borderRadius: BorderRadius.circular(12.r),
                               ),
                               child: Text(
-                                'سمك بوري طازج يومياً من مزارعنا وشواطئنا، غني بالأوميجا 3، يُنظف بعناية فائقة ويُتبل بخلطة الزفر السكندرية الخاصة، ويُحضر جاهزاً للأكل حسب رغبتك.',
+                                _productDescription,
                                 style: textTheme.bodyMedium?.copyWith(color: colorScheme.onSurfaceVariant, height: 1.5),
                               ),
                             ),
@@ -330,6 +371,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                         ),
                       ),
 
+                      if (_sellsByWeight) ...[
                       SizedBox(height: 16.h),
 
                       // Section 2: Weight & Portion
@@ -419,6 +461,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                           ],
                         ),
                       ),
+                      ],
 
                       SizedBox(height: 16.h),
 
