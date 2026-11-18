@@ -2,7 +2,7 @@
     "rewrites": [
         {
             "source": "/(.*)",
-            "destination": "https://elzefir-dbb8d.web.app/$1"
+            "destination": "https://elzefir-dbb8d.firebaseapp.com/$1"
         }
     ]
 }
