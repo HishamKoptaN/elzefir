@@ -9,55 +9,64 @@ class ProductsSectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colorScheme;
     return Container(
-      padding: .symmetric(vertical: 6.h, horizontal: 8.w),
+      padding: .symmetric(vertical: 12.h, horizontal: 14.w),
       decoration: BoxDecoration(
-        color: context.colorScheme.surface,
-        borderRadius: .circular(12.r),
-        border: Border.all(color: context.colorScheme.slateBorder),
-        boxShadow: [
-          BoxShadow(
-            color: context.colorScheme.shadow.withValues(alpha: 0.04),
-            blurRadius: 6.r,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        color: colors.brandSand,
+        borderRadius: .circular(16.r),
+        border: Border.all(color: colors.brandGold.withValues(alpha: 0.35)),
       ),
       child: Row(
         mainAxisAlignment: .spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: .start,
-            mainAxisSize: .min,
-            children: [
-              Text(
-                'أطباق مميزة والأكثر طلباً',
-                style: context.textTheme.titleSmall?.copyWith(
-                  fontWeight: .w600,
-                  color: context.colorScheme.brandNavy,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: .start,
+              mainAxisSize: .min,
+              children: [
+                Row(
+                  mainAxisSize: .min,
+                  spacing: 6.w,
+                  children: [
+                    Icon(
+                      Icons.restaurant_menu_rounded,
+                      size: 18.r,
+                      color: colors.brandGoldHover,
+                    ),
+                    Flexible(
+                      child: Text(
+                        'أطباق مميزة والأكثر طلباً',
+                        style: context.textTheme.titleMedium?.copyWith(
+                          fontWeight: .w900,
+                          color: colors.brandNavyDeep,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Gap(2.h),
-              Text(
-                'تحضير طازج على أصوله بالخلطات السرية',
-                style: context.textTheme.bodySmall?.copyWith(
-                  color: context.colorScheme.slateText,
+                Gap(2.h),
+                Text(
+                  'تحضير طازج على أصوله بالخلطات السرية',
+                  style: context.textTheme.bodySmall?.copyWith(
+                    color: colors.slateText,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
+          Gap(8.w),
           Container(
-            padding: .symmetric(vertical: 4.h, horizontal: 6.w),
+            padding: .symmetric(vertical: 5.h, horizontal: 10.w),
             decoration: BoxDecoration(
-              color: context.colorScheme.chefChoiceBg,
-              border: .all(color: context.colorScheme.chefChoiceBorder),
-              borderRadius: .circular(12.r),
+              color: colors.brandGold,
+              borderRadius: .circular(999),
             ),
             child: Text(
               'اختيارات الشيف',
               style: context.textTheme.labelSmall?.copyWith(
-                fontWeight: .w600,
-                color: context.colorScheme.chefChoiceText,
+                fontWeight: .w800,
+                color: colors.brandNavyDeep,
               ),
             ),
           ),
