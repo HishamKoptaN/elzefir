@@ -5,6 +5,39 @@ extension ColorSchemeStitchExt on ColorScheme {
     return const Color(0xFF124370);
   }
 
+  /// ألوان هوية Stitch: كحلي عميق + ذهبي + كريمي.
+  Color get brandNavyDeep {
+    return const Color(0xFF001629);
+  }
+
+  Color get brandNavyLight {
+    return const Color(0xFF08253F);
+  }
+
+  Color get brandNavyCard {
+    return const Color(0xFF0C2E4D);
+  }
+
+  Color get brandGold {
+    return const Color(0xFFFACC15);
+  }
+
+  Color get brandGoldHover {
+    return const Color(0xFFEAB308);
+  }
+
+  Color get brandSand {
+    return const Color(0xFFFAF5EE);
+  }
+
+  Color get brandCream {
+    return const Color(0xFFFFF7ED);
+  }
+
+  Color get brandCreamDark {
+    return const Color(0xFFFFEADE);
+  }
+
   Color get brandCoral {
     return const Color(0xFFF47A53);
   }
