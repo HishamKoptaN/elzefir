@@ -7,11 +7,9 @@ import '../../../../../core/routing/utils/navigation_service.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
-import '../../../../info_pages/present/views/about_view.dart';
 import '../../../../info_pages/present/views/contact_view.dart';
 import '../../../../info_pages/present/views/privacy_view.dart';
 import '../../../../info_pages/present/views/terms_view.dart';
-import '../../home.dart';
 import '../restaurant_info_builder.dart';
 import '../store_status_builder.dart';
 import 'footer_desk_layout.dart';
@@ -34,7 +32,9 @@ Future<void> execuateLaunchUrl(String urlString) async {
 }
 
 class FooterWidget extends StatelessWidget {
-  const FooterWidget({super.key});
+  const FooterWidget({super.key, required this.onAbout});
+
+  final VoidCallback onAbout;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class FooterWidget extends StatelessWidget {
         children: [
           context.isDesk ? FooterDeskLayout() : FooterMobileLayout(),
           CustomFooterDividerWidget(),
-          const Center(child: FooterLegalLinks()),
+          Center(child: FooterLegalLinks(onAbout: onAbout)),
           SizedBox(height: 16.h),
           CopyRightWidget(),
         ],
@@ -59,7 +59,9 @@ class FooterWidget extends StatelessWidget {
 }
 
 class FooterLegalLinks extends StatelessWidget {
-  const FooterLegalLinks({super.key});
+  const FooterLegalLinks({super.key, required this.onAbout});
+
+  final VoidCallback onAbout;
 
   @override
   Widget build(BuildContext context) {
@@ -68,29 +70,47 @@ class FooterLegalLinks extends StatelessWidget {
       spacing: 20.w,
       runSpacing: 10.h,
       children: [
-        _buildFooterLink(context, 'الرئيسية', HomeView.routeName, isHome: true),
-        _buildFooterLink(context, 'من نحن', AboutView.routeName),
-        _buildFooterLink(context, 'اتصل بنا', ContactView.routeName),
-        _buildFooterLink(context, 'سياسة الخصوصية', PrivacyView.routeName),
-        _buildFooterLink(context, 'الشروط والأحكام', TermsView.routeName),
+        _buildFooterLink(
+          context,
+          'الرئيسية',
+          onTap: () => _scrollToTop(context),
+        ),
+        _buildFooterLink(context, 'من نحن', onTap: onAbout),
+        _buildFooterLink(
+          context,
+          'اتصل بنا',
+          onTap: () => NavigationService.pushNamed(
+            context: context,
+            routeName: ContactView.routeName,
+          ),
+        ),
+        _buildFooterLink(
+          context,
+          'سياسة الخصوصية',
+          onTap: () => NavigationService.pushNamed(
+            context: context,
+            routeName: PrivacyView.routeName,
+          ),
+        ),
+        _buildFooterLink(
+          context,
+          'الشروط والأحكام',
+          onTap: () => NavigationService.pushNamed(
+            context: context,
+            routeName: TermsView.routeName,
+          ),
+        ),
       ],
     );
   }
 
   Widget _buildFooterLink(
     BuildContext context,
-    String title,
-    String routeName, {
-    bool isHome = false,
+    String title, {
+    required VoidCallback onTap,
   }) {
     return InkWell(
-      onTap: () {
-        if (isHome) {
-          NavigationService.goNamed(context: context, routeName: routeName);
-        } else {
-          NavigationService.pushNamed(context: context, routeName: routeName);
-        }
-      },
+      onTap: onTap,
       child: Text(
         title,
         style: context.textTheme.bodyMedium?.copyWith(
@@ -99,6 +119,16 @@ class FooterLegalLinks extends StatelessWidget {
           decorationColor: const Color(0xFFFACC15).withValues(alpha: 0.5),
         ),
       ),
+    );
+  }
+
+  static void _scrollToTop(BuildContext context) {
+    final scrollable = Scrollable.maybeOf(context);
+    if (scrollable == null) return;
+    scrollable.position.animateTo(
+      0.0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
     );
   }
 }

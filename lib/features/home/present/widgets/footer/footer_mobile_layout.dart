@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'contacts_items.dart';
 import 'footer_widget.dart';
 
-class FooterMobileLayout extends StatelessWidget implements FooterWidget {
+class FooterMobileLayout extends StatelessWidget {
   const FooterMobileLayout({super.key});
   @override
   Widget build(BuildContext context) {
