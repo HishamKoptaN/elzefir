@@ -75,7 +75,7 @@ class _BodyWidgetState extends State<BodyWidget> {
             ),
             const MenuPricesSection(),
             AboutSection(key: widget.aboutKey),
-            FooterWidget(key: widget.contactKey),
+            FooterWidget(key: widget.contactKey, onAbout: widget.onAbout),
           ],
         ),
       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'contacts_items.dart';
 import 'footer_widget.dart';
 
-class FooterDeskLayout extends StatelessWidget implements FooterWidget {
+class FooterDeskLayout extends StatelessWidget {
   const FooterDeskLayout({super.key});
   @override
   Widget build(BuildContext context) {
