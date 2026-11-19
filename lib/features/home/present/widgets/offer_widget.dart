@@ -6,12 +6,16 @@ import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../core/widgets/custom_image.dart';
 
 import '../../../../generated/assets.gen.dart';
-import 'restaurant_info_builder.dart';
+import '../../domain/entities/restaurant_info_entity.dart';
 
 class OfferWidget extends StatelessWidget {
   const OfferWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
+    // بيانات العرض ثابتة الآن (محتوى العرض يظهر بدون اعتماد على الفايرستور).
+    final info = RestaurantInfoEntity.fallback;
+
     return ClipRRect(
       borderRadius: .circular(12),
       child: SizedBox(
@@ -21,13 +25,9 @@ class OfferWidget extends StatelessWidget {
           fit: .expand,
           textDirection: .rtl,
           children: [
-            RestaurantInfoBuilder(
-              builder: (context, info) {
-                return CustomImage(
-                  image: info.offerImage ?? Assets.images.offer.path,
-                  fit: .cover,
-                );
-              },
+            CustomImage(
+              image: info.offerImage ?? Assets.images.offer.path,
+              fit: .cover,
             ),
             Container(
               padding: .symmetric(vertical: 6.h, horizontal: 2.w),
@@ -60,76 +60,71 @@ class OfferWidget extends StatelessWidget {
                     mainAxisAlignment: .center,
                     crossAxisAlignment: .start,
                     children: [
-                      RestaurantInfoBuilder(
-                        builder: (context, info) {
-                          return Column(
+                      Column(
+                        mainAxisSize: .min,
+                        crossAxisAlignment: .start,
+                        children: [
+                          Text(
+                            info.name,
+                            textAlign: .right,
+                            maxLines: 1,
+                            overflow: .ellipsis,
+                            style: context.textTheme.displaySmall?.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(height: 8.h),
+                          Text(
+                            info.offerTitle,
+                            textAlign: .right,
+                            maxLines: 2,
+                            overflow: .ellipsis,
+                            style: context.textTheme.titleLarge?.copyWith(
+                              color: Colors.white,
+                              fontWeight: .bold,
+                            ),
+                          ),
+                          Text(
+                            info.offerDescription,
+                            textAlign: .right,
+                            maxLines: 2,
+                            overflow: .ellipsis,
+                            style: context.textTheme.bodySmall?.copyWith(
+                              color: Colors.white70,
+                            ),
+                          ),
+                          SizedBox(height: 10.h),
+                          Row(
                             mainAxisSize: .min,
-                            crossAxisAlignment: .start,
+                            spacing: 12.w,
                             children: [
                               Text(
-                                info.name,
-                                textAlign: .right,
-                                maxLines: 1,
-                                overflow: .ellipsis,
-                                style: context.textTheme.displaySmall?.copyWith(
+                                '${info.offerPrice} ج.م',
+                                style: context.textTheme.titleMedium?.copyWith(
                                   color: Colors.white,
+                                  fontWeight: .w900,
                                 ),
                               ),
-                              SizedBox(height: 8.h),
-                              Text(
-                                info.offerTitle,
-                                textAlign: .right,
-                                maxLines: 2,
-                                overflow: .ellipsis,
-                                style: context.textTheme.titleLarge?.copyWith(
-                                  color: Colors.white,
-                                  fontWeight: .bold,
-                                ),
-                              ),
-                              Text(
-                                info.offerDescription,
-                                textAlign: .right,
-                                maxLines: 2,
-                                overflow: .ellipsis,
-                                style: context.textTheme.bodySmall?.copyWith(
-                                  color: Colors.white70,
-                                ),
-                              ),
-                              SizedBox(height: 10.h),
-                              Row(
-                                mainAxisSize: .min,
-                                spacing: 12.w,
-                                children: [
-                                  Text(
-                                    '${info.offerPrice} ج.م',
-                                    style: context.textTheme.titleMedium
-                                        ?.copyWith(
-                                          color: Colors.white,
-                                          fontWeight: .w900,
-                                        ),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () async {
-                                      final uri = Uri.https(
-                                        'wa.me',
-                                        '/201124497981',
-                                        {
-                                          'text':
-                                              'مرحباً، أريد طلب ${info.offerTitle}',
-                                        },
-                                      );
-                                      await launchUrl(
-                                        uri,
-                                        mode: .externalApplication,
-                                      );
+                              ElevatedButton(
+                                onPressed: () async {
+                                  final uri = Uri.https(
+                                    'wa.me',
+                                    '/201124497981',
+                                    {
+                                      'text':
+                                          'مرحباً، أريد طلب ${info.offerTitle}',
                                     },
-                                    child: Text(info.offerCta),
-                                  ),
-                                ],
+                                  );
+                                  await launchUrl(
+                                    uri,
+                                    mode: .externalApplication,
+                                  );
+                                },
+                                child: Text(info.offerCta),
                               ),
                             ],
-                          );
-                        },
+                          ),
+                        ],
                       ),
                     ],
                   ),
