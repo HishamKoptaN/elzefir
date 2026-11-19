@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 
 import '../../../../../../core/analytics/analytics_service.dart';
 import '../../../../../../core/di/dependency_injection.dart';
@@ -16,6 +15,7 @@ class ProductCardImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final badgeLabel = product.category.name;
+    final colors = context.colorScheme;
 
     return GestureDetector(
       onTap: () async {
@@ -42,59 +42,41 @@ class ProductCardImage extends StatelessWidget {
           },
         );
       },
-      child: Container(
-        height: 112.r,
-        width: 112.r,
-        decoration: BoxDecoration(
-          color: context.colorScheme.slateCardBg,
-          borderRadius: .circular(12.r),
-          border: Border.all(color: context.colorScheme.slateBorder),
-        ),
-        child: ClipRRect(
-          borderRadius: .circular(12.r),
-          child: Stack(
-            fit: .expand,
-            children: [
-              CustomImage(image: product.image, fit: .cover),
-              if (badgeLabel.isNotEmpty)
-                Positioned(
-                  top: 6.h,
-                  right: 6.w,
-                  child: Container(
-                    padding: .symmetric(horizontal: 8.w, vertical: 3.h),
-                    decoration: BoxDecoration(
-                      color: context.colorScheme.brandNavy.withValues(
-                        alpha: 0.9,
+      child: AspectRatio(
+        aspectRatio: 16 / 10,
+        child: Container(
+          decoration: BoxDecoration(
+            color: colors.brandSand,
+            borderRadius: .circular(16.r),
+            border: Border.all(color: colors.brandGold.withValues(alpha: 0.2)),
+          ),
+          child: ClipRRect(
+            borderRadius: .circular(16.r),
+            child: Stack(
+              fit: .expand,
+              children: [
+                CustomImage(image: product.image, fit: .cover),
+                if (badgeLabel.isNotEmpty)
+                  Positioned(
+                    top: 8.h,
+                    right: 8.w,
+                    child: Container(
+                      padding: .symmetric(horizontal: 10.w, vertical: 4.h),
+                      decoration: BoxDecoration(
+                        color: colors.brandGold,
+                        borderRadius: .circular(999),
                       ),
-                      borderRadius: .circular(20.r),
-                      border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.2),
+                      child: Text(
+                        badgeLabel,
+                        style: context.textTheme.labelSmall?.copyWith(
+                          fontWeight: .w800,
+                          color: colors.brandNavyDeep,
+                        ),
                       ),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 5.r,
-                          height: 5.r,
-                          decoration: BoxDecoration(
-                            color: context.colorScheme.brandCoral,
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        Gap(4.w),
-                        Text(
-                          badgeLabel,
-                          style: context.textTheme.labelSmall?.copyWith(
-                            fontWeight: .w700,
-                            fontSize: 9.sp,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
                     ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

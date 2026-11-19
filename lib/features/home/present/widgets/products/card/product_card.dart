@@ -17,42 +17,37 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colorScheme;
     return InkWell(
       onTap: () => context.goNamed(DishDetailsView.routeName, extra: product),
-      borderRadius: .circular(16.r),
+      borderRadius: .circular(20.r),
       child: Container(
         padding: .all(12.r),
         decoration: BoxDecoration(
-          color: context.colorScheme.surface,
-          borderRadius: .circular(16.r),
-          border: Border.all(color: context.colorScheme.slateBorder),
+          color: colors.surface,
+          borderRadius: .circular(20.r),
+          border: Border.all(color: colors.brandGold.withValues(alpha: 0.25)),
           boxShadow: [
             BoxShadow(
-              color: context.colorScheme.brandNavy.withValues(alpha: 0.06),
-              blurRadius: 20.r,
-              offset: const Offset(0, 4),
+              color: colors.brandNavyDeep.withValues(alpha: 0.08),
+              blurRadius: 24.r,
+              offset: const Offset(0, 8),
             ),
           ],
         ),
         child: Column(
           crossAxisAlignment: .stretch,
           children: [
-            Row(
-              crossAxisAlignment: .start,
-              children: [
-                ProductCardImage(product: product),
-                Gap(12.w),
-                Expanded(child: ProductCardInfo(product: product)),
-              ],
-            ),
+            ProductCardImage(product: product),
+            Gap(12.h),
+            ProductCardInfo(product: product),
             Gap(10.h),
             Container(
               padding: .only(top: 10.h),
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color: context.colorScheme.slateBorder,
-                    width: 1,
+                    color: colors.brandGold.withValues(alpha: 0.2),
                   ),
                 ),
               ),
