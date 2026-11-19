@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/utils/extensions/device_type_extension.dart';
@@ -58,6 +59,23 @@ class OfferWidget extends StatelessWidget {
                     mainAxisAlignment: .center,
                     crossAxisAlignment: .start,
                     children: [
+                      Row(
+                        mainAxisSize: .min,
+                        spacing: 8.w,
+                        children: [
+                          _Pill(
+                            text: 'عرض اليوم',
+                            background: colors.brandGold,
+                            foreground: colors.brandNavyDeep,
+                          ),
+                          _Pill(
+                            text: 'وفر 90 ج.م',
+                            background: colors.brandCoral,
+                            foreground: Colors.white,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10.h),
                       Text(
                         info.name,
                         textAlign: .right,
@@ -90,6 +108,25 @@ class OfferWidget extends StatelessWidget {
                           color: Colors.white70,
                         ),
                       ),
+                      SizedBox(height: 12.h),
+                      const Wrap(
+                        spacing: 8,
+                        runSpacing: 6,
+                        children: [
+                          _FeatureChip(
+                            icon: Icons.groups_rounded,
+                            label: 'تكفي 4-5 أفراد',
+                          ),
+                          _FeatureChip(
+                            icon: Icons.local_fire_department_rounded,
+                            label: 'شوي وقلي فوري',
+                          ),
+                          _FeatureChip(
+                            icon: Icons.delivery_dining_rounded,
+                            label: 'توصيل ساخن',
+                          ),
+                        ],
+                      ),
                       SizedBox(height: 14.h),
                       Wrap(
                         spacing: 10.w,
@@ -110,14 +147,32 @@ class OfferWidget extends StatelessWidget {
                               decoration: .lineThrough,
                             ),
                           ),
-                          ElevatedButton(
+                          FilledButton.icon(
                             onPressed: () async {
                               final uri = Uri.https('wa.me', '/201124497981', {
                                 'text': 'مرحباً، أريد طلب ${info.offerTitle}',
                               });
                               await launchUrl(uri, mode: .externalApplication);
                             },
-                            child: Text(info.offerCta),
+                            style: FilledButton.styleFrom(
+                              backgroundColor: colors.brandGold,
+                              foregroundColor: colors.brandNavyDeep,
+                              padding: .symmetric(
+                                horizontal: 18.w,
+                                vertical: 12.h,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: .circular(12.r),
+                              ),
+                              textStyle: context.textTheme.labelLarge?.copyWith(
+                                fontWeight: .w800,
+                              ),
+                            ),
+                            icon: const FaIcon(
+                              FontAwesomeIcons.whatsapp,
+                              size: 16,
+                            ),
+                            label: Text(info.offerCta),
                           ),
                         ],
                       ),
@@ -128,6 +183,69 @@ class OfferWidget extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _Pill extends StatelessWidget {
+  const _Pill({
+    required this.text,
+    required this.background,
+    required this.foreground,
+  });
+
+  final String text;
+  final Color background;
+  final Color foreground;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: .symmetric(horizontal: 10.w, vertical: 4.h),
+      decoration: BoxDecoration(
+        color: background,
+        borderRadius: .circular(999),
+      ),
+      child: Text(
+        text,
+        style: context.textTheme.labelSmall?.copyWith(
+          color: foreground,
+          fontWeight: .w800,
+        ),
+      ),
+    );
+  }
+}
+
+class _FeatureChip extends StatelessWidget {
+  const _FeatureChip({required this.icon, required this.label});
+
+  final IconData icon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: .symmetric(horizontal: 8.w, vertical: 4.h),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.12),
+        borderRadius: .circular(999),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
+      ),
+      child: Row(
+        mainAxisSize: .min,
+        spacing: 4.w,
+        children: [
+          Icon(icon, size: 13.r, color: Colors.white),
+          Text(
+            label,
+            style: context.textTheme.labelSmall?.copyWith(
+              color: Colors.white,
+              fontWeight: .w600,
+            ),
+          ),
+        ],
       ),
     );
   }
