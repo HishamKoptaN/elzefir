@@ -12,7 +12,6 @@ import 'about/about.dart';
 import 'footer/footer_widget.dart';
 import 'home_app_bar/home_status_badge.dart';
 import 'menu_prices_section.dart';
-import 'offer_widget.dart';
 import 'products/products_section_header.dart';
 import 'site_info/site_info_section.dart';
 import 'products/products_widget.dart';
@@ -25,7 +24,6 @@ class BodyWidget extends StatefulWidget {
     required this.productsKey,
     required this.aboutKey,
     required this.contactKey,
-    required this.offerWidget,
     required this.onProcudcts,
     required this.onAbout,
     required this.onContact,
@@ -34,7 +32,6 @@ class BodyWidget extends StatefulWidget {
   final GlobalKey productsKey;
   final GlobalKey aboutKey;
   final GlobalKey contactKey;
-  final GlobalKey offerWidget;
   final VoidCallback onProcudcts;
   final VoidCallback onAbout;
   final VoidCallback onContact;
@@ -64,7 +61,6 @@ class _BodyWidgetState extends State<BodyWidget> {
               onAbout: widget.onAbout,
               onContact: widget.onContact,
             ),
-            const OfferWidget(),
             const HomeStatusBadge(),
             const QuickContactButtons(),
             const ProductsSectionHeader(),

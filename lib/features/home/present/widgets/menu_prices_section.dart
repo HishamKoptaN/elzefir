@@ -52,7 +52,7 @@ class MenuPricesSection extends StatelessWidget {
                     color: context.colorScheme.brandGoldHover,
                   ),
                   Text(
-                    'منيو اليوم وأسعاره',
+                    'منيو اليوم المختصر وأسعاره',
                     style: context.textTheme.titleLarge?.copyWith(
                       fontWeight: .w900,
                       color: context.colorScheme.brandNavyDeep,
@@ -88,6 +88,7 @@ class _PriceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final nameStyle = context.textTheme.bodyMedium;
     return Container(
       padding: .symmetric(vertical: 6.h, horizontal: 10.w),
       decoration: BoxDecoration(
@@ -103,7 +104,8 @@ class _PriceItem extends StatelessWidget {
         children: [
           Text(
             name.trim(),
-            style: context.textTheme.bodyMedium?.copyWith(
+            style: nameStyle?.copyWith(
+              fontSize: (nameStyle.fontSize ?? 14) * 0.7,
               color: context.colorScheme.slateText,
             ),
           ),
