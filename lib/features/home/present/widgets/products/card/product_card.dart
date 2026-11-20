@@ -20,18 +20,18 @@ class ProductCard extends StatelessWidget {
     final colors = context.colorScheme;
     return InkWell(
       onTap: () => context.goNamed(DishDetailsView.routeName, extra: product),
-      borderRadius: .circular(20.r),
+      borderRadius: .circular(24.r),
       child: Container(
-        padding: .all(12.r),
+        padding: .all(14.r),
         decoration: BoxDecoration(
           color: colors.surface,
-          borderRadius: .circular(20.r),
-          border: Border.all(color: colors.brandGold.withValues(alpha: 0.25)),
+          borderRadius: .circular(24.r),
+          border: Border.all(color: colors.brandGold.withValues(alpha: 0.18)),
           boxShadow: [
             BoxShadow(
-              color: colors.brandNavyDeep.withValues(alpha: 0.08),
+              color: colors.brandNavyDeep.withValues(alpha: 0.06),
               blurRadius: 24.r,
-              offset: const Offset(0, 8),
+              offset: const Offset(0, 10),
             ),
           ],
         ),

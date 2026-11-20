@@ -43,15 +43,15 @@ class ProductCardImage extends StatelessWidget {
         );
       },
       child: AspectRatio(
-        aspectRatio: 16 / 10,
+        aspectRatio: 4 / 3,
         child: Container(
           decoration: BoxDecoration(
             color: colors.brandSand,
-            borderRadius: .circular(16.r),
+            borderRadius: .circular(20.r),
             border: Border.all(color: colors.brandGold.withValues(alpha: 0.2)),
           ),
           child: ClipRRect(
-            borderRadius: .circular(16.r),
+            borderRadius: .circular(20.r),
             child: Stack(
               fit: .expand,
               children: [
@@ -63,14 +63,14 @@ class ProductCardImage extends StatelessWidget {
                     child: Container(
                       padding: .symmetric(horizontal: 10.w, vertical: 4.h),
                       decoration: BoxDecoration(
-                        color: colors.brandGold,
+                        color: colors.brandNavyDeep.withValues(alpha: 0.9),
                         borderRadius: .circular(999),
                       ),
                       child: Text(
                         badgeLabel,
                         style: context.textTheme.labelSmall?.copyWith(
-                          fontWeight: .w800,
-                          color: colors.brandNavyDeep,
+                          fontWeight: .w700,
+                          color: colors.brandGold,
                         ),
                       ),
                     ),

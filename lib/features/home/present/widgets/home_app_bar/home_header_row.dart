@@ -26,12 +26,9 @@ class HomeHeaderRow extends StatelessWidget {
           width: 56.r,
           padding: .all(6.r),
           decoration: BoxDecoration(
+            color: colors.brandSand,
             borderRadius: .circular(16.r),
-            gradient: LinearGradient(
-              begin: .topLeft,
-              end: .bottomRight,
-              colors: [colors.brandGold, colors.brandGoldHover],
-            ),
+            border: Border.all(color: colors.brandGold.withValues(alpha: 0.5)),
             boxShadow: [
               BoxShadow(
                 color: colors.brandGold.withValues(alpha: 0.25),
@@ -56,7 +53,7 @@ class HomeHeaderRow extends StatelessWidget {
                     overflow: .ellipsis,
                     style: context.textTheme.headlineSmall?.copyWith(
                       fontWeight: .w900,
-                      color: Colors.white,
+                      color: colors.onPrimary,
                     ),
                   ),
                   Text(
@@ -65,7 +62,7 @@ class HomeHeaderRow extends StatelessWidget {
                     overflow: .ellipsis,
                     style: context.textTheme.bodySmall?.copyWith(
                       fontWeight: .w500,
-                      color: Colors.white70,
+                      color: colors.onPrimary.withValues(alpha: 0.75),
                     ),
                   ),
                 ],
@@ -77,9 +74,6 @@ class HomeHeaderRow extends StatelessWidget {
           _HeaderLink(title: 'المنتجات', onTap: onMenu),
           _HeaderLink(title: 'من نحن', onTap: onAbout),
           _HeaderLink(title: 'اتصل بنا', onTap: onContact),
-          Gap(8.w),
-          _OrderButton(onTap: onMenu),
-          Gap(10.w),
         ],
         const HomeHeaderActions(),
       ],
@@ -95,6 +89,7 @@ class _HeaderLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colorScheme;
     return InkWell(
       onTap: onTap,
       borderRadius: .circular(8.r),
@@ -103,7 +98,7 @@ class _HeaderLink extends StatelessWidget {
         child: Text(
           title,
           style: context.textTheme.bodyMedium?.copyWith(
-            color: Colors.white.withValues(alpha: 0.85),
+            color: colors.onPrimary.withValues(alpha: 0.85),
             fontWeight: .w600,
           ),
         ),
@@ -112,25 +107,3 @@ class _HeaderLink extends StatelessWidget {
   }
 }
 
-class _OrderButton extends StatelessWidget {
-  const _OrderButton({this.onTap});
-
-  final VoidCallback? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colorScheme;
-    return FilledButton.icon(
-      onPressed: onTap,
-      style: FilledButton.styleFrom(
-        backgroundColor: colors.brandGold,
-        foregroundColor: colors.brandNavyDeep,
-        padding: .symmetric(horizontal: 16.w, vertical: 10.h),
-        shape: RoundedRectangleBorder(borderRadius: .circular(12.r)),
-        textStyle: context.textTheme.labelLarge?.copyWith(fontWeight: .w800),
-      ),
-      icon: const Icon(Icons.shopping_bag_rounded, size: 16),
-      label: const Text('اطلب الآن'),
-    );
-  }
-}
