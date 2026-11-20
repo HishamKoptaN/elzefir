@@ -62,6 +62,7 @@ class _BodyWidgetState extends State<BodyWidget> {
               onContact: widget.onContact,
             ),
             const HomeStatusBadge(),
+            const GallerySection(),
             const QuickContactButtons(),
             const ProductsSectionHeader(),
             _ProductLayout(
@@ -71,7 +72,6 @@ class _BodyWidgetState extends State<BodyWidget> {
               },
             ),
             const MenuPricesSection(),
-            const GallerySection(),
             AboutSection(key: widget.aboutKey),
             FooterWidget(key: widget.contactKey, onAbout: widget.onAbout),
           ],
