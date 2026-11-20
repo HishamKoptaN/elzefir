@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../core/analytics/analytics_service.dart';
+import '../../../core/analytics/consent_service.dart';
 import '../../../core/di/dependency_injection.dart';
 import '../domain/visitor_tracker.dart';
 
@@ -18,6 +19,13 @@ class VisitorsRouterObserver extends NavigatorObserver {
 
   Future<void> _handleRoute(String? name) async {
     if (name == null || name.isEmpty) {
+      return;
+    }
+    try {
+      if (!await getIt<ConsentService>().isGranted()) {
+        return;
+      }
+    } catch (_) {
       return;
     }
     try {

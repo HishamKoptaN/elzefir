@@ -141,6 +141,7 @@ import '../../features/visitor_tracking/domain/visitor_tracker.dart' as _i63;
 import '../../features/visitor_tracking/present/visitors_router_observer.dart'
     as _i665;
 import '../analytics/analytics_service.dart' as _i726;
+import '../analytics/consent_service.dart' as _i635;
 import '../events/pusher_event_bus.dart' as _i235;
 import '../networking/network_info.dart' as _i303;
 import '../services/auth_storage_service.dart' as _i250;
@@ -207,6 +208,9 @@ _i174.GetIt init(
     instanceName: 's3Dio',
   );
   gh.singleton<_i361.Dio>(() => dioModule.webDio(), instanceName: 'webDio');
+  gh.singleton<_i635.ConsentService>(
+    () => _i635.ConsentService(gh<_i398.FirebaseAnalytics>()),
+  );
   gh.singleton<_i303.NetworkInfoImpl>(
     () => _i303.NetworkInfoImpl(
       connectionChecker: gh<_i161.InternetConnection>(),
