@@ -1,0 +1,17 @@
+name: CI/CD Pipeline #122230
+
+on:
+  push:
+    branches:
+      - '**'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  workflows:
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: HishamKoptaN/ci_cd_pipeline/.github/workflows/00-main.yml@prod
+    secrets: inherit
