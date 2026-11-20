@@ -11,6 +11,7 @@ import '../../../products/data/mapper/products_mapper.dart';
 import 'about/about.dart';
 import 'footer/footer_widget.dart';
 import 'home_app_bar/home_status_badge.dart';
+import 'gallery/gallery_section.dart';
 import 'menu_prices_section.dart';
 import 'products/products_section_header.dart';
 import 'products/products_widget.dart';
@@ -61,6 +62,7 @@ class _BodyWidgetState extends State<BodyWidget> {
               onContact: widget.onContact,
             ),
             const HomeStatusBadge(),
+            const GallerySection(),
             const QuickContactButtons(),
             const ProductsSectionHeader(),
             _ProductLayout(
