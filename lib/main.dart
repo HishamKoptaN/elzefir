@@ -40,7 +40,7 @@ Future<void> main() async {
     );
     Bloc.observer = AppBlocObserver();
     configureDependencies();
-    await getIt<ConsentService>().applyStoredConsent();
+    await getIt<ConsentService>().grant();
     await ScreenUtil.ensureScreenSize();
     await findSystemLocale();
     intl.Intl.defaultLocale = 'ar';
