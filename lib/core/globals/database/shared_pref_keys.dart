@@ -10,5 +10,6 @@ class SharedPrefKeys {
   static const String isUnitPdfGenerated = 'is-unit-pdf-generated-';
   static const String visitorId = 'visitorId';
   static const String visitorRecorded = 'visitorRecorded';
+  static const String visitorVisitCount = 'visitorVisitCount';
   static const String analyticsConsent = 'analyticsConsent';
 }

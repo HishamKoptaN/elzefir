@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/analytics/analytics_events.dart';
 import '../../../../core/analytics/analytics_service.dart';
 import '../domain/visitor_repository.dart';
 import 'visitor_data_src.dart';
@@ -15,13 +16,15 @@ class VisitorRepositoryImpl implements VisitorRepository {
   Future<void> recordVisit({
     required String visitorId,
     required bool isFirstVisit,
+    int visitNumber = 1,
   }) async {
     await _dataSrc.recordVisit(
       visitorId: visitorId,
       isFirstVisit: isFirstVisit,
     );
-    if (isFirstVisit) {
-      await _analytics.logEvent(name: 'first_visit');
-    }
+    await _analytics.logEvent(
+      name: isFirstVisit ? AnalyticsEvents.firstVisit : AnalyticsEvents.returningVisit,
+      parameters: {'visit_number': visitNumber},
+    );
   }
 }
