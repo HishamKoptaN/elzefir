@@ -13,7 +13,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final offerWidget = GlobalKey();
   final categoriesKey = GlobalKey();
   final productsKey = GlobalKey();
   final additionsKey = GlobalKey();
@@ -43,7 +42,6 @@ class _HomeViewState extends State<HomeView> {
         productsKey: productsKey,
         aboutKey: aboutKey,
         contactKey: contactKey,
-        offerWidget: offerWidget,
         onProcudcts: () {
           scrollToSection(productsKey);
         },
