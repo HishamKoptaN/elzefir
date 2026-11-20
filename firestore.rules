@@ -1,0 +1,37 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // كتالوج المطعم وإعداداته: للقراءة العامة فقط، والتعديل من كونسول Firebase.
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // عدّادات الزيارات: كتابة مجهولة محدودة الحقول، دون حذف أو قراءة.
+    match /stats/visitors {
+      allow create, update: if request.resource.data.keys().hasOnly([
+        'totalVisits',
+        'uniqueVisitors',
+        'lastVisitAt',
+        'daily'
+      ]) && request.resource.data.totalVisits is int
+        && request.resource.data.daily is map;
+      allow read, delete: if false;
+    }
+
+    match /visitors/{visitorId} {
+      allow create, update: if request.resource.data.keys().hasOnly([
+        'firstSeenAt',
+        'lastSeenAt',
+        'visits'
+      ]) && request.resource.data.visits is int;
+      allow read, delete: if false;
+    }
+  }
+}
