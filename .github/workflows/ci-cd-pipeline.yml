@@ -8,11 +8,13 @@ permissions:
   contents: write
   checks: write
   pull-requests: write
+  checks: write
 jobs:
   workflows:
     permissions:
       contents: write
       checks: write
       pull-requests: write
+      checks: write
     uses: HishamKoptaN/ci_cd_pipeline/.github/workflows/00-main.yml@prod
     secrets: inherit
