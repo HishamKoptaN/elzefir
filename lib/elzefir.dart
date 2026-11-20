@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/di/dependency_injection.dart';
 import 'core/routing/app_router.dart';
-import 'features/visitor_tracking/present/consent_banner.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/theme_cubit.dart';
 
@@ -50,10 +49,7 @@ class Elzefir extends StatelessWidget {
                 return const Locale('ar', 'EG');
               },
               builder: (context, child) {
-                return Directionality(
-                  textDirection: .rtl,
-                  child: Stack(children: [child!, const ConsentBanner()]),
-                );
+                return Directionality(textDirection: .rtl, child: child!);
               },
               routerConfig: AppRouter.router,
             );
