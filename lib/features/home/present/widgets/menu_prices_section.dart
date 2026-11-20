@@ -33,19 +33,32 @@ class MenuPricesSection extends StatelessWidget {
           width: .infinity,
           padding: .all(16.r),
           decoration: BoxDecoration(
-            color: context.colorScheme.surface,
+            color: context.colorScheme.brandCream,
             borderRadius: .circular(16.r),
-            border: .all(color: context.colorScheme.slateBorder),
+            border: .all(
+              color: context.colorScheme.brandGold.withValues(alpha: 0.35),
+            ),
           ),
           child: Column(
             crossAxisAlignment: .start,
             children: [
-              Text(
-                'منيو اليوم وأسعاره',
-                style: context.textTheme.titleLarge?.copyWith(
-                  fontWeight: .bold,
-                  color: context.colorScheme.brandNavy,
-                ),
+              Row(
+                mainAxisSize: .min,
+                spacing: 8.w,
+                children: [
+                  Icon(
+                    Icons.receipt_long_rounded,
+                    size: 20.r,
+                    color: context.colorScheme.brandGoldHover,
+                  ),
+                  Text(
+                    'منيو اليوم وأسعاره',
+                    style: context.textTheme.titleLarge?.copyWith(
+                      fontWeight: .w900,
+                      color: context.colorScheme.brandNavyDeep,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 12.h),
               Wrap(
@@ -54,9 +67,7 @@ class MenuPricesSection extends StatelessWidget {
                 children: [
                   for (final product in products)
                     _PriceItem(
-                      name: product.name.isEmpty
-                          ? product.title
-                          : product.name,
+                      name: product.name.isEmpty ? product.title : product.name,
                       price: product.price,
                     ),
                 ],
@@ -82,7 +93,9 @@ class _PriceItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: context.colorScheme.surface,
         borderRadius: .circular(9999),
-        border: .all(color: context.colorScheme.slateBorder),
+        border: .all(
+          color: context.colorScheme.brandGold.withValues(alpha: 0.25),
+        ),
       ),
       child: Row(
         mainAxisSize: .min,
@@ -94,13 +107,28 @@ class _PriceItem extends StatelessWidget {
               color: context.colorScheme.slateText,
             ),
           ),
-          Text(
-            price.isEmpty ? '' : '$price ج.م',
-            style: context.textTheme.bodyMedium?.copyWith(
-              fontWeight: .bold,
-              color: context.colorScheme.brandNavy,
+          if (price.isNotEmpty)
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: price,
+                    style: TextStyle(
+                      fontWeight: .w900,
+                      color: context.colorScheme.brandNavyDeep,
+                    ),
+                  ),
+                  TextSpan(
+                    text: ' ج.م',
+                    style: TextStyle(
+                      fontWeight: .w700,
+                      color: context.colorScheme.brandGoldHover,
+                    ),
+                  ),
+                ],
+              ),
+              style: context.textTheme.bodyMedium,
             ),
-          ),
         ],
       ),
     );
