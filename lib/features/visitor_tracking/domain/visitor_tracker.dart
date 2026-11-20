@@ -1,0 +1,50 @@
+import 'dart:math';
+
+import 'package:injectable/injectable.dart';
+
+import '../../../core/globals/database/shared_pref_helper.dart';
+import '../../../core/globals/database/shared_pref_keys.dart';
+import 'visitor_repository.dart';
+
+@singleton
+class VisitorTracker {
+  VisitorTracker(this._repository);
+
+  final VisitorRepository _repository;
+
+  Future<void> track() async {
+    final visitorId = await _loadVisitorId();
+    final isFirstVisit = await _isFirstVisit();
+    await _repository.recordVisit(
+      visitorId: visitorId,
+      isFirstVisit: isFirstVisit,
+    );
+  }
+
+  Future<String> _loadVisitorId() async {
+    final savedId = await SharedPrefHelper.getString(
+      key: SharedPrefKeys.visitorId,
+    );
+    if (savedId != null && savedId.isNotEmpty) {
+      return savedId;
+    }
+    final suffix = Random().nextInt(1 << 30);
+    final newId = 'v-${DateTime.now().microsecondsSinceEpoch}-$suffix';
+    await SharedPrefHelper.setData(key: SharedPrefKeys.visitorId, value: newId);
+    return newId;
+  }
+
+  Future<bool> _isFirstVisit() async {
+    final recorded = await SharedPrefHelper.getBool(
+      key: SharedPrefKeys.visitorRecorded,
+    );
+    if (recorded) {
+      return false;
+    }
+    await SharedPrefHelper.setData(
+      key: SharedPrefKeys.visitorRecorded,
+      value: true,
+    );
+    return true;
+  }
+}

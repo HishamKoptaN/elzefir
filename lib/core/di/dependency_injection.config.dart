@@ -137,6 +137,9 @@ import '../../features/visitor_tracking/data/visitor_data_src.dart' as _i829;
 import '../../features/visitor_tracking/data/visitor_repository_impl.dart'
     as _i937;
 import '../../features/visitor_tracking/domain/visitor_repository.dart' as _i10;
+import '../../features/visitor_tracking/domain/visitor_tracker.dart' as _i63;
+import '../../features/visitor_tracking/present/visitors_router_observer.dart'
+    as _i665;
 import '../analytics/analytics_service.dart' as _i726;
 import '../events/pusher_event_bus.dart' as _i235;
 import '../networking/network_info.dart' as _i303;
@@ -192,6 +195,9 @@ _i174.GetIt init(
   );
   gh.singleton<_i310.OrderItemsBloc>(() => _i310.OrderItemsBloc());
   gh.singleton<_i497.DateBloc>(() => _i497.DateBloc());
+  gh.singleton<_i665.VisitorsRouterObserver>(
+    () => _i665.VisitorsRouterObserver(),
+  );
   gh.lazySingleton<_i749.FirebaseAuthService>(
     () => _i749.FirebaseAuthService(),
   );
@@ -264,6 +270,9 @@ _i174.GetIt init(
   );
   gh.lazySingleton<_i552.SignUpApi>(
     () => _i552.SignUpApi(gh<_i361.Dio>(instanceName: 'authDio')),
+  );
+  gh.singleton<_i63.VisitorTracker>(
+    () => _i63.VisitorTracker(gh<_i10.VisitorRepository>()),
   );
   gh.singleton<_i956.ProductsUseCase>(
     () => _i956.ProductsUseCase(productsRepo: gh<_i482.ProductsRepo>()),

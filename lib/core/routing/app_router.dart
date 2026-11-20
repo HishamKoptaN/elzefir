@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 import '../../features/auth/auth/present/views/auth_view.dart';
+import '../../features/visitor_tracking/present/visitors_router_observer.dart';
 import '../globals/global_variable.dart';
 import '../di/dependency_injection.dart';
 import 'config/route_config.dart';
@@ -52,6 +53,7 @@ class AppRouter {
       GoRouterRefreshStream(getIt<AuthBloc>().stream),
     ]),
     navigatorKey: GlobalVariable.navState,
+    observers: [getIt<VisitorsRouterObserver>()],
     debugLogDiagnostics: true,
     routes: RouteConfig.routes,
     redirect: (context, state) {
