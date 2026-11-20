@@ -3,6 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../../core/analytics/analytics_events.dart';
+import '../../../../../../core/analytics/analytics_service.dart';
+import '../../../../../../core/analytics/consent_service.dart';
+import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../products/domain/entities/product_entity.dart';
 import '../../../../../dish_details/present/views/dish_details_view.dart';
@@ -19,7 +23,22 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
     return InkWell(
-      onTap: () => context.goNamed(DishDetailsView.routeName, extra: product),
+      onTap: () async {
+        try {
+          if (await getIt<ConsentService>().isGranted()) {
+            await getIt<AnalyticsService>().logEvent(
+              name: AnalyticsEvents.viewProduct,
+              parameters: {'product_id': product.id},
+            );
+          }
+        } catch (_) {
+          // Analytics is best-effort and must never break navigation.
+        }
+        if (!context.mounted) {
+          return;
+        }
+        context.goNamed(DishDetailsView.routeName, extra: product);
+      },
       borderRadius: .circular(24.r),
       child: Container(
         padding: .all(14.r),

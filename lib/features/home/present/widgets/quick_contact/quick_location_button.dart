@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../core/analytics/analytics_events.dart';
+import '../../../../../core/analytics/analytics_service.dart';
+import '../../../../../core/analytics/consent_service.dart';
+import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 
 class QuickLocationButton extends StatelessWidget {
@@ -14,6 +18,15 @@ class QuickLocationButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: () async {
+          try {
+            if (await getIt<ConsentService>().isGranted()) {
+              await getIt<AnalyticsService>().logEvent(
+                name: AnalyticsEvents.clickMaps,
+              );
+            }
+          } catch (_) {
+            // Analytics is best-effort and must never break the action.
+          }
           await launchUrl(
             Uri.parse('https://maps.google.com/?q=العياط+شارع+الجيش'),
             mode: .externalApplication,

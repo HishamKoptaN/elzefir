@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../../core/analytics/analytics_events.dart';
 import '../../../../../../core/analytics/analytics_service.dart';
 import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
@@ -20,7 +21,7 @@ class ProductCardImage extends StatelessWidget {
     return GestureDetector(
       onTap: () async {
         await getIt<AnalyticsService>().logEvent(
-          name: 'view_product_image',
+          name: AnalyticsEvents.viewProductImage,
           parameters: {'debug_mode': 1, 'product_id': product.id},
         );
         if (!context.mounted) {
