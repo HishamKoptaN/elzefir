@@ -32,7 +32,7 @@ class MenuPricesSection extends StatelessWidget {
         }
         return Container(
           width: .infinity,
-          padding: .all(12.r),
+          padding: .all(10.r),
           decoration: BoxDecoration(
             color: context.colorScheme.brandCream,
             borderRadius: .circular(16.r),
@@ -45,26 +45,26 @@ class MenuPricesSection extends StatelessWidget {
             children: [
               Row(
                 mainAxisSize: .min,
-                spacing: 6.w,
+                spacing: 4.w,
                 children: [
                   Icon(
                     Icons.receipt_long_rounded,
-                    size: 16.r,
+                    size: 14.r,
                     color: context.colorScheme.brandGoldHover,
                   ),
                   Text(
                     'منيو اليوم المختصر وأسعاره',
-                    style: context.textTheme.titleMedium?.copyWith(
+                    style: context.textTheme.titleSmall?.copyWith(
                       fontWeight: .w900,
                       color: context.colorScheme.brandNavyDeep,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 6.h),
               Wrap(
-                spacing: 6.w,
-                runSpacing: 6.h,
+                spacing: 4.w,
+                runSpacing: 4.h,
                 children: [
                   for (final product in products)
                     PriceItem(

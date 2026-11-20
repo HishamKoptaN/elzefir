@@ -11,20 +11,20 @@ class PriceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final labelStyle = context.textTheme.bodySmall?.copyWith(
+    final labelStyle = context.textTheme.labelSmall?.copyWith(
       color: context.colorScheme.slateText,
     );
-    final priceStyle = context.textTheme.bodySmall?.copyWith(
+    final priceStyle = context.textTheme.labelSmall?.copyWith(
       fontWeight: .w900,
       color: context.colorScheme.brandNavyDeep,
     );
-    final currencyStyle = context.textTheme.bodySmall?.copyWith(
+    final currencyStyle = context.textTheme.labelSmall?.copyWith(
       fontWeight: .w700,
       color: context.colorScheme.brandGoldHover,
     );
 
     return Container(
-      padding: .symmetric(vertical: 4.h, horizontal: 8.w),
+      padding: .symmetric(vertical: 3.h, horizontal: 6.w),
       decoration: BoxDecoration(
         color: context.colorScheme.surface,
         borderRadius: .circular(9999.r),
@@ -34,13 +34,13 @@ class PriceItem extends StatelessWidget {
       ),
       child: Row(
         mainAxisSize: .min,
-        spacing: 5.w,
+        spacing: 4.w,
         children: [
           Text(name.trim(), style: labelStyle),
           if (price.isNotEmpty)
             Row(
               mainAxisSize: .min,
-              spacing: 3.w,
+              spacing: 2.w,
               children: [
                 Text(price, style: priceStyle),
                 Text('ج.م', style: currencyStyle),
