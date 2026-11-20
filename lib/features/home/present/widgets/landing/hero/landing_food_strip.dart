@@ -71,7 +71,7 @@ class _LandingFoodStripState extends State<LandingFoodStrip> {
             Text(
               'مختارات الطاهي المميزة',
               style: context.textTheme.titleMedium?.copyWith(
-                color: colors.onSurface,
+                color: colors.onPrimary,
                 fontWeight: .w700,
               ),
             ),

@@ -23,7 +23,7 @@ class LandingHeroHeadline extends StatelessWidget {
         Text(
           'طعم البحر',
           style: theme.displaySmall?.copyWith(
-            color: context.colorScheme.onSurface,
+            color: colors.onPrimary,
             fontWeight: .w400,
             height: 1.1,
           ),
