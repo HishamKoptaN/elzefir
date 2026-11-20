@@ -5,7 +5,9 @@ import '../../../../../core/utils/extensions/theme_ext.dart';
 import 'hero/landing_hero_content.dart';
 
 class LandingHeroSection extends StatefulWidget {
-  const LandingHeroSection({super.key});
+  const LandingHeroSection({super.key, this.onExplore});
+
+  final VoidCallback? onExplore;
 
   @override
   State<LandingHeroSection> createState() => _LandingHeroSectionState();
@@ -46,7 +48,11 @@ class _LandingHeroSectionState extends State<LandingHeroSection>
         color: colors.brandNavyDeep,
         borderRadius: .circular(20.r),
       ),
-      child: LandingHeroContent(hero: _hero, glow: _glow),
+      child: LandingHeroContent(
+        hero: _hero,
+        glow: _glow,
+        onExplore: widget.onExplore ?? () {},
+      ),
     );
   }
 }

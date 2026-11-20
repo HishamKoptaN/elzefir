@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../landing_hero_trust_strip.dart';
@@ -9,10 +10,19 @@ class LandingHeroActions extends StatelessWidget {
     super.key,
     required this.context,
     required this.colors,
+    required this.onExplore,
   });
 
   final BuildContext context;
   final ColorScheme colors;
+  final VoidCallback onExplore;
+
+  Future<void> _order() async {
+    final uri = Uri.https('wa.me', '/201124497981', {
+      'text': 'مرحباً، أريد طلب من مطعم أسماك الزفر',
+    });
+    await launchUrl(uri, mode: .externalApplication);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +36,7 @@ class LandingHeroActions extends StatelessWidget {
           children: [
             Expanded(
               child: FilledButton(
-                onPressed: () {},
+                onPressed: _order,
                 style: FilledButton.styleFrom(
                   backgroundColor: colors.brandGold,
                   foregroundColor: colors.brandNavyDeep,
@@ -42,7 +52,7 @@ class LandingHeroActions extends StatelessWidget {
             SizedBox(width: 10.w),
             Expanded(
               child: OutlinedButton(
-                onPressed: () {},
+                onPressed: onExplore,
                 style: OutlinedButton.styleFrom(
                   foregroundColor: context.colorScheme.onSurface,
                   side: BorderSide(

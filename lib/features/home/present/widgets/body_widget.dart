@@ -63,7 +63,7 @@ class _BodyWidgetState extends State<BodyWidget> {
               onAbout: widget.onAbout,
               onContact: widget.onContact,
             ),
-            const LandingHeroSection(),
+            LandingHeroSection(onExplore: widget.onProcudcts),
             const LandingMarqueeSection(),
             const HomeStatusBadge(),
             const GallerySection(),

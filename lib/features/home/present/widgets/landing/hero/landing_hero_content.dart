@@ -8,10 +8,16 @@ import 'landing_hero_eyebrow.dart';
 import 'landing_food_strip.dart';
 
 class LandingHeroContent extends StatelessWidget {
-  const LandingHeroContent({super.key, required this.hero, required this.glow});
+  const LandingHeroContent({
+    super.key,
+    required this.hero,
+    required this.glow,
+    required this.onExplore,
+  });
 
   final AnimationController hero;
   final AnimationController glow;
+  final VoidCallback onExplore;
 
   Animation<Offset> _entry(double begin) {
     return hero.drive(Tween<Offset>(begin: Offset(0, begin), end: Offset.zero));
@@ -43,7 +49,11 @@ class LandingHeroContent extends StatelessWidget {
         ),
         _fadeSlide(
           _entry(0.65),
-          LandingHeroActions(context: context, colors: colors),
+          LandingHeroActions(
+            context: context,
+            colors: colors,
+            onExplore: onExplore,
+          ),
         ),
         _fadeSlide(_entry(0.8), const LandingFoodStrip()),
       ],
