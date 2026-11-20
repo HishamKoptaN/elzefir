@@ -14,10 +14,12 @@ class VisitorTracker {
 
   Future<void> track() async {
     final visitorId = await _loadVisitorId();
-    final isFirstVisit = await _isFirstVisit();
+    final visitNumber = await _nextVisitNumber();
+    final isFirstVisit = visitNumber == 1;
     await _repository.recordVisit(
       visitorId: visitorId,
       isFirstVisit: isFirstVisit,
+      visitNumber: visitNumber,
     );
   }
 
@@ -34,17 +36,16 @@ class VisitorTracker {
     return newId;
   }
 
-  Future<bool> _isFirstVisit() async {
-    final recorded = await SharedPrefHelper.getBool(
-      key: SharedPrefKeys.visitorRecorded,
+  /// يزيد العداد المحلي لكل تتبع ويُرجع رقم الزيارة (1 = أول زيارة).
+  Future<int> _nextVisitNumber() async {
+    final visits = await SharedPrefHelper.getInt(
+      key: SharedPrefKeys.visitorVisitCount,
     );
-    if (recorded) {
-      return false;
-    }
+    final visitNumber = (visits ?? 0) + 1;
     await SharedPrefHelper.setData(
-      key: SharedPrefKeys.visitorRecorded,
-      value: true,
+      key: SharedPrefKeys.visitorVisitCount,
+      value: visitNumber,
     );
-    return true;
+    return visitNumber;
   }
 }
