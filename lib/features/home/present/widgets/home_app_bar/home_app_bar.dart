@@ -13,22 +13,27 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colorScheme;
     return Container(
       width: .infinity,
-      padding: .all(12.r),
+      padding: .symmetric(vertical: 14.h, horizontal: 16.w),
       decoration: BoxDecoration(
-        color: context.colorScheme.surface,
-        borderRadius: .circular(12.r),
-        border: .all(color: context.colorScheme.slateBorder),
+        color: colors.brandNavyDeep,
+        borderRadius: .circular(20.r),
+        border: Border.all(color: colors.brandGold.withValues(alpha: 0.25)),
         boxShadow: [
           BoxShadow(
-            color: context.colorScheme.shadow.withValues(alpha: 0.04),
-            blurRadius: 6.r,
-            offset: const Offset(0, 2),
+            color: colors.brandNavyDeep.withValues(alpha: 0.25),
+            blurRadius: 18.r,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
-      child: HomeHeaderRow(),
+      child: HomeHeaderRow(
+        onMenu: onMenu,
+        onAbout: onAbout,
+        onContact: onContact,
+      ),
     );
   }
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:gap/gap.dart';
 
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
@@ -35,14 +34,17 @@ class HomeHeaderActions extends StatelessWidget {
                 width: 40.r,
                 decoration: BoxDecoration(
                   shape: .circle,
-                  color: context.colorScheme.slateCardBg,
+                  color: context.colorScheme.brandNavyLight,
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.08),
+                  ),
                 ),
                 child: IconButton(
                   padding: .zero,
                   icon: FaIcon(
                     FontAwesomeIcons.bell,
                     size: 18.r,
-                    color: context.colorScheme.brandNavy,
+                    color: Colors.white,
                   ),
                   onPressed: () {},
                 ),
