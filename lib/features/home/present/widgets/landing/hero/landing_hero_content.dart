@@ -5,6 +5,7 @@ import '../../../../../../core/utils/extensions/theme_ext.dart';
 import 'landing_hero_actions.dart';
 import 'landing_hero_headline.dart';
 import 'landing_hero_eyebrow.dart';
+import 'landing_food_strip.dart';
 
 class LandingHeroContent extends StatelessWidget {
   const LandingHeroContent({super.key, required this.hero, required this.glow});
@@ -44,6 +45,7 @@ class LandingHeroContent extends StatelessWidget {
           _entry(0.65),
           LandingHeroActions(context: context, colors: colors),
         ),
+        _fadeSlide(_entry(0.8), const LandingFoodStrip()),
       ],
     );
   }
