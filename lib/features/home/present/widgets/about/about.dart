@@ -9,24 +9,22 @@ import '../restaurant_info_builder.dart';
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
 
-  static const Color primary = Color(0xFF001629);
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
           decoration: BoxDecoration(
-            color: const Color(0xFFFFEADE),
+            color: context.colorScheme.brandCreamDark,
             borderRadius: .circular(12),
             border: Border.all(
-              color: const Color(0xFFC3C7CE).withValues(alpha: .1),
+              color: context.colorScheme.brandGold.withValues(alpha: 0.2),
             ),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(
                 blurRadius: 2,
-                offset: Offset(0, 1),
-                color: Color.fromRGBO(0, 0, 0, .05),
+                offset: const Offset(0, 1),
+                color: context.colorScheme.shadow.withValues(alpha: 0.06),
               ),
             ],
           ),
@@ -54,11 +52,8 @@ class _ImageSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CustomImage(
       image: 'assets/images/about.png',
-      aspectRatio: 1.45,
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(12),
-        bottomLeft: Radius.circular(12),
-      ),
+      aspectRatio: 1.6,
+      borderRadius: BorderRadius.all(Radius.circular(20)),
     );
   }
 }
@@ -88,7 +83,7 @@ class _ContentSection extends StatelessWidget {
                 info.name,
                 textAlign: TextAlign.right,
                 style: context.textTheme.titleLarge?.copyWith(
-                  color: const Color(0xFF28180D),
+                  color: context.colorScheme.brandNavyDeep,
                 ),
               );
             },
@@ -99,7 +94,7 @@ class _ContentSection extends StatelessWidget {
             'تجربة مميزة تجمع بين الطعم الأصيل والجودة العالية والخدمة الممتازة.',
             textAlign: TextAlign.right,
             style: context.textTheme.bodyLarge?.copyWith(
-              color: const Color(0xFF42474D),
+              color: context.colorScheme.slateText,
             ),
           ),
           const Wrap(
@@ -132,7 +127,7 @@ class _AboutFeature extends StatelessWidget {
     return Container(
       padding: .symmetric(horizontal: 10.w, vertical: 6.h),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.7),
+        color: colors.surface.withValues(alpha: 0.85),
         borderRadius: .circular(999),
         border: Border.all(color: colors.brandGold.withValues(alpha: 0.45)),
       ),

@@ -33,10 +33,10 @@ class HomeHeaderActions extends StatelessWidget {
                 height: 40.r,
                 width: 40.r,
                 decoration: BoxDecoration(
-                  shape: .circle,
-                  color: context.colorScheme.brandNavyLight,
+                  borderRadius: .circular(14.r),
+                  color: context.colorScheme.brandGold.withValues(alpha: 0.14),
                   border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.08),
+                    color: context.colorScheme.brandGold.withValues(alpha: 0.35),
                   ),
                 ),
                 child: IconButton(
@@ -44,7 +44,7 @@ class HomeHeaderActions extends StatelessWidget {
                   icon: FaIcon(
                     FontAwesomeIcons.bell,
                     size: 18.r,
-                    color: Colors.white,
+                    color: context.colorScheme.brandGold,
                   ),
                   onPressed: () {},
                 ),

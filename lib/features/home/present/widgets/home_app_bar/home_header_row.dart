@@ -26,12 +26,9 @@ class HomeHeaderRow extends StatelessWidget {
           width: 56.r,
           padding: .all(6.r),
           decoration: BoxDecoration(
+            color: colors.brandSand,
             borderRadius: .circular(16.r),
-            gradient: LinearGradient(
-              begin: .topLeft,
-              end: .bottomRight,
-              colors: [colors.brandGold, colors.brandGoldHover],
-            ),
+            border: Border.all(color: colors.brandGold.withValues(alpha: 0.5)),
             boxShadow: [
               BoxShadow(
                 color: colors.brandGold.withValues(alpha: 0.25),
@@ -56,7 +53,7 @@ class HomeHeaderRow extends StatelessWidget {
                     overflow: .ellipsis,
                     style: context.textTheme.headlineSmall?.copyWith(
                       fontWeight: .w900,
-                      color: Colors.white,
+                      color: colors.onPrimary,
                     ),
                   ),
                   Text(
@@ -65,7 +62,7 @@ class HomeHeaderRow extends StatelessWidget {
                     overflow: .ellipsis,
                     style: context.textTheme.bodySmall?.copyWith(
                       fontWeight: .w500,
-                      color: Colors.white70,
+                      color: colors.onPrimary.withValues(alpha: 0.75),
                     ),
                   ),
                 ],
@@ -92,6 +89,7 @@ class _HeaderLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colorScheme;
     return InkWell(
       onTap: onTap,
       borderRadius: .circular(8.r),
@@ -100,7 +98,7 @@ class _HeaderLink extends StatelessWidget {
         child: Text(
           title,
           style: context.textTheme.bodyMedium?.copyWith(
-            color: Colors.white.withValues(alpha: 0.85),
+            color: colors.onPrimary.withValues(alpha: 0.85),
             fontWeight: .w600,
           ),
         ),
