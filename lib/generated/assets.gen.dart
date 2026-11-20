@@ -30,11 +30,35 @@ class $AssetsImagesGen {
   /// File path: assets/images/about.svg
   String get aboutSvg => 'assets/images/about.svg';
 
+  /// File path: assets/images/gallery_cleanliness.jpg
+  AssetGenImage get galleryCleanliness =>
+      const AssetGenImage('assets/images/gallery_cleanliness.jpg');
+
+  /// File path: assets/images/gallery_experience_10y.jpg
+  AssetGenImage get galleryExperience10y =>
+      const AssetGenImage('assets/images/gallery_experience_10y.jpg');
+
+  /// File path: assets/images/gallery_fresh_daily.jpg
+  AssetGenImage get galleryFreshDaily =>
+      const AssetGenImage('assets/images/gallery_fresh_daily.jpg');
+
+  /// File path: assets/images/gallery_real_better.jpg
+  AssetGenImage get galleryRealBetter =>
+      const AssetGenImage('assets/images/gallery_real_better.jpg');
+
   /// File path: assets/images/offer.png
   AssetGenImage get offer => const AssetGenImage('assets/images/offer.png');
 
   /// List of all assets
-  List<dynamic> get values => [aboutPng, aboutSvg, offer];
+  List<dynamic> get values => [
+    aboutPng,
+    aboutSvg,
+    galleryCleanliness,
+    galleryExperience10y,
+    galleryFreshDaily,
+    galleryRealBetter,
+    offer,
+  ];
 }
 
 class $AssetsLogosGen {
