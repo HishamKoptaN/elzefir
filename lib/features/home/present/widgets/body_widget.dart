@@ -14,6 +14,7 @@ import 'home_app_bar/home_status_badge.dart';
 import 'menu_prices_section.dart';
 import 'offer_widget.dart';
 import 'products/products_section_header.dart';
+import 'site_info/site_info_section.dart';
 import 'products/products_widget.dart';
 import 'home_app_bar/home_app_bar.dart';
 import 'quick_contact/quick_contact_buttons.dart';
@@ -75,6 +76,7 @@ class _BodyWidgetState extends State<BodyWidget> {
             ),
             const MenuPricesSection(),
             AboutSection(key: widget.aboutKey),
+            const SiteInfoSection(),
             FooterWidget(key: widget.contactKey, onAbout: widget.onAbout),
           ],
         ),
