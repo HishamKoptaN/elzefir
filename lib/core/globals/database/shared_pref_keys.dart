@@ -8,4 +8,6 @@ class SharedPrefKeys {
   static const String userTopic = 'userTopic';
   static const String rememberMe = 'rememberMe';
   static const String isUnitPdfGenerated = 'is-unit-pdf-generated-';
+  static const String visitorId = 'visitorId';
+  static const String visitorRecorded = 'visitorRecorded';
 }
