@@ -46,6 +46,18 @@ class $AssetsImagesGen {
   AssetGenImage get galleryRealBetter =>
       const AssetGenImage('assets/images/gallery_real_better.jpg');
 
+  /// File path: assets/images/landing_food_platter.jpg
+  AssetGenImage get landingFoodPlatter =>
+      const AssetGenImage('assets/images/landing_food_platter.jpg');
+
+  /// File path: assets/images/landing_food_seabass.jpg
+  AssetGenImage get landingFoodSeabass =>
+      const AssetGenImage('assets/images/landing_food_seabass.jpg');
+
+  /// File path: assets/images/landing_food_tajine.jpg
+  AssetGenImage get landingFoodTajine =>
+      const AssetGenImage('assets/images/landing_food_tajine.jpg');
+
   /// File path: assets/images/offer.png
   AssetGenImage get offer => const AssetGenImage('assets/images/offer.png');
 
@@ -57,6 +69,9 @@ class $AssetsImagesGen {
     galleryExperience10y,
     galleryFreshDaily,
     galleryRealBetter,
+    landingFoodPlatter,
+    landingFoodSeabass,
+    landingFoodTajine,
     offer,
   ];
 }
