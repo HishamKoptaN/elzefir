@@ -140,11 +140,19 @@ class OfferWidget extends StatelessWidget {
                               fontWeight: .w900,
                             ),
                           ),
-                          Text(
-                            '380 ج.م',
-                            style: context.textTheme.bodySmall?.copyWith(
-                              color: Colors.white54,
-                              decoration: .lineThrough,
+                          Container(
+                            padding: .symmetric(horizontal: 8.w, vertical: 4.h),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withValues(alpha: 0.15),
+                              borderRadius: .circular(8.r),
+                            ),
+                            child: Text(
+                              'قبل 380 ج.م',
+                              style: context.textTheme.bodyMedium?.copyWith(
+                                color: Colors.white70,
+                                decoration: .lineThrough,
+                                fontWeight: .w600,
+                              ),
                             ),
                           ),
                           FilledButton.icon(
@@ -158,7 +166,7 @@ class OfferWidget extends StatelessWidget {
                               backgroundColor: colors.brandGold,
                               foregroundColor: colors.brandNavyDeep,
                               padding: .symmetric(
-                                horizontal: 18.w,
+                                horizontal: 16.w,
                                 vertical: 12.h,
                               ),
                               shape: RoundedRectangleBorder(
@@ -173,6 +181,28 @@ class OfferWidget extends StatelessWidget {
                               size: 16,
                             ),
                             label: Text(info.offerCta),
+                          ),
+                          OutlinedButton.icon(
+                            onPressed: () async {
+                              final uri = Uri(scheme: 'tel', path: '+201124497981');
+                              await launchUrl(uri);
+                            },
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              side: BorderSide(color: Colors.white.withValues(alpha: 0.8)),
+                              padding: .symmetric(
+                                horizontal: 16.w,
+                                vertical: 12.h,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: .circular(12.r),
+                              ),
+                              textStyle: context.textTheme.labelLarge?.copyWith(
+                                fontWeight: .w700,
+                              ),
+                            ),
+                            icon: const Icon(Icons.call, size: 18),
+                            label: const Text('اتصل الآن'),
                           ),
                         ],
                       ),
