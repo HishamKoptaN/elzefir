@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../../generated/assets.gen.dart';
+import '../landing_food_dots.dart';
 import 'landing_food_card.dart';
 
 class LandingFoodStrip extends StatefulWidget {
@@ -91,6 +92,7 @@ class _LandingFoodStripState extends State<LandingFoodStrip> {
             },
           ),
         ),
+        LandingFoodDots(count: _items.length, activeIndex: _index),
       ],
     );
   }
