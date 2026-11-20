@@ -110,38 +110,6 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                     ),
                     onPressed: () {},
                   ),
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      IconButton(
-                        icon: Container(
-                          padding: EdgeInsets.all(8.r),
-                          decoration: BoxDecoration(
-                            color: colorScheme.surfaceContainerHighest.withOpacity(0.8),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(Icons.shopping_bag_outlined, color: colorScheme.onSurfaceVariant, size: 20.sp),
-                        ),
-                        onPressed: () {},
-                      ),
-                      Positioned(
-                        top: 8.h,
-                        left: 8.w,
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
-                          decoration: BoxDecoration(
-                            color: colorScheme.tertiaryContainer,
-                            borderRadius: BorderRadius.circular(10.r),
-                          ),
-                          child: Text(
-                            '2',
-                            style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.bold, color: colorScheme.onTertiaryContainer),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 8.w),
                 ],
                 flexibleSpace: FlexibleSpaceBar(
                   background: Stack(
@@ -609,17 +577,6 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                         ],
                       ),
                     ],
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: colorScheme.primary,
-                      foregroundColor: colorScheme.onPrimary,
-                      padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 14.h),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-                    ),
-                    icon: const Icon(Icons.add_shopping_cart),
-                    label: Text('أضف إلى الطلب', style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: colorScheme.onPrimary)),
                   ),
                 ],
               ),

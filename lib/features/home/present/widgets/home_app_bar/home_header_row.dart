@@ -77,9 +77,6 @@ class HomeHeaderRow extends StatelessWidget {
           _HeaderLink(title: 'المنتجات', onTap: onMenu),
           _HeaderLink(title: 'من نحن', onTap: onAbout),
           _HeaderLink(title: 'اتصل بنا', onTap: onContact),
-          Gap(8.w),
-          _OrderButton(onTap: onMenu),
-          Gap(10.w),
         ],
         const HomeHeaderActions(),
       ],
@@ -112,25 +109,3 @@ class _HeaderLink extends StatelessWidget {
   }
 }
 
-class _OrderButton extends StatelessWidget {
-  const _OrderButton({this.onTap});
-
-  final VoidCallback? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colorScheme;
-    return FilledButton.icon(
-      onPressed: onTap,
-      style: FilledButton.styleFrom(
-        backgroundColor: colors.brandGold,
-        foregroundColor: colors.brandNavyDeep,
-        padding: .symmetric(horizontal: 16.w, vertical: 10.h),
-        shape: RoundedRectangleBorder(borderRadius: .circular(12.r)),
-        textStyle: context.textTheme.labelLarge?.copyWith(fontWeight: .w800),
-      ),
-      icon: const Icon(Icons.shopping_bag_rounded, size: 16),
-      label: const Text('اطلب الآن'),
-    );
-  }
-}
