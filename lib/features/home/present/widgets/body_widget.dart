@@ -12,6 +12,8 @@ import 'about/about.dart';
 import 'footer/footer_widget.dart';
 import 'home_app_bar/home_status_badge.dart';
 import 'gallery/gallery_section.dart';
+import 'landing/landing_hero_section.dart';
+import 'landing/landing_marquee_section.dart';
 import 'menu_prices_section.dart';
 import 'products/products_section_header.dart';
 import 'products/products_widget.dart';
@@ -61,6 +63,8 @@ class _BodyWidgetState extends State<BodyWidget> {
               onAbout: widget.onAbout,
               onContact: widget.onContact,
             ),
+            LandingHeroSection(onExplore: widget.onProcudcts),
+            const LandingMarqueeSection(),
             const HomeStatusBadge(),
             const GallerySection(),
             const QuickContactButtons(),
