@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../../core/analytics/analytics_events.dart';
+import '../../../../../core/analytics/analytics_service.dart';
+import '../../../../../core/analytics/consent_service.dart';
+import '../../../../../core/di/dependency_injection.dart';
+
 class DrawerNavItemsWidget extends StatelessWidget {
   const DrawerNavItemsWidget({
     super.key,
@@ -40,6 +45,7 @@ class DrawerNavItemsWidget extends StatelessWidget {
           isActive: true,
           onTap: () {
             Navigator.maybePop(context);
+            _logMenuItem('menu');
             onMenuTap?.call();
           },
         ),
@@ -56,6 +62,7 @@ class DrawerNavItemsWidget extends StatelessWidget {
           badgeTextColor: const Color(0xFFF43F5E),
           onTap: () {
             Navigator.maybePop(context);
+            _logMenuItem('offers');
             onOffersTap?.call();
           },
         ),
@@ -71,6 +78,7 @@ class DrawerNavItemsWidget extends StatelessWidget {
           subtitle: 'سنجاري، ردة، زيت وليمون، طواجن',
           onTap: () {
             Navigator.maybePop(context);
+            _logMenuItem('cooking');
             onCookingTap?.call();
           },
         ),
@@ -85,6 +93,7 @@ class DrawerNavItemsWidget extends StatelessWidget {
           title: 'من نحن وقصتنا',
           onTap: () {
             Navigator.maybePop(context);
+            _logMenuItem('about');
             onAboutTap?.call();
           },
         ),
@@ -100,11 +109,25 @@ class DrawerNavItemsWidget extends StatelessWidget {
           subtitle: 'توصيل سريع لكافة مناطق العياط',
           onTap: () {
             Navigator.maybePop(context);
+            _logMenuItem('branches');
             onBranchesTap?.call();
           },
         ),
       ],
     );
+  }
+
+  Future<void> _logMenuItem(String item) async {
+    try {
+      if (await getIt<ConsentService>().isGranted()) {
+        await getIt<AnalyticsService>().logEvent(
+          name: AnalyticsEvents.clickMenuItem,
+          parameters: {'item': item},
+        );
+      }
+    } catch (_) {
+      // Analytics is best-effort and must never break the action.
+    }
   }
 
   Widget _buildNavTile({
