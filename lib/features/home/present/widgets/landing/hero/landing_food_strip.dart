@@ -1,48 +1,88 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../../generated/assets.gen.dart';
+import '../../../../../products/data/mapper/products_mapper.dart';
+import '../../../../../products/domain/entities/product_entity.dart';
+import '../../../../../products/present/blocs/bloc/products_bloc.dart';
 import '../landing_food_dots.dart';
 import 'landing_food_card.dart';
 
-class LandingFoodStrip extends StatefulWidget {
+/// شريط "مختارات الطاهي" يعرض منتجات فايرستور مع تبديل تلقائي.
+class LandingFoodStrip extends StatelessWidget {
   const LandingFoodStrip({super.key});
-  @override
-  State<LandingFoodStrip> createState() => _LandingFoodStripState();
-}
 
-class _LandingFoodStripState extends State<LandingFoodStrip> {
-  static const _slideDuration = Duration(milliseconds: 600);
-  static const _interval = Duration(seconds: 4);
-  final PageController _controller = PageController(viewportFraction: 0.85);
-  Timer? _timer;
-  int _index = 0;
-  List<(String, String, String)> get _items => [
+  static List<(String, String, String)> get _fallback => [
     (Assets.images.landingFoodPlatter.path, 'طاجن فواكه البحر', '١٨٥ ج.م'),
     (Assets.images.landingFoodSeabass.path, 'دنيس مشوي', '٢٢٠ ج.م'),
     (Assets.images.landingFoodTajine.path, 'طاجن إسكندراني', '١٩٥ ج.م'),
   ];
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ProductsBloc, ProductsState>(
+      bloc: getIt<ProductsBloc>(),
+      builder: (context, state) {
+        final products = state.maybeMap(
+          loaded: (s) => s.products?.map((e) => e.toEntity()).toList() ?? [],
+          orElse: () => <ProductEntity>[],
+        );
+        final withImages = products.where((p) => p.image.isNotEmpty).take(6);
+        final items = withImages.isEmpty
+            ? _fallback
+            : withImages
+                .map((p) => (p.image, p.name, '${p.price} ج.م'))
+                .toList();
+        return _Carousel(items: items);
+      },
+    );
+  }
+}
+
+class _Carousel extends StatefulWidget {
+  const _Carousel({required this.items});
+
+  final List<(String, String, String)> items;
+
+  @override
+  State<_Carousel> createState() => _CarouselState();
+}
+
+class _CarouselState extends State<_Carousel> {
+  final _controller = PageController(viewportFraction: 0.85);
+  Timer? _timer;
+  int _index = 0;
+
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(_interval, (_) {
-      if (!_controller.hasClients) {
-        return;
-      }
-      final nextIndex = _index + 1;
-      if (nextIndex >= _items.length) {
+    _timer = Timer.periodic(const Duration(seconds: 4), (_) {
+      if (!_controller.hasClients || widget.items.isEmpty) return;
+      final next = _index + 1;
+      if (next >= widget.items.length) {
         _controller.jumpToPage(0);
-        return;
+      } else {
+        _controller.animateToPage(
+          next,
+          duration: const Duration(milliseconds: 600),
+          curve: Curves.easeInOut,
+        );
       }
-      _controller.animateToPage(
-        nextIndex,
-        duration: _slideDuration,
-        curve: Curves.easeInOut,
-      );
     });
+  }
+
+  @override
+  void didUpdateWidget(_Carousel old) {
+    super.didUpdateWidget(old);
+    if (_index >= widget.items.length) {
+      _index = 0;
+      if (_controller.hasClients) _controller.jumpToPage(0);
+    }
   }
 
   @override
@@ -81,18 +121,13 @@ class _LandingFoodStripState extends State<LandingFoodStrip> {
           height: 200.h,
           child: PageView.builder(
             controller: _controller,
-            itemCount: _items.length,
-            onPageChanged: (index) {
-              setState(() {
-                _index = index;
-              });
-            },
-            itemBuilder: (context, index) {
-              return LandingFoodCard(item: _items[index], index: index);
-            },
+            itemCount: widget.items.length,
+            onPageChanged: (i) => setState(() => _index = i),
+            itemBuilder: (context, i) =>
+                LandingFoodCard(item: widget.items[i], index: i),
           ),
         ),
-        LandingFoodDots(count: _items.length, activeIndex: _index),
+        LandingFoodDots(count: widget.items.length, activeIndex: _index),
       ],
     );
   }
