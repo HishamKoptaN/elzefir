@@ -5,6 +5,7 @@ import '../../../../../../core/utils/extensions/theme_ext.dart';
 import 'landing_hero_actions.dart';
 import 'landing_hero_headline.dart';
 import 'landing_hero_eyebrow.dart';
+import 'landing_hero_image.dart';
 import 'landing_food_strip.dart';
 
 class LandingHeroContent extends StatelessWidget {
@@ -38,7 +39,7 @@ class LandingHeroContent extends StatelessWidget {
       crossAxisAlignment: .start,
       spacing: 12.h,
       children: [
-        _HeroGlow(color: colors.brandGold, glow: glow),
+        LandingHeroImage(glow: glow),
         _fadeSlide(
           _entry(0.2),
           LandingHeroEyebrow(context: context, colors: colors),
@@ -57,26 +58,6 @@ class LandingHeroContent extends StatelessWidget {
         ),
         _fadeSlide(_entry(0.8), const LandingFoodStrip()),
       ],
-    );
-  }
-}
-
-class _HeroGlow extends StatelessWidget {
-  const _HeroGlow({required this.color, required this.glow});
-
-  final Color color;
-  final AnimationController glow;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(seconds: 3),
-      width: 220.w,
-      height: 220.w,
-      decoration: BoxDecoration(
-        shape: .circle,
-        color: color.withValues(alpha: 0.12 + (0.04 * glow.value)),
-      ),
     );
   }
 }
