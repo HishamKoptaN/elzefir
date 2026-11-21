@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../../core/analytics/analytics_events.dart';
+import '../../../../../../core/analytics/analytics_service.dart';
+import '../../../../../../core/analytics/consent_service.dart';
+import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../landing_hero_trust_strip.dart';
 
@@ -18,10 +22,26 @@ class LandingHeroActions extends StatelessWidget {
   final VoidCallback onExplore;
 
   Future<void> _order() async {
+    await _logEvent(AnalyticsEvents.clickOrderNow);
     final uri = Uri.https('wa.me', '/201124497981', {
       'text': 'مرحباً، أريد طلب من مطعم أسماك الزفر',
     });
     await launchUrl(uri, mode: .externalApplication);
+  }
+
+  void _handleExplore() {
+    _logEvent(AnalyticsEvents.clickExploreMenu);
+    onExplore();
+  }
+
+  Future<void> _logEvent(String name) async {
+    try {
+      if (await getIt<ConsentService>().isGranted()) {
+        await getIt<AnalyticsService>().logEvent(name: name);
+      }
+    } catch (_) {
+      // Analytics is best-effort and must never break the action.
+    }
   }
 
   @override
@@ -52,7 +72,7 @@ class LandingHeroActions extends StatelessWidget {
             SizedBox(width: 10.w),
             Expanded(
               child: OutlinedButton(
-                onPressed: onExplore,
+                onPressed: _handleExplore,
                 style: OutlinedButton.styleFrom(
                   foregroundColor: context.colorScheme.onSurface,
                   side: BorderSide(
