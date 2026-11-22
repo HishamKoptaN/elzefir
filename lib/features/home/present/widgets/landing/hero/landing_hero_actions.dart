@@ -7,7 +7,6 @@ import '../../../../../../core/analytics/analytics_service.dart';
 import '../../../../../../core/analytics/consent_service.dart';
 import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
-import '../landing_hero_trust_strip.dart';
 
 class LandingHeroActions extends StatelessWidget {
   const LandingHeroActions({
@@ -100,7 +99,6 @@ class LandingHeroActions extends StatelessWidget {
             ),
           ],
         ),
-        LandingHeroTrustStrip(context: context, colors: colors),
       ],
     );
   }
