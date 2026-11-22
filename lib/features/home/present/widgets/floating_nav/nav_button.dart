@@ -21,23 +21,31 @@ class NavButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
     final color = active ? colors.brandGold : colors.onPrimary;
-    return InkWell(
+    final compact = MediaQuery.sizeOf(context).width < 340;
+    final button = InkWell(
       onTap: onTap,
       borderRadius: .circular(24.r),
       child: Padding(
-        padding: .symmetric(horizontal: 10.w, vertical: 6.h),
+        padding:
+            compact ? .all(13.r) : .symmetric(horizontal: 10.w, vertical: 6.h),
         child: Column(
           mainAxisSize: .min,
           children: [
             FaIcon(item.icon, size: 18.r, color: color),
-            SizedBox(height: 2.h),
-            Text(
-              item.label,
-              style: context.textTheme.labelSmall?.copyWith(color: color),
-            ),
+            if (!compact) ...[
+              SizedBox(height: 2.h),
+              Text(
+                item.label,
+                style: context.textTheme.labelSmall?.copyWith(color: color),
+              ),
+            ],
           ],
         ),
       ),
     );
+    if (compact) {
+      return Semantics(label: item.label, child: button);
+    }
+    return button;
   }
 }
