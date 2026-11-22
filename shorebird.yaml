@@ -1,0 +1,4 @@
+# Shorebird code push configuration.
+# https://docs.shorebird.dev/code-push/initialize/
+app_id: ""
+auto_update: true
