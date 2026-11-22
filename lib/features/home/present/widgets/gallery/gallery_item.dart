@@ -14,7 +14,7 @@ class GalleryItem {
   static List<GalleryItem> get items {
     return [
       GalleryItem(
-        image: Assets.images.galleryExperience10y.path,
+        image: Assets.images.galleryExperience10yYoungChef.path,
         title: 'خبرة أكثر من 10 أعوام',
         caption: 'خبرة حقيقية في طهو الأسماك الطازجة',
       ),
