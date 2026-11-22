@@ -38,6 +38,10 @@ class $AssetsImagesGen {
   AssetGenImage get galleryExperience10y =>
       const AssetGenImage('assets/images/gallery_experience_10y.jpg');
 
+  /// File path: assets/images/gallery_experience_10y_young_chef.jpg
+  AssetGenImage get galleryExperience10yYoungChef =>
+      const AssetGenImage('assets/images/gallery_experience_10y_young_chef.jpg');
+
   /// File path: assets/images/gallery_fresh_daily.jpg
   AssetGenImage get galleryFreshDaily =>
       const AssetGenImage('assets/images/gallery_fresh_daily.jpg');
@@ -67,6 +71,7 @@ class $AssetsImagesGen {
     aboutSvg,
     galleryCleanliness,
     galleryExperience10y,
+    galleryExperience10yYoungChef,
     galleryFreshDaily,
     galleryRealBetter,
     landingFoodPlatter,
