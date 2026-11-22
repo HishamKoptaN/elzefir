@@ -22,7 +22,7 @@ class LandingHeroImage extends StatelessWidget {
           width: 220.w,
           height: 220.w,
           decoration: BoxDecoration(
-            shape: BoxShape.circle,
+            shape: .circle,
             border: Border.all(
               color: colors.brandGold.withValues(alpha: glowStrength),
               width: 2.w,
@@ -35,11 +35,11 @@ class LandingHeroImage extends StatelessWidget {
               ),
             ],
           ),
-          clipBehavior: Clip.antiAlias,
+          clipBehavior: .antiAlias,
           child: ClipOval(
             child: Image.asset(
               Assets.images.landingFoodSeabass.path,
-              fit: BoxFit.cover,
+              fit: .cover,
             ),
           ),
         );

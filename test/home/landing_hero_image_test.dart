@@ -41,7 +41,9 @@ void main() {
   });
 }
 
-int _alphaOf(Color color) => (color.a * 255.0).round().clamp(0, 255);
+int _alphaOf(Color color) {
+  return (color.a * 255.0).round().clamp(0, 255);
+}
 
 BoxDecoration _frameDecoration(WidgetTester tester) {
   final frame = tester.widget<Container>(
@@ -54,7 +56,9 @@ class _HeroHarness extends StatefulWidget {
   const _HeroHarness();
 
   @override
-  State<_HeroHarness> createState() => _HeroHarnessState();
+  State<_HeroHarness> createState() {
+    return _HeroHarnessState();
+  }
 }
 
 class _HeroHarnessState extends State<_HeroHarness>
