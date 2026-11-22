@@ -37,3 +37,35 @@ int activeSectionFor({
     atBottom: controller.position.extentAfter < 48,
   );
 }
+
+/// إزاحة التمرير التي تُظهر بداية [key] قرب أعلى المنظور.
+///
+/// يُستخدم بدلاً من `Scrollable.ensureVisible` لأن الأخير لا يحرّك الصفحة
+/// إذا كان القسم ظاهراً جزئياً، مما يجعل الضغط عليه يبدو وكأنه لم ينفَّذ.
+double? sectionScrollTarget({
+  required GlobalKey key,
+  required ScrollController controller,
+  GlobalKey? topKey,
+  double topPadding = 16,
+}) {
+  if (!controller.hasClients) {
+    return null;
+  }
+  if (key == topKey) {
+    return controller.position.minScrollExtent;
+  }
+  final context = key.currentContext;
+  if (context == null) {
+    return null;
+  }
+  final box = context.findRenderObject() as RenderBox?;
+  final viewport = Scrollable.maybeOf(context)?.context.findRenderObject()
+      as RenderBox?;
+  if (box == null || viewport == null || !box.hasSize) {
+    return null;
+  }
+  final dy = box.localToGlobal(Offset.zero, ancestor: viewport).dy;
+  final target = controller.offset + dy - topPadding;
+  final position = controller.position;
+  return target.clamp(position.minScrollExtent, position.maxScrollExtent);
+}

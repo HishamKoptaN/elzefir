@@ -7,6 +7,7 @@ import 'widgets/body_widget.dart';
 import 'widgets/drawer/drawer.dart';
 import 'widgets/floating_nav/floating_section_nav.dart';
 import 'widgets/floating_nav/section_nav_item.dart';
+import 'widgets/floating_nav/section_scroll_tracker.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -27,21 +28,16 @@ class _HomeViewState extends State<HomeView> {
   final contactKey = GlobalKey();
 
   Future<void> scrollToSection(GlobalKey key) async {
-    if (key == heroKey && scrollController.hasClients) {
-      await scrollController.animateTo(
-        0,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
-      );
-      return;
-    }
-    final targetContext = key.currentContext;
-    if (targetContext == null) return;
-    await Scrollable.ensureVisible(
-      targetContext,
+    final target = sectionScrollTarget(
+      key: key,
+      controller: scrollController,
+      topKey: heroKey,
+    );
+    if (target == null) return;
+    await scrollController.animateTo(
+      target,
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
-      alignment: 0.08,
     );
   }
 
