@@ -87,6 +87,11 @@ class _CarouselState extends State<_Carousel> {
   @override
   void initState() {
     super.initState();
+    _startTimer();
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
     _timer = Timer.periodic(const Duration(seconds: 4), (_) {
       if (!_controller.hasClients || widget.items.isEmpty) return;
       final next = _index + 1;
@@ -100,6 +105,11 @@ class _CarouselState extends State<_Carousel> {
         );
       }
     });
+  }
+
+  void _pauseTimer() {
+    _timer?.cancel();
+    _timer = null;
   }
 
   @override
@@ -145,12 +155,21 @@ class _CarouselState extends State<_Carousel> {
         ),
         SizedBox(
           height: 200.h,
-          child: PageView.builder(
-            controller: _controller,
-            itemCount: widget.items.length,
-            onPageChanged: (i) => setState(() => _index = i),
-            itemBuilder: (context, i) =>
-                LandingFoodCard(item: widget.items[i], index: i),
+          child: MouseRegion(
+            onEnter: (_) => _pauseTimer(),
+            onExit: (_) => _startTimer(),
+            child: Listener(
+              onPointerDown: (_) => _pauseTimer(),
+              onPointerUp: (_) => _startTimer(),
+              onPointerCancel: (_) => _startTimer(),
+              child: PageView.builder(
+                controller: _controller,
+                itemCount: widget.items.length,
+                onPageChanged: (i) => setState(() => _index = i),
+                itemBuilder: (context, i) =>
+                    LandingFoodCard(item: widget.items[i], index: i),
+              ),
+            ),
           ),
         ),
         LandingFoodDots(count: widget.items.length, activeIndex: _index),
