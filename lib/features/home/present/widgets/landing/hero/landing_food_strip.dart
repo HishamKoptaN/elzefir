@@ -137,7 +137,7 @@ class _CarouselState extends State<_Carousel> {
             Text(
               'مختارات الطاهي المميزة',
               style: context.textTheme.titleMedium?.copyWith(
-                color: colors.onSurface,
+                color: colors.onPrimary,
                 fontWeight: .w700,
               ),
             ),

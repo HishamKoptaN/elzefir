@@ -73,9 +73,9 @@ class LandingHeroActions extends StatelessWidget {
               child: OutlinedButton(
                 onPressed: _handleExplore,
                 style: OutlinedButton.styleFrom(
-                  foregroundColor: context.colorScheme.onSurface,
+                  foregroundColor: colors.onPrimary,
                   side: BorderSide(
-                    color: context.colorScheme.onSurface.withValues(alpha: 0.6),
+                    color: colors.onPrimary.withValues(alpha: 0.6),
                   ),
                   minimumSize: Size(0, 52.h),
                   shape: RoundedRectangleBorder(
