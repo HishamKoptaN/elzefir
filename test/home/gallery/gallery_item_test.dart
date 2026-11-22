@@ -5,10 +5,7 @@ void main() {
   test('first slide uses the redesigned young chef image', () {
     final first = GalleryItem.items.first;
 
-    expect(
-      first.image,
-      'assets/images/gallery_experience_10y_young_chef.jpg',
-    );
+    expect(first.image, 'assets/images/gallery_experience_10y.jpg');
     expect(first.title, 'خبرة أكثر من 10 أعوام');
   });
 }
