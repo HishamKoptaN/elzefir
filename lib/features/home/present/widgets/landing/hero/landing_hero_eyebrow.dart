@@ -41,7 +41,7 @@ class LandingHeroEyebrow extends StatelessWidget {
             ),
           ),
           Text(
-            'طازج من البحر الآن',
+            'طازج يوميًا',
             style: theme.bodySmall?.copyWith(color: colors.slateText),
           ),
         ],
