@@ -32,12 +32,14 @@ class LandingFoodStrip extends StatelessWidget {
           loaded: (s) => s.products?.map((e) => e.toEntity()).toList() ?? [],
           orElse: () => <ProductEntity>[],
         );
-        final withImages = products.where((p) => p.image.isNotEmpty).take(6);
-        final items = withImages.isEmpty
+        final withImages = products.where((p) => p.image.isNotEmpty).toList();
+        final featured = withImages.where((p) => p.isFeatured).take(6).toList();
+        final selected = featured.isNotEmpty
+            ? featured
+            : withImages.take(6).toList();
+        final items = selected.isEmpty
             ? _fallback
-            : withImages
-                .map((p) => (p.image, p.name, '${p.price} ج.م'))
-                .toList();
+            : selected.map((p) => (p.image, p.name, '${p.price} ج.م')).toList();
         return _Carousel(items: items);
       },
     );
