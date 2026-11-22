@@ -26,15 +26,22 @@ class _HomeViewState extends State<HomeView> {
   final aboutKey = GlobalKey();
   final contactKey = GlobalKey();
 
-  void scrollToSection(GlobalKey key) {
-    final context = key.currentContext;
-    if (context == null) {
+  Future<void> scrollToSection(GlobalKey key) async {
+    if (key == heroKey && scrollController.hasClients) {
+      await scrollController.animateTo(
+        0,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
       return;
     }
-    Scrollable.ensureVisible(
-      context,
+    final targetContext = key.currentContext;
+    if (targetContext == null) return;
+    await Scrollable.ensureVisible(
+      targetContext,
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
+      alignment: 0.08,
     );
   }
 
