@@ -85,9 +85,11 @@ class _BodyWidgetState extends State<BodyWidget> {
             const HomeStatusBadge(),
             GallerySection(key: widget.galleryKey),
             const QuickContactButtons(),
-            const ProductsSectionHeader(),
+            KeyedSubtree(
+              key: widget.productsKey,
+              child: const ProductsSectionHeader(),
+            ),
             _ProductLayout(
-              productsKey: widget.productsKey,
               onProductsLoaded: () {
                 getIt<ProductsBloc>().add(const .get());
               },
@@ -103,35 +105,22 @@ class _BodyWidgetState extends State<BodyWidget> {
 }
 
 class _ProductLayout extends StatelessWidget {
-  const _ProductLayout({
-    required this.productsKey,
-    required this.onProductsLoaded,
-  });
+  const _ProductLayout({required this.onProductsLoaded});
 
-  final GlobalKey productsKey;
   final VoidCallback onProductsLoaded;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: .start,
-      children: [
-        _ProductsColumn(
-          productsKey: productsKey,
-          onProductsLoaded: onProductsLoaded,
-        ),
-      ],
+      children: [_ProductsColumn(onProductsLoaded: onProductsLoaded)],
     );
   }
 }
 
 class _ProductsColumn extends StatelessWidget {
-  const _ProductsColumn({
-    required this.productsKey,
-    required this.onProductsLoaded,
-  });
+  const _ProductsColumn({required this.onProductsLoaded});
 
-  final GlobalKey productsKey;
   final VoidCallback onProductsLoaded;
 
   @override
@@ -149,7 +138,6 @@ class _ProductsColumn extends StatelessWidget {
                   }).toList() ??
                   [];
               return ProductsSection(
-                key: productsKey,
                 products: products,
                 onAssetsLoaded: onProductsLoaded,
               );
