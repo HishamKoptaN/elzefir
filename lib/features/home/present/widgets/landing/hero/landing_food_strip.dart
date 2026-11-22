@@ -17,10 +17,25 @@ import 'landing_food_card.dart';
 class LandingFoodStrip extends StatelessWidget {
   const LandingFoodStrip({super.key});
 
-  static List<(String, String, String)> get _fallback => [
-    (Assets.images.landingFoodPlatter.path, 'طاجن فواكه البحر', '١٨٥ ج.م'),
-    (Assets.images.landingFoodSeabass.path, 'دنيس مشوي', '٢٢٠ ج.م'),
-    (Assets.images.landingFoodTajine.path, 'طاجن إسكندراني', '١٩٥ ج.م'),
+  static List<ChefSlide> get _fallback => [
+    (
+      image: Assets.images.landingFoodPlatter.path,
+      name: 'طاجن فواكه البحر',
+      price: '١٨٥ ج.م',
+      product: null,
+    ),
+    (
+      image: Assets.images.landingFoodSeabass.path,
+      name: 'دنيس مشوي',
+      price: '٢٢٠ ج.م',
+      product: null,
+    ),
+    (
+      image: Assets.images.landingFoodTajine.path,
+      name: 'طاجن إسكندراني',
+      price: '١٩٥ ج.م',
+      product: null,
+    ),
   ];
 
   @override
@@ -39,7 +54,16 @@ class LandingFoodStrip extends StatelessWidget {
             : withImages.take(6).toList();
         final items = selected.isEmpty
             ? _fallback
-            : selected.map((p) => (p.image, p.name, '${p.price} ج.م')).toList();
+            : selected
+                  .map(
+                    (p) => (
+                      image: p.image,
+                      name: p.name,
+                      price: '${p.price} ج.م',
+                      product: p,
+                    ),
+                  )
+                  .toList();
         return _Carousel(items: items);
       },
     );
@@ -49,7 +73,7 @@ class LandingFoodStrip extends StatelessWidget {
 class _Carousel extends StatefulWidget {
   const _Carousel({required this.items});
 
-  final List<(String, String, String)> items;
+  final List<ChefSlide> items;
 
   @override
   State<_Carousel> createState() => _CarouselState();
