@@ -89,7 +89,7 @@ class _FloatingSectionNavState extends State<FloatingSectionNav> {
               : Row(mainAxisSize: .min, children: buttons),
     );
     return Align(
-      alignment: isDesk ? .centerRight : .bottomCenter,
+      alignment: isDesk ? .centerLeft : .bottomCenter,
       child: Padding(
         padding:
             isDesk
