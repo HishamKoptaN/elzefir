@@ -17,23 +17,24 @@ const _labels = [
 
 void main() {
   testWidgets('renders all six section labels', (tester) async {
-    await tester.pumpWidget(
-      _NavHarness(keys: List.generate(6, (_) => GlobalKey()), onSelected: (_) {}),
-    );
+    final controller = ScrollController();
+    addTearDown(controller.dispose);
+    await tester.pumpWidget(_NavHarness(controller: controller));
 
     for (final label in _labels) {
       expect(find.text(label), findsOneWidget);
     }
   });
 
-  testWidgets('reports the key of the tapped section', (tester) async {
-    final keys = List.generate(6, (_) => GlobalKey());
-    GlobalKey? selected;
+  testWidgets('reports the tapped section index', (tester) async {
+    final controller = ScrollController();
+    addTearDown(controller.dispose);
+    int? selected;
     await tester.pumpWidget(
       _NavHarness(
-        keys: keys,
-        onSelected: (key) {
-          selected = key;
+        controller: controller,
+        onSelected: (index) {
+          selected = index;
         },
       ),
     );
@@ -41,13 +42,13 @@ void main() {
     await tester.tap(find.text('القائمة'));
     await tester.pump();
 
-    expect(selected, same(keys[2]));
+    expect(selected, 2);
   });
 
   testWidgets('moves the active highlight to the tapped section', (tester) async {
-    await tester.pumpWidget(
-      _NavHarness(keys: List.generate(6, (_) => GlobalKey()), onSelected: (_) {}),
-    );
+    final controller = ScrollController();
+    addTearDown(controller.dispose);
+    await tester.pumpWidget(_NavHarness(controller: controller));
 
     final firstBefore = tester.widget<FaIcon>(find.byType(FaIcon).at(0)).color;
     await tester.tap(find.text('الأسعار'));
@@ -61,44 +62,21 @@ void main() {
 }
 
 class _NavHarness extends StatelessWidget {
-  const _NavHarness({required this.keys, required this.onSelected});
+  const _NavHarness({required this.controller, this.onSelected});
 
-  final List<GlobalKey> keys;
-  final ValueChanged<GlobalKey> onSelected;
+  final ScrollController controller;
+  final ValueChanged<int>? onSelected;
 
   @override
   Widget build(BuildContext context) {
+    final keys = List.generate(6, (_) => GlobalKey());
     final items = [
-      SectionNavItem(
-        label: 'الرئيسية',
-        icon: FontAwesomeIcons.house,
-        key: keys[0],
-      ),
-      SectionNavItem(
-        label: 'المعرض',
-        icon: FontAwesomeIcons.images,
-        key: keys[1],
-      ),
-      SectionNavItem(
-        label: 'القائمة',
-        icon: FontAwesomeIcons.utensils,
-        key: keys[2],
-      ),
-      SectionNavItem(
-        label: 'الأسعار',
-        icon: FontAwesomeIcons.tag,
-        key: keys[3],
-      ),
-      SectionNavItem(
-        label: 'من نحن',
-        icon: FontAwesomeIcons.bookOpen,
-        key: keys[4],
-      ),
-      SectionNavItem(
-        label: 'تواصل',
-        icon: FontAwesomeIcons.phone,
-        key: keys[5],
-      ),
+      SectionNavItem(label: 'الرئيسية', icon: FontAwesomeIcons.house, key: keys[0]),
+      SectionNavItem(label: 'المعرض', icon: FontAwesomeIcons.images, key: keys[1]),
+      SectionNavItem(label: 'القائمة', icon: FontAwesomeIcons.utensils, key: keys[2]),
+      SectionNavItem(label: 'الأسعار', icon: FontAwesomeIcons.tag, key: keys[3]),
+      SectionNavItem(label: 'من نحن', icon: FontAwesomeIcons.bookOpen, key: keys[4]),
+      SectionNavItem(label: 'تواصل', icon: FontAwesomeIcons.phone, key: keys[5]),
     ];
     return ScreenUtilInit(
       designSize: const Size(360, 690),
@@ -110,9 +88,13 @@ class _NavHarness extends StatelessWidget {
             textDirection: .rtl,
             child: Material(
               child: SizedBox(
-                width: 360,
-                height: 690,
-                child: FloatingSectionNav(items: items, onSelected: onSelected),
+                width: 390,
+                height: 844,
+                child: FloatingSectionNav(
+                  items: items,
+                  controller: controller,
+                  onSelected: onSelected ?? (_) {},
+                ),
               ),
             ),
           ),
