@@ -57,37 +57,6 @@ class _FloatingSectionNavState extends State<FloatingSectionNav> {
   @override
   Widget build(BuildContext context) {
     final isDesk = context.isDesk;
-    final buttons = [
-      for (var i = 0; i < widget.items.length; i++)
-        NavButton(
-          item: widget.items[i],
-          active: i == _active,
-          onTap: () {
-            setState(() {
-              _active = i;
-            });
-            widget.onSelected(i);
-          },
-        ),
-    ];
-    final rail = Container(
-      padding: .all(6.r),
-      decoration: BoxDecoration(
-        color: context.colorScheme.brandNavy,
-        borderRadius: .circular(28.r),
-        boxShadow: [
-          BoxShadow(
-            color: context.colorScheme.shadow,
-            blurRadius: 18.r,
-            offset: Offset(0, 4.h),
-          ),
-        ],
-      ),
-      child:
-          isDesk
-              ? Column(mainAxisSize: .min, children: buttons)
-              : Row(mainAxisSize: .min, children: buttons),
-    );
     return Align(
       alignment: isDesk ? .centerLeft : .bottomCenter,
       child: Padding(
@@ -95,8 +64,55 @@ class _FloatingSectionNavState extends State<FloatingSectionNav> {
             isDesk
                 ? .symmetric(horizontal: 12.w)
                 : .only(bottom: 12.h, left: 8.w, right: 8.w),
-        child: rail,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final available =
+                isDesk ? constraints.maxHeight : constraints.maxWidth;
+            final compact = available / widget.items.length < 58;
+            final buttons = [
+              for (var i = 0; i < widget.items.length; i++)
+                _navButton(i, compact),
+            ];
+            return Container(
+              width: isDesk ? null : constraints.maxWidth,
+              padding: .all(6.r),
+              decoration: BoxDecoration(
+                color: context.colorScheme.brandNavy,
+                borderRadius: .circular(28.r),
+                boxShadow: [
+                  BoxShadow(
+                    color: context.colorScheme.shadow,
+                    blurRadius: 18.r,
+                    offset: Offset(0, 4.h),
+                  ),
+                ],
+              ),
+              child:
+                  isDesk
+                      ? Column(mainAxisSize: .min, children: buttons)
+                      : Row(
+                        children: [
+                          for (final button in buttons) Expanded(child: button),
+                        ],
+                      ),
+            );
+          },
+        ),
       ),
+    );
+  }
+
+  Widget _navButton(int index, bool compact) {
+    return NavButton(
+      item: widget.items[index],
+      active: index == _active,
+      compact: compact,
+      onTap: () {
+        setState(() {
+          _active = index;
+        });
+        widget.onSelected(index);
+      },
     );
   }
 }

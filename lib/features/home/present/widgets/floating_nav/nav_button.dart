@@ -11,41 +11,47 @@ class NavButton extends StatelessWidget {
     required this.item,
     required this.active,
     required this.onTap,
+    this.compact = false,
   });
 
   final SectionNavItem item;
   final bool active;
   final VoidCallback onTap;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colorScheme;
     final color = active ? colors.brandGold : colors.onPrimary;
-    final compact = MediaQuery.sizeOf(context).width < 340;
     final button = InkWell(
       onTap: onTap,
-      borderRadius: .circular(24.r),
+      borderRadius: .circular(12.r),
       child: Padding(
         padding:
-            compact ? .all(13.r) : .symmetric(horizontal: 10.w, vertical: 6.h),
+            compact
+                ? .symmetric(vertical: 11.h)
+                : .symmetric(horizontal: 2.w, vertical: 6.h),
         child: Column(
           mainAxisSize: .min,
           children: [
-            FaIcon(item.icon, size: 18.r, color: color),
+            FaIcon(item.icon, size: (compact ? 19 : 17).r, color: color),
             if (!compact) ...[
               SizedBox(height: 2.h),
               Text(
                 item.label,
-                style: context.textTheme.labelSmall?.copyWith(color: color),
+                maxLines: 1,
+                overflow: .ellipsis,
+                textAlign: .center,
+                style: context.textTheme.labelSmall?.copyWith(
+                  color: color,
+                  fontSize: 9.sp,
+                ),
               ),
             ],
           ],
         ),
       ),
     );
-    if (compact) {
-      return Semantics(label: item.label, child: button);
-    }
-    return button;
+    return Semantics(label: item.label, child: button);
   }
 }
