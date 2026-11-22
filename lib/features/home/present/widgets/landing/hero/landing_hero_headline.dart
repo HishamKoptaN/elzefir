@@ -37,7 +37,7 @@ class LandingHeroHeadline extends StatelessWidget {
           ),
         ),
         Text(
-          'أجود الأسماك من البحر إلى طاولة المطعم',
+          'أجود ما في البحر',
           style: theme.headlineSmall?.copyWith(
             color: colors.brandGold,
             fontWeight: .w300,
