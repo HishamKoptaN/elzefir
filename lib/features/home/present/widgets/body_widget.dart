@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/di/dependency_injection.dart';
+import '../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../products/present/blocs/bloc/products_bloc.dart';
 import '../../../products/data/mapper/products_mapper.dart';
@@ -23,6 +24,7 @@ import 'quick_contact/quick_contact_buttons.dart';
 class BodyWidget extends StatefulWidget {
   const BodyWidget({
     super.key,
+    required this.controller,
     required this.heroKey,
     required this.galleryKey,
     required this.productsKey,
@@ -34,6 +36,7 @@ class BodyWidget extends StatefulWidget {
     required this.onContact,
   });
 
+  final ScrollController controller;
   final GlobalKey heroKey;
   final GlobalKey galleryKey;
   final GlobalKey productsKey;
@@ -57,9 +60,14 @@ class _BodyWidgetState extends State<BodyWidget> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: widget.controller,
       physics: const BouncingScrollPhysics(),
       child: Padding(
-        padding: .symmetric(horizontal: 12.w),
+        padding: .only(
+          left: 12.w,
+          right: 12.w,
+          bottom: context.isMob ? 88.h : 0,
+        ),
         child: Column(
           crossAxisAlignment: .center,
           spacing: 12.h,

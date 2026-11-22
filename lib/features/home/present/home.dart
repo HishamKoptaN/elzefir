@@ -18,6 +18,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final scrollController = ScrollController();
   final heroKey = GlobalKey();
   final galleryKey = GlobalKey();
   final productsKey = GlobalKey();
@@ -49,6 +50,12 @@ class _HomeViewState extends State<HomeView> {
   }
 
   @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: context.colorScheme.surface,
@@ -56,6 +63,7 @@ class _HomeViewState extends State<HomeView> {
       body: Stack(
         children: [
           BodyWidget(
+            controller: scrollController,
             heroKey: heroKey,
             galleryKey: galleryKey,
             productsKey: productsKey,
@@ -72,7 +80,13 @@ class _HomeViewState extends State<HomeView> {
               scrollToSection(contactKey);
             },
           ),
-          FloatingSectionNav(items: _navItems, onSelected: scrollToSection),
+          FloatingSectionNav(
+            items: _navItems,
+            controller: scrollController,
+            onSelected: (index) {
+              scrollToSection(_navItems[index].key);
+            },
+          ),
         ],
       ),
     );
