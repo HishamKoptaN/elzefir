@@ -23,7 +23,10 @@ import 'quick_contact/quick_contact_buttons.dart';
 class BodyWidget extends StatefulWidget {
   const BodyWidget({
     super.key,
+    required this.heroKey,
+    required this.galleryKey,
     required this.productsKey,
+    required this.pricesKey,
     required this.aboutKey,
     required this.contactKey,
     required this.onProcudcts,
@@ -31,7 +34,10 @@ class BodyWidget extends StatefulWidget {
     required this.onContact,
   });
 
+  final GlobalKey heroKey;
+  final GlobalKey galleryKey;
   final GlobalKey productsKey;
+  final GlobalKey pricesKey;
   final GlobalKey aboutKey;
   final GlobalKey contactKey;
   final VoidCallback onProcudcts;
@@ -63,10 +69,13 @@ class _BodyWidgetState extends State<BodyWidget> {
               onAbout: widget.onAbout,
               onContact: widget.onContact,
             ),
-            LandingHeroSection(onExplore: widget.onProcudcts),
+            LandingHeroSection(
+              key: widget.heroKey,
+              onExplore: widget.onProcudcts,
+            ),
             const LandingMarqueeSection(),
             const HomeStatusBadge(),
-            const GallerySection(),
+            GallerySection(key: widget.galleryKey),
             const QuickContactButtons(),
             const ProductsSectionHeader(),
             _ProductLayout(
@@ -75,7 +84,7 @@ class _BodyWidgetState extends State<BodyWidget> {
                 getIt<ProductsBloc>().add(const .get());
               },
             ),
-            const MenuPricesSection(),
+            MenuPricesSection(key: widget.pricesKey),
             AboutSection(key: widget.aboutKey),
             FooterWidget(key: widget.contactKey, onAbout: widget.onAbout),
           ],
