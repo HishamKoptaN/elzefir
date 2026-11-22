@@ -11,7 +11,7 @@ import '../../../../../../core/widgets/custom_image.dart';
 import '../../../../../products/domain/entities/product_entity.dart';
 import '../../../../../dish_details/present/views/dish_details_view.dart';
 
-/// بيانات شريحة مختارات الطاهي. المنتج اختياري لعناصر العرض الاحتياطية.
+/// بيانات شريحة اختيارات الشيف المميزة. المنتج اختياري لعناصر العرض الاحتياطية.
 typedef ChefSlide = ({
   String image,
   String name,

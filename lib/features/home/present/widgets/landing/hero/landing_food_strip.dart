@@ -13,7 +13,7 @@ import '../../../../../products/present/blocs/bloc/products_bloc.dart';
 import '../landing_food_dots.dart';
 import 'landing_food_card.dart';
 
-/// شريط "مختارات الطاهي" يعرض منتجات فايرستور مع تبديل تلقائي.
+/// شريط "اختيارات الشيف المميزة" يعرض منتجات فايرستور مع تبديل تلقائي.
 class LandingFoodStrip extends StatelessWidget {
   const LandingFoodStrip({super.key});
 
@@ -145,7 +145,7 @@ class _CarouselState extends State<_Carousel> {
               color: colors.brandGold,
             ),
             Text(
-              'مختارات الطاهي المميزة',
+              'اختيارات الشيف المميزة',
               style: context.textTheme.titleMedium?.copyWith(
                 color: colors.onPrimary,
                 fontWeight: .w700,
