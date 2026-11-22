@@ -133,7 +133,15 @@ import '../../features/profile/domain/repo/profile_repo.dart' as _i364;
 import '../../features/profile/domain/use_cases/profile_use_cases.dart'
     as _i995;
 import '../../features/profile/present/bloc/profile_bloc.dart' as _i475;
+import '../../features/visitor_tracking/data/visitor_data_src.dart' as _i829;
+import '../../features/visitor_tracking/data/visitor_repository_impl.dart'
+    as _i937;
+import '../../features/visitor_tracking/domain/visitor_repository.dart' as _i10;
+import '../../features/visitor_tracking/domain/visitor_tracker.dart' as _i63;
+import '../../features/visitor_tracking/present/visitors_router_observer.dart'
+    as _i665;
 import '../analytics/analytics_service.dart' as _i726;
+import '../analytics/consent_service.dart' as _i635;
 import '../events/pusher_event_bus.dart' as _i235;
 import '../networking/network_info.dart' as _i303;
 import '../services/auth_storage_service.dart' as _i250;
@@ -188,6 +196,9 @@ _i174.GetIt init(
   );
   gh.singleton<_i310.OrderItemsBloc>(() => _i310.OrderItemsBloc());
   gh.singleton<_i497.DateBloc>(() => _i497.DateBloc());
+  gh.singleton<_i665.VisitorsRouterObserver>(
+    () => _i665.VisitorsRouterObserver(),
+  );
   gh.lazySingleton<_i749.FirebaseAuthService>(
     () => _i749.FirebaseAuthService(),
   );
@@ -197,6 +208,9 @@ _i174.GetIt init(
     instanceName: 's3Dio',
   );
   gh.singleton<_i361.Dio>(() => dioModule.webDio(), instanceName: 'webDio');
+  gh.singleton<_i635.ConsentService>(
+    () => _i635.ConsentService(gh<_i398.FirebaseAnalytics>()),
+  );
   gh.singleton<_i303.NetworkInfoImpl>(
     () => _i303.NetworkInfoImpl(
       connectionChecker: gh<_i161.InternetConnection>(),
@@ -213,6 +227,9 @@ _i174.GetIt init(
   );
   gh.singleton<_i482.ProductsRepo>(
     () => _i249.ProductsRepoImpl(gh<_i974.FirebaseFirestore>()),
+  );
+  gh.singleton<_i829.VisitorDataSrc>(
+    () => _i829.VisitorDataSrc(gh<_i974.FirebaseFirestore>()),
   );
   gh.lazySingleton<_i227.TokenService>(
     () => _i227.TokenService(gh<_i59.FirebaseAuth>()),
@@ -243,6 +260,12 @@ _i174.GetIt init(
     ),
     instanceName: 'authDio',
   );
+  gh.singleton<_i10.VisitorRepository>(
+    () => _i937.VisitorRepositoryImpl(
+      gh<_i829.VisitorDataSrc>(),
+      gh<_i726.AnalyticsService>(),
+    ),
+  );
   gh.singleton<_i976.AuthApi>(
     () => _i976.AuthApi(gh<_i361.Dio>(instanceName: 'authDio')),
   );
@@ -251,6 +274,9 @@ _i174.GetIt init(
   );
   gh.lazySingleton<_i552.SignUpApi>(
     () => _i552.SignUpApi(gh<_i361.Dio>(instanceName: 'authDio')),
+  );
+  gh.singleton<_i63.VisitorTracker>(
+    () => _i63.VisitorTracker(gh<_i10.VisitorRepository>()),
   );
   gh.singleton<_i956.ProductsUseCase>(
     () => _i956.ProductsUseCase(productsRepo: gh<_i482.ProductsRepo>()),

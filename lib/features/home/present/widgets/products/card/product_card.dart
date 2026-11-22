@@ -3,6 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../../core/analytics/analytics_events.dart';
+import '../../../../../../core/analytics/analytics_service.dart';
+import '../../../../../../core/analytics/consent_service.dart';
+import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../products/domain/entities/product_entity.dart';
 import '../../../../../dish_details/present/views/dish_details_view.dart';
@@ -17,42 +21,52 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colorScheme;
     return InkWell(
-      onTap: () => context.goNamed(DishDetailsView.routeName, extra: product),
-      borderRadius: .circular(16.r),
+      onTap: () async {
+        try {
+          if (await getIt<ConsentService>().isGranted()) {
+            await getIt<AnalyticsService>().logEvent(
+              name: AnalyticsEvents.viewProduct,
+              parameters: {'product_id': product.id},
+            );
+          }
+        } catch (_) {
+          // Analytics is best-effort and must never break navigation.
+        }
+        if (!context.mounted) {
+          return;
+        }
+        context.goNamed(DishDetailsView.routeName, extra: product);
+      },
+      borderRadius: .circular(24.r),
       child: Container(
-        padding: .all(12.r),
+        padding: .all(14.r),
         decoration: BoxDecoration(
-          color: context.colorScheme.surface,
-          borderRadius: .circular(16.r),
-          border: Border.all(color: context.colorScheme.slateBorder),
+          color: colors.surface,
+          borderRadius: .circular(24.r),
+          border: Border.all(color: colors.brandGold.withValues(alpha: 0.18)),
           boxShadow: [
             BoxShadow(
-              color: context.colorScheme.brandNavy.withValues(alpha: 0.06),
-              blurRadius: 20.r,
-              offset: const Offset(0, 4),
+              color: colors.brandNavyDeep.withValues(alpha: 0.06),
+              blurRadius: 24.r,
+              offset: const Offset(0, 10),
             ),
           ],
         ),
         child: Column(
           crossAxisAlignment: .stretch,
           children: [
-            Row(
-              crossAxisAlignment: .start,
-              children: [
-                ProductCardImage(product: product),
-                Gap(12.w),
-                Expanded(child: ProductCardInfo(product: product)),
-              ],
-            ),
+            ProductCardImage(product: product),
+            Gap(12.h),
+            ProductCardInfo(product: product),
             Gap(10.h),
             Container(
               padding: .only(top: 10.h),
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                    color: context.colorScheme.slateBorder,
-                    width: 1,
+                    color: colors.brandGold.withValues(alpha: 0.2),
                   ),
                 ),
               ),

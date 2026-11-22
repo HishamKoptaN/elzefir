@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductEntity {
 
- String get id; String get name; String get title; String get description; String get price; String get priceUnit; String get image; CategoryEntity get category; List<CookingMethodEntity> get cookingMethods;
+ String get id; String get name; String get title; String get description; String get price; String get priceUnit; bool get isFeatured; String get image; CategoryEntity get category; List<CookingMethodEntity> get cookingMethods;
 /// Create a copy of ProductEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $ProductEntityCopyWith<ProductEntity> get copyWith => _$ProductEntityCopyWithImp
 @override
 bool operator ==(Object other) {
   final _this = this as ProductEntity;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.priceUnit, _this.priceUnit) || other.priceUnit == _this.priceUnit)&&(identical(other.image, _this.image) || other.image == _this.image)&&(identical(other.category, _this.category) || other.category == _this.category)&&const DeepCollectionEquality().equals(other.cookingMethods, _this.cookingMethods));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductEntity&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.title, _this.title) || other.title == _this.title)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.price, _this.price) || other.price == _this.price)&&(identical(other.priceUnit, _this.priceUnit) || other.priceUnit == _this.priceUnit)&&(identical(other.isFeatured, _this.isFeatured) || other.isFeatured == _this.isFeatured)&&(identical(other.image, _this.image) || other.image == _this.image)&&(identical(other.category, _this.category) || other.category == _this.category)&&const DeepCollectionEquality().equals(other.cookingMethods, _this.cookingMethods));
 }
 
 
 @override
 int get hashCode {
   final _this = this as ProductEntity;
-  return Object.hash(runtimeType,_this.id,_this.name,_this.title,_this.description,_this.price,_this.priceUnit,_this.image,_this.category,const DeepCollectionEquality().hash(_this.cookingMethods));
+  return Object.hash(runtimeType,_this.id,_this.name,_this.title,_this.description,_this.price,_this.priceUnit,_this.isFeatured,_this.image,_this.category,const DeepCollectionEquality().hash(_this.cookingMethods));
 }
 
 @override
 String toString() {
   final _this = this as ProductEntity;
-  return 'ProductEntity(id: ${_this.id}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, priceUnit: ${_this.priceUnit}, image: ${_this.image}, category: ${_this.category}, cookingMethods: ${_this.cookingMethods})';
+  return 'ProductEntity(id: ${_this.id}, name: ${_this.name}, title: ${_this.title}, description: ${_this.description}, price: ${_this.price}, priceUnit: ${_this.priceUnit}, isFeatured: ${_this.isFeatured}, image: ${_this.image}, category: ${_this.category}, cookingMethods: ${_this.cookingMethods})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $ProductEntityCopyWith<$Res>  {
   factory $ProductEntityCopyWith(ProductEntity value, $Res Function(ProductEntity) _then) = _$ProductEntityCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String title, String description, String price, String priceUnit, String image, CategoryEntity category, List<CookingMethodEntity> cookingMethods
+ String id, String name, String title, String description, String price, String priceUnit, bool isFeatured, String image, CategoryEntity category, List<CookingMethodEntity> cookingMethods
 });
 
 
@@ -68,7 +68,7 @@ class _$ProductEntityCopyWithImpl<$Res>
 
 /// Create a copy of ProductEntity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? title = null,Object? description = null,Object? price = null,Object? priceUnit = null,Object? image = null,Object? category = null,Object? cookingMethods = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? title = null,Object? description = null,Object? price = null,Object? priceUnit = null,Object? isFeatured = null,Object? image = null,Object? category = null,Object? cookingMethods = null,}) {
   return _then(ProductEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -76,7 +76,8 @@ as String,title: null == title ? _self.title : title // ignore: cast_nullable_to
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as String,priceUnit: null == priceUnit ? _self.priceUnit : priceUnit // ignore: cast_nullable_to_non_nullable
-as String,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
+as String,isFeatured: null == isFeatured ? _self.isFeatured : isFeatured // ignore: cast_nullable_to_non_nullable
+as bool,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as CategoryEntity,cookingMethods: null == cookingMethods ? _self.cookingMethods : cookingMethods // ignore: cast_nullable_to_non_nullable
 as List<CookingMethodEntity>,
@@ -173,10 +174,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String title,  String description,  String price,  String priceUnit,  String image,  CategoryEntity category,  List<CookingMethodEntity> cookingMethods)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String title,  String description,  String price,  String priceUnit,  bool isFeatured,  String image,  CategoryEntity category,  List<CookingMethodEntity> cookingMethods)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductEntity() when $default != null:
-return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.priceUnit,_that.image,_that.category,_that.cookingMethods);case _:
+return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.priceUnit,_that.isFeatured,_that.image,_that.category,_that.cookingMethods);case _:
   return orElse();
 
 }
@@ -194,10 +195,10 @@ return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String title,  String description,  String price,  String priceUnit,  String image,  CategoryEntity category,  List<CookingMethodEntity> cookingMethods)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String title,  String description,  String price,  String priceUnit,  bool isFeatured,  String image,  CategoryEntity category,  List<CookingMethodEntity> cookingMethods)  $default,) {final _that = this;
 switch (_that) {
 case _ProductEntity():
-return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.priceUnit,_that.image,_that.category,_that.cookingMethods);case _:
+return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.priceUnit,_that.isFeatured,_that.image,_that.category,_that.cookingMethods);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -214,10 +215,10 @@ return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String title,  String description,  String price,  String priceUnit,  String image,  CategoryEntity category,  List<CookingMethodEntity> cookingMethods)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String title,  String description,  String price,  String priceUnit,  bool isFeatured,  String image,  CategoryEntity category,  List<CookingMethodEntity> cookingMethods)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductEntity() when $default != null:
-return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.priceUnit,_that.image,_that.category,_that.cookingMethods);case _:
+return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_that.priceUnit,_that.isFeatured,_that.image,_that.category,_that.cookingMethods);case _:
   return null;
 
 }
@@ -229,7 +230,7 @@ return $default(_that.id,_that.name,_that.title,_that.description,_that.price,_t
 
 
 class _ProductEntity extends ProductEntity {
-  const _ProductEntity({this.id = '', this.name = '', this.title = '', this.description = '', this.price = '', this.priceUnit = '', this.image = '', this.category = const CategoryEntity(),  List<CookingMethodEntity> cookingMethods = const <CookingMethodEntity>[]}): _cookingMethods = cookingMethods,super._();
+  const _ProductEntity({this.id = '', this.name = '', this.title = '', this.description = '', this.price = '', this.priceUnit = '', this.isFeatured = false, this.image = '', this.category = const CategoryEntity(),  List<CookingMethodEntity> cookingMethods = const <CookingMethodEntity>[]}): _cookingMethods = cookingMethods,super._();
   
 
 @override@JsonKey() final  String id;
@@ -238,6 +239,7 @@ class _ProductEntity extends ProductEntity {
 @override@JsonKey() final  String description;
 @override@JsonKey() final  String price;
 @override@JsonKey() final  String priceUnit;
+@override@JsonKey() final  bool isFeatured;
 @override@JsonKey() final  String image;
 @override@JsonKey() final  CategoryEntity category;
  final  List<CookingMethodEntity> _cookingMethods;
@@ -258,18 +260,18 @@ _$ProductEntityCopyWith<_ProductEntity> get copyWith => __$ProductEntityCopyWith
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.priceUnit, priceUnit) || other.priceUnit == priceUnit)&&(identical(other.image, image) || other.image == image)&&(identical(other.category, category) || other.category == category)&&const DeepCollectionEquality().equals(other.cookingMethods, _cookingMethods));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.price, price) || other.price == price)&&(identical(other.priceUnit, priceUnit) || other.priceUnit == priceUnit)&&(identical(other.isFeatured, isFeatured) || other.isFeatured == isFeatured)&&(identical(other.image, image) || other.image == image)&&(identical(other.category, category) || other.category == category)&&const DeepCollectionEquality().equals(other.cookingMethods, _cookingMethods));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,id,name,title,description,price,priceUnit,image,category,const DeepCollectionEquality().hash(_cookingMethods));
+    return Object.hash(runtimeType,id,name,title,description,price,priceUnit,isFeatured,image,category,const DeepCollectionEquality().hash(_cookingMethods));
 }
 
 @override
 String toString() {
-    return 'ProductEntity(id: $id, name: $name, title: $title, description: $description, price: $price, priceUnit: $priceUnit, image: $image, category: $category, cookingMethods: $cookingMethods)';
+    return 'ProductEntity(id: $id, name: $name, title: $title, description: $description, price: $price, priceUnit: $priceUnit, isFeatured: $isFeatured, image: $image, category: $category, cookingMethods: $cookingMethods)';
 }
 
 
@@ -280,7 +282,7 @@ abstract mixin class _$ProductEntityCopyWith<$Res> implements $ProductEntityCopy
   factory _$ProductEntityCopyWith(_ProductEntity value, $Res Function(_ProductEntity) _then) = __$ProductEntityCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String title, String description, String price, String priceUnit, String image, CategoryEntity category, List<CookingMethodEntity> cookingMethods
+ String id, String name, String title, String description, String price, String priceUnit, bool isFeatured, String image, CategoryEntity category, List<CookingMethodEntity> cookingMethods
 });
 
 
@@ -297,7 +299,7 @@ class __$ProductEntityCopyWithImpl<$Res>
 
 /// Create a copy of ProductEntity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? title = null,Object? description = null,Object? price = null,Object? priceUnit = null,Object? image = null,Object? category = null,Object? cookingMethods = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? title = null,Object? description = null,Object? price = null,Object? priceUnit = null,Object? isFeatured = null,Object? image = null,Object? category = null,Object? cookingMethods = null,}) {
   return _then(_ProductEntity(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -305,7 +307,8 @@ as String,title: null == title ? _self.title : title // ignore: cast_nullable_to
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,price: null == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as String,priceUnit: null == priceUnit ? _self.priceUnit : priceUnit // ignore: cast_nullable_to_non_nullable
-as String,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
+as String,isFeatured: null == isFeatured ? _self.isFeatured : isFeatured // ignore: cast_nullable_to_non_nullable
+as bool,image: null == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String,category: null == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
 as CategoryEntity,cookingMethods: null == cookingMethods ? _self._cookingMethods : cookingMethods // ignore: cast_nullable_to_non_nullable
 as List<CookingMethodEntity>,

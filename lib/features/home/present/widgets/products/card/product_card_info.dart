@@ -23,9 +23,9 @@ class ProductCardInfo extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: context.textTheme.titleSmall?.copyWith(
-            fontWeight: .w800,
-            fontSize: 15.sp,
-            color: context.colorScheme.brandNavy,
+            fontWeight: .w700,
+            fontSize: 18.sp,
+            color: context.colorScheme.brandNavyDeep,
           ),
         ),
         if (product.description.isNotEmpty) ...[

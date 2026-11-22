@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:gap/gap.dart';
 
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
@@ -34,15 +33,18 @@ class HomeHeaderActions extends StatelessWidget {
                 height: 40.r,
                 width: 40.r,
                 decoration: BoxDecoration(
-                  shape: .circle,
-                  color: context.colorScheme.slateCardBg,
+                  borderRadius: .circular(14.r),
+                  color: context.colorScheme.brandGold.withValues(alpha: 0.14),
+                  border: Border.all(
+                    color: context.colorScheme.brandGold.withValues(alpha: 0.35),
+                  ),
                 ),
                 child: IconButton(
                   padding: .zero,
                   icon: FaIcon(
                     FontAwesomeIcons.bell,
                     size: 18.r,
-                    color: context.colorScheme.brandNavy,
+                    color: context.colorScheme.brandGold,
                   ),
                   onPressed: () {},
                 ),
@@ -50,31 +52,6 @@ class HomeHeaderActions extends StatelessWidget {
             );
           },
         ),
-        //Gap(8.w),
-        //Container(
-        //  width: 40.r,
-        //  height: 40.r,
-        //  decoration: BoxDecoration(
-        //    shape: .circle,
-        //    color: context.colorScheme.brandNavy,
-        //    boxShadow: [
-        //      BoxShadow(
-        //        color: context.colorScheme.shadow.withValues(alpha: 0.08),
-        //        blurRadius: 4.r,
-        //        offset: const Offset(0, 2),
-        //      ),
-        //    ],
-        //  ),
-        //  child: IconButton(
-        //    padding: .zero,
-        //    icon: FaIcon(
-        //      FontAwesomeIcons.bagShopping,
-        //      size: 26.r,
-        //      color: context.colorScheme.onPrimary,
-        //    ),
-        //    onPressed: () {},
-        //  ),
-        //),
       ],
     );
   }

@@ -3,6 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../core/analytics/analytics_events.dart';
+import '../../../../../core/analytics/analytics_service.dart';
+import '../../../../../core/analytics/consent_service.dart';
+import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 
 class QuickHotlineButton extends StatelessWidget {
@@ -14,6 +18,15 @@ class QuickHotlineButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: () async {
+          try {
+            if (await getIt<ConsentService>().isGranted()) {
+              await getIt<AnalyticsService>().logEvent(
+                name: AnalyticsEvents.clickCall,
+              );
+            }
+          } catch (_) {
+            // Analytics is best-effort and must never break the action.
+          }
           final uri = Uri.parse('tel:01008673836');
           await launchUrl(uri, mode: .externalApplication);
         },

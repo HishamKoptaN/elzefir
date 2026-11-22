@@ -41,26 +41,34 @@ class ProductCardPriceRow extends StatelessWidget {
                     isFree ? 'مجاناً' : value,
                     style: textTheme.titleMedium?.copyWith(
                       fontWeight: .w900,
-                      fontSize: isFree ? 14.sp : 18.sp,
-                      color: colors.brandNavy,
+                      fontSize: isFree ? 14.sp : 20.sp,
+                      color: colors.brandNavyDeep,
                     ),
                   ),
                 if (hasPrice && !isFree) ...[
-                  Gap(2.w),
+                  Gap(3.w),
                   Text(
                     'ج.م',
                     style: textTheme.bodySmall?.copyWith(
-                      fontWeight: .w700,
+                      fontWeight: .w800,
                       fontSize: 12.sp,
-                      color: colors.brandNavy,
+                      color: colors.brandGoldHover,
                     ),
                   ),
-                  Gap(4.w),
-                  Text(
-                    '/ $unit',
-                    style: textTheme.labelSmall?.copyWith(
-                      fontSize: 10.sp,
-                      color: colors.slateText,
+                  Gap(6.w),
+                  Container(
+                    padding: .symmetric(horizontal: 8.w, vertical: 2.h),
+                    decoration: BoxDecoration(
+                      color: colors.brandSand,
+                      borderRadius: .circular(999),
+                    ),
+                    child: Text(
+                      '/ $unit',
+                      style: textTheme.labelSmall?.copyWith(
+                        fontSize: 10.sp,
+                        fontWeight: .w600,
+                        color: colors.slateText,
+                      ),
                     ),
                   ),
                 ],

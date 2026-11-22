@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../../../core/widgets/custom_image.dart';
+import '../../../../../generated/assets.gen.dart';
 import 'home_header_row.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -13,22 +15,46 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colorScheme;
     return Container(
       width: .infinity,
-      padding: .all(12.r),
       decoration: BoxDecoration(
-        color: context.colorScheme.surface,
-        borderRadius: .circular(12.r),
-        border: .all(color: context.colorScheme.slateBorder),
+        color: colors.brandNavyDeep,
+        borderRadius: .circular(20.r),
+        border: Border.all(color: colors.brandGold.withValues(alpha: 0.3)),
         boxShadow: [
           BoxShadow(
-            color: context.colorScheme.shadow.withValues(alpha: 0.04),
-            blurRadius: 6.r,
-            offset: const Offset(0, 2),
+            color: colors.brandNavyDeep.withValues(alpha: 0.25),
+            blurRadius: 18.r,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
-      child: HomeHeaderRow(),
+      child: ClipRRect(
+        borderRadius: .circular(20.r),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Opacity(
+                opacity: 0.18,
+                child: CustomImage(
+                  image: Assets.images.aboutPng.path,
+                  fit: .cover,
+                  borderRadius: .zero,
+                ),
+              ),
+            ),
+            Padding(
+              padding: .symmetric(vertical: 16.h, horizontal: 14.w),
+              child: HomeHeaderRow(
+                onMenu: onMenu,
+                onAbout: onAbout,
+                onContact: onContact,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

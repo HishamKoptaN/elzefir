@@ -9,24 +9,22 @@ import '../restaurant_info_builder.dart';
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
 
-  static const Color primary = Color(0xFF001629);
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
           decoration: BoxDecoration(
-            color: const Color(0xFFFFEADE),
+            color: context.colorScheme.brandCreamDark,
             borderRadius: .circular(12),
             border: Border.all(
-              color: const Color(0xFFC3C7CE).withValues(alpha: .1),
+              color: context.colorScheme.brandGold.withValues(alpha: 0.2),
             ),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(
                 blurRadius: 2,
-                offset: Offset(0, 1),
-                color: Color.fromRGBO(0, 0, 0, .05),
+                offset: const Offset(0, 1),
+                color: context.colorScheme.shadow.withValues(alpha: 0.06),
               ),
             ],
           ),
@@ -54,11 +52,8 @@ class _ImageSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CustomImage(
       image: 'assets/images/about.png',
-      aspectRatio: 1.45,
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(12),
-        bottomLeft: Radius.circular(12),
-      ),
+      aspectRatio: 1.6,
+      borderRadius: BorderRadius.all(Radius.circular(20)),
     );
   }
 }
@@ -78,7 +73,8 @@ class _ContentSection extends StatelessWidget {
             'من نحن',
             textAlign: .start,
             style: context.textTheme.headlineLarge?.copyWith(
-              color: const Color(0xFF406182),
+              color: context.colorScheme.brandNavyDeep,
+              fontWeight: .w900,
             ),
           ),
           RestaurantInfoBuilder(
@@ -87,7 +83,7 @@ class _ContentSection extends StatelessWidget {
                 info.name,
                 textAlign: TextAlign.right,
                 style: context.textTheme.titleLarge?.copyWith(
-                  color: Color(0xFF28180D),
+                  color: context.colorScheme.brandNavyDeep,
                 ),
               );
             },
@@ -98,7 +94,53 @@ class _ContentSection extends StatelessWidget {
             'تجربة مميزة تجمع بين الطعم الأصيل والجودة العالية والخدمة الممتازة.',
             textAlign: TextAlign.right,
             style: context.textTheme.bodyLarge?.copyWith(
-              color: Color(0xFF42474D),
+              color: context.colorScheme.slateText,
+            ),
+          ),
+          const Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              _AboutFeature(icon: Icons.set_meal_rounded, label: 'طازج يومياً'),
+              _AboutFeature(
+                icon: Icons.delivery_dining_rounded,
+                label: 'توصيل سريع',
+              ),
+              _AboutFeature(icon: Icons.verified_rounded, label: 'جودة عالية'),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _AboutFeature extends StatelessWidget {
+  const _AboutFeature({required this.icon, required this.label});
+
+  final IconData icon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colorScheme;
+    return Container(
+      padding: .symmetric(horizontal: 10.w, vertical: 6.h),
+      decoration: BoxDecoration(
+        color: colors.surface.withValues(alpha: 0.85),
+        borderRadius: .circular(999),
+        border: Border.all(color: colors.brandGold.withValues(alpha: 0.45)),
+      ),
+      child: Row(
+        mainAxisSize: .min,
+        spacing: 5.w,
+        children: [
+          Icon(icon, size: 15.r, color: colors.brandGoldHover),
+          Text(
+            label,
+            style: context.textTheme.labelSmall?.copyWith(
+              fontWeight: .w700,
+              color: colors.brandNavyDeep,
             ),
           ),
         ],

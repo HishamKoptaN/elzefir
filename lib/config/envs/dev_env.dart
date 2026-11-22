@@ -8,7 +8,9 @@ import '../firebase/firebase_options_dev.dart';
 class DevEnv extends Env {
   @override
   String get webUrl {
-    return 'https://coral-shark-547480.hostingersite.com';
+    // يتم الإرسال نفس الأصل (relative) عشان الـ update check يجلب version.json
+    // من ذات الـ hosting.
+    return '';
   }
 
   @override

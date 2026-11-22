@@ -1,0 +1,9 @@
+{
+  "provider": "google-stitch",
+  "projectId": "10038201372055056727",
+  "projectName": "elzefir",
+  "policy": {
+    "allowCreateNewProject": false,
+    "requireExistingProject": true
+  }
+}

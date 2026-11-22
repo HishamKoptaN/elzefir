@@ -7,6 +7,7 @@ import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../products/data/mapper/products_mapper.dart';
 import '../../../products/domain/entities/product_entity.dart';
 import '../../../products/present/blocs/bloc/products_bloc.dart';
+import 'price_item.dart';
 
 /// منيو مبسّط يعرض أسماء المنتجات وأسعارها الحالية من مجموعة `products`
 /// في فايرستور. يُستخدم أيضاً كمصدر لبيانات الـ SEO المرئية.
@@ -31,32 +32,43 @@ class MenuPricesSection extends StatelessWidget {
         }
         return Container(
           width: .infinity,
-          padding: .all(16.r),
+          padding: .all(10.r),
           decoration: BoxDecoration(
-            color: context.colorScheme.surface,
+            color: context.colorScheme.brandCream,
             borderRadius: .circular(16.r),
-            border: .all(color: context.colorScheme.slateBorder),
+            border: .all(
+              color: context.colorScheme.brandGold.withValues(alpha: 0.35),
+            ),
           ),
           child: Column(
             crossAxisAlignment: .start,
             children: [
-              Text(
-                'منيو اليوم وأسعاره',
-                style: context.textTheme.titleLarge?.copyWith(
-                  fontWeight: .bold,
-                  color: context.colorScheme.brandNavy,
-                ),
+              Row(
+                mainAxisSize: .min,
+                spacing: 4.w,
+                children: [
+                  Icon(
+                    Icons.receipt_long_rounded,
+                    size: 14.r,
+                    color: context.colorScheme.brandGoldHover,
+                  ),
+                  Text(
+                    'منيو اليوم المختصر وأسعاره',
+                    style: context.textTheme.titleSmall?.copyWith(
+                      fontWeight: .w900,
+                      color: context.colorScheme.brandNavyDeep,
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 12.h),
+              SizedBox(height: 6.h),
               Wrap(
-                spacing: 10.w,
-                runSpacing: 8.h,
+                spacing: 4.w,
+                runSpacing: 4.h,
                 children: [
                   for (final product in products)
-                    _PriceItem(
-                      name: product.name.isEmpty
-                          ? product.title
-                          : product.name,
+                    PriceItem(
+                      name: product.name.isEmpty ? product.title : product.name,
                       price: product.price,
                     ),
                 ],
@@ -65,44 +77,6 @@ class MenuPricesSection extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class _PriceItem extends StatelessWidget {
-  const _PriceItem({required this.name, required this.price});
-
-  final String name;
-  final String price;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: .symmetric(vertical: 6.h, horizontal: 10.w),
-      decoration: BoxDecoration(
-        color: context.colorScheme.surface,
-        borderRadius: .circular(9999),
-        border: .all(color: context.colorScheme.slateBorder),
-      ),
-      child: Row(
-        mainAxisSize: .min,
-        spacing: 8.w,
-        children: [
-          Text(
-            name.trim(),
-            style: context.textTheme.bodyMedium?.copyWith(
-              color: context.colorScheme.slateText,
-            ),
-          ),
-          Text(
-            price.isEmpty ? '' : '$price ج.م',
-            style: context.textTheme.bodyMedium?.copyWith(
-              fontWeight: .bold,
-              color: context.colorScheme.brandNavy,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
