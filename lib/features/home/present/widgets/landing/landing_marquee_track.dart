@@ -69,15 +69,21 @@ class _LandingMarqueeTrackState extends State<LandingMarqueeTrack>
               textDirection: .ltr,
               child: Transform.translate(
                 offset: Offset(-_scroll.value * _segmentWidth, 0),
-                child: Row(
-                  children: [
-                    for (final name in items)
-                      LandingMarqueeItem(
-                        name: name,
-                        width: _itemWidth.w,
-                        gap: _gap.w,
-                      ),
-                  ],
+                child: OverflowBox(
+                  alignment: .centerLeft,
+                  minWidth: 0,
+                  maxWidth: double.infinity,
+                  child: Row(
+                    mainAxisSize: .min,
+                    children: [
+                      for (final name in items)
+                        LandingMarqueeItem(
+                          name: name,
+                          width: _itemWidth.w,
+                          gap: _gap.w,
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),

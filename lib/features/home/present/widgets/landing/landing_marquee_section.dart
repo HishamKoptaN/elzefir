@@ -31,13 +31,11 @@ class LandingMarqueeSection extends StatelessWidget {
       orElse: () => <ProductEntity>[],
     );
     final withNames = products.where((p) => p.name.trim().isNotEmpty).toList();
-    final featured = withNames
-        .where((p) => p.isFeatured)
-        .take(_maxItems)
-        .toList();
-    final selected = featured.isNotEmpty
-        ? featured
-        : withNames.take(_maxItems).toList();
-    return selected.map((p) => p.name.trim()).toList();
+    final featured = withNames.where((p) => p.isFeatured).toList();
+    final others = withNames.where((p) => !p.isFeatured).toList();
+    return [
+      ...featured,
+      ...others,
+    ].take(_maxItems).map((p) => p.name.trim()).toList();
   }
 }
