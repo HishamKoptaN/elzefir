@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../../core/analytics/analytics_events.dart';
 import '../../../../../../core/analytics/analytics_service.dart';
 import '../../../../../../core/analytics/consent_service.dart';
 import '../../../../../../core/di/dependency_injection.dart';
+import '../../../../../../core/routing/utils/navigation_service.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../../core/widgets/custom_image.dart';
 import '../../../../../products/domain/entities/product_entity.dart';
-import '../../../../../dish_details/present/views/dish_details_view.dart';
 
 /// بيانات شريحة اختيارات الشيف المميزة. المنتج اختياري لعناصر العرض الاحتياطية.
 typedef ChefSlide = ({
@@ -39,7 +38,7 @@ class LandingFoodCard extends StatelessWidget {
       // Analytics is best-effort and must never break navigation.
     }
     if (context.mounted) {
-      context.goNamed(DishDetailsView.routeName, extra: product);
+      NavigationService.pushProductDetails(context: context, product: product);
     }
   }
 
