@@ -14,7 +14,7 @@ class LandingHeroSection extends StatefulWidget {
 }
 
 class _LandingHeroSectionState extends State<LandingHeroSection>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   static const _heroDuration = Duration(milliseconds: 900);
   static const _glowDuration = Duration(seconds: 3);
 
