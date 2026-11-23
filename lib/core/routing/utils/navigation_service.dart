@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../features/dish_details/present/views/dish_details_view.dart';
+import '../../../features/products/domain/entities/product_entity.dart';
+
 class NavigationService {
   NavigationService._();
   static Future<T?> pushNamed<T>({
@@ -15,6 +18,19 @@ class NavigationService {
       pathParameters: pathParameters,
       queryParameters: queryParameters,
       extra: extra,
+    );
+  }
+
+  /// يفتح تفاصيل المنتج فوق الصفحة الحالية بدل استبدال مكدس التنقل،
+  /// حتى يرجع زر الرجوع إلى نفس موضع التمرير في الصفحة الرئيسية.
+  static Future<T?> pushProductDetails<T>({
+    required BuildContext context,
+    required ProductEntity product,
+  }) {
+    return pushNamed<T>(
+      context: context,
+      routeName: DishDetailsView.routeName,
+      extra: product,
     );
   }
 

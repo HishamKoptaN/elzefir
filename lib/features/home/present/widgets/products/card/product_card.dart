@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../../core/analytics/analytics_events.dart';
 import '../../../../../../core/analytics/analytics_service.dart';
 import '../../../../../../core/analytics/consent_service.dart';
 import '../../../../../../core/di/dependency_injection.dart';
+import '../../../../../../core/routing/utils/navigation_service.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../products/domain/entities/product_entity.dart';
-import '../../../../../dish_details/present/views/dish_details_view.dart';
 import 'product_card_image.dart';
 import 'product_card_info.dart';
 import 'product_card_price_row.dart';
@@ -37,7 +36,7 @@ class ProductCard extends StatelessWidget {
         if (!context.mounted) {
           return;
         }
-        context.goNamed(DishDetailsView.routeName, extra: product);
+        NavigationService.pushProductDetails(context: context, product: product);
       },
       borderRadius: .circular(24.r),
       child: Container(
