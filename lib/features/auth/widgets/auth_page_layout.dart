@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import '../../../core/responsive/app_responsive.dart';
-import '../../../core/responsive/device_helper.dart';
 import '../../../core/responsive/responsive_extensions.dart';
 import '../../../core/utils/extensions/theme_ext.dart';
 

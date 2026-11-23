@@ -6,12 +6,10 @@ import '../../../../../core/routing/utils/navigation_service.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/feedback/app_snackbar.dart';
-import '../../../auth_sizes.dart';
 import '../../../sign_up/present/views/sign_up_view.dart';
 import '../../../widgets/auth_page_layout.dart';
 import '../../../widgets/custom_auth_btn.dart';
 import '../blocs/bloc/sign_in_bloc.dart';
-import 'phone_sign_in_view.dart';
 import 'sign_in_debug_auto_fill.dart';
 import 'widgets/sign_in_form.dart';
 
@@ -34,8 +32,8 @@ class _SignInViewState extends State<SignInView> {
             await state.whenOrNull(
               failure: (apiError) {
                 context.showErrorSnackBar(
-                  title: apiError.title ?? 'فشل',
-                  message: apiError.message ?? 'حدث خطأ',
+                  title: apiError.title,
+                  message: apiError.message,
                 );
               },
             );

@@ -7,11 +7,8 @@ import '../services/firebase_auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../../core/globals/database/shared_pref_helper.dart';
 import '../../../../../core/globals/database/shared_pref_keys.dart';
-import '../../../../../../core/di/dio/api_module.dart';
-import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/services/token_service.dart';
 import '../../../../../core/services/device_service.dart';
-import '../../../../firebase_messaging/firebase_messaging_service.dart';
 import '../data_sources/sign_up_api.dart';
 import '../mappers/sign_up_mapper.dart';
 
@@ -49,7 +46,7 @@ class SignUpRepoImpl implements SignUpRepo {
     SignUpReqEntity signUpReqEntity,
     String idToken,
   ) async {
-    final res = await _api.signUp(
+    await _api.signUp(
       signUpReqEntity.toModel(
         idToken: idToken,
         // fcmToken: await FirebaseMessagingService.getFcmToken(),
