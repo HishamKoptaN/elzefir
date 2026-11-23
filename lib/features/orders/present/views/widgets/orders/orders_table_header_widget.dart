@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 import '../../../../../../core/di/dependency_injection.dart';
-import '../../../../../../core/responsive/device_helper.dart' as dh;
-import '../../../../../../core/responsive/device_helper.dart';
 import '../../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../../core/utils/extensions/scaled.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../../core/widgets/tables/table_header_cell.dart';
 import '../../../blocs/orders_bloc/orders_bloc.dart';
-import '../../orders_widget.dart';
 
 class OrdersTableHeaderWidget extends StatelessWidget {
   final bool selectAll;

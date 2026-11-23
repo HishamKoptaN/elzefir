@@ -8,7 +8,6 @@ import 'package:gap/gap.dart';
 import 'package:phone_input/phone_input_package.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
-import '../../../../../core/widgets/common/custom_circular_progress.dart';
 import '../../../../../core/widgets/feedback/app_snackbar.dart';
 import '../../../auth_sizes.dart';
 import '../../../widgets/auth_page_layout.dart';

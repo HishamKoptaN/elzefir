@@ -3,8 +3,6 @@ import '../../../../../core/errors/error_handler.dart';
 import '../../../../../../core/networking/api_result.dart';
 import '../../../../../core/globals/database/shared_pref_helper.dart';
 import '../../../../../core/globals/database/shared_pref_keys.dart';
-import '../../../../../core/di/dependency_injection.dart';
-import '../../../../../core/di/dio/api_module.dart';
 import '../../../auth/domain/repo/auth_repo.dart';
 import '../../../sign_up/data/services/firebase_auth_service.dart';
 import '../../domain/entities/sign_in_req_entity.dart';

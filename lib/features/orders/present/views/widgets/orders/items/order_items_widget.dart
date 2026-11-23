@@ -5,7 +5,6 @@ import '../../../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../../../core/utils/extensions/scaled.dart';
 import '../../../../../domain/entities/orders_res_entity.dart';
 import '../../../../blocs/orders_bloc/orders_bloc.dart';
-import '../../../orders_widget.dart';
 import 'units/units_widget.dart';
 
 class OrderItemsWidget extends StatelessWidget {

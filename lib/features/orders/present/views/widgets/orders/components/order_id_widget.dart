@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../../core/utils/extensions/scaled.dart';
 import '../../../../../../../core/widgets/custom_copy_widget.dart';
 import '../../../../../domain/entities/orders_res_entity.dart';
-import '../../../orders_widget.dart';
 
 class OrderIdWidget extends StatelessWidget {
   final OrderEntity order;

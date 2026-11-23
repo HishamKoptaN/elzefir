@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../features/orders/present/views/orders_widget.dart';
 import '../../utils/extensions/device_type_extension.dart';
 import '../../utils/extensions/scaled.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../features/orders/domain/entities/orders_res_entity.dart';
 
 class OrderStatusWidget extends StatelessWidget {
   final String text;

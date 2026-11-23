@@ -1,7 +1,5 @@
 import '../../../../core/utils/color_formatter.dart';
 import '../../domain/entities/order_status_entity.dart' as entity;
-import '../../domain/entities/update_order_status_req_entity.dart'
-    as updateEntity;
 import '../model/order_status_model.dart' as model;
 
 extension OrdersStatusesModelMapper on model.OrderStatusModel {

@@ -6,7 +6,6 @@ import '../../../../../../../../core/utils/extensions/scaled.dart';
 import '../../../../../../../../core/widgets/forms/custom_dropdown_form_field.dart';
 import '../../../../../../../products/data/model/product_model.dart';
 import '../../../../../../../products/present/blocs/bloc/products_bloc.dart';
-import '../../../../orders_widget.dart';
 import 'custom_order_drop_down_btn_filter.dart';
 
 class ProductDropdown extends StatelessWidget {

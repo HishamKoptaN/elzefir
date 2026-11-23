@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../../core/data/entities/formatted_date_time_entity.dart';
 import '../../../../../../../core/utils/extensions/scaled.dart';
-import '../../../orders_widget.dart';
 
 class CreatedAtWidget extends StatelessWidget {
   final FormattedDateTimeEntity formattedDateTimeorder;

@@ -6,7 +6,6 @@ import '../../../../../../../../core/utils/extensions/scaled.dart';
 import '../../../../../../../../core/widgets/forms/custom_dropdown_form_field.dart';
 import '../../../../../../../orders_statuses/domain/entities/order_status_entity.dart';
 import '../../../../../../../orders_statuses/present/blocs/bloc/orders_statuses_bloc.dart';
-import '../../../../orders_widget.dart';
 import 'custom_order_drop_down_btn_filter.dart';
 
 class OrderStatusDropdown extends StatelessWidget {
