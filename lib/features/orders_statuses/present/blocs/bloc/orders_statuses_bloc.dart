@@ -4,7 +4,6 @@ import '../../../../../core/errors/models/error_info.dart';
 import '../../../../../core/networking/api_result.dart';
 import '../../../../orders/present/blocs/orders_bloc/orders_bloc.dart';
 import '../../../domain/entities/order_status_entity.dart';
-import '../../../domain/entities/update_order_status_req_entity.dart';
 import '../../../domain/use_cases/orders_statuses_use_cases.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'orders_statuses_bloc.freezed.dart';

@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/data/entities/meta_entity.dart';
-import '../../../../core/responsive/device_helper.dart' as dh;
 import '../../../../core/utils/extensions/scaled.dart';
 import '../../../../core/widgets/forms/custom_search_field.dart';
 import '../../data/models/order/orders_filter_model.dart';
@@ -56,7 +55,6 @@ class OrdersWidget extends StatefulWidget {
 class _OrdersWidgetState extends State<OrdersWidget> {
   ScrollController controller = ScrollController();
 
-  int? _selectedPage;
   double _uiScale = 1;
   @override
   void initState() {
