@@ -14,7 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: TextStyle(fontSize: 36.sp, fontWeight: FontWeight.bold),
       ),
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back),
+        icon: const Icon(Icons.arrow_forward),
         onPressed: () {
           Navigator.pop(context);
         },
