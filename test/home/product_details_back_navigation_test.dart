@@ -1,6 +1,6 @@
-import 'package:elzefir/core/routing/utils/navigation_service.dart';
 import 'package:elzefir/core/theme/app_theme.dart';
 import 'package:elzefir/features/dish_details/present/views/dish_details_view.dart';
+import 'package:elzefir/features/home/present/widgets/products/card/product_card.dart';
 import 'package:elzefir/features/products/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +19,7 @@ void main() {
       final controller = ScrollController();
       addTearDown(controller.dispose);
 
-      const product = ProductEntity(id: '1', name: 'سمك');
+      const product = ProductEntity(id: '1', name: 'سمك', price: '180');
       final router = GoRouter(
         initialLocation: '/',
         routes: [
@@ -32,13 +32,7 @@ void main() {
                 child: Column(
                   children: [
                     const SizedBox(height: 400),
-                    ElevatedButton(
-                      onPressed: () => NavigationService.pushProductDetails(
-                        context: context,
-                        product: product,
-                      ),
-                      child: const Text('افتح المنتج'),
-                    ),
+                    ProductCard(product: product),
                     const SizedBox(height: 1400),
                   ],
                 ),
@@ -71,7 +65,8 @@ void main() {
       controller.jumpTo(savedOffset);
       await tester.pumpAndSettle();
 
-      await tester.tap(find.text('افتح المنتج'));
+      // اللمس على الصورة يفتح عارض الصور، لذا نلمس اسم المنتج داخل الكارت.
+      await tester.tap(find.text('سمك'));
       await tester.pumpAndSettle();
 
       expect(
@@ -89,7 +84,7 @@ void main() {
         reason: 'back should leave product details',
       );
       expect(
-        find.text('افتح المنتج'),
+        find.byType(ProductCard),
         findsOneWidget,
         reason: 'home should be restored instead of rebuilt from scratch',
       );
