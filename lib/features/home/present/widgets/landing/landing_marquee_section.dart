@@ -1,100 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../../../core/di/dependency_injection.dart';
+import '../../../../products/data/mapper/products_mapper.dart';
+import '../../../../products/domain/entities/product_entity.dart';
+import '../../../../products/present/blocs/bloc/products_bloc.dart';
+import 'landing_marquee_track.dart';
 
-class LandingMarqueeSection extends StatefulWidget {
+/// شريط أسماء المنتجات المتحرك، ومصدر بياناته منتجات فايرستور.
+class LandingMarqueeSection extends StatelessWidget {
   const LandingMarqueeSection({super.key});
-  @override
-  State<LandingMarqueeSection> createState() => _LandingMarqueeSectionState();
-}
 
-class _LandingMarqueeSectionState extends State<LandingMarqueeSection>
-    with SingleTickerProviderStateMixin {
-  static const _marqueeDuration = Duration(seconds: 14);
-  static const _itemWidth = 170;
-  static const _items = <String>[
-    'سمك وقار بلدي',
-    'دنيس طازج',
-    'جمبري جامبو',
-    'طواجن إسكندراني',
-    'كابوريا مبطرخة',
-    'كالماري مقرمش',
-    'أرز صيادية فاخر',
-  ];
-  late final AnimationController _scroll;
-  @override
-  void initState() {
-    super.initState();
-    _scroll = AnimationController(vsync: this, duration: _marqueeDuration)
-      ..repeat(reverse: false);
-  }
-
-  @override
-  void dispose() {
-    _scroll.dispose();
-    super.dispose();
-  }
+  static const _maxItems = 7;
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colorScheme;
-    return Container(
-      width: .infinity,
-      padding: .symmetric(vertical: 10.h),
-      decoration: BoxDecoration(
-        color: colors.slateCardBg,
-        borderRadius: .circular(999),
-      ),
-      child: AnimatedBuilder(
-        animation: _scroll,
-        builder: (context, child) {
-          return SizedBox(
-            height: 34.h,
-            child: Directionality(
-              textDirection: .ltr,
-              child: Transform.translate(
-                offset: Offset(-_scroll.value * _itemWidth.w, 0),
-                child: Row(
-                  children: [
-                    for (final item in _items) ...[
-                      SizedBox(
-                        width: 170,
-                        child: Row(
-                          mainAxisSize: .min,
-                          children: [
-                            Container(
-                              width: 6,
-                              height: 6,
-                              decoration: BoxDecoration(
-                                shape: .circle,
-                                color: colors.brandGold,
-                              ),
-                            ),
-                            SizedBox(width: 8.w),
-                            Expanded(
-                              child: Text(
-                                item,
-                                maxLines: 1,
-                                overflow: .ellipsis,
-                                style: context.textTheme.labelMedium?.copyWith(
-                                  color: colors.brandGold,
-                                  fontWeight: .w700,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 24.w),
-                    ],
-                  ],
-                ),
-              ),
-            ),
-          );
-        },
-      ),
+    return BlocBuilder<ProductsBloc, ProductsState>(
+      bloc: getIt<ProductsBloc>(),
+      builder: (context, state) {
+        final names = _namesFrom(state);
+        if (names.isEmpty) return const SizedBox.shrink();
+        return LandingMarqueeTrack(names: names);
+      },
     );
+  }
+
+  List<String> _namesFrom(ProductsState state) {
+    final products = state.maybeMap(
+      loaded: (s) => s.products?.map((e) => e.toEntity()).toList() ?? [],
+      orElse: () => <ProductEntity>[],
+    );
+    final withNames = products.where((p) => p.name.trim().isNotEmpty).toList();
+    final featured = withNames
+        .where((p) => p.isFeatured)
+        .take(_maxItems)
+        .toList();
+    final selected = featured.isNotEmpty
+        ? featured
+        : withNames.take(_maxItems).toList();
+    return selected.map((p) => p.name.trim()).toList();
   }
 }
