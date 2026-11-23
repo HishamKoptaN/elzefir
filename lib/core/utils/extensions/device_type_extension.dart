@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../responsive/app_responsive.dart';
 import '../../responsive/device_helper.dart';
 import '../../responsive/responsive_extensions.dart';
 

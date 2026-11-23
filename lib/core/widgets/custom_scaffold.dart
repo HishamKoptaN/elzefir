@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'navigation/custom_app_bar.dart';
 
 class CustomScaffold extends StatelessWidget {
-  Widget body;
-  bool showAppBar;
-  PreferredSizeWidget? appBar;
-  Widget? drawer;
-  String? title;
-  Color? backgroundColor;
-  Widget? floatingActionButton;
-  FloatingActionButtonAnimator? floatingActionButtonAnimator;
-  FloatingActionButtonLocation? floatingActionButtonLocation;
-  Widget? bottomNavigationBar;
-  Widget? endDrawer;
+  final Widget body;
+  final bool showAppBar;
+  final PreferredSizeWidget? appBar;
+  final Widget? drawer;
+  final String? title;
+  final Color? backgroundColor;
+  final Widget? floatingActionButton;
+  final FloatingActionButtonAnimator? floatingActionButtonAnimator;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
+  final Widget? bottomNavigationBar;
+  final Widget? endDrawer;
   CustomScaffold({
     super.key,
     required this.body,

@@ -1,9 +1,6 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import '../../../config/env.dart';
-import '../../../config/envs/dev_env.dart';
-import '../../../config/envs/prod_env.dart';
 import '../../services/auth_storage_service.dart';
 
 // @module
