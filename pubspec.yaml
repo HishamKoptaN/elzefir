@@ -101,7 +101,6 @@ flutter:
     - assets/logos/
     - assets/icons/
     - assets/images/
-    - assets/mock/
   fonts:
     - family: NotoNaskhArabic
       fonts:
