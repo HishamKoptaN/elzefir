@@ -128,9 +128,6 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                 ordersFilter: widget.ordersFilter ?? OrdersFilterModel(),
                 canExportAll: (widget.selectedCount ?? 0) > 0,
                 onChanged: (updatedFilters) {
-                  setState(() {
-                    _selectedPage = 1;
-                  });
                   getIt<OrdersBloc>().add(
                     OrdersEvent.filter(
                       ordersFilter: updatedFilters,
