@@ -1,14 +1,9 @@
-import 'package:flutter/material.dart'
-    show ElevatedButton, CircularProgressIndicator;
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/utils/extensions/device_type_extension.dart';
-import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../products/present/blocs/bloc/products_bloc.dart';
-import '../../../products/data/mapper/products_mapper.dart';
 import 'about/about.dart';
 import 'footer/footer_widget.dart';
 import 'home_app_bar/home_status_badge.dart';
@@ -16,8 +11,8 @@ import 'gallery/gallery_section.dart';
 import 'landing/landing_hero_section.dart';
 import 'landing/landing_marquee_section.dart';
 import 'menu_prices_section.dart';
+import 'products/products_list_section.dart';
 import 'products/products_section_header.dart';
-import 'products/products_widget.dart';
 import 'home_app_bar/home_app_bar.dart';
 import 'quick_contact/quick_contact_buttons.dart';
 
@@ -106,78 +101,6 @@ class _ProductLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      crossAxisAlignment: .start,
-      children: [_ProductsColumn()],
-    );
-  }
-}
-
-class _ProductsColumn extends StatelessWidget {
-  const _ProductsColumn();
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 3,
-      child: BlocBuilder<ProductsBloc, ProductsState>(
-        bloc: getIt<ProductsBloc>(),
-        builder: (context, state) {
-          return state.maybeMap(
-            loaded: (state) {
-              final products =
-                  state.products?.map((e) {
-                    return e.toEntity();
-                  }).toList() ??
-                  [];
-              final productsBloc = getIt<ProductsBloc>();
-              return ProductsSection(
-                products: products,
-                hasMore: productsBloc.hasMore && productsBloc.cursor != null,
-                isLoadingMore: productsBloc.isLoadingMore,
-                onLoadMore: () {
-                  final cursor = productsBloc.cursor;
-                  if (cursor == null) {
-                    return;
-                  }
-                  productsBloc.add(ProductsEvent.loadMore(cursor: cursor));
-                },
-              );
-            },
-            failure: (f) {
-              return Padding(
-                padding: .symmetric(vertical: 40.h),
-                child: Center(
-                  child: Column(
-                    mainAxisSize: .min,
-                    children: [
-                      Text(
-                        'تعذر تحميل المنتجات من فايرستور',
-                        style: context.textTheme.titleMedium,
-                      ),
-                      SizedBox(height: 12.h),
-                      ElevatedButton(
-                        onPressed: () {
-                          getIt<ProductsBloc>().add(const .getPage());
-                        },
-                        child: const Text('إعادة المحاولة'),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-            orElse: () {
-              return Padding(
-                padding: .symmetric(vertical: 40.h),
-                child: const Center(
-                  child: CircularProgressIndicator(color: Color(0xFF124370)),
-                ),
-              );
-            },
-          );
-        },
-      ),
-    );
+    return const Row(crossAxisAlignment: .start, children: [ProductsColumn()]);
   }
 }
