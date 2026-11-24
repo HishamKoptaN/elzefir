@@ -56,11 +56,13 @@ extension ProductsEventPatterns on ProductsEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Get value)?  get,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Get value)?  get,TResult Function( _GetPage value)?  getPage,TResult Function( _LoadMore value)?  loadMore,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get(_that);case _:
+return get(_that);case _GetPage() when getPage != null:
+return getPage(_that);case _LoadMore() when loadMore != null:
+return loadMore(_that);case _:
   return orElse();
 
 }
@@ -78,11 +80,13 @@ return get(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Get value)  get,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Get value)  get,required TResult Function( _GetPage value)  getPage,required TResult Function( _LoadMore value)  loadMore,}){
 final _that = this;
 switch (_that) {
 case _Get():
-return get(_that);case _:
+return get(_that);case _GetPage():
+return getPage(_that);case _LoadMore():
+return loadMore(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -99,11 +103,13 @@ return get(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Get value)?  get,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Get value)?  get,TResult? Function( _GetPage value)?  getPage,TResult? Function( _LoadMore value)?  loadMore,}){
 final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get(_that);case _:
+return get(_that);case _GetPage() when getPage != null:
+return getPage(_that);case _LoadMore() when loadMore != null:
+return loadMore(_that);case _:
   return null;
 
 }
@@ -120,10 +126,12 @@ return get(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  get,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  get,TResult Function()?  getPage,TResult Function( String cursor)?  loadMore,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get();case _:
+return get();case _GetPage() when getPage != null:
+return getPage();case _LoadMore() when loadMore != null:
+return loadMore(_that.cursor);case _:
   return orElse();
 
 }
@@ -141,10 +149,12 @@ return get();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  get,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  get,required TResult Function()  getPage,required TResult Function( String cursor)  loadMore,}) {final _that = this;
 switch (_that) {
 case _Get():
-return get();case _:
+return get();case _GetPage():
+return getPage();case _LoadMore():
+return loadMore(_that.cursor);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -161,10 +171,12 @@ return get();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  get,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  get,TResult? Function()?  getPage,TResult? Function( String cursor)?  loadMore,}) {final _that = this;
 switch (_that) {
 case _Get() when get != null:
-return get();case _:
+return get();case _GetPage() when getPage != null:
+return getPage();case _LoadMore() when loadMore != null:
+return loadMore(_that.cursor);case _:
   return null;
 
 }
@@ -203,6 +215,106 @@ String toString() {
 
 
 
+
+/// @nodoc
+
+
+class _GetPage implements ProductsEvent {
+  const _GetPage();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetPage);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+    return 'ProductsEvent.getPage()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _LoadMore implements ProductsEvent {
+  const _LoadMore({required this.cursor});
+  
+
+ final  String cursor;
+
+/// Create a copy of ProductsEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LoadMoreCopyWith<_LoadMore> get copyWith => __$LoadMoreCopyWithImpl<_LoadMore>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoadMore&&(identical(other.cursor, cursor) || other.cursor == cursor));
+}
+
+
+@override
+int get hashCode {
+    return Object.hash(runtimeType,cursor);
+}
+
+@override
+String toString() {
+    return 'ProductsEvent.loadMore(cursor: $cursor)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$LoadMoreCopyWith<$Res> implements $ProductsEventCopyWith<$Res> {
+  factory _$LoadMoreCopyWith(_LoadMore value, $Res Function(_LoadMore) _then) = __$LoadMoreCopyWithImpl;
+@useResult
+$Res call({
+ String cursor
+});
+
+
+
+
+}
+/// @nodoc
+class __$LoadMoreCopyWithImpl<$Res>
+    implements _$LoadMoreCopyWith<$Res> {
+  __$LoadMoreCopyWithImpl(this._self, this._then);
+
+  final _LoadMore _self;
+  final $Res Function(_LoadMore) _then;
+
+/// Create a copy of ProductsEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? cursor = null,}) {
+  return _then(_LoadMore(
+cursor: null == cursor ? _self.cursor : cursor // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$ProductsState {

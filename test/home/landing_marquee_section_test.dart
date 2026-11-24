@@ -53,6 +53,7 @@ void main() {
         ),
       ),
     );
+    getIt<ProductsBloc>().add(const ProductsEvent.getPage());
     await tester.pumpWidget(
       ScreenUtilInit(
         designSize: const Size(360, 690),
