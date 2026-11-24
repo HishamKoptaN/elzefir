@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/analytics/consent_gate.dart';
 import 'core/di/dependency_injection.dart';
 import 'core/routing/app_router.dart';
 import 'core/theme/app_theme.dart';
@@ -49,7 +50,10 @@ class Elzefir extends StatelessWidget {
                 return const Locale('ar', 'EG');
               },
               builder: (context, child) {
-                return Directionality(textDirection: .rtl, child: child!);
+                return Directionality(
+                  textDirection: .rtl,
+                  child: ConsentGate(child: child!),
+                );
               },
               routerConfig: AppRouter.router,
             );

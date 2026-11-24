@@ -4,6 +4,7 @@ import 'package:elzefir/core/theme/app_theme.dart';
 import 'package:elzefir/features/home/present/widgets/landing/landing_marquee_section.dart';
 import 'package:elzefir/features/home/present/widgets/landing/landing_marquee_track.dart';
 import 'package:elzefir/features/products/data/model/product_model.dart';
+import 'package:elzefir/features/products/data/model/products_page.dart';
 import 'package:elzefir/features/products/domain/repo/products_repo.dart';
 import 'package:elzefir/features/products/domain/use_cases/products_use_cases.dart';
 import 'package:elzefir/features/products/present/blocs/bloc/products_bloc.dart';
@@ -17,12 +18,25 @@ class _FakeProductsRepo implements ProductsRepo {
   final List<ProductModel> products;
 
   @override
-  Future<ApiResult<List<ProductModel>>> get() async =>
-      ApiResult.success(data: products);
+  Future<ApiResult<List<ProductModel>>> get() async {
+    return ApiResult.success(data: products);
+  }
 
   @override
-  Future<ApiResult<List<ProductModel>>> getProductsMapping() async =>
-      ApiResult.success(data: products);
+  Future<ApiResult<ProductsPage>> getPage() async => ApiResult.success(
+    data: ProductsPage(products: products, cursor: null, hasMore: false),
+  );
+
+  @override
+  Future<ApiResult<ProductsPage>> loadMore({required String cursor}) async =>
+      ApiResult.success(
+        data: const ProductsPage(products: [], cursor: null, hasMore: false),
+      );
+
+  @override
+  Future<ApiResult<List<ProductModel>>> getProductsMapping() async {
+    return ApiResult.success(data: products);
+  }
 }
 
 void main() {
@@ -39,6 +53,7 @@ void main() {
         ),
       ),
     );
+    getIt<ProductsBloc>().add(const ProductsEvent.getPage());
     await tester.pumpWidget(
       ScreenUtilInit(
         designSize: const Size(360, 690),

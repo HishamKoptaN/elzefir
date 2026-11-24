@@ -8,16 +8,14 @@ class ProductsSection extends StatelessWidget {
   const ProductsSection({
     super.key,
     required this.products,
-    this.onAssetsLoaded,
+    required this.isLoadingMore,
   });
 
   final List<ProductEntity> products;
-  final VoidCallback? onAssetsLoaded;
+  final bool isLoadingMore;
 
   @override
   Widget build(BuildContext context) {
-    // الكارت ارتفاعه متغيّر (الوصف ممكن ياخد سطرين)، فـ Wrap أنسب من شبكة
-    // بارتفاع خلية ثابت؛ الصفحة كلها بتتحرك بالـ SingleChildScrollView الخارجي.
     return LayoutBuilder(
       builder: (context, constraints) {
         final columns = switch (constraints.maxWidth) {
@@ -31,14 +29,28 @@ class ProductsSection extends StatelessWidget {
 
         return Padding(
           padding: .symmetric(vertical: 16.h),
-          child: Wrap(
-            spacing: spacing,
-            runSpacing: 14.h,
+          child: Column(
+            crossAxisAlignment: .center,
             children: [
-              for (final product in products)
-                SizedBox(
-                  width: itemWidth,
-                  child: ProductCard(product: product),
+              Wrap(
+                spacing: spacing,
+                runSpacing: 14.h,
+                children: [
+                  for (final product in products)
+                    SizedBox(
+                      width: itemWidth,
+                      child: ProductCard(product: product),
+                    ),
+                ],
+              ),
+              if (isLoadingMore)
+                Padding(
+                  padding: .only(top: 16.h),
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
                 ),
             ],
           ),

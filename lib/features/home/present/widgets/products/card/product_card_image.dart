@@ -6,6 +6,7 @@ import '../../../../../../core/analytics/analytics_service.dart';
 import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../../core/widgets/custom_image.dart';
+import '../../../../../../core/widgets/image/lazy_network_image.dart';
 import '../../../../../products/domain/entities/product_entity.dart';
 
 class ProductCardImage extends StatelessWidget {
@@ -56,7 +57,11 @@ class ProductCardImage extends StatelessWidget {
             child: Stack(
               fit: .expand,
               children: [
-                CustomImage(image: product.image, fit: .cover),
+                LazyNetworkImage(
+                  identifier: '${product.id}-${product.image}',
+                  image: product.image,
+                  fit: .cover,
+                ),
                 if (badgeLabel.isNotEmpty)
                   Positioned(
                     top: 8.h,

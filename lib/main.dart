@@ -42,15 +42,7 @@ Future<void> main() async {
     );
     Bloc.observer = AppBlocObserver();
     configureDependencies();
-    if (kIsWeb && FirebaseAuth.instance.currentUser != null) {
-      final completer = Completer<void>();
-      getIt<AuthBloc>().add(AuthEvent.authToken(onComplete: completer));
-      await completer.future.timeout(
-        const Duration(seconds: 10),
-        onTimeout: () {},
-      );
-    }
-    await getIt<ConsentService>().grant();
+    await getIt<ConsentService>().applyStoredConsent();
     await ScreenUtil.ensureScreenSize();
     await findSystemLocale();
     intl.Intl.defaultLocale = 'ar';
@@ -63,11 +55,9 @@ Future<void> main() async {
       // await SharedPrefHelper.clearAllData();
       // await SharedPrefHelper.clearAllSecuredData();
     }
+    runApp(const Elzefir());
     final updateCompleter = Completer();
     getIt<UpdateBloc>().add(.check(onComplete: updateCompleter));
-    await updateCompleter.future;
-    runApp(const Elzefir());
-    SemanticsBinding.instance.ensureSemantics();
   } catch (e, st) {
     debugPrint('🔥 Firebase init error: $e');
     debugPrint('$st');
