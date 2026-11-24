@@ -11,6 +11,7 @@ import 'package:elzefir/features/home/present/widgets/floating_nav/floating_sect
 import 'package:elzefir/features/home/present/widgets/floating_nav/nav_button.dart';
 import 'package:elzefir/features/notifications/domain/entities/notification_entity.dart';
 import 'package:elzefir/features/products/data/model/product_model.dart';
+import 'package:elzefir/features/products/data/model/products_page.dart';
 import 'package:elzefir/features/products/domain/repo/products_repo.dart';
 import 'package:elzefir/features/products/domain/use_cases/products_use_cases.dart';
 import 'package:elzefir/features/products/present/blocs/bloc/products_bloc.dart';
@@ -52,12 +53,25 @@ class _FakeNotificationsRepo implements NotificationsRepo {
 
 class _FakeProductsRepo implements ProductsRepo {
   @override
-  Future<ApiResult<List<ProductModel>>> get() async =>
-      ApiResult.success(data: []);
+  Future<ApiResult<List<ProductModel>>> get() async {
+    return ApiResult.success(data: []);
+  }
 
   @override
-  Future<ApiResult<List<ProductModel>>> getProductsMapping() async =>
-      ApiResult.success(data: []);
+  Future<ApiResult<ProductsPage>> getPage() async => ApiResult.success(
+    data: const ProductsPage(products: [], cursor: null, hasMore: false),
+  );
+
+  @override
+  Future<ApiResult<ProductsPage>> loadMore({required String cursor}) async =>
+      ApiResult.success(
+        data: const ProductsPage(products: [], cursor: null, hasMore: false),
+      );
+
+  @override
+  Future<ApiResult<List<ProductModel>>> getProductsMapping() async {
+    return ApiResult.success(data: []);
+  }
 }
 
 void main() {

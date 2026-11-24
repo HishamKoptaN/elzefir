@@ -55,6 +55,7 @@ class _BodyWidgetState extends State<BodyWidget> {
   @override
   void initState() {
     super.initState();
+    getIt<ProductsBloc>().add(const .getPage());
   }
 
   @override
@@ -89,11 +90,7 @@ class _BodyWidgetState extends State<BodyWidget> {
               key: widget.productsKey,
               child: const ProductsSectionHeader(),
             ),
-            _ProductLayout(
-              onProductsLoaded: () {
-                getIt<ProductsBloc>().add(const .get());
-              },
-            ),
+            const _ProductLayout(),
             MenuPricesSection(key: widget.pricesKey),
             AboutSection(key: widget.aboutKey),
             FooterWidget(key: widget.contactKey, onAbout: widget.onAbout),
@@ -105,23 +102,19 @@ class _BodyWidgetState extends State<BodyWidget> {
 }
 
 class _ProductLayout extends StatelessWidget {
-  const _ProductLayout({required this.onProductsLoaded});
-
-  final VoidCallback onProductsLoaded;
+  const _ProductLayout();
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       crossAxisAlignment: .start,
-      children: [_ProductsColumn(onProductsLoaded: onProductsLoaded)],
+      children: [_ProductsColumn()],
     );
   }
 }
 
 class _ProductsColumn extends StatelessWidget {
-  const _ProductsColumn({required this.onProductsLoaded});
-
-  final VoidCallback onProductsLoaded;
+  const _ProductsColumn();
 
   @override
   Widget build(BuildContext context) {
@@ -137,9 +130,18 @@ class _ProductsColumn extends StatelessWidget {
                     return e.toEntity();
                   }).toList() ??
                   [];
+              final productsBloc = getIt<ProductsBloc>();
               return ProductsSection(
                 products: products,
-                onAssetsLoaded: onProductsLoaded,
+                hasMore: productsBloc.hasMore && productsBloc.cursor != null,
+                isLoadingMore: productsBloc.isLoadingMore,
+                onLoadMore: () {
+                  final cursor = productsBloc.cursor;
+                  if (cursor == null) {
+                    return;
+                  }
+                  productsBloc.add(ProductsEvent.loadMore(cursor: cursor));
+                },
               );
             },
             failure: (f) {
@@ -156,7 +158,7 @@ class _ProductsColumn extends StatelessWidget {
                       SizedBox(height: 12.h),
                       ElevatedButton(
                         onPressed: () {
-                          getIt<ProductsBloc>().add(const .get());
+                          getIt<ProductsBloc>().add(const .getPage());
                         },
                         child: const Text('إعادة المحاولة'),
                       ),

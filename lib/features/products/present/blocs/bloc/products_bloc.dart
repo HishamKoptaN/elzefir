@@ -13,8 +13,6 @@ part 'products_state.dart';
 
 @singleton
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
-  final ProductsUseCase productsUseCases;
-
   ProductsBloc({required this.productsUseCases})
     : super(const ProductsState.initial()) {
     on<ProductsEvent>((event, emit) async {
@@ -26,13 +24,55 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
             success: (res) async {
               emit(ProductsState.loaded(products: res ?? []));
             },
-            failure: (apiErrorModel) async {
-              emit(ProductsState.failure(apiErrorModel: apiErrorModel));
+            failure: (e) async => emit(ProductsState.failure(apiErrorModel: e)),
+          );
+        },
+        getPage: () async {
+          emit(const ProductsState.loading());
+          final result = await productsUseCases.getPage();
+          await result.when(
+            success: (page) async {
+              _cursor = page?.cursor;
+              _hasMore = page?.hasMore ?? false;
+              emit(ProductsState.loaded(products: page?.products ?? []));
             },
+            failure: (e) async => emit(ProductsState.failure(apiErrorModel: e)),
+          );
+        },
+        loadMore: (cursor) async {
+          if (!_hasMore || _isLoadingMore) {
+            return;
+          }
+          _isLoadingMore = true;
+          final result = await productsUseCases.loadMore(cursor: cursor);
+          _isLoadingMore = false;
+          await result.when(
+            success: (page) async {
+              final current = state.maybeMap(
+                loaded: (loaded) => loaded.products ?? <ProductModel>[],
+                orElse: () => <ProductModel>[],
+              );
+              _cursor = page?.cursor ?? _cursor;
+              _hasMore = page?.hasMore ?? false;
+              emit(
+                ProductsState.loaded(
+                  products: [...current, ...(page?.products ?? [])],
+                ),
+              );
+            },
+            failure: (e) async {},
           );
         },
       );
     });
-    add(const .get());
   }
+
+  final ProductsUseCase productsUseCases;
+  String? _cursor;
+  bool _hasMore = false;
+  bool _isLoadingMore = false;
+
+  String? get cursor => _cursor;
+  bool get hasMore => _hasMore;
+  bool get isLoadingMore => _isLoadingMore;
 }
