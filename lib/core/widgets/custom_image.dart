@@ -26,31 +26,46 @@ class CustomImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget imageWidget = _isNetwork
-        ? CachedNetworkImage(
-            imageUrl: image,
-            fit: fit,
-            placeholder: (_, _) {
-              return _placeholder();
-            },
-            errorWidget: (_, _, _) {
-              return _errorWidget();
-            },
-          )
-        : Image.asset(
-            image,
-            fit: fit,
-            errorBuilder: (_, _, _) {
-              return _errorWidget();
-            },
-          );
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final cacheWidth = _memCacheWidth(context, constraints.maxWidth);
+        final Widget imageWidget = _isNetwork
+            ? CachedNetworkImage(
+                imageUrl: image,
+                fit: fit,
+                memCacheWidth: cacheWidth,
+                placeholder: (_, _) {
+                  return _placeholder();
+                },
+                errorWidget: (_, _, _) {
+                  return _errorWidget();
+                },
+              )
+            : Image.asset(
+                image,
+                fit: fit,
+                errorBuilder: (_, _, _) {
+                  return _errorWidget();
+                },
+              );
 
-    Widget content = ClipRRect(borderRadius: borderRadius, child: imageWidget);
-    if (aspectRatio != null) {
-      content = AspectRatio(aspectRatio: aspectRatio!, child: content);
+        Widget content =
+            ClipRRect(borderRadius: borderRadius, child: imageWidget);
+        if (aspectRatio != null) {
+          content = AspectRatio(aspectRatio: aspectRatio!, child: content);
+        }
+
+        return SizedBox(child: content);
+      },
+    );
+  }
+
+  int? _memCacheWidth(BuildContext context, double maxWidth) {
+    if (!maxWidth.isFinite || maxWidth <= 0) {
+      return null;
     }
-
-    return SizedBox(child: content);
+    final pixelRatio = MediaQuery.of(context).devicePixelRatio;
+    return (maxWidth * pixelRatio).round();
   }
 
   Widget _placeholder() {
