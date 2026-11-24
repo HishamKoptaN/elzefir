@@ -8,7 +8,8 @@ abstract class NotificationTileBuilder {
 
 class NotificationItem extends StatelessWidget {
   final NotificationEntity notification;
-  const NotificationItem({super.key, required this.notification});
+  final VoidCallback? onTap;
+  const NotificationItem({super.key, required this.notification, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +21,14 @@ class NotificationItem extends StatelessWidget {
           notification: notification,
           colorScheme: colorScheme,
           textTheme: textTheme,
+          onTap: onTap,
         );
       default:
         return NewUserRegistered(
           notification: notification,
           colorScheme: colorScheme,
           textTheme: textTheme,
+          onTap: onTap,
         );
     }
   }

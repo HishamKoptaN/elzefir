@@ -49,6 +49,15 @@ class _NotificationsViewState extends State<NotificationsView> {
                           itemBuilder: (context, i) {
                             return NotificationItem(
                               notification: state.notifications![i],
+                              onTap: state.notifications![i].read
+                                  ? null
+                                  : () {
+                                      getIt<NotificationsBloc>().add(
+                                        NotificationsEvent.markAsRead(
+                                          id: state.notifications![i].id,
+                                        ),
+                                      );
+                                    },
                             );
                           },
                           separatorBuilder: (context, i) {
