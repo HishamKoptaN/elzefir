@@ -8,15 +8,11 @@ class ProductsSection extends StatelessWidget {
   const ProductsSection({
     super.key,
     required this.products,
-    required this.hasMore,
     required this.isLoadingMore,
-    required this.onLoadMore,
   });
 
   final List<ProductEntity> products;
-  final bool hasMore;
   final bool isLoadingMore;
-  final VoidCallback onLoadMore;
 
   @override
   Widget build(BuildContext context) {
@@ -47,15 +43,15 @@ class ProductsSection extends StatelessWidget {
                     ),
                 ],
               ),
-              if (hasMore) ...[
-                SizedBox(height: 16.h),
-                OutlinedButton(
-                  onPressed: isLoadingMore ? null : onLoadMore,
-                  child: Text(
-                    isLoadingMore ? 'جارٍ تحميل المزيد...' : 'تحميل المزيد',
+              if (isLoadingMore)
+                Padding(
+                  padding: .only(top: 16.h),
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
                 ),
-              ],
             ],
           ),
         );
