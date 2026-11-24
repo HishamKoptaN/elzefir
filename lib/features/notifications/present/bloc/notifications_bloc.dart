@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -45,35 +46,13 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
           );
         },
         markAsRead: (id) async {
-          // final idx = _notifications.indexWhere((n) => n.id == id);
-          // if (idx != -1) {
-          //   final updated = _notifications[idx].copyWith(read: true);
-          //   _notifications[idx] = updated;
-          //   emit(
-          //     NotificationsState.loaded(
-          //       notifications: _notifications,
-          //       hasMore: _hasMore,
-          //     ),
-          //   );
-          // }
-          // final res = await useCases.markAsRead(id: id);
-          // await res.when(
-          //   success: (_) async {},
-          //   failure: (apiErrorModel) async {
-          //     // revert if failed
-          //     if (idx != -1) {
-          //       _notifications[idx] =
-          //           _notifications[idx].copyWith(read: false);
-          //       emit(NotificationsState.loaded(
-          //         notifications: _notifications,
-          //         hasMore: _hasMore,
-          //       ),);
-          //     }
-          //   },
-          // );
+          await useCases.markAsRead(id: id);
         },
       );
-    });
+    },
+        // watch() stays subscribed forever, so markAsRead must run concurrently
+        // instead of queueing behind the never-ending watch handler.
+        transformer: concurrent());
   }
 
   @override

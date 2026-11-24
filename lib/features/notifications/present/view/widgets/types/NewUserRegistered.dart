@@ -8,15 +8,18 @@ class NewUserRegistered extends StatelessWidget {
     required this.notification,
     required this.colorScheme,
     required this.textTheme,
+    this.onTap,
   });
 
   final NotificationEntity notification;
   final ColorScheme colorScheme;
   final TextTheme textTheme;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return GestureDetector(
+      onTap: onTap,
       child: Container(
         color: notification.read
             ? Theme.of(context).colorScheme.surface
