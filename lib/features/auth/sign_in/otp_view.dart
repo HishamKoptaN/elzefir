@@ -88,7 +88,7 @@ class OtpView extends StatelessWidget {
                   },
                   onResend: () {
                     getIt<SignInBloc>().add(
-                      SignInEvent.signInWithPhoneNumber(),
+                      const SignInEvent.verify(),
                     );
                   },
                 ),
