@@ -15,6 +15,7 @@ abstract class ProductModel with _$ProductModel {
     String? price,
     String? priceUnit,
     bool? isFeatured,
+    bool? isMostRequested,
     CategoryModel? category,
     List<CookingMethodModel>? cookingMethods,
   }) = _ProductModel;
