@@ -221,7 +221,7 @@ String toString() {
 
 class _GetPage implements ProductsEvent {
   const _GetPage();
-  
+
 
 
 
@@ -253,7 +253,7 @@ String toString() {
 
 class _LoadMore implements ProductsEvent {
   const _LoadMore({required this.cursor});
-  
+
 
  final  String cursor;
 
