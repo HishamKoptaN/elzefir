@@ -19,7 +19,7 @@ class SharedPrefHelper {
     required dynamic value,
   }) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    debugPrint("SharedPrefHelper : setData with key : $key and value : $value");
+    debugPrint('SharedPrefHelper : setData with key : $key');
     switch (value.runtimeType) {
       case String:
         await prefs.setString(key, value);
@@ -52,9 +52,7 @@ class SharedPrefHelper {
     required int value,
     required bool add,
   }) async {
-    debugPrint(
-      'SharedPrefHelper : updateList with key : $key and value : $value',
-    );
+    debugPrint('SharedPrefHelper : updateList with key : $key');
     final prefs = await SharedPreferences.getInstance();
     final list = await getIntList(key: key);
     if (add && !list.contains(value)) {
