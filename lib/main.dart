@@ -53,11 +53,9 @@ Future<void> main() async {
       // await SharedPrefHelper.clearAllData();
       // await SharedPrefHelper.clearAllSecuredData();
     }
+    runApp(const Elzefir());
     final updateCompleter = Completer();
     getIt<UpdateBloc>().add(.check(onComplete: updateCompleter));
-    await updateCompleter.future;
-    runApp(const Elzefir());
-    SemanticsBinding.instance.ensureSemantics();
   } catch (e, st) {
     debugPrint('🔥 Firebase init error: $e');
     debugPrint('$st');
