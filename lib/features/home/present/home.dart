@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../core/utils/extensions/device_type_extension.dart';
 import '../../../core/utils/extensions/theme_ext.dart';
+import '../domain/entities/restaurant_info_entity.dart';
+import 'widgets/restaurant_info_builder.dart';
 import 'widgets/body_widget.dart';
 import 'widgets/drawer/drawer.dart';
 import 'widgets/floating_nav/floating_section_nav.dart';
@@ -41,14 +43,38 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  List<SectionNavItem> get _navItems {
+  List<SectionNavItem> _navItems(RestaurantInfoEntity info) {
     return [
-      .new(label: 'الرئيسية', icon: FontAwesomeIcons.house, key: heroKey),
-      .new(label: 'المعرض', icon: FontAwesomeIcons.images, key: galleryKey),
-      .new(label: 'القائمة', icon: FontAwesomeIcons.utensils, key: productsKey),
-      .new(label: 'الأسعار', icon: FontAwesomeIcons.tag, key: pricesKey),
-      .new(label: 'من نحن', icon: FontAwesomeIcons.bookOpen, key: aboutKey),
-      .new(label: 'تواصل', icon: FontAwesomeIcons.phone, key: contactKey),
+      .new(
+        label: info.text('nav_home', 'الرئيسية'),
+        icon: FontAwesomeIcons.house,
+        key: heroKey,
+      ),
+      .new(
+        label: info.text('nav_gallery', 'المعرض'),
+        icon: FontAwesomeIcons.images,
+        key: galleryKey,
+      ),
+      .new(
+        label: info.text('nav_products', 'القائمة'),
+        icon: FontAwesomeIcons.utensils,
+        key: productsKey,
+      ),
+      .new(
+        label: info.text('nav_prices', 'الأسعار'),
+        icon: FontAwesomeIcons.tag,
+        key: pricesKey,
+      ),
+      .new(
+        label: info.text('nav_about', 'من نحن'),
+        icon: FontAwesomeIcons.bookOpen,
+        key: aboutKey,
+      ),
+      .new(
+        label: info.text('nav_contact', 'تواصل'),
+        icon: FontAwesomeIcons.phone,
+        key: contactKey,
+      ),
     ];
   }
 
@@ -60,7 +86,10 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return RestaurantInfoBuilder(
+      builder: (context, info) {
+        final items = _navItems(info);
+        return Scaffold(
       backgroundColor: context.colorScheme.surface,
       drawer: !context.isDesk ? ElzefirDrawer() : null,
       body: Stack(
@@ -84,14 +113,16 @@ class _HomeViewState extends State<HomeView> {
             },
           ),
           FloatingSectionNav(
-            items: _navItems,
+            items: items,
             controller: scrollController,
             onSelected: (index) {
-              scrollToSection(_navItems[index].key);
+              scrollToSection(items[index].key);
             },
           ),
         ],
       ),
+    );
+      },
     );
   }
 }

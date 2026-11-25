@@ -23,6 +23,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class _FakeHomeRepo implements HomeRepo {
+  _FakeHomeRepo({this.info = RestaurantInfoEntity.fallback});
+  final RestaurantInfoEntity info;
+
   @override
   Future<ApiResult<HomeResEntity>> get() async =>
       ApiResult.success(data: HomeResEntity());
@@ -31,8 +34,7 @@ class _FakeHomeRepo implements HomeRepo {
   Stream<WorkingHoursEntity?> watchWorkingHours() => Stream.value(null);
 
   @override
-  Stream<RestaurantInfoEntity> watchRestaurantInfo() =>
-      Stream.value(RestaurantInfoEntity.fallback);
+  Stream<RestaurantInfoEntity> watchRestaurantInfo() => Stream.value(info);
 }
 
 class _FakeNotificationsRepo implements NotificationsRepo {
@@ -126,5 +128,43 @@ void main() {
     expect(find.byType(FloatingSectionNav), findsOneWidget);
     expect(find.byType(NavButton), findsNWidgets(6));
     expect(find.text('القائمة'), findsOneWidget);
+  });
+
+  testWidgets('navigation labels come from dashboard settings', (tester) async {
+    final originalOnError = FlutterError.onError;
+    FlutterError.onError = (details) {
+      if (details.toString().contains('overflowed')) return;
+      originalOnError?.call(details);
+    };
+    addTearDown(() => FlutterError.onError = originalOnError);
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    getIt.unregister<HomeUseCases>();
+    getIt.registerSingleton<HomeUseCases>(
+      HomeUseCases(
+        homeRepo: _FakeHomeRepo(
+          info: RestaurantInfoEntity.fromFirestore({
+            'nav_products': 'منيو اليوم',
+          }),
+        ),
+      ),
+    );
+
+    await tester.pumpWidget(
+      ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        builder: (context, _) => MaterialApp(
+          theme: AppTheme.theme(context),
+          home: const HomeView(),
+        ),
+      ),
+    );
+    await tester.pump();
+
+    expect(find.text('منيو اليوم'), findsWidgets);
   });
 }
