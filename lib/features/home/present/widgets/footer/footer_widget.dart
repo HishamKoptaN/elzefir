@@ -11,6 +11,7 @@ import '../../../../info_pages/present/views/contact_view.dart';
 import '../../../../info_pages/present/views/privacy_view.dart';
 import '../../../../info_pages/present/views/terms_view.dart';
 import '../restaurant_info_builder.dart';
+import '../site_text/site_text.dart';
 import '../store_status_builder.dart';
 import 'footer_desk_layout.dart';
 import 'footer_mobile_layout.dart';
@@ -303,7 +304,8 @@ class CustomFooterTitleWidget extends StatelessWidget {
 Widget buildContactItem({
   required BuildContext context,
   required Widget icon,
-  required String text,
+  required String textKey,
+  required String fallback,
   required VoidCallback onTap,
 }) {
   return InkWell(
@@ -322,8 +324,9 @@ Widget buildContactItem({
           child: icon,
         ),
         Expanded(
-          child: Text(
-            text,
+          child: SiteText(
+            textKey,
+            fallback,
             overflow: .visible,
             style: context.textTheme.labelLarge?.copyWith(
               color: Colors.white70,
