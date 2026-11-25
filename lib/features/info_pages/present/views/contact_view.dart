@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../home/present/widgets/restaurant_info_builder.dart';
+import '../../../home/present/widgets/site_text/site_text.dart';
 import '../content/contact_content.dart';
 import 'widgets/contact/contact_card_widget.dart';
 import 'widgets/contact/contact_hours_widget.dart';
@@ -15,56 +17,78 @@ class ContactView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InfoPageLayout(
-      appBarTitle: 'تواصل معنا',
-      badge: ContactContent.badge,
-      title: ContactContent.title,
-      subtitle: ContactContent.subtitle,
-      intro: ContactContent.intro,
-      children: [
-        const InfoSectionTitle(title: ContactContent.contactTitle),
-        ContactCardsGrid(
-          cards: [
-            ContactCardWidget(
-              icon: Icons.call_rounded,
-              title: ContactContent.phoneLabel,
-              detail: ContactContent.phone,
-              onTap: () {
-                launchUrl(
-                  Uri.parse('tel:${ContactContent.phone}'),
-                  mode: .externalApplication,
-                );
-              },
+    return RestaurantInfoBuilder(
+      builder: (context, info) {
+        return InfoPageLayout(
+          appBarTitle: 'تواصل معنا',
+          badge: info.text('contact_page_badge', ContactContent.badge),
+          title: info.text('contact_page_title', ContactContent.title),
+          subtitle: info.text('contact_page_subtitle', ContactContent.subtitle),
+          intro: info.text('contact_page_intro', ContactContent.intro),
+          children: [
+            const InfoSectionTitle(title: ContactContent.contactTitle),
+            ContactCardsGrid(
+              cards: [
+                ContactCardWidget(
+                  icon: Icons.call_rounded,
+                  title: info.text(
+                    'contact_phone_label',
+                    ContactContent.phoneLabel,
+                  ),
+                  detail: info.text('phone_label', ContactContent.phone),
+                  onTap: () async {
+                    launchUrl(
+                      Uri.parse(
+                        'tel:${await siteTextValue("phone_label", ContactContent.phone)}',
+                      ),
+                      mode: .externalApplication,
+                    );
+                  },
+                ),
+                ContactCardWidget(
+                  icon: Icons.chat_rounded,
+                  title: info.text(
+                    'contact_whatsapp_label',
+                    ContactContent.whatsappLabel,
+                  ),
+                  detail: info.text('whatsapp_label', ContactContent.whatsapp),
+                  onTap: () async {
+                    launchUrl(
+                      Uri.parse(
+                        await siteTextValue(
+                          'whatsapp_url',
+                          ContactContent.whatsappUrl,
+                        ),
+                      ),
+                      mode: .externalApplication,
+                    );
+                  },
+                ),
+                ContactCardWidget(
+                  icon: Icons.location_on_rounded,
+                  title: info.text(
+                    'contact_address_label',
+                    ContactContent.addressLabel,
+                  ),
+                  detail: info.text('address_label', ContactContent.address),
+                  onTap: () async {
+                    launchUrl(
+                      Uri.parse(
+                        await siteTextValue('maps_url', ContactContent.mapsUrl),
+                      ),
+                      mode: .externalApplication,
+                    );
+                  },
+                ),
+              ],
             ),
-            ContactCardWidget(
-              icon: Icons.chat_rounded,
-              title: ContactContent.whatsappLabel,
-              detail: ContactContent.whatsapp,
-              onTap: () {
-                launchUrl(
-                  Uri.parse(ContactContent.whatsappUrl),
-                  mode: .externalApplication,
-                );
-              },
-            ),
-            ContactCardWidget(
-              icon: Icons.location_on_rounded,
-              title: ContactContent.addressLabel,
-              detail: ContactContent.address,
-              onTap: () {
-                launchUrl(
-                  Uri.parse(ContactContent.mapsUrl),
-                  mode: .externalApplication,
-                );
-              },
-            ),
+            const InfoSectionTitle(title: ContactContent.hoursTitle),
+            const ContactHoursWidget(),
+            const InfoSectionTitle(title: ContactContent.socialTitle),
+            const ContactSocialWidget(),
           ],
-        ),
-        const InfoSectionTitle(title: ContactContent.hoursTitle),
-        const ContactHoursWidget(),
-        const InfoSectionTitle(title: ContactContent.socialTitle),
-        const ContactSocialWidget(),
-      ],
+        );
+      },
     );
   }
 }
