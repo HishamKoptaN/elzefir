@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../home/present/widgets/restaurant_info_builder.dart';
 import '../content/about_content.dart';
 import 'widgets/info_cta_box.dart';
 import 'widgets/info_feature_card.dart';
@@ -14,25 +15,29 @@ class AboutView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InfoPageLayout(
-      appBarTitle: 'من نحن',
-      badge: AboutContent.badge,
-      title: AboutContent.title,
-      subtitle: AboutContent.subtitle,
-      intro: AboutContent.intro,
-      children: [
-        const InfoSectionWidget(section: AboutContent.mission),
-        const InfoSectionTitle(title: AboutContent.featuresTitle),
-        const InfoFeatureGrid(features: AboutContent.features),
-        const InfoSectionWidget(section: AboutContent.services),
-        const InfoSectionWidget(section: AboutContent.menu),
-        const InfoSectionWidget(section: AboutContent.quality),
-        const InfoCtaBox(
-          title: AboutContent.ctaTitle,
-          subtitle: AboutContent.ctaSubtitle,
-          phone: AboutContent.ctaPhone,
-        ),
-      ],
+    return RestaurantInfoBuilder(
+      builder: (context, info) {
+        return InfoPageLayout(
+          appBarTitle: 'من نحن',
+          badge: info.text('about_page_badge', AboutContent.badge),
+          title: info.text('about_page_title', AboutContent.title),
+          subtitle: info.text('about_page_subtitle', AboutContent.subtitle),
+          intro: info.text('about_page_intro', AboutContent.intro),
+          children: [
+            const InfoSectionWidget(section: AboutContent.mission),
+            const InfoSectionTitle(title: AboutContent.featuresTitle),
+            const InfoFeatureGrid(features: AboutContent.features),
+            const InfoSectionWidget(section: AboutContent.services),
+            const InfoSectionWidget(section: AboutContent.menu),
+            const InfoSectionWidget(section: AboutContent.quality),
+            const InfoCtaBox(
+              title: AboutContent.ctaTitle,
+              subtitle: AboutContent.ctaSubtitle,
+              phone: AboutContent.ctaPhone,
+            ),
+          ],
+        );
+      },
     );
   }
 }
