@@ -12,6 +12,21 @@ class InfoSection {
   final List<String> bullets;
   final String? linkUrl;
   final String? linkLabel;
+
+  factory InfoSection.fromSiteJson(Map<String, dynamic> json) {
+    return InfoSection(
+      title: json['title']?.toString() ?? '',
+      paragraphs: _textList(json['paragraphs']),
+      bullets: _textList(json['bullets']),
+      linkUrl: json['linkUrl']?.toString(),
+      linkLabel: json['linkLabel']?.toString(),
+    );
+  }
+
+  static List<String> _textList(Object? value) {
+    if (value is! List) return const [];
+    return value.map((e) => e.toString()).toList();
+  }
 }
 
 class InfoFeature {
