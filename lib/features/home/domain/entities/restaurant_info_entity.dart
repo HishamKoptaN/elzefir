@@ -9,6 +9,7 @@ class RestaurantInfoEntity {
     required this.offerPrice,
     required this.offerCta,
     this.offerImage,
+    this.raw = const {},
   });
 
   final String name;
@@ -18,6 +19,17 @@ class RestaurantInfoEntity {
   final String offerPrice;
   final String offerCta;
   final String? offerImage;
+
+  /// نسخة مستند `settings/general` كما هي، لتقرأ منها الواجهة أي نص يتيحه
+  /// المشرف من الداشبورد دون تعديل النموذج عند إضافة حقل جديد.
+  final Map<String, dynamic> raw;
+
+  String text(String key, String fallback) {
+    final value = raw[key];
+    return value is String && value.trim().isNotEmpty
+        ? value.trim()
+        : fallback;
+  }
 
   /// قيم افتراضية تُعرض قبل وصول أول قراءة أو عند تعذّر القراءة.
   static const fallback = RestaurantInfoEntity(
@@ -43,6 +55,7 @@ class RestaurantInfoEntity {
       offerPrice: _text(data, const ['offer_price', 'offerPrice'], fallback.offerPrice),
       offerCta: _text(data, const ['offer_cta', 'offerCta'], fallback.offerCta),
       offerImage: image.isEmpty ? null : image,
+      raw: Map<String, dynamic>.from(data),
     );
   }
 
