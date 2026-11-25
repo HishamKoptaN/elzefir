@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../home/present/widgets/restaurant_info_builder.dart';
 import '../content/privacy_content.dart';
+import '../content/site_sections.dart';
 import 'widgets/info_page_layout.dart';
 import 'widgets/section/info_section_widget.dart';
 
@@ -24,7 +25,11 @@ class PrivacyView extends StatelessWidget {
           ),
           intro: info.text('privacy_page_intro', PrivacyContent.intro),
           children: [
-            for (final section in PrivacyContent.sections)
+            for (final section in readInfoSections(
+              info,
+              'privacy_sections_json',
+              PrivacyContent.sections,
+            ))
               InfoSectionWidget(section: section),
           ],
         );
