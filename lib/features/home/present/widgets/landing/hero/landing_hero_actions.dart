@@ -87,17 +87,20 @@ class LandingHeroActions extends StatelessWidget {
                   ),
                   textStyle: theme.labelLarge?.copyWith(fontWeight: .w700),
                 ),
-                child: Row(
-                  mainAxisAlignment: .center,
-                  children: [
-                    Icon(
-                      Icons.restaurant_menu_rounded,
-                      size: 18.r,
-                      color: colors.brandGold,
-                    ),
-                    SizedBox(width: 6.w),
-                    const SiteText('hero_cta_explore', 'استكشف القائمة'),
-                  ],
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Row(
+                    mainAxisSize: .min,
+                    children: [
+                      Icon(
+                        Icons.restaurant_menu_rounded,
+                        size: 18.r,
+                        color: colors.brandGold,
+                      ),
+                      SizedBox(width: 6.w),
+                      const SiteText('hero_cta_explore', 'استكشف القائمة'),
+                    ],
+                  ),
                 ),
               ),
             ),
