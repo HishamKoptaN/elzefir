@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../home/present/widgets/restaurant_info_builder.dart';
 import '../content/about_content.dart';
+import '../content/site_sections.dart';
 import 'widgets/info_cta_box.dart';
 import 'widgets/info_feature_card.dart';
 import 'widgets/info_page_layout.dart';
@@ -17,6 +18,7 @@ class AboutView extends StatelessWidget {
   Widget build(BuildContext context) {
     return RestaurantInfoBuilder(
       builder: (context, info) {
+        final about = AboutSiteContent.read(info);
         return InfoPageLayout(
           appBarTitle: 'من نحن',
           badge: info.text('about_page_badge', AboutContent.badge),
@@ -24,16 +26,26 @@ class AboutView extends StatelessWidget {
           subtitle: info.text('about_page_subtitle', AboutContent.subtitle),
           intro: info.text('about_page_intro', AboutContent.intro),
           children: [
-            const InfoSectionWidget(section: AboutContent.mission),
-            const InfoSectionTitle(title: AboutContent.featuresTitle),
-            const InfoFeatureGrid(features: AboutContent.features),
-            const InfoSectionWidget(section: AboutContent.services),
-            const InfoSectionWidget(section: AboutContent.menu),
-            const InfoSectionWidget(section: AboutContent.quality),
-            const InfoCtaBox(
-              title: AboutContent.ctaTitle,
-              subtitle: AboutContent.ctaSubtitle,
-              phone: AboutContent.ctaPhone,
+            InfoSectionWidget(
+              section: about.sectionsById['mission'] ?? AboutContent.mission,
+            ),
+            InfoSectionTitle(
+              title: about.featuresTitle ?? AboutContent.featuresTitle,
+            ),
+            InfoFeatureGrid(features: about.features ?? AboutContent.features),
+            InfoSectionWidget(
+              section: about.sectionsById['services'] ?? AboutContent.services,
+            ),
+            InfoSectionWidget(
+              section: about.sectionsById['menu'] ?? AboutContent.menu,
+            ),
+            InfoSectionWidget(
+              section: about.sectionsById['quality'] ?? AboutContent.quality,
+            ),
+            InfoCtaBox(
+              title: about.ctaTitle ?? AboutContent.ctaTitle,
+              subtitle: about.ctaSubtitle ?? AboutContent.ctaSubtitle,
+              phone: about.ctaPhone ?? AboutContent.ctaPhone,
             ),
           ],
         );

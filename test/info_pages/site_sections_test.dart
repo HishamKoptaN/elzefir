@@ -37,4 +37,23 @@ void main() {
     );
     expect(sections, same(PrivacyContent.sections));
   });
+
+  test('reads about sections, features and CTA from site settings', () {
+    final info = RestaurantInfoEntity.fromFirestore({
+      'about_sections_json': jsonEncode([
+        {'id': 'mission', 'title': 'رسالتنا المعدّلة', 'paragraphs': ['نص']},
+      ]),
+      'about_features_json': jsonEncode([
+        {'title': 'ميزة', 'description': 'وصف'},
+      ]),
+      'about_cta_title': 'اطلب الآن',
+    });
+
+    final about = AboutSiteContent.read(info);
+
+    expect(about.sectionsById['mission']?.title, 'رسالتنا المعدّلة');
+    expect(about.features?.single.title, 'ميزة');
+    expect(about.ctaTitle, 'اطلب الآن');
+    expect(about.ctaSubtitle, isNull);
+  });
 }

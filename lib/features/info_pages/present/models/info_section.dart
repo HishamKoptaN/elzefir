@@ -34,4 +34,11 @@ class InfoFeature {
 
   final String title;
   final String description;
+
+  factory InfoFeature.fromSiteJson(Map<String, dynamic> json) {
+    return InfoFeature(
+      title: json['title']?.toString() ?? '',
+      description: json['description']?.toString() ?? '',
+    );
+  }
 }
