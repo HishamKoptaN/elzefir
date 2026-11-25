@@ -15,6 +15,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
@@ -35,6 +36,14 @@ Future<void> main() async {
     if (Firebase.apps.isEmpty) {
       await Firebase.initializeApp(options: EnvConfig.config.firebaseOptions);
       // await FirebaseMessagingService.initialize();
+    }
+    if (!kIsWeb && kReleaseMode) {
+      FlutterError.onError =
+          FirebaseCrashlytics.instance.recordFlutterFatalError;
+      PlatformDispatcher.instance.onError = (error, stack) {
+        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+        return true;
+      };
     }
     HydratedBloc.storage = await HydratedStorage.build(
       storageDirectory: kIsWeb
