@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/di/dependency_injection.dart';
-import '../../../domain/entities/restaurant_info_entity.dart';
 import '../../../domain/use_cases/home_use_cases.dart';
+import '../restaurant_info_builder.dart';
 
 /// يقرأ قيمة نصية لمرة واحدة، للإجراءات التي تحتاج قيمة داخل رابط أو معامل.
 Future<String> siteTextValue(String key, String fallback) async {
@@ -38,11 +38,8 @@ class SiteText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<RestaurantInfoEntity>(
-      stream: getIt<HomeUseCases>().watchRestaurantInfo(),
-      initialData: RestaurantInfoEntity.fallback,
-      builder: (context, snapshot) {
-        final info = snapshot.data ?? RestaurantInfoEntity.fallback;
+    return RestaurantInfoBuilder(
+      builder: (context, info) {
         return Text(
           info.text(settingKey, fallback),
           style: style,
