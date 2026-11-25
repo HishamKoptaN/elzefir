@@ -31,8 +31,8 @@ class AboutSection extends StatelessWidget {
           ),
           child: context.isMob
               ? Column(children: const [_ImageSection(), _ContentSection()])
-              : SizedBox(
-                  height: 440.h,
+              : ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: 440.h),
                   child: const Row(
                     children: [
                       Expanded(child: _ImageSection()),
