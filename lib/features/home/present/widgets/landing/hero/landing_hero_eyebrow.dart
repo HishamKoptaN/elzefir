@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/utils/extensions/theme_ext.dart';
+import '../../site_text/site_text.dart';
 
 class LandingHeroEyebrow extends StatelessWidget {
   const LandingHeroEyebrow({
@@ -33,14 +34,16 @@ class LandingHeroEyebrow extends StatelessWidget {
             height: 8,
             decoration: BoxDecoration(shape: .circle, color: colors.brandGold),
           ),
-          Text(
+          SiteText(
+            'hero_eyebrow_brand',
             'مطعم أسماك الزفر',
             style: theme.labelMedium?.copyWith(
               color: colors.brandGold,
               fontWeight: .w700,
             ),
           ),
-          Text(
+          SiteText(
+            'hero_eyebrow_tagline',
             'طازج يوميًا',
             style: theme.bodySmall?.copyWith(color: colors.slateText),
           ),

@@ -7,6 +7,7 @@ import '../../../../../../core/analytics/analytics_service.dart';
 import '../../../../../../core/analytics/consent_service.dart';
 import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
+import '../../site_text/site_text.dart';
 
 class LandingHeroActions extends StatelessWidget {
   const LandingHeroActions({
@@ -65,7 +66,7 @@ class LandingHeroActions extends StatelessWidget {
                   ),
                   textStyle: theme.labelLarge?.copyWith(fontWeight: .w800),
                 ),
-                child: const Text('اطلب الآن'),
+                child: const SiteText('hero_cta_order', 'اطلب الآن'),
               ),
             ),
             SizedBox(width: 10.w),
@@ -92,7 +93,7 @@ class LandingHeroActions extends StatelessWidget {
                       color: colors.brandGold,
                     ),
                     SizedBox(width: 6.w),
-                    const Text('استكشف القائمة'),
+                    const SiteText('hero_cta_explore', 'استكشف القائمة'),
                   ],
                 ),
               ),
