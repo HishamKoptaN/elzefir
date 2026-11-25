@@ -1,6 +1,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/analytics/consent_service.dart';
+import 'core/services/pusher_service.dart';
 import 'core/update/present/bloc/update_bloc.dart';
 import 'elzefir.dart';
 import 'config/env_config.dart';
@@ -41,6 +42,7 @@ Future<void> main() async {
     Bloc.observer = AppBlocObserver();
     configureDependencies();
     await getIt<ConsentService>().applyStoredConsent();
+    getIt<PusherService>().init();
     await ScreenUtil.ensureScreenSize();
     await findSystemLocale();
     intl.Intl.defaultLocale = 'ar';
