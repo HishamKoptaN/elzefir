@@ -9,11 +9,13 @@ class ConsentGate extends StatefulWidget {
   const ConsentGate({
     required this.child,
     this.consent,
+    this.navigatorKey,
     super.key,
   });
 
   final Widget child;
   final ConsentDecision? consent;
+  final GlobalKey<NavigatorState>? navigatorKey;
 
   @override
   State<ConsentGate> createState() => _ConsentGateState();
@@ -33,7 +35,7 @@ class _ConsentGateState extends State<ConsentGate> {
     }
 
     final accepted = await ConfirmationDialog.show(
-      context: context,
+      context: widget.navigatorKey?.currentContext ?? context,
       title: 'الخصوصية',
       message: 'نستخدم التحليلات وإعلانات Google لتحسين تجربتك. هل توافق؟',
     );

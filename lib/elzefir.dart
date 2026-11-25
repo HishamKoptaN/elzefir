@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/analytics/consent_gate.dart';
 import 'core/di/dependency_injection.dart';
+import 'core/globals/global_variable.dart';
 import 'core/routing/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/theme_cubit.dart';
@@ -52,7 +53,10 @@ class Elzefir extends StatelessWidget {
               builder: (context, child) {
                 return Directionality(
                   textDirection: .rtl,
-                  child: ConsentGate(child: child!),
+                  child: ConsentGate(
+                    navigatorKey: GlobalVariable.navState,
+                    child: child!,
+                  ),
                 );
               },
               routerConfig: AppRouter.router,
