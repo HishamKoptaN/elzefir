@@ -221,7 +221,7 @@ String toString() {
 
 class _GetPage implements ProductsEvent {
   const _GetPage();
-
+  
 
 
 
@@ -253,7 +253,7 @@ String toString() {
 
 class _LoadMore implements ProductsEvent {
   const _LoadMore({required this.cursor});
-
+  
 
  final  String cursor;
 
@@ -436,11 +436,11 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( List<ProductModel>? products)?  loaded,TResult Function()?  loading,TResult Function()?  success,TResult Function( ErrorInfo apiErrorModel)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function( List<ProductModel>? products,  bool hasMore,  bool isLoadingMore,  bool loadMoreFailed)?  loaded,TResult Function()?  loading,TResult Function()?  success,TResult Function( ErrorInfo apiErrorModel)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loaded() when loaded != null:
-return loaded(_that.products);case _Loading() when loading != null:
+return loaded(_that.products,_that.hasMore,_that.isLoadingMore,_that.loadMoreFailed);case _Loading() when loading != null:
 return loading();case _Success() when success != null:
 return success();case _Failure() when failure != null:
 return failure(_that.apiErrorModel);case _:
@@ -461,11 +461,11 @@ return failure(_that.apiErrorModel);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( List<ProductModel>? products)  loaded,required TResult Function()  loading,required TResult Function()  success,required TResult Function( ErrorInfo apiErrorModel)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function( List<ProductModel>? products,  bool hasMore,  bool isLoadingMore,  bool loadMoreFailed)  loaded,required TResult Function()  loading,required TResult Function()  success,required TResult Function( ErrorInfo apiErrorModel)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loaded():
-return loaded(_that.products);case _Loading():
+return loaded(_that.products,_that.hasMore,_that.isLoadingMore,_that.loadMoreFailed);case _Loading():
 return loading();case _Success():
 return success();case _Failure():
 return failure(_that.apiErrorModel);case _:
@@ -485,11 +485,11 @@ return failure(_that.apiErrorModel);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( List<ProductModel>? products)?  loaded,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( ErrorInfo apiErrorModel)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function( List<ProductModel>? products,  bool hasMore,  bool isLoadingMore,  bool loadMoreFailed)?  loaded,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function( ErrorInfo apiErrorModel)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loaded() when loaded != null:
-return loaded(_that.products);case _Loading() when loading != null:
+return loaded(_that.products,_that.hasMore,_that.isLoadingMore,_that.loadMoreFailed);case _Loading() when loading != null:
 return loading();case _Success() when success != null:
 return success();case _Failure() when failure != null:
 return failure(_that.apiErrorModel);case _:
@@ -536,7 +536,7 @@ String toString() {
 
 
 class _Loaded implements ProductsState {
-  const _Loaded({required  List<ProductModel>? products}): _products = products;
+  const _Loaded({required  List<ProductModel>? products, this.hasMore = false, this.isLoadingMore = false, this.loadMoreFailed = false}): _products = products;
   
 
  final  List<ProductModel>? _products;
@@ -548,6 +548,9 @@ class _Loaded implements ProductsState {
   return EqualUnmodifiableListView(value);
 }
 
+@JsonKey() final  bool hasMore;
+@JsonKey() final  bool isLoadingMore;
+@JsonKey() final  bool loadMoreFailed;
 
 /// Create a copy of ProductsState
 /// with the given fields replaced by the non-null parameter values.
@@ -559,18 +562,18 @@ _$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other.products, _products));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other.products, _products)&&(identical(other.hasMore, hasMore) || other.hasMore == hasMore)&&(identical(other.isLoadingMore, isLoadingMore) || other.isLoadingMore == isLoadingMore)&&(identical(other.loadMoreFailed, loadMoreFailed) || other.loadMoreFailed == loadMoreFailed));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_products));
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_products),hasMore,isLoadingMore,loadMoreFailed);
 }
 
 @override
 String toString() {
-    return 'ProductsState.loaded(products: $products)';
+    return 'ProductsState.loaded(products: $products, hasMore: $hasMore, isLoadingMore: $isLoadingMore, loadMoreFailed: $loadMoreFailed)';
 }
 
 
@@ -581,7 +584,7 @@ abstract mixin class _$LoadedCopyWith<$Res> implements $ProductsStateCopyWith<$R
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
 @useResult
 $Res call({
- List<ProductModel>? products
+ List<ProductModel>? products, bool hasMore, bool isLoadingMore, bool loadMoreFailed
 });
 
 
@@ -598,10 +601,13 @@ class __$LoadedCopyWithImpl<$Res>
 
 /// Create a copy of ProductsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? products = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? products = freezed,Object? hasMore = null,Object? isLoadingMore = null,Object? loadMoreFailed = null,}) {
   return _then(_Loaded(
 products: freezed == products ? _self._products : products // ignore: cast_nullable_to_non_nullable
-as List<ProductModel>?,
+as List<ProductModel>?,hasMore: null == hasMore ? _self.hasMore : hasMore // ignore: cast_nullable_to_non_nullable
+as bool,isLoadingMore: null == isLoadingMore ? _self.isLoadingMore : isLoadingMore // ignore: cast_nullable_to_non_nullable
+as bool,loadMoreFailed: null == loadMoreFailed ? _self.loadMoreFailed : loadMoreFailed // ignore: cast_nullable_to_non_nullable
+as bool,
   ));
 }
 

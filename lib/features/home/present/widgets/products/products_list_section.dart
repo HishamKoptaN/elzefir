@@ -27,7 +27,15 @@ class ProductsColumn extends StatelessWidget {
               final bloc = getIt<ProductsBloc>();
               return ProductsSection(
                 products: products,
-                isLoadingMore: bloc.isLoadingMore,
+                hasMore: state.hasMore,
+                isLoadingMore: state.isLoadingMore,
+                loadMoreFailed: state.loadMoreFailed,
+                onRetry: () {
+                  final cursor = bloc.cursor;
+                  if (cursor != null) {
+                    bloc.add(ProductsEvent.loadMore(cursor: cursor));
+                  }
+                },
               );
             },
             failure: (f) => Padding(
