@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/utils/extensions/device_type_extension.dart';
+import '../../domain/entities/restaurant_info_entity.dart';
 import '../../../products/present/blocs/bloc/products_bloc.dart';
 import 'about/about.dart';
 import 'footer/footer_widget.dart';
@@ -16,6 +17,7 @@ import 'products/products_auto_loader.dart';
 import 'products/products_list_section.dart';
 import 'products/products_section_header.dart';
 import 'quick_contact/quick_contact_buttons.dart';
+import 'restaurant_info_builder.dart';
 
 class BodyWidget extends StatefulWidget {
   const BodyWidget({
@@ -58,7 +60,9 @@ class _BodyWidgetState extends State<BodyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return ProductsAutoLoader(
+    return RestaurantInfoBuilder(
+      builder: (context, info) {
+        return ProductsAutoLoader(
       listKey: _productsListKey,
       child: SingleChildScrollView(
         controller: widget.controller,
@@ -78,27 +82,58 @@ class _BodyWidgetState extends State<BodyWidget> {
                 onAbout: widget.onAbout,
                 onContact: widget.onContact,
               ),
-              LandingHeroSection(
-                key: widget.heroKey,
-                onExplore: widget.onProcudcts,
-              ),
               const LandingMarqueeSection(),
               const HomeStatusBadge(),
-              GallerySection(key: widget.galleryKey),
-              const QuickContactButtons(),
-              KeyedSubtree(
-                key: widget.productsKey,
-                child: const ProductsSectionHeader(),
-              ),
-              _ProductLayout(key: _productsListKey),
-              MenuPricesSection(key: widget.pricesKey),
-              AboutSection(key: widget.aboutKey),
-              FooterWidget(key: widget.contactKey, onAbout: widget.onAbout),
+              ..._sections(info),
             ],
           ),
         ),
       ),
     );
+      },
+    );
+  }
+
+  /// الأقسام الستة القابلة لإعادة الترتيب من الداشبورد. أي معرّف غير معروف
+  /// يُتجاهل، وما لم يُذكر يبقى في نهاية الصفحة بترتيبه الافتراضي.
+  List<Widget> _sections(RestaurantInfoEntity info) {
+    final blocks = <String, Widget>{
+      'hero': LandingHeroSection(
+        key: widget.heroKey,
+        onExplore: widget.onProcudcts,
+      ),
+      'gallery': Column(
+        spacing: 12.h,
+        children: [
+          GallerySection(key: widget.galleryKey),
+          const QuickContactButtons(),
+        ],
+      ),
+      'products': KeyedSubtree(
+        key: widget.productsKey,
+        child: Column(
+          spacing: 12.h,
+          children: [
+            const ProductsSectionHeader(),
+            _ProductLayout(key: _productsListKey),
+          ],
+        ),
+      ),
+      'prices': MenuPricesSection(key: widget.pricesKey),
+      'about': AboutSection(key: widget.aboutKey),
+      'contact': FooterWidget(key: widget.contactKey, onAbout: widget.onAbout),
+    };
+
+    final ordered = <Widget>[];
+    final raw = info.raw['section_order_json'];
+    if (raw is String && raw.trim().isNotEmpty) {
+      for (final id in raw.split(RegExp(r'[,\n]'))) {
+        final block = blocks.remove(id.trim());
+        if (block != null) ordered.add(block);
+      }
+    }
+    ordered.addAll(blocks.values);
+    return ordered;
   }
 }
 
