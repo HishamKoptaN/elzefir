@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../home/domain/entities/restaurant_info_entity.dart';
+import '../../../home/present/widgets/restaurant_info_builder.dart';
 import '../../../products/domain/entities/product_entity.dart';
+import '../dish_options.dart';
+import '../dish_option_models.dart';
 
 class DishDetailsView extends StatefulWidget {
   const DishDetailsView({super.key, this.product});
@@ -29,7 +33,24 @@ class _DishDetailsViewState extends State<DishDetailsView> {
       _priceUnit.contains('جرام');
 
   double currentWeight = 1.0;
-  double cookingMethodFee = 15.0; // default singari
+  List<CookingOption> _methods =
+      DishOptions.cooking(RestaurantInfoEntity.fallback);
+  List<AddonOption> _addons =
+      DishOptions.addons(RestaurantInfoEntity.fallback);
+
+  String get _effectiveMethodId {
+    if (_methods.any((method) => method.id == selectedCookingMethod)) {
+      return selectedCookingMethod;
+    }
+    return _methods.isEmpty ? 'singari' : _methods.first.id;
+  }
+
+  double get cookingMethodFee {
+    for (final method in _methods) {
+      if (method.id == _effectiveMethodId) return method.cost;
+    }
+    return 0;
+  }
   double addonsFee = 0.0;
   
   String selectedCookingMethod = 'singari';
@@ -75,7 +96,11 @@ class _DishDetailsViewState extends State<DishDetailsView> {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    return Scaffold(
+    return RestaurantInfoBuilder(
+      builder: (context, info) {
+        _methods = DishOptions.cooking(info);
+        _addons = DishOptions.addons(info);
+        return Scaffold(
       backgroundColor: colorScheme.surface,
       body: Stack(
         children: [
@@ -295,46 +320,19 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                         badgeColor: colorScheme.secondary,
                         child: Column(
                           children: [
-                            _buildMethodTile(
-                              context,
-                              value: 'singari',
-                              groupValue: selectedCookingMethod,
-                              title: 'سنجاري إسكندراني بالفرن',
-                              badge: 'الأكثر طلباً 🔥',
-                              priceText: '+15 ج.م',
-                              cost: 15.0,
-                              desc: 'مفتوح سنجاري متبل بالبصل والفلفل والطماطم مع الثوم وزيت الزيتون والليمون في الفرن.',
-                            ),
-                            SizedBox(height: 8.h),
-                            _buildMethodTile(
-                              context,
-                              value: 'grilled_radda',
-                              groupValue: selectedCookingMethod,
-                              title: 'مشوي بالردة على الصاج',
-                              priceText: 'مجاناً',
-                              cost: 0.0,
-                              desc: 'التسوية السكندرية الفلاحية الأصلية برائحة الشواء مع دقة الخل والليمون والكمون الحارة.',
-                            ),
-                            SizedBox(height: 8.h),
-                            _buildMethodTile(
-                              context,
-                              value: 'crispy_fried',
-                              groupValue: selectedCookingMethod,
-                              title: 'مقلي مقرمش بخلطة الزفر',
-                              priceText: '+10 ج.م',
-                              cost: 10.0,
-                              desc: 'متبل بتتبيلة الكمون والكسبرة مع طبقة قرمشة ذهبية خفيفة من برة وطري جداً من جوة.',
-                            ),
-                            SizedBox(height: 8.h),
-                            _buildMethodTile(
-                              context,
-                              value: 'oil_lemon',
-                              groupValue: selectedCookingMethod,
-                              title: 'زيت وليمون خفيف بالفرن',
-                              priceText: '+10 ج.م',
-                              cost: 10.0,
-                              desc: 'خيار صحي دايت مع شرائح الليمون الأصفر، الكرفس الطازج ورشة زيت زيتون بكر.',
-                            ),
+                            for (final method in _methods) ...[
+                              if (method != _methods.first) SizedBox(height: 8.h),
+                              _buildMethodTile(
+                                context,
+                                value: method.id,
+                                groupValue: _effectiveMethodId,
+                                title: method.title,
+                                badge: method.badge,
+                                priceText: method.priceText,
+                                cost: method.cost,
+                                desc: method.description,
+                              ),
+                            ],
                           ],
                         ),
                       ),
@@ -492,13 +490,16 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                         badge: 'اختياري',
                         child: Column(
                           children: [
-                            _buildAddonCheckbox(context, 'rice', 'أرز صيادية بلدي بالبصل المكرمل', 'طبق فردي مشبع مع لمسة قرفة خفيفة', 25.0),
-                            SizedBox(height: 8.h),
-                            _buildAddonCheckbox(context, 'tahini', 'سلطة طحينة سمسم بيضاء', 'طحينة خام مع الكمون والخل والليمون', 15.0),
-                            SizedBox(height: 8.h),
-                            _buildAddonCheckbox(context, 'salad', 'سلطة خضراء بلدي بالدقة', 'طماطم، خيار، جرجير، كرفس مع ليمون', 15.0),
-                            SizedBox(height: 8.h),
-                            _buildAddonCheckbox(context, 'bread', 'رغيفين عيش بلدي سخن ردة', 'طازج من الفرن مباشرة مع الوجبة', 5.0),
+                            for (final addon in _addons) ...[
+                              if (addon != _addons.first) SizedBox(height: 8.h),
+                              _buildAddonCheckbox(
+                                context,
+                                addon.id,
+                                addon.title,
+                                addon.subtitle,
+                                addon.cost,
+                              ),
+                            ],
                           ],
                         ),
                       ),
@@ -584,6 +585,8 @@ class _DishDetailsViewState extends State<DishDetailsView> {
           ),
         ],
       ),
+    );
+      },
     );
   }
 
@@ -689,7 +692,6 @@ class _DishDetailsViewState extends State<DishDetailsView> {
       onTap: () {
         setState(() {
           selectedCookingMethod = value;
-          cookingMethodFee = cost;
         });
       },
       child: Container(
@@ -711,7 +713,6 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                 if (val != null) {
                   setState(() {
                     selectedCookingMethod = val;
-                    cookingMethodFee = cost;
                   });
                 }
               },
