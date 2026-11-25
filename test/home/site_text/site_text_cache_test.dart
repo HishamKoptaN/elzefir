@@ -76,6 +76,17 @@ void main() {
     expect(await siteTextValue('missing_key', 'افتراضي'), 'افتراضي');
   });
 
+  test(
+    'save replaces the snapshot and treats empty values as missing',
+    () async {
+      await SiteTextCache.save({'first': 'واحد', 'second': 'اثنان'});
+      await SiteTextCache.save({'first': 'ثلاثة', 'second': ''});
+
+      expect(SiteTextCache.cachedValue('first', 'افتراضي'), 'ثلاثة');
+      expect(SiteTextCache.cachedValue('second', 'افتراضي'), 'افتراضي');
+    },
+  );
+
   testWidgets('SiteText paints cached text before Firestore replies', (
     tester,
   ) async {

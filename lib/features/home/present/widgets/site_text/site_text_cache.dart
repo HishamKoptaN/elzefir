@@ -38,20 +38,25 @@ class SiteTextCache {
   }
 
   static Future<void> save(Map<String, dynamic> raw) async {
+    final next = <String, String>{};
     for (final entry in raw.entries) {
-      final value = entry.value;
-      if (value is String && value.trim().isNotEmpty) {
-        _values[entry.key] = value.trim();
+      if (entry.value is String) {
+        next[entry.key] = (entry.value as String).trim();
       }
     }
-    if (_values.isEmpty) {
+    if (next.isEmpty) {
       return;
     }
+    _values
+      ..clear()
+      ..addAll(next);
     await SharedPrefHelper.setData(key: _prefsKey, value: jsonEncode(_values));
   }
 
-  static String cachedValue(String key, String fallback) =>
-      _values[key] ?? fallback;
+  static String cachedValue(String key, String fallback) {
+    final value = _values[key];
+    return value != null && value.isNotEmpty ? value : fallback;
+  }
 
   static Future<void> clear() async {
     _values.clear();
