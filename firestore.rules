@@ -1,37 +1,86 @@
 rules_version = '2';
 
+// Canonical Firestore rules for every Elzefir client.
+// Source of truth: elzefir_api/firestore.rules
+// Keep the copies in elzefir/ and elzefir_dash/ identical to this file.
+//
+// The customer app and the dashboard share the `elzefir-dev` Firebase project
+// and both sign users in by phone, so `request.auth != null` alone cannot
+// distinguish an admin. Catalog writes and visitor analytics require the
+// `admin` custom claim; see docs/firestore-rules.md for provisioning.
+// The API writes with the Admin SDK and bypasses these rules.
 service cloud.firestore {
   match /databases/{database}/documents {
-    // كتالوج المطعم وإعداداته: للقراءة العامة فقط، والتعديل من كونسول Firebase.
-    match /products/{productId} {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    function isValidVisitorStats() {
+      return request.resource.data.keys().hasOnly([
+          'totalVisits', 'uniqueVisitors', 'lastVisitAt', 'daily'
+        ])
+        && request.resource.data.totalVisits is int
+        && request.resource.data.totalVisits > 0
+        && (!('uniqueVisitors' in request.resource.data)
+            || (request.resource.data.uniqueVisitors is int
+                && request.resource.data.uniqueVisitors >= 0))
+        && request.resource.data.daily is map;
+    }
+
+    function isValidVisitorHit() {
+      return request.resource.data.keys().hasOnly([
+          'firstSeenAt', 'lastSeenAt', 'visits'
+        ])
+        && request.resource.data.visits is int
+        && request.resource.data.visits > 0;
+    }
+
+    // Public catalog and site settings; writes are admin-only.
+    match /products/{docId} {
       allow read: if true;
-      allow write: if false;
+      allow write: if isAdmin();
+    }
+
+    match /categories/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /settlement_methods/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
     }
 
     match /settings/{docId} {
       allow read: if true;
-      allow write: if false;
+      allow write: if isAdmin();
     }
 
-    // عدّادات الزيارات: كتابة مجهولة محدودة الحقول، دون حذف أو قراءة.
+    match /working_hours/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // The customer app writes these counters anonymously; only admins read them.
     match /stats/visitors {
-      allow create, update: if request.resource.data.keys().hasOnly([
-        'totalVisits',
-        'uniqueVisitors',
-        'lastVisitAt',
-        'daily'
-      ]) && request.resource.data.totalVisits is int
-        && request.resource.data.daily is map;
-      allow read, delete: if false;
+      allow read: if isAdmin();
+      allow create, update: if isValidVisitorStats();
+      allow delete: if false;
     }
 
     match /visitors/{visitorId} {
-      allow create, update: if request.resource.data.keys().hasOnly([
-        'firstSeenAt',
-        'lastSeenAt',
-        'visits'
-      ]) && request.resource.data.visits is int;
-      allow read, delete: if false;
+      allow read: if isAdmin();
+      allow create, update: if isValidVisitorHit();
+      allow delete: if false;
+    }
+
+    // No other collection is accessible to clients.
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }
