@@ -8,6 +8,7 @@ import '../../../products/data/mapper/products_mapper.dart';
 import '../../../products/domain/entities/product_entity.dart';
 import '../../../products/present/blocs/bloc/products_bloc.dart';
 import 'price_item.dart';
+import 'site_text/site_text.dart';
 
 /// منيو مبسّط يعرض أسماء المنتجات وأسعارها الحالية من مجموعة `products`
 /// في فايرستور. يُستخدم أيضاً كمصدر لبيانات الـ SEO المرئية.
@@ -52,7 +53,8 @@ class MenuPricesSection extends StatelessWidget {
                     size: 14.r,
                     color: context.colorScheme.brandGoldHover,
                   ),
-                  Text(
+                  SiteText(
+                    'prices_title',
                     'منيو اليوم المختصر وأسعاره',
                     style: context.textTheme.titleSmall?.copyWith(
                       fontWeight: .w900,

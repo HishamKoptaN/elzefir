@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../site_text/site_text.dart';
 
 class ProductsSectionHeader extends StatelessWidget {
   const ProductsSectionHeader({super.key});
@@ -35,7 +36,8 @@ class ProductsSectionHeader extends StatelessWidget {
                       color: colors.brandGoldHover,
                     ),
                     Flexible(
-                      child: Text(
+                      child: SiteText(
+                        'featured_title',
                         'أطباق مميزة والأكثر طلباً',
                         style: context.textTheme.titleMedium?.copyWith(
                           fontWeight: .w900,
@@ -46,7 +48,8 @@ class ProductsSectionHeader extends StatelessWidget {
                   ],
                 ),
                 Gap(2.h),
-                Text(
+                SiteText(
+                  'featured_subtitle',
                   'تحضير طازج على أصوله بالخلطات السرية',
                   style: context.textTheme.bodySmall?.copyWith(
                     color: colors.slateText,
@@ -62,7 +65,8 @@ class ProductsSectionHeader extends StatelessWidget {
               color: colors.brandGold,
               borderRadius: .circular(999),
             ),
-            child: Text(
+            child: SiteText(
+              'chef_badge',
               'اختيارات الشيف',
               style: context.textTheme.labelSmall?.copyWith(
                 fontWeight: .w800,

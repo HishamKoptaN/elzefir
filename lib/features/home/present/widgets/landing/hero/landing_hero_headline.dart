@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/extensions/theme_ext.dart';
+import '../../site_text/site_text.dart';
 
 class LandingHeroHeadline extends StatelessWidget {
   const LandingHeroHeadline({
@@ -19,7 +20,8 @@ class LandingHeroHeadline extends StatelessWidget {
     return Column(
       crossAxisAlignment: .start,
       children: [
-        Text(
+        SiteText(
+          'hero_headline_1',
           'طعم البحر',
           style: theme.displaySmall?.copyWith(
             color: colors.onPrimary,
@@ -27,7 +29,8 @@ class LandingHeroHeadline extends StatelessWidget {
             height: 1.1,
           ),
         ),
-        Text(
+        SiteText(
+          'hero_headline_2',
           'الأصيل',
           style: theme.displaySmall?.copyWith(
             color: colors.brandGold,
@@ -35,7 +38,8 @@ class LandingHeroHeadline extends StatelessWidget {
             height: 1.1,
           ),
         ),
-        Text(
+        SiteText(
+          'hero_headline_3',
           'أجود ما في البحر',
           style: theme.headlineSmall?.copyWith(
             color: colors.brandGold,
