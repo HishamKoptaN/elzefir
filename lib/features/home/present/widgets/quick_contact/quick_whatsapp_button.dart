@@ -8,6 +8,8 @@ import '../../../../../core/analytics/analytics_service.dart';
 import '../../../../../core/analytics/consent_service.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../domain/use_cases/home_use_cases.dart';
+import '../site_text/site_text.dart';
 
 class QuickWhatsappButton extends StatelessWidget {
   const QuickWhatsappButton({super.key});
@@ -27,8 +29,9 @@ class QuickWhatsappButton extends StatelessWidget {
           } catch (_) {
             // Analytics is best-effort and must never break the action.
           }
+          final info = await getIt<HomeUseCases>().watchRestaurantInfo().first;
           await launchUrl(
-            Uri.parse('https://wa.me/201124497981'),
+            Uri.parse(info.text('whatsapp_url', 'https://wa.me/201124497981')),
             mode: .externalApplication,
           );
         },
@@ -55,7 +58,8 @@ class QuickWhatsappButton extends StatelessWidget {
                         color: context.colorScheme.whatsappTitle,
                       ),
                     ),
-                    Text(
+                    SiteText(
+                      'whatsapp_label',
                       '01124497981',
                       textDirection: .ltr,
                       overflow: .ellipsis,

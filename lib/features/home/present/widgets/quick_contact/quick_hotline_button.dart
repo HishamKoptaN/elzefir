@@ -8,6 +8,8 @@ import '../../../../../core/analytics/analytics_service.dart';
 import '../../../../../core/analytics/consent_service.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../domain/use_cases/home_use_cases.dart';
+import '../site_text/site_text.dart';
 
 class QuickHotlineButton extends StatelessWidget {
   const QuickHotlineButton({super.key});
@@ -27,7 +29,8 @@ class QuickHotlineButton extends StatelessWidget {
           } catch (_) {
             // Analytics is best-effort and must never break the action.
           }
-          final uri = Uri.parse('tel:01008673836');
+          final info = await getIt<HomeUseCases>().watchRestaurantInfo().first;
+          final uri = Uri.parse(info.text('phone_url', 'tel:01008673836'));
           await launchUrl(uri, mode: .externalApplication);
         },
         borderRadius: .circular(16.r),
@@ -53,7 +56,8 @@ class QuickHotlineButton extends StatelessWidget {
                         color: context.colorScheme.hotlineTitle,
                       ),
                     ),
-                    Text(
+                    SiteText(
+                      'phone_label',
                       '01008673836',
                       textDirection: .ltr,
                       overflow: .ellipsis,

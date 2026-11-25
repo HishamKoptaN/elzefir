@@ -7,6 +7,7 @@ import '../../../../../../core/analytics/analytics_service.dart';
 import '../../../../../../core/analytics/consent_service.dart';
 import '../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../../domain/use_cases/home_use_cases.dart';
 import '../../site_text/site_text.dart';
 
 class LandingHeroActions extends StatelessWidget {
@@ -23,7 +24,9 @@ class LandingHeroActions extends StatelessWidget {
 
   Future<void> _order() async {
     await _logEvent(AnalyticsEvents.clickOrderNow);
-    final uri = Uri.https('wa.me', '/201124497981', {
+    final info = await getIt<HomeUseCases>().watchRestaurantInfo().first;
+    final number = info.text('whatsapp_number', '201124497981');
+    final uri = Uri.https('wa.me', '/$number', {
       'text': 'مرحباً، أريد طلب من مطعم أسماك الزفر',
     });
     await launchUrl(uri, mode: .externalApplication);

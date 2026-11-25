@@ -5,6 +5,7 @@ import '../../../../../core/utils/extensions/device_type_extension.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/custom_image.dart';
 import '../restaurant_info_builder.dart';
+import '../site_text/site_text.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
@@ -62,6 +63,10 @@ class _ContentSection extends StatelessWidget {
   const _ContentSection();
   @override
   Widget build(BuildContext context) {
+    final chipStyle = context.textTheme.labelSmall?.copyWith(
+      fontWeight: .w700,
+      color: context.colorScheme.brandNavyDeep,
+    );
     return Padding(
       padding: EdgeInsets.all(context.isMob ? 20.w : 48.w),
       child: Column(
@@ -69,7 +74,8 @@ class _ContentSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 10.h,
         children: [
-          Text(
+          SiteText(
+            'about_title',
             'من نحن',
             textAlign: .start,
             style: context.textTheme.headlineLarge?.copyWith(
@@ -88,25 +94,44 @@ class _ContentSection extends StatelessWidget {
               );
             },
           ),
-          Text(
+          SiteText(
+            'about_body',
             'في مطعم الزفر نقدم أفضل أنواع الأسماك والمأكولات البحرية الطازجة، '
-            'المحضرة يوميًا بأجود المكونات وعلى أيدي أمهر الطهاة. هدفنا أن نقدم '
-            'تجربة مميزة تجمع بين الطعم الأصيل والجودة العالية والخدمة الممتازة.',
+                'المحضرة يوميًا بأجود المكونات وعلى أيدي أمهر الطهاة. هدفنا أن نقدم '
+                'تجربة مميزة تجمع بين الطعم الأصيل والجودة العالية والخدمة الممتازة.',
             textAlign: TextAlign.right,
             style: context.textTheme.bodyLarge?.copyWith(
               color: context.colorScheme.slateText,
             ),
           ),
-          const Wrap(
+          Wrap(
             spacing: 8,
             runSpacing: 8,
             children: [
-              _AboutFeature(icon: Icons.set_meal_rounded, label: 'طازج يومياً'),
+              _AboutFeature(
+                icon: Icons.set_meal_rounded,
+                label: SiteText(
+                  'about_feature_1',
+                  'طازج يومياً',
+                  style: chipStyle,
+                ),
+              ),
               _AboutFeature(
                 icon: Icons.delivery_dining_rounded,
-                label: 'توصيل سريع',
+                label: SiteText(
+                  'about_feature_2',
+                  'توصيل سريع',
+                  style: chipStyle,
+                ),
               ),
-              _AboutFeature(icon: Icons.verified_rounded, label: 'جودة عالية'),
+              _AboutFeature(
+                icon: Icons.verified_rounded,
+                label: SiteText(
+                  'about_feature_3',
+                  'جودة عالية',
+                  style: chipStyle,
+                ),
+              ),
             ],
           ),
         ],
@@ -119,7 +144,7 @@ class _AboutFeature extends StatelessWidget {
   const _AboutFeature({required this.icon, required this.label});
 
   final IconData icon;
-  final String label;
+  final Widget label;
 
   @override
   Widget build(BuildContext context) {
@@ -136,13 +161,7 @@ class _AboutFeature extends StatelessWidget {
         spacing: 5.w,
         children: [
           Icon(icon, size: 15.r, color: colors.brandGoldHover),
-          Text(
-            label,
-            style: context.textTheme.labelSmall?.copyWith(
-              fontWeight: .w700,
-              color: colors.brandNavyDeep,
-            ),
-          ),
+          label,
         ],
       ),
     );

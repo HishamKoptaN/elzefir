@@ -7,6 +7,7 @@ import '../../../../../core/analytics/analytics_service.dart';
 import '../../../../../core/analytics/consent_service.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
+import '../../../domain/use_cases/home_use_cases.dart';
 
 class QuickLocationButton extends StatelessWidget {
   const QuickLocationButton({super.key});
@@ -27,8 +28,14 @@ class QuickLocationButton extends StatelessWidget {
           } catch (_) {
             // Analytics is best-effort and must never break the action.
           }
+          final info = await getIt<HomeUseCases>().watchRestaurantInfo().first;
           await launchUrl(
-            Uri.parse('https://maps.google.com/?q=العياط+شارع+الجيش'),
+            Uri.parse(
+              info.text(
+                'maps_url',
+                'https://maps.google.com/?q=العياط+شارع+الجيش',
+              ),
+            ),
             mode: .externalApplication,
           );
         },
