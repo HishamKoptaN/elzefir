@@ -189,26 +189,29 @@ class WorkTimeWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(999),
                       border: .all(color: Colors.white10),
                     ),
-                    child: Row(
-                      mainAxisSize: .min,
-                      spacing: 6.w,
-                      children: [
-                        Container(
-                          height: 8.r,
-                          width: 8.r,
-                          decoration: BoxDecoration(
-                            shape: .circle,
-                            color: statusDotColor,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        mainAxisSize: .min,
+                        spacing: 6.w,
+                        children: [
+                          Container(
+                            height: 8.r,
+                            width: 8.r,
+                            decoration: BoxDecoration(
+                              shape: .circle,
+                              color: statusDotColor,
+                            ),
                           ),
-                        ),
-                        Text(
-                          statusText,
-                          style: context.textTheme.labelMedium?.copyWith(
-                            color: statusTextColor,
-                            fontWeight: .w600,
+                          Text(
+                            statusText,
+                            style: context.textTheme.labelMedium?.copyWith(
+                              color: statusTextColor,
+                              fontWeight: .w600,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   CustomFooterDividerWidget(),
