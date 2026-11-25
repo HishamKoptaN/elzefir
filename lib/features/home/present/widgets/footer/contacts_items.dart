@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
+import '../restaurant_info_builder.dart';
+import '../site_text/site_text.dart';
 import 'footer_widget.dart';
 
 class FooterContactsItems extends StatelessWidget {
@@ -12,7 +15,11 @@ class FooterContactsItems extends StatelessWidget {
       crossAxisAlignment: .start,
       runSpacing: 10.h,
       children: [
-        CustomFooterTitleWidget(title: 'تواصل معنا'),
+        RestaurantInfoBuilder(
+          builder: (context, info) => CustomFooterTitleWidget(
+            title: info.text('contact_title', 'تواصل معنا'),
+          ),
+        ),
         SizedBox(height: 16.h),
         buildContactItem(
           context: context,
@@ -21,22 +28,28 @@ class FooterContactsItems extends StatelessWidget {
             color: const Color(0xFFFACC15),
             size: 16.iconRes,
           ),
-          text: '01008673836',
-          onTap: () {
-            execuateLaunchUrl('tel:01008673836');
+          textKey: 'phone_label',
+          fallback: '01008673836',
+          onTap: () async {
+            await execuateLaunchUrl(
+              await siteTextValue('phone_url', 'tel:01008673836'),
+            );
           },
         ),
         SizedBox(height: 10.h),
         buildContactItem(
           context: context,
           icon: FaIcon(
-          FontAwesomeIcons.whatsapp,
+            FontAwesomeIcons.whatsapp,
             color: const Color(0xFFFACC15),
             size: 16.iconRes,
           ),
-          text: '01124497981',
-          onTap: () {
-            execuateLaunchUrl('https://wa.me/201124497981');
+          textKey: 'whatsapp_label',
+          fallback: '01124497981',
+          onTap: () async {
+            await execuateLaunchUrl(
+              await siteTextValue('whatsapp_url', 'https://wa.me/201124497981'),
+            );
           },
         ),
         SizedBox(height: 10.h),
@@ -47,10 +60,15 @@ class FooterContactsItems extends StatelessWidget {
             color: const Color(0xFFFACC15),
             size: 16.iconRes,
           ),
-          text:
-              'العياط غرب - شارع الجيش - أمام سلم السكة الحديد بجوار صيدلية -د. لويز',
-          onTap: () {
-            execuateLaunchUrl('https://maps.google.com/?q=العياط+شارع+الجيش');
+          textKey: 'address_label',
+          fallback: 'العياط غرب - شارع الجيش - أمام سلم السكة الحديد بجوار صيدلية -د. لويز',
+          onTap: () async {
+            await execuateLaunchUrl(
+              await siteTextValue(
+                'maps_url',
+                'https://maps.google.com/?q=العياط+شارع+الجيش',
+              ),
+            );
           },
         ),
         SizedBox(height: 20.h),
@@ -62,9 +80,15 @@ class FooterContactsItems extends StatelessWidget {
             buildSocialIcon(
               context: context,
               icon: Icon(Icons.facebook, color: Colors.white, size: 18.iconRes),
-              onTap: () {
-              execuateLaunchUrl('https://www.facebook.com/ELZEFIR');
-            }),
+              onTap: () async {
+                await execuateLaunchUrl(
+                  await siteTextValue(
+                    'facebook_url',
+                    'https://www.facebook.com/ELZEFIR',
+                  ),
+                );
+              },
+            ),
             SizedBox(width: 12.w),
             buildSocialIcon(
               context: context,
@@ -73,9 +97,15 @@ class FooterContactsItems extends StatelessWidget {
                 color: Colors.white,
                 size: 18.iconRes,
               ),
-              onTap: () {
-                execuateLaunchUrl('https://www.instagram.com/elzefir_fish');
-            }),
+              onTap: () async {
+                await execuateLaunchUrl(
+                  await siteTextValue(
+                    'instagram_url',
+                    'https://www.instagram.com/elzefir_fish',
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ],
