@@ -17,7 +17,6 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
   final OrdersUseCases ordersUseCases;
   OrdersBloc(this.ordersUseCases) : super(OrdersState.initial()) {
     on<OrdersEvent>((event, emit) async {
-      restartable();
       await event.when(
         get: (page, perPage) async {
           await state.maybeMap(
@@ -260,7 +259,7 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
           );
         },
       );
-    });
+    }, transformer: restartable());
   }
   int sumSelectedCount({required List<OrderEntity>? orders}) {
     int totalSelectedUnits = 0;
