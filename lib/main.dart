@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/analytics/consent_service.dart';
 import 'core/services/pusher_service.dart';
 import 'core/update/present/bloc/update_bloc.dart';
-import 'features/auth/auth/present/blocs/auth_bloc/auth_bloc.dart';
 import 'elzefir.dart';
 import 'config/env_config.dart';
 import 'core/debug/utils/app_observer.dart';
@@ -13,7 +12,6 @@ import 'package:path_provider/path_provider.dart';
 
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
