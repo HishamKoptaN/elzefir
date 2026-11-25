@@ -72,41 +72,42 @@ class FooterContactsItems extends StatelessWidget {
           },
         ),
         SizedBox(height: 20.h),
-        Row(
-          mainAxisAlignment: .center,
-          crossAxisAlignment: .center,
-          spacing: 40.w,
-          children: [
-            buildSocialIcon(
-              context: context,
-              icon: Icon(Icons.facebook, color: Colors.white, size: 18.iconRes),
-              onTap: () async {
-                await execuateLaunchUrl(
-                  await siteTextValue(
-                    'facebook_url',
-                    'https://www.facebook.com/ELZEFIR',
-                  ),
-                );
-              },
-            ),
-            SizedBox(width: 12.w),
-            buildSocialIcon(
-              context: context,
-              icon: FaIcon(
-                FontAwesomeIcons.instagram,
-                color: Colors.white,
-                size: 18.iconRes,
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            mainAxisSize: .min,
+            spacing: 12.w,
+            children: [
+              buildSocialIcon(
+                context: context,
+                icon: Icon(Icons.facebook, color: Colors.white, size: 18.iconRes),
+                onTap: () async {
+                  await execuateLaunchUrl(
+                    await siteTextValue(
+                      'facebook_url',
+                      'https://www.facebook.com/ELZEFIR',
+                    ),
+                  );
+                },
               ),
-              onTap: () async {
-                await execuateLaunchUrl(
-                  await siteTextValue(
-                    'instagram_url',
-                    'https://www.instagram.com/elzefir_fish',
-                  ),
-                );
-              },
-            ),
-          ],
+              buildSocialIcon(
+                context: context,
+                icon: FaIcon(
+                  FontAwesomeIcons.instagram,
+                  color: Colors.white,
+                  size: 18.iconRes,
+                ),
+                onTap: () async {
+                  await execuateLaunchUrl(
+                    await siteTextValue(
+                      'instagram_url',
+                      'https://www.instagram.com/elzefir_fish',
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ],
     );
