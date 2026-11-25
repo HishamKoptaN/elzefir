@@ -46,10 +46,11 @@ class ConfirmationDialog extends StatelessWidget {
       backgroundColor: context.colorScheme.primary,
       insetPadding: EdgeInsets.zero,
       child: IntrinsicWidth(
-        child: IntrinsicHeight(
-          child: Container(
-            decoration: BoxDecoration(color: Colors.white),
+        child: Container(
+          decoration: BoxDecoration(color: Colors.white),
+          child: SingleChildScrollView(
             child: Column(
+              mainAxisSize: .min,
               children: [
                 DialogHeader(title: title),
                 Padding(
