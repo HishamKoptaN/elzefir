@@ -54,4 +54,35 @@ void main() {
     expect(find.text('الخصوصية'), findsNothing);
     expect(consent.last, isNull);
   });
+
+  testWidgets('asks through the navigator when placed above it', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(360, 690);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final navKey = GlobalKey<NavigatorState>();
+    final consent = _FakeConsent();
+    await tester.pumpWidget(
+      ScreenUtilInit(
+        designSize: const Size(360, 690),
+        builder: (context, child) => MaterialApp(
+          navigatorKey: navKey,
+          home: const SizedBox.shrink(),
+          builder: (context, child) => ConsentGate(
+            navigatorKey: navKey,
+            consent: consent,
+            child: child!,
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('الخصوصية'), findsOneWidget);
+    await tester.tap(find.text('تأكيد'));
+    await tester.pumpAndSettle();
+
+    expect(consent.last, 'grant');
+  });
 }
