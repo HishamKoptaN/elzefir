@@ -15,6 +15,7 @@ abstract class ProductEntity with _$ProductEntity {
     @Default('') String price,
     @Default('') String priceUnit,
     @Default(false) bool isFeatured,
+    @Default(false) bool isMostRequested,
     @Default('') String image,
     @Default(CategoryEntity()) CategoryEntity category,
     @Default(<CookingMethodEntity>[]) List<CookingMethodEntity> cookingMethods,

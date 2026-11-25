@@ -19,10 +19,9 @@ typedef ChefSlide = ({
 });
 
 class LandingFoodCard extends StatelessWidget {
-  const LandingFoodCard({super.key, required this.item, required this.index});
+  const LandingFoodCard({super.key, required this.item});
 
   final ChefSlide item;
-  final int index;
 
   Future<void> _openDetails(BuildContext context) async {
     final product = item.product;
@@ -74,7 +73,7 @@ class LandingFoodCard extends StatelessWidget {
                   ),
                 ),
               ),
-              if (index == 0)
+              if (item.product?.isMostRequested ?? false)
                 Positioned(
                   top: 10.h,
                   right: 10.w,

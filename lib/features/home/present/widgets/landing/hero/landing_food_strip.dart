@@ -48,10 +48,14 @@ class LandingFoodStrip extends StatelessWidget {
           orElse: () => <ProductEntity>[],
         );
         final withImages = products.where((p) => p.image.isNotEmpty).toList();
-        final featured = withImages.where((p) => p.isFeatured).take(6).toList();
-        final selected = featured.isNotEmpty
-            ? featured
-            : withImages.take(6).toList();
+        // الترتيب وشارة «الأكثر طلباً» يحددهما المشرف من الداشبورد عبر حقول
+        // isMostRequested / isFeatured على مستند المنتج، لا من موضع الشريحة.
+        final mostRequested = withImages.where((p) => p.isMostRequested).toList();
+        final featured = withImages
+            .where((p) => p.isFeatured && !p.isMostRequested)
+            .toList();
+        final marked = [...mostRequested, ...featured];
+        final selected = (marked.isNotEmpty ? marked : withImages).take(6).toList();
         final items = selected.isEmpty
             ? _fallback
             : selected
@@ -167,7 +171,7 @@ class _CarouselState extends State<_Carousel> {
                 itemCount: widget.items.length,
                 onPageChanged: (i) => setState(() => _index = i),
                 itemBuilder: (context, i) =>
-                    LandingFoodCard(item: widget.items[i], index: i),
+                    LandingFoodCard(item: widget.items[i]),
               ),
             ),
           ),

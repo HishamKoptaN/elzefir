@@ -31,9 +31,15 @@ class LandingMarqueeSection extends StatelessWidget {
       orElse: () => <ProductEntity>[],
     );
     final withNames = products.where((p) => p.name.trim().isNotEmpty).toList();
-    final featured = withNames.where((p) => p.isFeatured).toList();
-    final others = withNames.where((p) => !p.isFeatured).toList();
+    final mostRequested = withNames.where((p) => p.isMostRequested).toList();
+    final featured = withNames
+        .where((p) => p.isFeatured && !p.isMostRequested)
+        .toList();
+    final others = withNames
+        .where((p) => !p.isFeatured && !p.isMostRequested)
+        .toList();
     return [
+      ...mostRequested,
       ...featured,
       ...others,
     ].take(_maxItems).map((p) => p.name.trim()).toList();

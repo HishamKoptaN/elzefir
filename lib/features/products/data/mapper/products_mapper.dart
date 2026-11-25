@@ -17,6 +17,7 @@ extension ProductModelMapper on ProductModel {
       price: Arabic.number(price ?? ''),
       priceUnit: priceUnit ?? '',
       isFeatured: isFeatured ?? false,
+      isMostRequested: isMostRequested ?? false,
       image: ImageProvidersConfig.resolveImageUrl(image),
       category: category?.toEntity() ?? CategoryEntity(),
       cookingMethods:
