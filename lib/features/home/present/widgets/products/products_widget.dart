@@ -8,11 +8,17 @@ class ProductsSection extends StatelessWidget {
   const ProductsSection({
     super.key,
     required this.products,
+    required this.hasMore,
     required this.isLoadingMore,
+    required this.loadMoreFailed,
+    required this.onRetry,
   });
 
   final List<ProductEntity> products;
+  final bool hasMore;
   final bool isLoadingMore;
+  final bool loadMoreFailed;
+  final VoidCallback onRetry;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +56,32 @@ class ProductsSection extends StatelessWidget {
                     child: CircularProgressIndicator(
                       color: Theme.of(context).colorScheme.primary,
                     ),
+                  ),
+                )
+              else if (loadMoreFailed)
+                Padding(
+                  padding: .only(top: 16.h),
+                  child: Column(
+                    mainAxisSize: .min,
+                    children: [
+                      Text(
+                        'تعذر تحميل المزيد من المنتجات',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      SizedBox(height: 8.h),
+                      TextButton(
+                        onPressed: onRetry,
+                        child: const Text('إعادة المحاولة'),
+                      ),
+                    ],
+                  ),
+                )
+              else if (!hasMore && products.isNotEmpty)
+                Padding(
+                  padding: .only(top: 16.h),
+                  child: Text(
+                    'وصلت إلى نهاية المنتجات',
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
             ],

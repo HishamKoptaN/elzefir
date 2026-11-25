@@ -31,7 +31,10 @@ class ProductsAutoLoader extends StatelessWidget {
 
   void _loadIfNeeded(BuildContext context) {
     final bloc = getIt<ProductsBloc>();
-    if (!bloc.hasMore || bloc.isLoadingMore || bloc.cursor == null) {
+    if (!bloc.hasMore ||
+        bloc.isLoadingMore ||
+        bloc.loadMoreFailed ||
+        bloc.cursor == null) {
       return;
     }
     final renderObject = listKey.currentContext?.findRenderObject();
