@@ -80,24 +80,24 @@ class AppSnackBar {
     switch (type) {
       case AppSnackBarType.success:
         backgroundColor = context.colorScheme.primary;
-        borderColor = const Color(0xFF4CAF50);
+        borderColor = context.colorScheme.statusDot;
         icon = Icons.check_circle_rounded;
-        iconColor = const Color(0xFF4CAF50);
+        iconColor = context.colorScheme.statusDot;
         break;
       case AppSnackBarType.error:
-        backgroundColor = const Color(0xFF1E2A2F);
-        borderColor = const Color(0xFFF44336);
+        backgroundColor = context.colorScheme.brandNavyDeep;
+        borderColor = context.colorScheme.error;
         icon = Icons.error_outline_rounded;
-        iconColor = const Color(0xFFF44336);
+        iconColor = context.colorScheme.error;
         break;
       case AppSnackBarType.warning:
-        backgroundColor = const Color(0xFF1E2A2F);
-        borderColor = const Color(0xFFFFC107);
+        backgroundColor = context.colorScheme.brandNavyDeep;
+        borderColor = context.colorScheme.brandGold;
         icon = Icons.warning_amber_rounded;
-        iconColor = const Color(0xFFFFC107);
+        iconColor = context.colorScheme.brandGold;
         break;
       case AppSnackBarType.info:
-        backgroundColor = const Color(0xFF1E2A2F);
+        backgroundColor = context.colorScheme.brandNavyDeep;
         borderColor = theme.primaryColor;
         icon = Icons.info_outline_rounded;
         iconColor = theme.primaryColor;
@@ -122,7 +122,7 @@ class AppSnackBar {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
+                color: context.colorScheme.shadow.withOpacity(0.1),
                 blurRadius: 10.r,
                 offset: const Offset(0, 4),
               ),
@@ -149,7 +149,7 @@ class AppSnackBar {
                       title,
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontSize: 22.sp,
-                        color: Colors.white,
+                        color: context.colorScheme.onPrimary,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -159,7 +159,7 @@ class AppSnackBar {
                         message,
                         style: theme.textTheme.bodyMedium?.copyWith(
                           fontSize: 20.sp,
-                          color: Colors.white.withOpacity(0.8),
+                          color: context.colorScheme.onPrimary.withOpacity(0.8),
                         ),
                       ),
                     },
@@ -170,7 +170,7 @@ class AppSnackBar {
                 IconButton(
                   icon: Icon(
                     Icons.close,
-                    color: Colors.white.withOpacity(0.6),
+                    color: context.colorScheme.onPrimary.withOpacity(0.6),
                     size: 18,
                   ),
                   padding: EdgeInsets.zero,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:elzefir/core/utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
@@ -28,18 +29,21 @@ class _CustomTabsWidgetState extends State<CustomTabsWidget> {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: context.colorScheme.surface,
             border: Border(
-              bottom: BorderSide(color: Colors.grey.shade300, width: 1.0),
+              bottom: BorderSide(
+                color: context.colorScheme.outlineVariant,
+                width: 1.0,
+              ),
             ),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildDivider(),
+              _buildDivider(context),
               Gap(10.h),
-              _buildTabsRow(),
-              _buildDivider(),
+              _buildTabsRow(context),
+              _buildDivider(context),
             ],
           ),
         ),
@@ -52,7 +56,7 @@ class _CustomTabsWidgetState extends State<CustomTabsWidget> {
     );
   }
 
-  Widget _buildTabsRow() {
+  Widget _buildTabsRow(BuildContext context) {
     return SizedBox(
       height: 70.h,
       child: Padding(
@@ -86,8 +90,8 @@ class _CustomTabsWidgetState extends State<CustomTabsWidget> {
                               tab.icon,
                               size: 24.w,
                               color: isSelected
-                                  ? const Color(0xFF003A46)
-                                  : const Color(0xFF9F9F9F),
+                                  ? context.colorScheme.primary
+                                  : context.colorScheme.onSurfaceVariant,
                             ),
                             SizedBox(width: 8.w),
                             Text(
@@ -96,8 +100,8 @@ class _CustomTabsWidgetState extends State<CustomTabsWidget> {
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w400,
                                 color: isSelected
-                                    ? const Color(0xFF003A46)
-                                    : const Color(0xFF9F9F9F),
+                                    ? context.colorScheme.primary
+                                    : context.colorScheme.onSurfaceVariant,
                                 height: 1.5,
                               ),
                             ),
@@ -110,7 +114,7 @@ class _CustomTabsWidgetState extends State<CustomTabsWidget> {
                               width: 154.w,
                               height: 4.h,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF003A46),
+                                color: context.colorScheme.primary,
                               ),
                             ),
                           ),
@@ -140,15 +144,15 @@ class _CustomTabsWidgetState extends State<CustomTabsWidget> {
     );
   }
 
-  Widget _buildDivider() {
+  Widget _buildDivider(BuildContext context) {
     return Container(
       height: 1.h,
-      color: const Color(0xFFDBDBDB),
+      color: context.colorScheme.outlineVariant,
       child: Container(
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.25),
+              color: context.colorScheme.shadow.withOpacity(0.25),
               spreadRadius: 0,
               blurRadius: 0,
               offset: const Offset(0, -1),

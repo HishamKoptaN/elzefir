@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:elzefir/core/utils/extensions/theme_ext.dart';
 import 'package:flutter/foundation.dart';
 
 class CustomErrorWidget extends StatelessWidget {
@@ -11,12 +12,16 @@ class CustomErrorWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: context.colorScheme.surface,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.error_outline, color: Colors.red, size: 80),
+              Icon(
+                Icons.error_outline,
+                color: context.colorScheme.error,
+                size: 80,
+              ),
               const SizedBox(height: 20),
               const Text(
                 'حدث خطأ غير متوقع',
@@ -35,11 +40,11 @@ class CustomErrorWidget extends StatelessWidget {
               ),
               if (kDebugMode && errorDetails != null) ...[
                 const SizedBox(height: 24),
-                const Text(
+                Text(
                   'تفاصيل الخطأ (لتطوير فقط):',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey,
+                    color: context.colorScheme.onSurfaceVariant,
                   ),
                   textDirection: TextDirection.rtl,
                 ),
@@ -48,7 +53,10 @@ class CustomErrorWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: SelectableText(
                     errorDetails!.exceptionAsString(),
-                    style: const TextStyle(color: Colors.grey, fontSize: 12),
+                    style: TextStyle(
+                      color: context.colorScheme.onSurfaceVariant,
+                      fontSize: 12,
+                    ),
                     textDirection: TextDirection.ltr,
                   ),
                 ),

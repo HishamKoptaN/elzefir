@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../utils/extensions/theme_ext.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   final String message;
@@ -51,7 +52,8 @@ class CustomErrorWidget extends StatelessWidget {
               onPressed: onRetry!,
               style: ElevatedButton.styleFrom(
                 // backgroundColor: buttonColor ?? AppColors.brandMint,
-                foregroundColor: buttonTextColor ?? Colors.white,
+                foregroundColor:
+                  buttonTextColor ?? context.colorScheme.onPrimary,
               ),
               child: Text(retryText ?? 'Retry'),
             ),
