@@ -273,22 +273,6 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
     return totalSelectedUnits;
   }
 
-  void emitLoaded({
-    required Emitter<OrdersState> emit,
-    required _Loaded loaded,
-    List<OrderEntity>? orders,
-    MetaEntity? meta,
-    bool? isSearching,
-  }) {
-    return emit(
-      OrdersState.loaded(
-        orders: orders ?? loaded.orders,
-        meta: meta ?? loaded.meta,
-        isSearching: isSearching ?? loaded.isSearching,
-      ),
-    );
-  }
-
   void emitFailure({
     required Emitter<OrdersState> emit,
     required ErrorInfo apiErrorModel,

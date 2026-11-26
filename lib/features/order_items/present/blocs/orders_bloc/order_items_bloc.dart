@@ -52,7 +52,7 @@ class OrderItemsBloc extends Bloc<OrderItemsEvent, OrderItemsState> {
                   },
                 );
                 emit(const OrderItemsState.success());
-                emitLoaded(emit: emit, loaded: state, isLoading: false);
+                _emitLoaded(emit: emit, loaded: state, isLoading: false);
                 getIt<OrdersBloc>().add(
                   OrdersEvent.updateOrderLink(
                     orderId: state.updateUnit?.orderId?.toString() ?? '',
@@ -71,7 +71,7 @@ class OrderItemsBloc extends Bloc<OrderItemsEvent, OrderItemsState> {
                   ),
                   emit: emit,
                 );
-                emitLoaded(emit: emit, loaded: state, isLoading: false);
+                _emitLoaded(emit: emit, loaded: state, isLoading: false);
               }
             },
           );
@@ -80,7 +80,7 @@ class OrderItemsBloc extends Bloc<OrderItemsEvent, OrderItemsState> {
     });
   }
 
-  void emitLoaded({
+  void _emitLoaded({
     required Emitter<OrderItemsState> emit,
     required _Loaded loaded,
     bool? isLoading,

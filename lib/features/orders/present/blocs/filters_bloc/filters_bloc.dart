@@ -1,9 +1,7 @@
 import '../../../../../core/di/dependency_injection.dart';
-import '../../../../../core/data/entities/meta_entity.dart';
 import '../../../../../core/errors/models/error_info.dart';
 import '../../../data/datasources/orders_api.dart';
 import '../../../data/models/filter_model.dart';
-import '../../../domain/entities/orders_res_entity.dart';
 import '../../../domain/usecases/orders_use_cases.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -32,16 +30,6 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
         },
       );
     });
-  }
-
-  void emitLoaded({
-    required Emitter<FiltersState> emit,
-    required _Loaded loaded,
-    List<OrderEntity>? orders,
-    MetaEntity? meta,
-    bool? isSearching,
-  }) {
-    return emit(FiltersState.loaded());
   }
 
   void emitFailure({
