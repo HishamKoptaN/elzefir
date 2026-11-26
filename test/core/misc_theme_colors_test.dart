@@ -5,8 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 const themedMiscFiles = [
   'lib/features/notifications/present/view/notifications_view.dart',
   'lib/features/notifications/present/view/widgets/types/cusotm_notif.dart',
-  'lib/features/notifications/present/view/widgets/types/NewUserRegistered.dart',
-  'lib/features/notifications/present/view/widgets/types/WelcomeSignIn.dart',
+  'lib/features/notifications/present/view/widgets/types/new_user_registered.dart',
+  'lib/features/notifications/present/view/widgets/types/welcome_sign_in.dart',
   'lib/core/app_date_picker.dart',
   'lib/core/routing/error_page.dart',
   'lib/core/errors/error_widget.dart',
