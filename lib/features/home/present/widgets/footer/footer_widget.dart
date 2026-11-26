@@ -40,7 +40,7 @@ class FooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFF001629),
+      color: context.colorScheme.brandNavyDeep,
       padding: .symmetric(
         vertical: context.isMob ? 24.h : 34.h,
         horizontal: context.isMob ? 16.w : 40.w,
@@ -115,9 +115,9 @@ class FooterLegalLinks extends StatelessWidget {
       child: Text(
         title,
         style: context.textTheme.bodyMedium?.copyWith(
-          color: const Color(0xFFFACC15),
+          color: context.colorScheme.brandGold,
           decoration: .underline,
-          decorationColor: const Color(0xFFFACC15).withValues(alpha: 0.5),
+          decorationColor: context.colorScheme.brandGold.withValues(alpha: 0.5),
         ),
       ),
     );
@@ -151,14 +151,14 @@ class WorkTimeWidget extends StatelessWidget {
           null => 'جارٍ التحقق من الحالة',
         };
         final statusDotColor = switch (isOpen) {
-          true => const Color(0xFF22C55E),
-          false => const Color(0xFFEF4444),
-          null => const Color(0xFF94A3B8),
+          true => context.colorScheme.statusDot,
+          false => context.colorScheme.error,
+          null => context.colorScheme.onSurfaceVariant,
         };
         final statusTextColor = switch (isOpen) {
-          true => const Color(0xFF86EFAC),
-          false => const Color(0xFFFCA5A5),
-          null => const Color(0xFFCBD5E1),
+          true => context.colorScheme.statusDot.withValues(alpha: 0.6),
+          false => context.colorScheme.error.withValues(alpha: 0.6),
+          null => context.colorScheme.outlineVariant,
         };
 
         return Wrap(
@@ -168,9 +168,11 @@ class WorkTimeWidget extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.05),
+                color: context.colorScheme.onPrimary.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.white10),
+                border: Border.all(
+                  color: context.colorScheme.onPrimary.withValues(alpha: 0.1),
+                ),
               ),
               child: Column(
                 crossAxisAlignment: .start,
@@ -178,16 +180,24 @@ class WorkTimeWidget extends StatelessWidget {
                   Text(
                     workTimeText,
                     style: context.textTheme.bodyLarge?.copyWith(
-                      color: Colors.white70,
+                      color: context.colorScheme.onPrimary.withValues(
+                        alpha: 0.7,
+                      ),
                     ),
                   ),
                   SizedBox(height: 10.h),
                   Container(
                     padding: .symmetric(horizontal: 10.w, vertical: 5.h),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.05),
+                      color: context.colorScheme.onPrimary.withValues(
+                        alpha: 0.05,
+                      ),
                       borderRadius: BorderRadius.circular(999),
-                      border: .all(color: Colors.white10),
+                      border: .all(
+                        color: context.colorScheme.onPrimary.withValues(
+                          alpha: 0.1,
+                        ),
+                      ),
                     ),
                     child: FittedBox(
                       fit: BoxFit.scaleDown,
@@ -235,7 +245,7 @@ Widget buildSocialIcon({
     borderRadius: .circular(50.r),
     child: CircleAvatar(
       radius: context.responsive(mobile: 20.r, tablet: 32.5.r, desktop: 27.5.r),
-      backgroundColor: Colors.white.withValues(alpha: .08),
+      backgroundColor: context.colorScheme.onPrimary.withValues(alpha: .08),
       child: icon,
     ),
   );
@@ -272,12 +282,12 @@ class FooterTitleWidget extends StatelessWidget {
         Container(
           padding: .all(8.sp),
           decoration: BoxDecoration(
-            color: const Color(0xFFFACC15).withValues(alpha: 0.15),
+            color: context.colorScheme.brandGold.withValues(alpha: 0.15),
             shape: .circle,
           ),
           child: Icon(
             Icons.set_meal,
-            color: const Color(0xFFFACC15),
+            color: context.colorScheme.brandGold,
             size: 24.iconRes,
           ),
         ),
@@ -299,7 +309,9 @@ class CustomFooterTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: context.textTheme.titleLarge?.copyWith(color: Colors.white),
+      style: context.textTheme.titleLarge?.copyWith(
+        color: context.colorScheme.onPrimary,
+      ),
     );
   }
 }
@@ -323,7 +335,7 @@ Widget buildContactItem({
             tablet: 32.5.r,
             desktop: 27.5.r,
           ),
-          backgroundColor: Colors.white.withValues(alpha: .08),
+          backgroundColor: context.colorScheme.onPrimary.withValues(alpha: .08),
           child: icon,
         ),
         Expanded(
@@ -332,7 +344,7 @@ Widget buildContactItem({
             fallback,
             overflow: .visible,
             style: context.textTheme.labelLarge?.copyWith(
-              color: Colors.white70,
+              color: context.colorScheme.onPrimary.withValues(alpha: 0.7),
             ),
           ),
         ),
@@ -345,13 +357,15 @@ Widget buildBadge({required BuildContext context, required String text}) {
   return Container(
     padding: .symmetric(horizontal: 10.w, vertical: 5.h),
     decoration: BoxDecoration(
-      color: Colors.white.withValues(alpha: 0.06),
+      color: context.colorScheme.onPrimary.withValues(alpha: 0.06),
       borderRadius: BorderRadius.circular(20.r),
-      border: .all(color: Colors.white10),
+      border: .all(color: context.colorScheme.onPrimary.withValues(alpha: 0.1)),
     ),
     child: Text(
       text,
-      style: context.textTheme.labelLarge?.copyWith(color: Colors.white70),
+      style: context.textTheme.labelLarge?.copyWith(
+        color: context.colorScheme.onPrimary.withValues(alpha: 0.7),
+      ),
     ),
   );
 }
@@ -377,7 +391,9 @@ class CustomFooterDividerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: .symmetric(vertical: 14.h),
-      child: Divider(color: Colors.white12),
+      child: Divider(
+        color: context.colorScheme.onPrimary.withValues(alpha: 0.12),
+      ),
     );
   }
 }
@@ -389,7 +405,9 @@ class FooterDescriptionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'نقدم أشهى المأكولات البحرية الطازجة منذ أكثر من 20 عامًا بجودة عالية وأسعار تناسب الجميع.',
-      style: context.textTheme.bodyLarge?.copyWith(color: Colors.white70),
+      style: context.textTheme.bodyLarge?.copyWith(
+        color: context.colorScheme.onPrimary.withValues(alpha: 0.7),
+      ),
     );
   }
 }
@@ -405,7 +423,9 @@ class CopyRightWidget extends StatelessWidget {
           return Text(
             "© ${DateTime.now().year} ${info.name}. جميع الحقوق محفوظة.",
             textAlign: TextAlign.center,
-            style: context.textTheme.bodyLarge?.copyWith(color: Colors.white70),
+            style: context.textTheme.bodyLarge?.copyWith(
+              color: context.colorScheme.onPrimary.withValues(alpha: 0.7),
+            ),
           );
         },
       ),

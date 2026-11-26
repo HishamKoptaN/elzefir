@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
+import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../restaurant_info_builder.dart';
 import '../site_text/site_text.dart';
 import 'footer_widget.dart';
@@ -25,7 +26,7 @@ class FooterContactsItems extends StatelessWidget {
           context: context,
           icon: Icon(
             Icons.phone,
-            color: const Color(0xFFFACC15),
+            color: context.colorScheme.brandGold,
             size: 16.iconRes,
           ),
           textKey: 'phone_label',
@@ -41,7 +42,7 @@ class FooterContactsItems extends StatelessWidget {
           context: context,
           icon: FaIcon(
             FontAwesomeIcons.whatsapp,
-            color: const Color(0xFFFACC15),
+            color: context.colorScheme.brandGold,
             size: 16.iconRes,
           ),
           textKey: 'whatsapp_label',
@@ -57,7 +58,7 @@ class FooterContactsItems extends StatelessWidget {
           context: context,
           icon: Icon(
             Icons.location_on,
-            color: const Color(0xFFFACC15),
+            color: context.colorScheme.brandGold,
             size: 16.iconRes,
           ),
           textKey: 'address_label',
@@ -80,7 +81,11 @@ class FooterContactsItems extends StatelessWidget {
             children: [
               buildSocialIcon(
                 context: context,
-                icon: Icon(Icons.facebook, color: Colors.white, size: 18.iconRes),
+                icon: Icon(
+                  Icons.facebook,
+                  color: context.colorScheme.onPrimary,
+                  size: 18.iconRes,
+                ),
                 onTap: () async {
                   await execuateLaunchUrl(
                     await siteTextValue(
@@ -94,7 +99,7 @@ class FooterContactsItems extends StatelessWidget {
                 context: context,
                 icon: FaIcon(
                   FontAwesomeIcons.instagram,
-                  color: Colors.white,
+                  color: context.colorScheme.onPrimary,
                   size: 18.iconRes,
                 ),
                 onTap: () async {
