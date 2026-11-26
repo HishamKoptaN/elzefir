@@ -34,11 +34,14 @@ class _RestaurantInfoBuilderState extends State<RestaurantInfoBuilder> {
     );
   }
 
-  Stream<RestaurantInfoEntity> _infoStream() {
+  /// يُنشأ الاشتراك مرة واحدة حتى لا يتكرر مع كل إعادة بناء.
+  late final Stream<RestaurantInfoEntity> _infoStream = _createInfoStream();
+
+  Stream<RestaurantInfoEntity> _createInfoStream() {
     try {
       return getIt<HomeUseCases>().watchRestaurantInfo();
     } catch (_) {
-      // Widgets may be previewed in isolation before dependency injection runs.
+      // قد تُعاين الواجهة بمفردها قبل تجهيز حقن الاعتماديات.
       return Stream.value(RestaurantInfoEntity.fallback);
     }
   }
@@ -46,7 +49,7 @@ class _RestaurantInfoBuilderState extends State<RestaurantInfoBuilder> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<RestaurantInfoEntity>(
-      stream: _infoStream(),
+      stream: _infoStream,
       initialData: RestaurantInfoEntity.fromFirestore(SiteTextCache.snapshot),
       builder: (context, snapshot) {
         if (snapshot.hasData && !identical(snapshot.data!.raw, _savedRaw)) {
