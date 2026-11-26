@@ -124,12 +124,14 @@ class _VerifyEmailViewState extends State<VerifyEmailView>
                                 FirebaseAuth.instance.currentUser
                                     ?.sendEmailVerification()
                                     .then((value) {
+                                      if (!context.mounted) return;
                                       context.showSuccessSnackBar(
                                         title: "تم",
                                         message: "تم ارسال رابط التحقق لتفعيل الحساب",
                                       );
                                     })
                                     .catchError((error) {
+                                      if (!context.mounted) return;
                                       context.showSuccessSnackBar(
                                         title: "فشل",
                                         message:
