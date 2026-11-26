@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import '../../../../../../core/utils/extensions/theme_ext.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,17 +18,11 @@ class DrawerFooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 14,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(
-        color: const Color(0xFFF8FAFC),
+        color: context.colorScheme.slateCardBg,
         border: Border(
-          top: BorderSide(
-            color: Colors.grey.shade200,
-            width: 1,
-          ),
+          top: BorderSide(color: context.colorScheme.outlineVariant, width: 1),
         ),
       ),
       child: Column(
@@ -34,6 +31,7 @@ class DrawerFooterWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildSocialButton(
+                context: context,
                 icon: FontAwesomeIcons.facebookF,
                 onTap: () {
                   _launch('https://facebook.com');
@@ -41,6 +39,7 @@ class DrawerFooterWidget extends StatelessWidget {
               ),
               const SizedBox(width: 14),
               _buildSocialButton(
+                context: context,
                 icon: FontAwesomeIcons.instagram,
                 onTap: () {
                   _launch('https://instagram.com');
@@ -48,6 +47,7 @@ class DrawerFooterWidget extends StatelessWidget {
               ),
               const SizedBox(width: 14),
               _buildSocialButton(
+                context: context,
                 icon: FontAwesomeIcons.locationDot,
                 onTap: () {
                   _launch('https://maps.google.com');
@@ -56,22 +56,22 @@ class DrawerFooterWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          const Text(
+          Text(
             'Elzefir Seafood © 2025',
             style: TextStyle(
               fontFamily: 'Cairo',
               fontSize: 11,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF64748B),
+              color: context.colorScheme.slateText,
             ),
           ),
           const SizedBox(height: 2),
-          const Text(
+          Text(
             'جميع الحقوق محفوظة • إصدار v1.1.0',
             style: TextStyle(
               fontFamily: 'Cairo',
               fontSize: 10,
-              color: Color(0xFF94A3B8),
+              color: context.colorScheme.onSurfaceVariant,
             ),
           ),
         ],
@@ -80,14 +80,15 @@ class DrawerFooterWidget extends StatelessWidget {
   }
 
   Widget _buildSocialButton({
+    required BuildContext context,
     required FaIconData icon,
     required VoidCallback onTap,
   }) {
     return Material(
-      color: Colors.white,
+      color: context.colorScheme.surface,
       shape: const CircleBorder(),
       elevation: 1,
-      shadowColor: Colors.black12,
+      shadowColor: context.colorScheme.shadow.withValues(alpha: 0.12),
       child: InkWell(
         customBorder: const CircleBorder(),
         onTap: onTap,
@@ -96,15 +97,13 @@ class DrawerFooterWidget extends StatelessWidget {
           height: 36,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(
-              color: Colors.grey.shade300,
-            ),
+            border: Border.all(color: context.colorScheme.outlineVariant),
           ),
           child: Center(
             child: FaIcon(
               icon,
               size: 15,
-              color: const Color(0xFF475569),
+              color: context.colorScheme.onSurfaceVariant,
             ),
           ),
         ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import '../../../../../../core/utils/extensions/theme_ext.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/responsive/responsive_extensions.dart';
@@ -66,7 +69,7 @@ class _ElzefirDrawerState extends State<ElzefirDrawer>
     return Drawer(
       elevation: 24,
       width: drawerWidth,
-      backgroundColor: Colors.white,
+      backgroundColor: context.colorScheme.surface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.horizontal(left: Radius.circular(36)),
       ),
@@ -89,7 +92,10 @@ class _ElzefirDrawerState extends State<ElzefirDrawer>
                       onBranchesTap: widget.onBranchesTap,
                     ),
                     const SizedBox(height: 16),
-                    Divider(height: 1, color: Colors.grey.shade200),
+                    Divider(
+                      height: 1,
+                      color: context.colorScheme.outlineVariant,
+                    ),
                     const SizedBox(height: 16),
                     const DrawerQuickOrderWidget(),
                     const SizedBox(height: 16),

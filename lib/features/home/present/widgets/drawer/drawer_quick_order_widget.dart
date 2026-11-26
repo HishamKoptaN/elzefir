@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+
+import '../../../../../../core/utils/extensions/theme_ext.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DrawerQuickOrderWidget extends StatelessWidget {
   const DrawerQuickOrderWidget({super.key});
-
-  static const Color brand800 = Color(0xFF124370);
-  static const Color brand100 = Color(0xFFE1EEF5);
-  static const Color whatsappGreen = Color(0xFF25D366);
 
   Future<void> _launch(String url) async {
     final uri = Uri.parse(url);
@@ -22,7 +21,7 @@ class DrawerQuickOrderWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
           child: Text(
             'الطلب السريع والمباشر',
@@ -30,17 +29,19 @@ class DrawerQuickOrderWidget extends StatelessWidget {
               fontFamily: 'Cairo',
               fontSize: 12,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF94A3B8), // slate-400
+              color: context.colorScheme.onSurfaceVariant, // slate-400
             ),
           ),
         ),
         SizedBox(height: 6.h),
         // WhatsApp Action
         Material(
-          color: whatsappGreen,
+          color: context.colorScheme.whatsappIconBg,
           borderRadius: BorderRadius.circular(16),
           elevation: 2,
-          shadowColor: whatsappGreen.withValues(alpha: 0.3),
+          shadowColor: context.colorScheme.whatsappIconBg.withValues(
+            alpha: 0.3,
+          ),
           child: InkWell(
             borderRadius: BorderRadius.circular(16),
             onTap: () {
@@ -50,13 +51,13 @@ class DrawerQuickOrderWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
               child: Row(
                 children: [
-                  const FaIcon(
+                  FaIcon(
                     FontAwesomeIcons.whatsapp,
-                    color: Colors.white,
+                    color: context.colorScheme.onPrimary,
                     size: 22,
                   ),
-                  const SizedBox(width: 12),
-                  const Expanded(
+                  SizedBox(width: 12),
+                  Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -66,7 +67,7 @@ class DrawerQuickOrderWidget extends StatelessWidget {
                             fontFamily: 'Cairo',
                             fontSize: 13,
                             fontWeight: FontWeight.w800,
-                            color: Colors.white,
+                            color: context.colorScheme.onPrimary,
                           ),
                         ),
                         SizedBox(height: 2),
@@ -77,7 +78,9 @@ class DrawerQuickOrderWidget extends StatelessWidget {
                             fontFamily: 'Cairo',
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
-                            color: Colors.white70,
+                            color: context.colorScheme.onPrimary.withValues(
+                              alpha: 0.7,
+                            ),
                           ),
                         ),
                       ],
@@ -89,16 +92,18 @@ class DrawerQuickOrderWidget extends StatelessWidget {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.25),
+                      color: context.colorScheme.onPrimary.withValues(
+                        alpha: 0.25,
+                      ),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const Text(
+                    child: Text(
                       'إرسال',
                       style: TextStyle(
                         fontFamily: 'Cairo',
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: context.colorScheme.onPrimary,
                       ),
                     ),
                   ),
@@ -110,10 +115,10 @@ class DrawerQuickOrderWidget extends StatelessWidget {
         SizedBox(height: 10.h),
         // Hotline Call Action
         Material(
-          color: brand800,
+          color: context.colorScheme.brandNavy,
           borderRadius: BorderRadius.circular(16),
           elevation: 2,
-          shadowColor: brand800.withValues(alpha: 0.3),
+          shadowColor: context.colorScheme.brandNavy.withValues(alpha: 0.3),
           child: InkWell(
             borderRadius: BorderRadius.circular(16),
             onTap: () {
@@ -126,17 +131,19 @@ class DrawerQuickOrderWidget extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(6),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.15),
+                      color: context.colorScheme.onPrimary.withValues(
+                        alpha: 0.15,
+                      ),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const FaIcon(
+                    child: FaIcon(
                       FontAwesomeIcons.phone,
-                      color: Colors.white,
+                      color: context.colorScheme.onPrimary,
                       size: 16,
                     ),
                   ),
-                  const SizedBox(width: 12),
-                  const Expanded(
+                  SizedBox(width: 12),
+                  Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -146,7 +153,7 @@ class DrawerQuickOrderWidget extends StatelessWidget {
                             fontFamily: 'Cairo',
                             fontSize: 13,
                             fontWeight: FontWeight.w800,
-                            color: Colors.white,
+                            color: context.colorScheme.onPrimary,
                           ),
                         ),
                         SizedBox(height: 2),
@@ -157,7 +164,7 @@ class DrawerQuickOrderWidget extends StatelessWidget {
                             fontFamily: 'Cairo',
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
-                            color: brand100,
+                            color: context.colorScheme.outlineVariant,
                           ),
                         ),
                       ],
@@ -169,16 +176,18 @@ class DrawerQuickOrderWidget extends StatelessWidget {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.18),
+                      color: context.colorScheme.onPrimary.withValues(
+                        alpha: 0.18,
+                      ),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const Text(
+                    child: Text(
                       'اتصال',
                       style: TextStyle(
                         fontFamily: 'Cairo',
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: context.colorScheme.onPrimary,
                       ),
                     ),
                   ),

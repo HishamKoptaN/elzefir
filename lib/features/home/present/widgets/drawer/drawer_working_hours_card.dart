@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import '../../../../../../core/utils/extensions/theme_ext.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../store_status_builder.dart';
@@ -17,10 +20,10 @@ class DrawerWorkingHoursCard extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: const Color(0xFFFFFBEB), // amber-50 / warm
+            color: context.colorScheme.chefChoiceBg, // amber-50 / warm
             borderRadius: BorderRadius.circular(14),
             border: Border.all(
-              color: const Color(0xFFFDE68A), // amber-200
+              color: context.colorScheme.chefChoiceBorder, // amber-200
             ),
           ),
           child: Row(
@@ -28,12 +31,12 @@ class DrawerWorkingHoursCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFEF3C7), // amber-100
+                  color: context.colorScheme.chefChoiceBorder, // amber-100
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const FaIcon(
+                child: FaIcon(
                   FontAwesomeIcons.clock,
-                  color: Color(0xFFB45309), // amber-700
+                  color: context.colorScheme.chefChoiceText, // amber-700
                   size: 16,
                 ),
               ),
@@ -42,22 +45,22 @@ class DrawerWorkingHoursCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'مواعيد العمل واستقبال الطلبات',
                       style: TextStyle(
                         fontFamily: 'Cairo',
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF1E293B),
+                        color: context.colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 2),
                     Text(
                       timeText,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontFamily: 'Cairo',
                         fontSize: 11,
-                        color: Color(0xFF475569),
+                        color: context.colorScheme.onSurfaceVariant,
                         fontWeight: FontWeight.w500,
                       ),
                     ),

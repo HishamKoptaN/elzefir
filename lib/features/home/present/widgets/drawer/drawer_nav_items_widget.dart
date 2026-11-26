@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import '../../../../../../core/utils/extensions/theme_ext.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -23,11 +26,6 @@ class DrawerNavItemsWidget extends StatelessWidget {
   final VoidCallback? onAboutTap;
   final VoidCallback? onBranchesTap;
 
-  // Stitch Design Palette
-  static const Color brand50 = Color(0xFFF0F6FA);
-  static const Color brand100 = Color(0xFFE1EEF5);
-  static const Color brand800 = Color(0xFF124370);
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,12 +34,12 @@ class DrawerNavItemsWidget extends StatelessWidget {
         _buildNavTile(
           context: context,
           icon: FontAwesomeIcons.bookOpen,
-          iconBg: brand800,
-          iconColor: Colors.white,
+          iconBg: context.colorScheme.brandNavy,
+          iconColor: context.colorScheme.onPrimary,
           title: 'المنيو وقائمة الطعام',
           badgeText: 'جديد',
-          badgeBg: const Color(0xFFF59E0B),
-          badgeTextColor: Colors.white,
+          badgeBg: context.colorScheme.chefChoiceText,
+          badgeTextColor: context.colorScheme.onPrimary,
           isActive: true,
           onTap: () {
             Navigator.maybePop(context);
@@ -54,12 +52,12 @@ class DrawerNavItemsWidget extends StatelessWidget {
         _buildNavTile(
           context: context,
           icon: FontAwesomeIcons.tag,
-          iconBg: const Color(0xFFFFFBEB),
-          iconBorder: const Color(0xFFFEF3C7),
-          iconColor: const Color(0xFFD97706),
+          iconBg: context.colorScheme.chefChoiceBg,
+          iconBorder: context.colorScheme.chefChoiceBorder,
+          iconColor: context.colorScheme.chefChoiceText,
           title: 'عروض الوجبات التوفيرية',
           badgeText: 'خصومات %',
-          badgeTextColor: const Color(0xFFF43F5E),
+          badgeTextColor: context.colorScheme.error,
           onTap: () {
             Navigator.maybePop(context);
             _logMenuItem('offers');
@@ -71,9 +69,9 @@ class DrawerNavItemsWidget extends StatelessWidget {
         _buildNavTile(
           context: context,
           icon: FontAwesomeIcons.fire,
-          iconBg: const Color(0xFFFFF7ED),
-          iconBorder: const Color(0xFFFFEDD5),
-          iconColor: const Color(0xFFEA580C),
+          iconBg: context.colorScheme.brandCream,
+          iconBorder: context.colorScheme.brandCreamDark,
+          iconColor: context.colorScheme.brandCoral,
           title: 'طرق التجهيز والطهي',
           subtitle: 'سنجاري، ردة، زيت وليمون، طواجن',
           onTap: () {
@@ -87,9 +85,9 @@ class DrawerNavItemsWidget extends StatelessWidget {
         _buildNavTile(
           context: context,
           icon: FontAwesomeIcons.circleInfo,
-          iconBg: const Color(0xFFEFF6FF),
-          iconBorder: const Color(0xFFDBEAFE),
-          iconColor: const Color(0xFF2563EB),
+          iconBg: context.colorScheme.hotlineBg,
+          iconBorder: context.colorScheme.hotlineBorder,
+          iconColor: context.colorScheme.brandNavy,
           title: 'من نحن وقصتنا',
           onTap: () {
             Navigator.maybePop(context);
@@ -102,9 +100,9 @@ class DrawerNavItemsWidget extends StatelessWidget {
         _buildNavTile(
           context: context,
           icon: FontAwesomeIcons.locationDot,
-          iconBg: const Color(0xFFF0FDFA),
-          iconBorder: const Color(0xFFCCFBF1),
-          iconColor: const Color(0xFF0D9488),
+          iconBg: context.colorScheme.statusBadgeBg,
+          iconBorder: context.colorScheme.statusBadgeBorder,
+          iconColor: context.colorScheme.statusBadgeSchedule,
           title: 'الفروع والتوصيل',
           subtitle: 'توصيل سريع لكافة مناطق العياط',
           onTap: () {
@@ -145,20 +143,19 @@ class DrawerNavItemsWidget extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return Material(
-      color: isActive ? brand50 : Colors.transparent,
+      color: isActive ? context.colorScheme.slateBorder : Colors.transparent,
       borderRadius: BorderRadius.circular(16),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),
         child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 10,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: isActive ? brand100 : Colors.transparent,
+              color: isActive
+                  ? context.colorScheme.outlineVariant
+                  : Colors.transparent,
             ),
           ),
           child: Row(
@@ -169,24 +166,22 @@ class DrawerNavItemsWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: iconBg,
                   borderRadius: BorderRadius.circular(12),
-                  border: iconBorder != null ? Border.all(color: iconBorder) : null,
+                  border: iconBorder != null
+                      ? Border.all(color: iconBorder)
+                      : null,
                   boxShadow: isActive
                       ? [
                           BoxShadow(
-                            color: brand800.withValues(alpha: 0.2),
+                            color: context.colorScheme.brandNavy.withValues(
+                              alpha: 0.2,
+                            ),
                             blurRadius: 6,
                             offset: const Offset(0, 2),
                           ),
                         ]
                       : null,
                 ),
-                child: Center(
-                  child: FaIcon(
-                    icon,
-                    color: iconColor,
-                    size: 20,
-                  ),
-                ),
+                child: Center(child: FaIcon(icon, color: iconColor, size: 20)),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -199,8 +194,12 @@ class DrawerNavItemsWidget extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: 'Cairo',
                         fontSize: 14,
-                        fontWeight: isActive ? FontWeight.w800 : FontWeight.bold,
-                        color: isActive ? brand800 : const Color(0xFF1E293B),
+                        fontWeight: isActive
+                            ? FontWeight.w800
+                            : FontWeight.bold,
+                        color: isActive
+                            ? context.colorScheme.brandNavy
+                            : context.colorScheme.onSurface,
                       ),
                     ),
                     if (subtitle != null) ...[
@@ -210,7 +209,7 @@ class DrawerNavItemsWidget extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Cairo',
                           fontSize: 11,
-                          color: const Color(0xFF64748B),
+                          color: context.colorScheme.slateText,
                           fontWeight: FontWeight.normal,
                         ),
                       ),
@@ -234,7 +233,7 @@ class DrawerNavItemsWidget extends StatelessWidget {
                       fontFamily: 'Cairo',
                       fontSize: 11,
                       fontWeight: FontWeight.bold,
-                      color: badgeTextColor ?? Colors.white,
+                      color: badgeTextColor ?? context.colorScheme.onPrimary,
                     ),
                   ),
                 ),

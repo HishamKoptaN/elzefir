@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import '../../../../../../core/utils/extensions/theme_ext.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -10,30 +13,25 @@ class DrawerHeaderWidget extends StatelessWidget {
 
   final Animation<double> pulseAnimation;
 
-  // Stitch Design Colors
-  static const Color brand50 = Color(0xFFF0F6FA);
-  static const Color brand100 = Color(0xFFE1EEF5);
-  static const Color brand800 = Color(0xFF124370);
-  static const Color emeraldBg = Color(0xFFECFDF5);
-  static const Color emeraldBorder = Color(0xFFA7F3D0);
-  static const Color emeraldText = Color(0xFF065F46);
-  static const Color emeraldDot = Color(0xFF10B981);
-
-  static const Color roseBg = Color(0xFFFEF2F2);
-  static const Color roseBorder = Color(0xFFFECACA);
-  static const Color roseText = Color(0xFF991B1B);
-  static const Color roseDot = Color(0xFFEF4444);
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Color(0xFFFDFBF7), Color(0xFFF7F9FC), Colors.white],
+          colors: [
+            context.colorScheme.brandCream,
+            context.colorScheme.surfaceContainerLowest,
+            context.colorScheme.surface,
+          ],
         ),
-        border: Border(bottom: BorderSide(color: brand50, width: 1.5)),
+        border: Border(
+          bottom: BorderSide(
+            color: context.colorScheme.slateBorder,
+            width: 1.5,
+          ),
+        ),
       ),
       padding: EdgeInsets.only(
         top: 14.h,
@@ -49,7 +47,7 @@ class DrawerHeaderWidget extends StatelessWidget {
             left: 0,
             top: 0,
             child: Material(
-              color: brand50,
+              color: context.colorScheme.slateBorder,
               shape: const CircleBorder(),
               child: InkWell(
                 customBorder: const CircleBorder(),
@@ -61,7 +59,7 @@ class DrawerHeaderWidget extends StatelessWidget {
                   child: FaIcon(
                     FontAwesomeIcons.xmark,
                     size: 16,
-                    color: brand800,
+                    color: context.colorScheme.brandNavy,
                   ),
                 ),
               ),
@@ -76,12 +74,17 @@ class DrawerHeaderWidget extends StatelessWidget {
                 height: 90,
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: context.colorScheme.surface,
                   shape: BoxShape.circle,
-                  border: Border.all(color: brand100, width: 2),
+                  border: Border.all(
+                    color: context.colorScheme.outlineVariant,
+                    width: 2,
+                  ),
                   boxShadow: [
                     BoxShadow(
-                      color: brand800.withValues(alpha: 0.08),
+                      color: context.colorScheme.brandNavy.withValues(
+                        alpha: 0.08,
+                      ),
                       blurRadius: 16,
                       offset: const Offset(0, 6),
                     ),
@@ -95,10 +98,10 @@ class DrawerHeaderWidget extends StatelessWidget {
                       return Image.asset(
                         Assets.logos.logoPng.path,
                         fit: BoxFit.contain,
-                        errorBuilder: (_, _, _) => const FaIcon(
+                        errorBuilder: (_, _, _) => FaIcon(
                           FontAwesomeIcons.utensils,
                           size: 36,
-                          color: brand800,
+                          color: context.colorScheme.brandNavy,
                         ),
                       );
                     },
@@ -111,24 +114,24 @@ class DrawerHeaderWidget extends StatelessWidget {
                 builder: (context, workingHours) {
                   final isOpen = workingHours?.isOpenNow;
                   final bg = switch (isOpen) {
-                    true => emeraldBg,
-                    false => roseBg,
-                    null => brand50,
+                    true => context.colorScheme.whatsappBg,
+                    false => context.colorScheme.error.withValues(alpha: 0.08),
+                    null => context.colorScheme.slateBorder,
                   };
                   final border = switch (isOpen) {
-                    true => emeraldBorder,
-                    false => roseBorder,
-                    null => brand100,
+                    true => context.colorScheme.statusBadgeBorder,
+                    false => context.colorScheme.error.withValues(alpha: 0.3),
+                    null => context.colorScheme.outlineVariant,
                   };
                   final textCol = switch (isOpen) {
-                    true => emeraldText,
-                    false => roseText,
-                    null => brand800,
+                    true => context.colorScheme.whatsappTitle,
+                    false => context.colorScheme.error,
+                    null => context.colorScheme.brandNavy,
                   };
                   final dotCol = switch (isOpen) {
-                    true => emeraldDot,
-                    false => roseDot,
-                    null => const Color(0xFF94A3B8),
+                    true => context.colorScheme.statusDot,
+                    false => context.colorScheme.error,
+                    null => context.colorScheme.onSurfaceVariant,
                   };
                   final statusText = switch (isOpen) {
                     true => 'مفتوح الآن لاستقبال الطلبات',
@@ -183,7 +186,7 @@ class DrawerHeaderWidget extends StatelessWidget {
                   fontFamily: 'Cairo',
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: brand800.withValues(alpha: 0.75),
+                  color: context.colorScheme.brandNavy.withValues(alpha: 0.75),
                 ),
               ),
             ],
