@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/extensions/theme_ext.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -33,7 +34,7 @@ class ContactFieldWidget extends StatelessWidget {
       height: 150.h,
       width: 1055.w,
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: context.colorScheme.surfaceContainerLowest,
       ),
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
       child: Row(
@@ -49,12 +50,12 @@ class ContactFieldWidget extends StatelessWidget {
                       width: 20.w,
                       height: 20.w,
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: context.colorScheme.statusDot,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
                         Icons.check,
-                        color: Colors.white,
+                        color: context.colorScheme.onPrimary,
                         size: 14.sp,
                       ),
                     ),
@@ -63,7 +64,7 @@ class ContactFieldWidget extends StatelessWidget {
                       title,
                       style: TextStyle(
                         fontSize: 16.sp,
-                        color: Colors.black,
+                        color: context.colorScheme.onSurface,
                         fontWeight: FontWeight.w700,
                         height: 1,
                       ),
@@ -90,10 +91,14 @@ class ContactFieldWidget extends StatelessWidget {
                               : null,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey[300]!),
+                              borderSide: BorderSide(
+                                color: context.colorScheme.outlineVariant,
+                              ),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF3D42DF)),
+                              borderSide: BorderSide(
+                                color: context.colorScheme.primary,
+                              ),
                             ),
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 12.w,
@@ -102,7 +107,7 @@ class ContactFieldWidget extends StatelessWidget {
                           ),
                           style: TextStyle(
                             fontSize: 20.sp,
-                            color: const Color(0xFF696974),
+                            color: context.colorScheme.onSurfaceVariant,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -112,7 +117,7 @@ class ContactFieldWidget extends StatelessWidget {
                         value,
                         style: TextStyle(
                           fontSize: 20.sp,
-                          color: const Color(0xFF696974),
+                          color: context.colorScheme.onSurfaceVariant,
                           fontWeight: FontWeight.w400,
                         ),
                       ),

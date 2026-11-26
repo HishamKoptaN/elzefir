@@ -13,9 +13,12 @@ class DialogFooter extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 14.h),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9F9F9),
+        color: context.colorScheme.surfaceContainerLowest,
         border: Border(
-          top: BorderSide(color: const Color(0xFFE0E0E0), width: 1),
+          top: BorderSide(
+            color: context.colorScheme.outlineVariant,
+            width: 1,
+          ),
         ),
       ),
       child: Row(
@@ -34,7 +37,7 @@ class DialogFooter extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 14.sp,
-                    color: Colors.white,
+                    color: context.colorScheme.onPrimary,
                   ),
                 ),
               ),

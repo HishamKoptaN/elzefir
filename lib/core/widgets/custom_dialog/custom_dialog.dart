@@ -56,7 +56,7 @@ class CustomDialog extends StatelessWidget {
         child: IntrinsicHeight(
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.colorScheme.surface,
             ),
             child: Column(
               children: [
