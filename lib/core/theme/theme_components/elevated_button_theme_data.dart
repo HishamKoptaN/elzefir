@@ -9,13 +9,13 @@ ElevatedButtonThemeData elevatedButtonTheme({
     style: ButtonStyle(
       backgroundColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
-          return colorScheme.onSurface.withOpacity(0.12);
+          return colorScheme.onSurface.withValues(alpha: 0.12);
         }
         return colorScheme.primary;
       }),
       foregroundColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.disabled)) {
-          return colorScheme.onSurface.withOpacity(0.38);
+          return colorScheme.onSurface.withValues(alpha: 0.38);
         }
         return colorScheme.onPrimary;
       }),

@@ -25,7 +25,7 @@ class SidebarLogoutWidget extends StatelessWidget {
         },
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 14.39.w, vertical: 12.h),
-          decoration: BoxDecoration(color: Colors.red.withOpacity(0.1)),
+          decoration: BoxDecoration(color: Colors.red.withValues(alpha: 0.1)),
           child: Row(
             children: [
               Text(
@@ -56,7 +56,7 @@ class LogoutDialog extends StatelessWidget {
       backgroundColor: Colors.transparent,
       icon: CircleAvatar(
         radius: 28,
-        // backgroundColor: AppColors.danger.withOpacity(0.12),
+        // backgroundColor: AppColors.danger.withValues(alpha: 0.12),
         child: const Icon(
           Icons.logout_rounded,
           // color: AppColors.danger,

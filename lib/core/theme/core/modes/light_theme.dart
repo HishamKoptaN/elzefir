@@ -71,11 +71,11 @@
 //     primaryColorDark: colorScheme.primary,
 //     dividerColor: colorScheme.outline,
 //     shadowColor: colorScheme.shadow,
-//     splashColor: colorScheme.primary.withOpacity(0.1),
+//     splashColor: colorScheme.primary.withValues(alpha: 0.1),
 //     hintColor: colorScheme.onSurfaceVariant,
-//     hoverColor: colorScheme.primary.withOpacity(0.05),
-//     focusColor: colorScheme.primary.withOpacity(0.1),
-//     disabledColor: colorScheme.onSurface.withOpacity(0.38),
+//     hoverColor: colorScheme.primary.withValues(alpha: 0.05),
+//     focusColor: colorScheme.primary.withValues(alpha: 0.1),
+//     disabledColor: colorScheme.onSurface.withValues(alpha: 0.38),
 //     primaryIconTheme: IconThemeData(color: colorScheme.onPrimary),
 //     primaryTextTheme: textTheme,
 //     pageTransitionsTheme: const PageTransitionsTheme(builders: {
@@ -84,9 +84,9 @@
 //     }),
 //     scrollbarTheme: ScrollbarThemeData(
 //       thumbColor:
-//           MaterialStateProperty.all(colorScheme.primary.withOpacity(0.5)),
+//           MaterialStateProperty.all(colorScheme.primary.withValues(alpha: 0.5)),
 //       trackColor:
-//           MaterialStateProperty.all(colorScheme.onSurface.withOpacity(0.1)),
+//           MaterialStateProperty.all(colorScheme.onSurface.withValues(alpha: 0.1)),
 //     ),
 //     visualDensity: VisualDensity.adaptivePlatformDensity,
 //     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,

@@ -33,7 +33,7 @@ class OrderItemsWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: const Color(0xFFFBF9F6),
             border: Border.all(
-              color: const Color(0xFF5E3B2E).withOpacity(0.08),
+              color: const Color(0xFF5E3B2E).withValues(alpha: 0.08),
               width: 1,
             ),
           ),

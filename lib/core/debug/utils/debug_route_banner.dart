@@ -45,7 +45,7 @@ class DebugRouteBanner extends StatelessWidget {
         ),
         Container(
           width: double.infinity,
-          color: Colors.blue.shade900.withOpacity(0.1),
+          color: Colors.blue.shade900.withValues(alpha: 0.1),
           padding: const EdgeInsets.symmetric(vertical: 2),
           child: Text(
             '🚀 Last Commit: $commitMessage',

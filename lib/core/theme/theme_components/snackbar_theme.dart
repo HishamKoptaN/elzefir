@@ -11,7 +11,7 @@ SnackBarThemeData snackBarTheme({
       color: colorScheme.onSurface,
     ),
     actionTextColor: colorScheme.primary,
-    disabledActionTextColor: colorScheme.onSurface.withOpacity(0.38),
+    disabledActionTextColor: colorScheme.onSurface.withValues(alpha: 0.38),
     elevation: 6,
     behavior: SnackBarBehavior.floating,
     insetPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),

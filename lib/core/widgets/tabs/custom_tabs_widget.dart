@@ -148,7 +148,7 @@ class _CustomTabsWidgetState extends State<CustomTabsWidget> {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.25),
+              color: Colors.black.withValues(alpha: 0.25),
               spreadRadius: 0,
               blurRadius: 0,
               offset: const Offset(0, -1),

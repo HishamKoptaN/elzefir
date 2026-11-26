@@ -31,6 +31,6 @@ InputDecorationTheme inputDecorationTheme({
     focusedBorder: buildBorder(colorScheme.primary, width: 1.5),
     errorBorder: buildBorder(colorScheme.error),
     focusedErrorBorder: buildBorder(colorScheme.error, width: 1.5),
-    disabledBorder: buildBorder(colorScheme.onSurface.withOpacity(0.12)),
+    disabledBorder: buildBorder(colorScheme.onSurface.withValues(alpha: 0.12)),
   );
 }

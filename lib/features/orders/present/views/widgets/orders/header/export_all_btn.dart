@@ -27,7 +27,7 @@ class ExportAllBtn extends StatelessWidget {
                   size: 20,
                   color: canExport
                       ? Colors.black
-                      : Colors.grey.withOpacity(0.5),
+                      : Colors.grey.withValues(alpha: 0.5),
                 ),
                 SizedBox(width: 6.w),
                 Text(
@@ -37,7 +37,7 @@ class ExportAllBtn extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: canExport
                         ? Colors.black
-                        : Colors.grey.withOpacity(0.5),
+                        : Colors.grey.withValues(alpha: 0.5),
                   ),
                 ),
                 SizedBox(width: 6.w),

@@ -18,7 +18,7 @@ class CameraButton extends StatelessWidget {
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.25),
+              color: Colors.black.withValues(alpha: 0.25),
               offset: const Offset(0, 4),
               blurRadius: 4,
               spreadRadius: 0,

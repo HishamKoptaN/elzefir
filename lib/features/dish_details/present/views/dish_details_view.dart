@@ -116,7 +116,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                   icon: Container(
                     padding: EdgeInsets.all(8.r),
                     decoration: BoxDecoration(
-                      color: colorScheme.surfaceContainerHighest.withOpacity(0.8),
+                      color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.8),
                       shape: BoxShape.circle,
                     ),
                     child: Icon(Icons.arrow_forward, color: colorScheme.primary, size: 20.sp),
@@ -128,7 +128,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                     icon: Container(
                       padding: EdgeInsets.all(8.r),
                       decoration: BoxDecoration(
-                        color: colorScheme.surfaceContainerHighest.withOpacity(0.8),
+                        color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.8),
                         shape: BoxShape.circle,
                       ),
                       child: Icon(Icons.favorite_border, color: colorScheme.onSurfaceVariant, size: 20.sp),
@@ -150,9 +150,9 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [
-                              colorScheme.primary.withOpacity(0.6),
+                              colorScheme.primary.withValues(alpha: 0.6),
                               Colors.transparent,
-                              colorScheme.primary.withOpacity(0.8),
+                              colorScheme.primary.withValues(alpha: 0.8),
                             ],
                           ),
                         ),
@@ -185,7 +185,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                             Container(
                               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
                               decoration: BoxDecoration(
-                                color: colorScheme.surfaceContainerLowest.withOpacity(0.9),
+                                color: colorScheme.surfaceContainerLowest.withValues(alpha: 0.9),
                                 borderRadius: BorderRadius.circular(20.r),
                               ),
                               child: Row(
@@ -222,7 +222,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                           borderRadius: BorderRadius.circular(16.r),
                           boxShadow: [
                             BoxShadow(
-                              color: colorScheme.shadow.withOpacity(0.04),
+                              color: colorScheme.shadow.withValues(alpha: 0.04),
                               blurRadius: 20,
                               offset: const Offset(0, -4),
                             ),
@@ -548,10 +548,10 @@ class _DishDetailsViewState extends State<DishDetailsView> {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
               decoration: BoxDecoration(
-                color: colorScheme.surfaceContainerLowest.withOpacity(0.95),
+                color: colorScheme.surfaceContainerLowest.withValues(alpha: 0.95),
                 boxShadow: [
                   BoxShadow(
-                    color: colorScheme.shadow.withOpacity(0.06),
+                    color: colorScheme.shadow.withValues(alpha: 0.06),
                     blurRadius: 16,
                     offset: const Offset(0, -4),
                   ),
@@ -627,7 +627,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
         borderRadius: BorderRadius.circular(16.r),
         boxShadow: [
           BoxShadow(
-            color: colorScheme.shadow.withOpacity(0.03),
+            color: colorScheme.shadow.withValues(alpha: 0.03),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -657,7 +657,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
                   decoration: BoxDecoration(
-                    color: badgeColor?.withOpacity(0.15) ?? colorScheme.primaryContainer,
+                    color: badgeColor?.withValues(alpha: 0.15) ?? colorScheme.primaryContainer,
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Text(
@@ -700,7 +700,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
           color: isSelected ? colorScheme.surfaceContainerLow : colorScheme.surfaceContainer,
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(
-            color: isSelected ? colorScheme.primary.withOpacity(0.3) : Colors.transparent,
+            color: isSelected ? colorScheme.primary.withValues(alpha: 0.3) : Colors.transparent,
           ),
         ),
         child: Row(
@@ -733,7 +733,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
                             Container(
                               padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
                               decoration: BoxDecoration(
-                                color: colorScheme.tertiaryContainer.withOpacity(0.2),
+                                color: colorScheme.tertiaryContainer.withValues(alpha: 0.2),
                                 borderRadius: BorderRadius.circular(10.r),
                               ),
                               child: Text(badge, style: textTheme.labelSmall?.copyWith(fontSize: 9.sp, color: colorScheme.tertiaryContainer)),
@@ -787,7 +787,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
               sublabel,
               style: textTheme.labelSmall?.copyWith(
                 fontSize: 9.sp,
-                color: isSelected ? colorScheme.onPrimary.withOpacity(0.8) : colorScheme.outline,
+                color: isSelected ? colorScheme.onPrimary.withValues(alpha: 0.8) : colorScheme.outline,
               ),
               textAlign: TextAlign.center,
             ),
@@ -809,7 +809,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
         decoration: BoxDecoration(
           color: isSelected ? colorScheme.surfaceContainerLow : colorScheme.surfaceContainer,
           borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(color: isSelected ? colorScheme.primary.withOpacity(0.3) : Colors.transparent),
+          border: Border.all(color: isSelected ? colorScheme.primary.withValues(alpha: 0.3) : Colors.transparent),
         ),
         child: Row(
           children: [
@@ -845,7 +845,7 @@ class _DishDetailsViewState extends State<DishDetailsView> {
           color: isSelected ? colorScheme.surfaceContainerLow : colorScheme.surfaceContainer,
           borderRadius: BorderRadius.circular(8.r),
           border: Border.all(
-            color: isSelected ? colorScheme.primary.withOpacity(0.4) : Colors.transparent,
+            color: isSelected ? colorScheme.primary.withValues(alpha: 0.4) : Colors.transparent,
           ),
         ),
         child: Column(
