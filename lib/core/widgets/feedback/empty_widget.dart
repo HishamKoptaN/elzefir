@@ -19,12 +19,12 @@ class EmptyWidget extends StatelessWidget {
         mainAxisSize: .min,
         spacing: 16.h,
         children: [
-          Icon(icon, size: 30.iconRes, color: const Color(0xFF878791)),
+          Icon(icon, size: 30.iconRes, color: context.colorScheme.onSurfaceVariant),
           Text(
             text,
             style: context.textTheme.bodyLarge?.copyWith(
               fontWeight: .bold,
-              color: const Color(0xFF878791),
+              color: context.colorScheme.onSurfaceVariant,
             ),
           ),
         ],

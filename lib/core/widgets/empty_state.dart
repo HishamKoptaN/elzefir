@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EmptyState extends StatelessWidget {
@@ -32,13 +33,18 @@ class EmptyState extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
-                color: Colors.grey[600],
+                color: context.colorScheme.onSurfaceVariant,
               ),
             ),
             SizedBox(height: 8.h),
             Text(
               subtitle,
-              style: TextStyle(fontSize: 14.sp, color: Colors.grey[500]),
+              style: TextStyle(
+                fontSize: 14.sp,
+                color: context.colorScheme.onSurfaceVariant.withValues(
+                  alpha: 0.75,
+                ),
+              ),
               textAlign: TextAlign.center,
             ),
           ],
