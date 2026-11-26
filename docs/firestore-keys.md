@@ -6,16 +6,16 @@
 
 | المسار | الكاتب | القارئ | الحقول |
 |---|---|---|---|
-| `products/{id}` | الداشبورد | الموقع | `id`, `name`, `title`, `description`, `price`, `priceUnit`, `image`, `category_id`, `isFeatured`, `isMostRequested`, `price_updated_at` |
+| `products/{id}` | الداشبورد | الموقع | `id`, `name`, `title`, `description`, `price`, `priceUnit`, `image`, `category_id`, `isFeatured`, `isMostRequested` |
 | `categories/{id}` | الداشبورد | الموقع | `id`, `name`, `image` |
 | `settings/working_hours` | الداشبورد | الموقع | `days`, `open`, `close`, `updatedAt` |
 | `settings/general` | الداشبورد | الموقع | مفاتيح المحتوى أدناه |
 | `stats/visitors` | الموقع | الداشبورد | `firstSeenAt`, `lastSeenAt`, `visits` |
 | `visitors/{id}` | الموقع | الداشبورد | `firstSeenAt`, `lastSeenAt`, `visits` |
 
-`price_updated_at` حقل قديم لم يعد يُقرأ؛ `priceUnit` الفارغ يعني «كجم».
+`priceUnit` الفارغ يعني «كجم».
 
-## مفاتيح `settings/general` (64 مفتاحاً)
+## مفاتيح `settings/general` (76 مفتاحاً)
 
 كل مفتاح أدناه مكتوب في الداشبورد ويُقرأ في الموقع. القيمة الافتراضية في الداشبورد مطابقة لافتراض الموقع، فحفظ أي حقل لا يغيّر الحقول الأخرى.
 
@@ -36,6 +36,9 @@
 
 ### التنقل والترتيب
 `nav_home`، `nav_gallery`، `nav_products`، `nav_prices`، `nav_about`، `nav_contact`، `section_order_json`.
+
+### بطاقة عرض اليوم
+`offer_badge`، `offer_savings`، `offer_title`، `offer_description`، `offer_price`، `offer_before_price`، `offer_cta`، `offer_call_label`، `offer_image`، `offer_feature_1..3`.
 
 ## صيغ الحقول المنظّمة (JSON)
 
