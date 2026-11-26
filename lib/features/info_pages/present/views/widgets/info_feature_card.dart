@@ -39,37 +39,46 @@ class _InfoFeatureCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: .all(16.r),
-      decoration: BoxDecoration(
-        color: context.colorScheme.surfaceContainerHighest,
-        borderRadius: .circular(12.r),
-        border: Border(
-          top: BorderSide(color: context.colorScheme.primary, width: 4.h),
-          left: BorderSide(color: context.colorScheme.outlineVariant),
-          right: BorderSide(color: context.colorScheme.outlineVariant),
-          bottom: BorderSide(color: context.colorScheme.outlineVariant),
+    return ClipRRect(
+      borderRadius: .circular(12.r),
+      child: Container(
+        decoration: BoxDecoration(
+          color: context.colorScheme.surfaceContainerHighest,
+          border: Border.all(color: context.colorScheme.outlineVariant),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: .start,
-        spacing: 8.h,
-        children: [
-          Text(
-            feature.title,
-            style: context.textTheme.titleMedium?.copyWith(
+        child: Column(
+          crossAxisAlignment: .start,
+          children: [
+            Container(
+              width: double.infinity,
+              height: 4.h,
               color: context.colorScheme.primary,
-              fontWeight: .w700,
             ),
-          ),
-          Text(
-            feature.description,
-            style: context.textTheme.bodyMedium?.copyWith(
-              color: context.colorScheme.onSurfaceVariant,
-              height: 1.7,
+            Padding(
+              padding: .all(16.r),
+              child: Column(
+                crossAxisAlignment: .start,
+                spacing: 8.h,
+                children: [
+                  Text(
+                    feature.title,
+                    style: context.textTheme.titleMedium?.copyWith(
+                      color: context.colorScheme.primary,
+                      fontWeight: .w700,
+                    ),
+                  ),
+                  Text(
+                    feature.description,
+                    style: context.textTheme.bodyMedium?.copyWith(
+                      color: context.colorScheme.onSurfaceVariant,
+                      height: 1.7,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
