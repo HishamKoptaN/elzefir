@@ -9,7 +9,6 @@ import '../../../../core/utils/extensions/scaled.dart';
 import '../../data/models/order/orders_filter_model.dart';
 import '../blocs/orders_bloc/orders_bloc.dart';
 import 'orders_widget.dart';
-import 'package:flutter/cupertino.dart';
 
 class OrdersView extends StatefulWidget {
   const OrdersView({super.key});
