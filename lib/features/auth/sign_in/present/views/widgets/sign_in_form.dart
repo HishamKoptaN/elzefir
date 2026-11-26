@@ -108,7 +108,7 @@ class SignInForm extends StatelessWidget {
                       ),
                     );
                   },
-                  checkColor: Colors.white,
+                  checkColor: Theme.of(context).colorScheme.onPrimary,
                 ),
                 Text('تذكرني', style: TextStyle(fontSize: 20.sp)),
                 Spacer(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../../core/di/dependency_injection.dart';
 import '../blocs/auth_bloc/auth_bloc.dart';
 
@@ -21,12 +22,16 @@ class _AuthViewState extends State<AuthView> {
           return firebaseAuthState.maybeMap(
             authenticated: (s) {
               return Center(
-                child: const CircularProgressIndicator(color: Colors.black),
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               );
             },
             orElse: () {
               return Center(
-                child: const CircularProgressIndicator(color: Colors.black),
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               );
             },
           );
