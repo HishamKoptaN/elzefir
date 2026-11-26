@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/routing/utils/navigation_service.dart';
 import '../../../../../core/utils/extensions/device_type_extension.dart';
-import '../../../../../core/utils/extensions/responsive_icon_extension .dart';
+import '../../../../../core/utils/extensions/responsive_icon_extension.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../info_pages/present/views/contact_view.dart';
 import '../../../../info_pages/present/views/privacy_view.dart';

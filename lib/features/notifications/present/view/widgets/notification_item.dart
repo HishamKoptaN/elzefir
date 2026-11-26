@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../domain/entities/notification_entity.dart';
-import 'types/NewUserRegistered.dart';
+import 'types/new_user_registered.dart';
 
 class NotificationItem extends StatelessWidget {
   final NotificationEntity notification;
