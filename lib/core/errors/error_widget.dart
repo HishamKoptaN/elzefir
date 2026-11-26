@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/extensions/theme_ext.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   final String message;
@@ -14,7 +15,11 @@ class CustomErrorWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, size: 64, color: Colors.red),
+            Icon(
+              Icons.error_outline,
+              size: 64,
+              color: context.colorScheme.error,
+            ),
             const SizedBox(height: 16),
             Text(
               message,

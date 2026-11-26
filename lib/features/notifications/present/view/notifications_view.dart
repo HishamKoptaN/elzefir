@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -26,12 +27,12 @@ class _NotificationsViewState extends State<NotificationsView> {
     return Scaffold(
       appBar: const CustomAppBar(title: 'الإشعارات'),
       body: Container(
-        color: const Color(0xFFFFFFFF),
+        color: context.colorScheme.surface,
         width: double.infinity,
         height: double.infinity,
         child: Container(
           decoration: BoxDecoration(
-            color: const Color(0xFFF7F7F7),
+            color: context.colorScheme.surfaceContainerLowest,
           ),
           child: SingleChildScrollView(
             child: Column(

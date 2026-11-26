@@ -62,10 +62,8 @@ class LogoutDialog extends StatelessWidget {
       backgroundColor: Colors.transparent,
       icon: CircleAvatar(
         radius: 28,
-        // backgroundColor: AppColors.danger.withOpacity(0.12),
         child: const Icon(
           Icons.logout_rounded,
-          // color: AppColors.danger,
           size: 28,
         ),
       ),
@@ -90,7 +88,6 @@ class LogoutDialog extends StatelessWidget {
                   Navigator.of(context).pop(false);
                 },
                 style: ElevatedButton.styleFrom(
-                  // side: BorderSide(color: AppColors.danger),
                   backgroundColor: Colors.transparent,
                   foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   elevation: 0,
@@ -100,8 +97,7 @@ class LogoutDialog extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 24.sp,
                     fontWeight: FontWeight.bold,
-                    // color: AppColors.danger,
-                  ),
+                            ),
                 ),
               ),
             ),
@@ -113,7 +109,6 @@ class LogoutDialog extends StatelessWidget {
                   Navigator.of(context).pop(true);
                 },
                 style: ElevatedButton.styleFrom(
-                  // backgroundColor: AppColors.danger,
                   foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   elevation: 0,

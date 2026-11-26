@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../domain/entities/notification_entity.dart';
 
@@ -59,7 +60,9 @@ class NewUserRegistered extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: "قام ",
-                            style: TextStyle(color: Colors.grey),
+                            style: TextStyle(
+                              color: context.colorScheme.onSurfaceVariant,
+                            ),
                           ),
                           TextSpan(
                             text: '${notification.body} ',
