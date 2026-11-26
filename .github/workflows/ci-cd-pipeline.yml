@@ -4,15 +4,25 @@ on:
     branches:
       - '**'
   workflow_dispatch:
+env:
+  force_javascript_actions_to_node24: true
+  actions_allow_use_unsecure_node_version: true
 permissions:
   contents: write
   checks: write
   pull-requests: write
 jobs:
-  workflows:
+  auto_pr:
+    if: github.ref_name != 'dev' && github.ref_name != 'prod'
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: HishamKoptaN/ci_cd_pipeline/.github/workflows/auto-pr.yml@prod
+    secrets: inherit
+  web_pipeline:
     permissions:
       contents: write
       checks: write
       pull-requests: write
-    uses: HishamKoptaN/ci_cd_pipeline/.github/workflows/00-main.yml@prod
+    uses: HishamKoptaN/ci_cd_pipeline/.github/workflows/50-firebase-hosting.yml@prod
     secrets: inherit
