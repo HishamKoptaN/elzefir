@@ -54,8 +54,6 @@ class OrdersWidget extends StatefulWidget {
 }
 
 class _OrdersWidgetState extends State<OrdersWidget> {
-  ScrollController controller = ScrollController();
-
   double _uiScale = 1;
   @override
   void initState() {
