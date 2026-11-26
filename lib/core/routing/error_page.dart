@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/extensions/theme_ext.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/auth/sign_in/present/views/sign_in_view.dart';
 
@@ -16,7 +17,11 @@ class ErrorPageBuilder {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, size: 64, color: Colors.red),
+            Icon(
+              Icons.error_outline,
+              size: 64,
+              color: context.colorScheme.error,
+            ),
             const SizedBox(height: 16),
             Text(
               message ?? 'An unexpected error occurred',

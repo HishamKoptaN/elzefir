@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../domain/entities/notification_entity.dart';
 
@@ -100,7 +101,7 @@ class WelcomeNotification extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.favorite_rounded,
-                          color: Colors.red,
+                          color: context.colorScheme.error,
                           size: 18.sp,
                         ),
                         const SizedBox(width: 8),

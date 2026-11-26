@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'utils/extensions/theme_ext.dart';
 
 class AppDatePicker {
   AppDatePicker._();
@@ -17,13 +18,9 @@ class AppDatePicker {
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
-            colorScheme: const ColorScheme.light(
-              primary: Color(0xFF54392E),
-              onPrimary: Colors.white,
-            ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor: const Color(0xFF54392E),
+                foregroundColor: context.colorScheme.primary,
               ),
             ),
           ),

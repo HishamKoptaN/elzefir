@@ -36,14 +36,10 @@ class CustomErrorWidget extends StatelessWidget {
           Icon(
             icon ?? Icons.error_outline,
             size: iconSize ?? 64,
-            // color: iconColor ?? AppColors.error,
           ),
           const SizedBox(height: 16),
           Text(
             message,
-            // style: AppTextStyles.bodyLarge.copyWith(
-            //   color: textColor ?? AppColors.error,
-            // ),
             textAlign: TextAlign.center,
           ),
           if (showRetryButton && onRetry != null) ...[
@@ -51,7 +47,6 @@ class CustomErrorWidget extends StatelessWidget {
             ElevatedButton(
               onPressed: onRetry!,
               style: ElevatedButton.styleFrom(
-                // backgroundColor: buttonColor ?? AppColors.brandMint,
                 foregroundColor:
                   buttonTextColor ?? context.colorScheme.onPrimary,
               ),

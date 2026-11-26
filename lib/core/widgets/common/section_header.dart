@@ -37,7 +37,6 @@ class SectionHeader extends StatelessWidget {
       height: height.h,
       padding: padding,
       decoration: BoxDecoration(
-        // color: backgroundColor ?? AppColors.primaryLight,
         border: Border.all(
           color: borderColor ??
               context.colorScheme.outlineVariant.withValues(alpha: 0.44),
@@ -69,7 +68,6 @@ class SectionHeader extends StatelessWidget {
                 TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 18.sp,
-                  // color: AppColors.primary,
                 ),
           ),
         ],
