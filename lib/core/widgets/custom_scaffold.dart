@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/extensions/theme_ext.dart';
 import 'navigation/custom_app_bar.dart';
 
 class CustomScaffold extends StatelessWidget {
@@ -34,7 +35,7 @@ class CustomScaffold extends StatelessWidget {
       appBar: showAppBar ? CustomAppBar(title: title ?? '') : null,
       drawer: drawer,
       endDrawer: endDrawer,
-      backgroundColor: backgroundColor ?? Colors.white,
+      backgroundColor: backgroundColor ?? context.colorScheme.surface,
       body: SafeArea(child: body),
       floatingActionButton: floatingActionButton,
       floatingActionButtonAnimator: floatingActionButtonAnimator,

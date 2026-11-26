@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/extensions/theme_ext.dart';
 
 class CameraButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -14,18 +15,18 @@ class CameraButton extends StatelessWidget {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.colorScheme.surface,
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.25),
+              color: context.colorScheme.shadow.withOpacity(0.25),
               offset: const Offset(0, 4),
               blurRadius: 4,
               spreadRadius: 0,
             ),
           ],
         ),
-        child: Icon(Icons.camera_alt, size: size * 0.5, color: Colors.black),
+        child: Icon(Icons.camera_alt, size: size * 0.5, color: context.colorScheme.onSurface),
       ),
     );
   }

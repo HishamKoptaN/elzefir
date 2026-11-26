@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../utils/extensions/scaled.dart';
@@ -10,13 +11,13 @@ class TableHeaderCell extends StatelessWidget {
     this.flex = 1,
     this.fontSize = 18,
     this.fontWeight = FontWeight.w700,
-    this.color = const Color(0xFF6B7088),
+    this.color,
   });
   final String text;
   final int flex;
   final double fontSize;
   final FontWeight fontWeight;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class TableHeaderCell extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize.sp.scaled(context),
         fontWeight: fontWeight,
-        color: color,
+        color: color ?? context.colorScheme.onSurfaceVariant,
       ),
     );
   }
