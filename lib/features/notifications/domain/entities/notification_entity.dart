@@ -1,44 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../core/data/entities/meta_entity.dart';
 part 'notification_entity.freezed.dart';
-
-abstract interface class NotificationHandler {
-  Future<void> open(BuildContext context, NotificationEntity notification);
-}
-
-class NewUserRegisteredHandler implements NotificationHandler {
-  @override
-  Future<void> open(
-    BuildContext context,
-    NotificationEntity notification,
-  ) async {
-    // NavigationService.goNamed(
-    //   context: context,
-    //   routeName: UserProfileView.routeName,
-    //   pathParameters: {'id': '$userId'},
-    // );
-  }
-}
-
-class UnknownNotificationHandler implements NotificationHandler {
-  @override
-  Future<void> open(
-    BuildContext context,
-    NotificationEntity notification,
-  ) async {}
-}
-
-class NotificationHandlerFactory {
-  static NotificationHandler handler(NotificationType type) {
-    switch (type) {
-      case NotificationType.newUserRegistered:
-        return NewUserRegisteredHandler();
-      default:
-        return UnknownNotificationHandler();
-    }
-  }
-}
 
 enum NotificationType {
   info('info'),
