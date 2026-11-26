@@ -1,7 +1,7 @@
 part of 'products_mapping_bloc.dart';
 
 @freezed
-class ProductsMappingState with _$ProductsMappingState {
+abstract class ProductsMappingState with _$ProductsMappingState {
   const factory ProductsMappingState.initial() = _Initial;
   const factory ProductsMappingState.loaded({
     required List<ProductModel> products,

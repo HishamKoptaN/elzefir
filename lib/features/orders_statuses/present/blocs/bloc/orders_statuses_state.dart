@@ -1,7 +1,7 @@
 part of 'orders_statuses_bloc.dart';
 
 @freezed
-class OrdersStatusesState with _$OrdersStatusesState {
+abstract class OrdersStatusesState with _$OrdersStatusesState {
   const factory OrdersStatusesState.initial() = _Initial;
   const factory OrdersStatusesState.loaded({
     required List<OrderStatusEntity>? ordersStatuses,
