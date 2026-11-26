@@ -11,7 +11,8 @@
 
 ## Prod Branch Is Invisible to Agents
 
-- **Absolute Rule:** The `prod` branch does not exist for any AI agent. Never read, compare, merge into/from, push to, delete, restore, or modify it — locally or remotely.
-- **No Exceptions:** Do not create commits, tags, PRs, task branches, or cleanup operations targeting `prod`. Never ask the user about `prod` or suggest actions on it.
+- **Default Rule:** The `prod` branch is invisible to every AI agent. Never read, compare, merge into/from, push to, delete, restore, or modify it — locally or remotely — except as stated below.
+- **Single Exception:** A direct, explicit command from the user is the only exception, and it covers merge and push only: execute exactly what was commanded and nothing more. It never covers delete, restore, or recreate.
+- **No Proactive Actions:** Do not create commits, tags, PRs, task branches, or cleanup operations targeting `prod` on your own. Never ask the user about `prod` or suggest actions on it.
 - **Cleanup & Summaries:** Exclude `prod` from branch listings, cleanup decisions, and final status reports. Work only on `dev` and short-lived task branches.
 - **External Deletion:** If an external process deletes `prod` from the remote, ignore it entirely. Do not attempt to restore it and do not report it as a pending action.
