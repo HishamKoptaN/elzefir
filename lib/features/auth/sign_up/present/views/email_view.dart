@@ -1,9 +1,11 @@
 import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/routing/app_router.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
@@ -124,8 +126,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView>
                                     .then((value) {
                                       context.showSuccessSnackBar(
                                         title: "تم",
-                                        message:
-                                            "تم ارسال رابط التحقق لتفعيل الحساب",
+                                        message: "تم ارسال رابط التحقق لتفعيل الحساب",
                                       );
                                     })
                                     .catchError((error) {
@@ -152,7 +153,10 @@ class _VerifyEmailViewState extends State<VerifyEmailView>
                         SizedBox(height: 16.h),
                         Text(
                           "يمكنك إعادة الإرسال بعد $_secondsRemaining ثانية",
-                          style: TextStyle(color: Colors.grey, fontSize: 14.sp),
+                          style: TextStyle(
+                            color: context.colorScheme.onSurfaceVariant,
+                            fontSize: 14.sp,
+                          ),
                         ),
                       ],
                       Gap(30.h),

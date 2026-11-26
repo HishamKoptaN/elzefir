@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'dart:math';
 
 class SignInDebugAutoFill extends StatefulWidget {
@@ -83,13 +84,19 @@ class _SignInDebugAutoFillState extends State<SignInDebugAutoFill> {
             right: 10,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(color: Colors.black54),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.onSurface
+                    .withValues(alpha: 0.54),
+              ),
               child: Material(
                 color: Colors.transparent,
                 child: DropdownButton<int>(
                   value: selectedOption,
-                  dropdownColor: Colors.black87,
-                  style: const TextStyle(color: Colors.white),
+                  dropdownColor: Theme.of(context).colorScheme.onSurface
+                      .withValues(alpha: 0.87),
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.surface,
+                  ),
                   underline: Container(),
                   onChanged: (int? newValue) {
                     setState(() {
@@ -101,7 +108,9 @@ class _SignInDebugAutoFillState extends State<SignInDebugAutoFill> {
                       value: options.indexOf(value),
                       child: Text(
                         value,
-                        style: const TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.surface,
+                        ),
                       ),
                     );
                   }).toList(),

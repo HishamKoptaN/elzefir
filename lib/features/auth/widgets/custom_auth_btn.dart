@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
+
 import '../auth_sizes.dart';
 
 Widget customAuthBtn({
@@ -25,7 +26,7 @@ Widget customAuthBtn({
                 fontSize: 28.sp,
                 height: 22 / 20,
                 letterSpacing: -0.0714286,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onPrimary,
               ),
             ),
     ),
@@ -40,10 +41,7 @@ TextButton customAuthTextBtn({
     onPressed: onPressed,
     child: Text(
       'تسجيل دخول',
-      style: TextStyle(
-        fontSize: 22.sp,
-        fontWeight: FontWeight.w700,
-      ),
+      style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w700),
     ),
   );
 }

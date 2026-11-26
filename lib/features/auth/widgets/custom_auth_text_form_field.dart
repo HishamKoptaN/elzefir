@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/utils/extensions/theme_ext.dart';
 import '../auth_sizes.dart';
 
 enum AuthMessageType { error, success, warning, info }
@@ -215,8 +216,8 @@ class ValidationErrorWidget extends StatelessWidget {
                         : Icons.check_circle,
                     size: 18,
                     color: type == AuthMessageType.error
-                        ? Colors.red
-                        : Colors.green,
+                        ? Theme.of(context).colorScheme.error
+                        : Theme.of(context).colorScheme.statusDot,
                   ),
                   Text(
                     message ?? '',
@@ -224,8 +225,8 @@ class ValidationErrorWidget extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       fontSize: 16.sp,
                       color: type == AuthMessageType.error
-                          ? Colors.red
-                          : Colors.green,
+                          ? Theme.of(context).colorScheme.error
+                          : Theme.of(context).colorScheme.statusDot,
                     ),
                     textAlign: TextAlign.center,
                   ),

@@ -25,7 +25,9 @@ class SidebarLogoutWidget extends StatelessWidget {
         },
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 14.39.w, vertical: 12.h),
-          decoration: BoxDecoration(color: Colors.red.withOpacity(0.1)),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.error.withOpacity(0.1),
+          ),
           child: Row(
             children: [
               Text(
@@ -33,12 +35,16 @@ class SidebarLogoutWidget extends StatelessWidget {
                 textAlign: .center,
                 style: TextStyle(
                   fontSize: 14.sp,
-                  color: Colors.red,
+                  color: Theme.of(context).colorScheme.error,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(width: 10.w),
-              Icon(Icons.logout, color: Colors.red, size: 20),
+              Icon(
+                Icons.logout,
+                color: Theme.of(context).colorScheme.error,
+                size: 20,
+              ),
             ],
           ),
         ),
@@ -86,7 +92,7 @@ class LogoutDialog extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   // side: BorderSide(color: AppColors.danger),
                   backgroundColor: Colors.transparent,
-                  foregroundColor: Colors.white,
+                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   elevation: 0,
                 ),
                 child: Text(
@@ -108,7 +114,7 @@ class LogoutDialog extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   // backgroundColor: AppColors.danger,
-                  foregroundColor: Colors.white,
+                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   elevation: 0,
                 ),

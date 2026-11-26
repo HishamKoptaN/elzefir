@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_kit/flutter_otp_kit.dart';
+
 import '../../../core/di/dependency_injection.dart';
 import '../../../core/utils/extensions/theme_ext.dart';
 import '../../../core/widgets/custom_scaffold.dart';
@@ -51,7 +52,7 @@ class OtpView extends StatelessWidget {
                   enableAutoValidation: true,
                   fieldCount: 6,
                   fieldConfig: OtpFieldConfig.preset(OtpFieldPreset.underlined),
-                  primaryColor: Colors.black,
+                  primaryColor: context.colorScheme.primary,
                   backgroundColor: Colors.transparent,
                   contactInfo: state.signIn.phoneNumber?.value,
                   maskingType: MaskingType.phone,
@@ -87,9 +88,7 @@ class OtpView extends StatelessWidget {
                     return true;
                   },
                   onResend: () {
-                    getIt<SignInBloc>().add(
-                      const SignInEvent.verify(),
-                    );
+                    getIt<SignInBloc>().add(const SignInEvent.verify());
                   },
                 ),
               );
