@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+
 import '../../../core/responsive/responsive_extensions.dart';
 import '../../../core/utils/extensions/theme_ext.dart';
 
@@ -27,12 +28,8 @@ class AuthPageLayout extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/logos/logo_solid.png',
-                scale: context.responsive(
-                  mobile: 1.2,
-                  tablet: 1,
-                  desktop: 1,
-                ),
+                'assets/logos/solid_logo.png',
+                scale: context.responsive(mobile: 1.2, tablet: 1, desktop: 1),
               ),
               Gap(50.h),
               AuthTitleWidget(title: title),
