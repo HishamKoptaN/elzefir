@@ -5,7 +5,7 @@ import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import '../../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../../core/utils/extensions/device_type_extension.dart';
-import '../../../../../../../core/utils/extensions/responsive_icon_extension .dart';
+import '../../../../../../../core/utils/extensions/responsive_icon_extension.dart';
 import '../../../../../../../core/widgets/feedback/app_snackbar.dart';
 import '../../../../../../../core/widgets/forms/custom_text_form_field.dart';
 import '../../../../../../order_items/domain/entities/update_unit_entity.dart';

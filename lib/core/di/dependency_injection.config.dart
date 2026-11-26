@@ -66,7 +66,7 @@ import '../../features/categories/data/data_sources/categories_api.dart'
     as _i680;
 import '../../features/categories/data/data_sources/categories_data_src.dart'
     as _i289;
-import '../../features/categories/data/data_sources/categories_data_src_Imp.dart'
+import '../../features/categories/data/data_sources/categories_data_src_imp.dart'
     as _i1055;
 import '../../features/categories/data/data_sources/categories_mock_data_src.dart'
     as _i895;
@@ -79,7 +79,7 @@ import '../../features/categories/present/blocs/bloc/categories_bloc.dart'
     as _i332;
 import '../../features/home/data/data_sources/home_api.dart' as _i927;
 import '../../features/home/data/data_sources/home_data_src.dart' as _i861;
-import '../../features/home/data/data_sources/home_data_src_Imp.dart' as _i105;
+import '../../features/home/data/data_sources/home_data_src_imp.dart' as _i105;
 import '../../features/home/data/repo_impl/home_repo_impl.dart' as _i886;
 import '../../features/home/domain/repo/home_repo.dart' as _i280;
 import '../../features/home/domain/use_cases/home_use_cases.dart' as _i357;
