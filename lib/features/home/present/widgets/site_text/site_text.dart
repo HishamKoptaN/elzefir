@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../domain/use_cases/home_use_cases.dart';
 import '../restaurant_info_builder.dart';
+import 'site_text_cache.dart';
 
 /// يقرأ قيمة نصية لمرة واحدة، للإجراءات التي تحتاج قيمة داخل رابط أو معامل.
 Future<String> siteTextValue(String key, String fallback) async {
+  await SiteTextCache.load();
   try {
     final info = await getIt<HomeUseCases>().watchRestaurantInfo().first;
+    await SiteTextCache.save(info.raw);
     return info.text(key, fallback);
   } catch (_) {
-    return fallback;
+    return SiteTextCache.cachedValue(key, fallback);
   }
 }
 
