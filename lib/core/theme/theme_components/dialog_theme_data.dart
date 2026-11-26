@@ -15,7 +15,7 @@ DialogThemeData dialogThemeData({
       fontWeight: FontWeight.bold,
     ),
     contentTextStyle: textTheme.bodyLarge?.copyWith(
-      color: colorScheme.onSurface.withOpacity(0.85),
+      color: colorScheme.onSurface.withValues(alpha: 0.85),
     ),
     insetPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
     clipBehavior: Clip.antiAlias,

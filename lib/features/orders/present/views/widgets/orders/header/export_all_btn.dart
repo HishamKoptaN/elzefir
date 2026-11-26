@@ -31,7 +31,7 @@ class ExportAllBtn extends StatelessWidget {
                   size: 20,
                   color: canExport
                       ? context.colorScheme.onSurface
-                      : context.colorScheme.onSurfaceVariant.withOpacity(0.5),
+                      : context.colorScheme.onSurfaceVariant.withValues(alpha: 0.5),
                 ),
                 SizedBox(width: 6.w),
                 Text(
@@ -41,7 +41,7 @@ class ExportAllBtn extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: canExport
                         ? context.colorScheme.onSurface
-                        : context.colorScheme.onSurfaceVariant.withOpacity(0.5),
+                        : context.colorScheme.onSurfaceVariant.withValues(alpha: 0.5),
                   ),
                 ),
                 SizedBox(width: 6.w),

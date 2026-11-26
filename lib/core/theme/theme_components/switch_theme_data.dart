@@ -9,23 +9,23 @@ SwitchThemeData switchThemeData({
       if (states.contains(WidgetState.selected)) {
         return colorScheme.secondary;
       }
-      return colorScheme.onSurface.withOpacity(0.6);
+      return colorScheme.onSurface.withValues(alpha: 0.6);
     }),
     trackColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return colorScheme.secondary.withOpacity(0.5);
+        return colorScheme.secondary.withValues(alpha: 0.5);
       }
-      return colorScheme.onSurface.withOpacity(0.3);
+      return colorScheme.onSurface.withValues(alpha: 0.3);
     }),
     trackOutlineColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return colorScheme.secondary.withOpacity(0.8);
+        return colorScheme.secondary.withValues(alpha: 0.8);
       }
       return colorScheme.outline;
     }),
     trackOutlineWidth: WidgetStateProperty.all(1.0),
     overlayColor:
-        WidgetStateProperty.all(colorScheme.secondary.withOpacity(0.2)),
+        WidgetStateProperty.all(colorScheme.secondary.withValues(alpha: 0.2)),
     splashRadius: 18.r,
     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
   );

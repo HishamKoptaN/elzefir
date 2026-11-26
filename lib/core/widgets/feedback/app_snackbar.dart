@@ -122,7 +122,7 @@ class AppSnackBar {
             ),
             boxShadow: [
               BoxShadow(
-                color: context.colorScheme.shadow.withOpacity(0.1),
+                color: context.colorScheme.shadow.withValues(alpha: 0.1),
                 blurRadius: 10.r,
                 offset: const Offset(0, 4),
               ),
@@ -134,7 +134,7 @@ class AppSnackBar {
               Container(
                 padding: EdgeInsets.all(8.r),
                 decoration: BoxDecoration(
-                  color: borderColor.withOpacity(0.1),
+                  color: borderColor.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(icon, color: iconColor, size: 24),
@@ -159,7 +159,7 @@ class AppSnackBar {
                         message,
                         style: theme.textTheme.bodyMedium?.copyWith(
                           fontSize: 20.sp,
-                          color: context.colorScheme.onPrimary.withOpacity(0.8),
+                          color: context.colorScheme.onPrimary.withValues(alpha: 0.8),
                         ),
                       ),
                     },
@@ -170,7 +170,7 @@ class AppSnackBar {
                 IconButton(
                   icon: Icon(
                     Icons.close,
-                    color: context.colorScheme.onPrimary.withOpacity(0.6),
+                    color: context.colorScheme.onPrimary.withValues(alpha: 0.6),
                     size: 18,
                   ),
                   padding: EdgeInsets.zero,

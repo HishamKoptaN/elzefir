@@ -22,9 +22,9 @@ class DishHeroHeader extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                colorScheme.primary.withOpacity(0.6),
+                colorScheme.primary.withValues(alpha: 0.6),
                 Colors.transparent,
-                colorScheme.primary.withOpacity(0.8),
+                colorScheme.primary.withValues(alpha: 0.8),
               ],
             ),
           ),
@@ -57,7 +57,7 @@ class DishHeroHeader extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
                 decoration: BoxDecoration(
-                  color: colorScheme.surfaceContainerLowest.withOpacity(0.9),
+                  color: colorScheme.surfaceContainerLowest.withValues(alpha: 0.9),
                   borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: Row(

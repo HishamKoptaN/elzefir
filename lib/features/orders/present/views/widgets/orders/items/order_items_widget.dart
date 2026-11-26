@@ -34,7 +34,7 @@ class OrderItemsWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: context.colorScheme.surfaceContainerLowest,
             border: Border.all(
-              color: context.colorScheme.primary.withOpacity(0.08),
+              color: context.colorScheme.primary.withValues(alpha: 0.08),
               width: 1,
             ),
           ),

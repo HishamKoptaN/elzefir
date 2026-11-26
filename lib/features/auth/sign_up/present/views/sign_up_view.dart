@@ -528,7 +528,7 @@ class DebugGap extends StatelessWidget {
     return Container(
       height: height,
       width: double.infinity,
-      color: context.colorScheme.error.withOpacity(.15),
+      color: context.colorScheme.error.withValues(alpha: .15),
       alignment: Alignment.center,
       child: Text(
         '${height.toStringAsFixed(1)} px',

@@ -26,7 +26,7 @@ class SidebarLogoutWidget extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 14.39.w, vertical: 12.h),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.error.withOpacity(0.1),
+            color: Theme.of(context).colorScheme.error.withValues(alpha: 0.1),
           ),
           child: Row(
             children: [

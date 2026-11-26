@@ -8,9 +8,9 @@ FloatingActionButtonThemeData fabTheme({
   return FloatingActionButtonThemeData(
     backgroundColor: colorScheme.primary,
     foregroundColor: colorScheme.onPrimary,
-    splashColor: colorScheme.primary.withOpacity(0.12),
-    focusColor: colorScheme.primary.withOpacity(0.24),
-    hoverColor: colorScheme.primary.withOpacity(0.08),
+    splashColor: colorScheme.primary.withValues(alpha: 0.12),
+    focusColor: colorScheme.primary.withValues(alpha: 0.24),
+    hoverColor: colorScheme.primary.withValues(alpha: 0.08),
     elevation: 6,
     focusElevation: 8,
     hoverElevation: 10,

@@ -14,7 +14,7 @@ AppBarTheme appBarTheme({required ColorScheme colorScheme}) {
     titleSpacing: 16.w,
     iconTheme: IconThemeData(color: colorScheme.onPrimary),
     actionsIconTheme: IconThemeData(
-      color: colorScheme.onPrimary.withOpacity(0.9),
+      color: colorScheme.onPrimary.withValues(alpha: 0.9),
     ),
     titleTextStyle: TextStyle(
       fontSize: 20.sp,

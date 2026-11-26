@@ -57,8 +57,8 @@
 //     primaryColor: colorScheme.primary,
 //     dividerColor: colorScheme.outline,
 //     shadowColor: colorScheme.shadow,
-//     splashColor: colorScheme.primary.withOpacity(0.12),
-//     hintColor: colorScheme.onSurface.withOpacity(0.6),
+//     splashColor: colorScheme.primary.withValues(alpha: 0.12),
+//     hintColor: colorScheme.onSurface.withValues(alpha: 0.6),
 //     iconTheme: IconThemeData(color: colorScheme.onSurface, size: 24),
 //     dialogTheme:
 //         dialogThemeData(colorScheme: colorScheme, textTheme: textTheme),

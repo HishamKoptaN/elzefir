@@ -29,7 +29,7 @@ class BgContainerWidget extends StatelessWidget {
         color: context.colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: context.colorScheme.shadow.withOpacity(0.05),
+            color: context.colorScheme.shadow.withValues(alpha: 0.05),
             offset: const Offset(0, 4),
             // blurRadius: 20,
             spreadRadius: 0,

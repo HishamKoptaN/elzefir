@@ -54,7 +54,7 @@ class UnitsWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: context.colorScheme.surfaceContainerLowest,
             border: Border.all(
-              color: context.colorScheme.primary.withOpacity(0.08),
+              color: context.colorScheme.primary.withValues(alpha: 0.08),
               width: 1,
             ),
           ),
@@ -102,7 +102,7 @@ class UnitsWidget extends StatelessWidget {
                           vertical: 4.h.scaled(context),
                         ),
                         decoration: BoxDecoration(
-                          color: context.colorScheme.primary.withOpacity(0.1),
+                          color: context.colorScheme.primary.withValues(alpha: 0.1),
                         ),
                         child: Text(
                           '#${unit.executionNumber}',
@@ -129,7 +129,7 @@ class UnitsWidget extends StatelessWidget {
                 child: Container(
                   margin: .symmetric(horizontal: 10.w),
                   decoration: BoxDecoration(
-                    color: context.colorScheme.hotlineBg.withOpacity(0.6),
+                    color: context.colorScheme.hotlineBg.withValues(alpha: 0.6),
                     border: Border.all(color: context.colorScheme.hotlineBorder),
                   ),
                   child: Padding(
@@ -213,7 +213,7 @@ class UnitsWidget extends StatelessWidget {
                 child: Container(
                   margin: .symmetric(horizontal: 10.w),
                   decoration: BoxDecoration(
-                    color: context.colorScheme.chefChoiceBg.withOpacity(0.6),
+                    color: context.colorScheme.chefChoiceBg.withValues(alpha: 0.6),
                     border: Border.all(
                         color: context.colorScheme.chefChoiceBorder,
                       ),

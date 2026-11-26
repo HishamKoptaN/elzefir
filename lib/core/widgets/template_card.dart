@@ -17,7 +17,7 @@ class TemplateCard extends StatelessWidget {
           color: context.colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: context.colorScheme.shadow.withOpacity(0.1),
+              color: context.colorScheme.shadow.withValues(alpha: 0.1),
               blurRadius: 10.r,
               offset: Offset(0, 4.h),
             ),

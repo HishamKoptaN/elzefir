@@ -25,12 +25,12 @@ class _OrderWidgetState extends State<OrderWidget> {
       decoration: BoxDecoration(
         color: context.colorScheme.surface,
         border: Border.all(
-          color: context.colorScheme.primary.withOpacity(0.3),
+          color: context.colorScheme.primary.withValues(alpha: 0.3),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: context.colorScheme.primary.withOpacity(0.08),
+            color: context.colorScheme.primary.withValues(alpha: 0.08),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
