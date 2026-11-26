@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../../core/di/dependency_injection.dart';
@@ -44,7 +45,7 @@ class _OrdersHeaderWidgetState extends State<OrdersHeaderWidget> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colorScheme.surface,
         boxShadow: [
           BoxShadow(
             color: Theme.of(context).colorScheme.surface,

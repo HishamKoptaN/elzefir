@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../../core/utils/extensions/scaled.dart';
 
@@ -14,7 +15,10 @@ class ExportAllBtn extends StatelessWidget {
         height: 45.h.scaled(context),
         padding: EdgeInsets.symmetric(horizontal: 4.w),
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0xFFEFF0F6), width: 1),
+          border: Border.all(
+            color: context.colorScheme.outlineVariant,
+            width: 1,
+          ),
         ),
         child: Center(
           child: InkWell(
@@ -26,8 +30,8 @@ class ExportAllBtn extends StatelessWidget {
                   Icons.file_download,
                   size: 20,
                   color: canExport
-                      ? Colors.black
-                      : Colors.grey.withOpacity(0.5),
+                      ? context.colorScheme.onSurface
+                      : context.colorScheme.onSurfaceVariant.withOpacity(0.5),
                 ),
                 SizedBox(width: 6.w),
                 Text(
@@ -36,8 +40,8 @@ class ExportAllBtn extends StatelessWidget {
                     fontSize: 20.sp.scaled(context),
                     fontWeight: FontWeight.bold,
                     color: canExport
-                        ? Colors.black
-                        : Colors.grey.withOpacity(0.5),
+                        ? context.colorScheme.onSurface
+                        : context.colorScheme.onSurfaceVariant.withOpacity(0.5),
                   ),
                 ),
                 SizedBox(width: 6.w),

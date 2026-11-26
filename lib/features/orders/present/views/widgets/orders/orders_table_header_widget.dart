@@ -36,7 +36,7 @@ class OrdersTableHeaderWidget extends StatelessWidget {
                     child: Checkbox(
                       value: selectAll,
                       activeColor: context.colorScheme.primary,
-                      checkColor: Colors.white,
+                      checkColor: context.colorScheme.onPrimary,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       onChanged: (v) {
                         getIt<OrdersBloc>().add(
@@ -50,7 +50,7 @@ class OrdersTableHeaderWidget extends StatelessWidget {
                 Text(
                   '($selectedCount طلب محدد)',
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: context.colorScheme.onSurfaceVariant,
                     fontSize: 16.sp.scaled(context),
                   ),
                 ),

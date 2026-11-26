@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -87,8 +88,8 @@ class OrdersCountWidget extends StatelessWidget {
     return Skeletonizer(
       enabled: isSearching ?? false,
       effect: ShimmerEffect(
-        baseColor: Colors.grey.shade300,
-        highlightColor: Colors.grey.shade100,
+        baseColor: context.colorScheme.outlineVariant,
+        highlightColor: context.colorScheme.surfaceContainerLowest,
         duration: const Duration(seconds: 1),
       ),
 
@@ -106,8 +107,8 @@ class OrdersCountWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20.sp.scaled(context),
                 color: totalCount > 0
-                    ? Colors.grey.shade700
-                    : Colors.red.shade400,
+                    ? context.colorScheme.onSurfaceVariant
+                    : context.colorScheme.error,
                 fontWeight: FontWeight.w500,
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_inputs/form_inputs.dart';
@@ -75,7 +76,7 @@ class _UpdateItemDialogState extends State<UpdateItemDialog> {
               children: [
                 Text(
                   "أدخل رابط مجلد الصور والفيديوهات الخاص بالطلب:",
-                  style: TextStyle(fontSize: 20.sp, color: Colors.grey),
+                  style: TextStyle(fontSize: 20.sp, color: context.colorScheme.onSurfaceVariant),
                 ),
                 SizedBox(height: 16.h),
                 CustomTextFormField(

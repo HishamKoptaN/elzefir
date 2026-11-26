@@ -23,14 +23,14 @@ class _OrderWidgetState extends State<OrderWidget> {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 4.h),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colorScheme.surface,
         border: Border.all(
           color: context.colorScheme.primary.withOpacity(0.3),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF5E3B2E).withOpacity(0.08),
+            color: context.colorScheme.primary.withOpacity(0.08),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -63,7 +63,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                   textAlign: .center,
                   style: TextStyle(
                     fontSize: 18.sp.scaled(context),
-                    color: widget.order.orderStatus?.color ?? Colors.black,
+                    color: widget.order.orderStatus?.color ?? context.colorScheme.onSurface,
                   ),
                 ),
               ),

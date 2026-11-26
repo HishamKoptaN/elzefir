@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../../../core/utils/extensions/scaled.dart';
 
@@ -26,7 +27,10 @@ class CustomOrderFilterBtn extends StatelessWidget {
         Container(
           height: 52.h.scaled(context),
           decoration: BoxDecoration(
-            border: Border.all(color: Color(0xFFEFF0F6), width: 1),
+            border: Border.all(
+            color: context.colorScheme.outlineVariant,
+            width: 1,
+          ),
           ),
           child: widget,
         ),
