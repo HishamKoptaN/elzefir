@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BgContainerWidget extends StatelessWidget {
@@ -25,10 +26,10 @@ class BgContainerWidget extends StatelessWidget {
       margin: margin,
       padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: context.colorScheme.shadow.withOpacity(0.05),
             offset: const Offset(0, 4),
             // blurRadius: 20,
             spreadRadius: 0,

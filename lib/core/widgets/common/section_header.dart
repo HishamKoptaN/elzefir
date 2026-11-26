@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SectionHeader extends StatelessWidget {
@@ -38,16 +39,17 @@ class SectionHeader extends StatelessWidget {
       decoration: BoxDecoration(
         // color: backgroundColor ?? AppColors.primaryLight,
         border: Border.all(
-          color: borderColor ?? const Color(0xFFD9D9D9).withValues(alpha: 0.44),
+          color: borderColor ??
+              context.colorScheme.outlineVariant.withValues(alpha: 0.44),
         ),
       ),
       child: alignment == Alignment.center
-          ? _buildCenteredContent()
-          : _buildPaddedContent(),
+          ? _buildCenteredContent(context)
+          : _buildPaddedContent(context),
     );
   }
 
-  Widget _buildCenteredContent() {
+  Widget _buildCenteredContent(BuildContext context) {
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +58,7 @@ class SectionHeader extends StatelessWidget {
           if (icon != null) ...[
             Icon(
               icon,
-              color: iconColor ?? Colors.white,
+              color: iconColor ?? context.colorScheme.onPrimary,
               size: iconSize?.w ?? 24.w,
             ),
           ],
@@ -75,7 +77,7 @@ class SectionHeader extends StatelessWidget {
     );
   }
 
-  Widget _buildPaddedContent() {
+  Widget _buildPaddedContent(BuildContext context) {
     return Padding(
       padding: padding ?? EdgeInsets.symmetric(horizontal: 20.w),
       child: Row(
@@ -84,7 +86,7 @@ class SectionHeader extends StatelessWidget {
           if (icon != null) ...[
             Icon(
               icon,
-              color: iconColor ?? Colors.white,
+              color: iconColor ?? context.colorScheme.onPrimary,
               size: iconSize?.w ?? 24.w,
             ),
           ],
@@ -95,7 +97,7 @@ class SectionHeader extends StatelessWidget {
                 TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 18.sp,
-                  color: Colors.white,
+                  color: context.colorScheme.onPrimary,
                 ),
           ),
         ],

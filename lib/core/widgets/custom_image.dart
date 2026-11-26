@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/extensions/responsive_icon_extension .dart';
+import '../utils/extensions/theme_ext.dart';
 
 class CustomImage extends StatelessWidget {
   const CustomImage({
@@ -11,14 +12,14 @@ class CustomImage extends StatelessWidget {
     this.aspectRatio,
     this.fit = BoxFit.cover,
     this.borderRadius = const BorderRadius.all(Radius.circular(16)),
-    this.backgroundColor = const Color(0xffF5F5F5),
+    this.backgroundColor,
   });
 
   final String image;
   final double? aspectRatio;
   final BoxFit fit;
   final BorderRadius borderRadius;
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   bool get _isNetwork {
     return image.startsWith('http://') || image.startsWith('https://');
@@ -35,17 +36,17 @@ class CustomImage extends StatelessWidget {
                 fit: fit,
                 memCacheWidth: cacheWidth,
                 placeholder: (_, _) {
-                  return _placeholder();
+                  return _placeholder(context);
                 },
                 errorWidget: (_, _, _) {
-                  return _errorWidget();
+                  return _errorWidget(context);
                 },
               )
             : Image.asset(
                 image,
                 fit: fit,
                 errorBuilder: (_, _, _) {
-                  return _errorWidget();
+                  return _errorWidget(context);
                 },
               );
 
@@ -68,9 +69,10 @@ class CustomImage extends StatelessWidget {
     return (maxWidth * pixelRatio).round();
   }
 
-  Widget _placeholder() {
+  Widget _placeholder(BuildContext context) {
     return Container(
-      color: backgroundColor,
+      color:
+          backgroundColor ?? context.colorScheme.surfaceContainerLowest,
       alignment: Alignment.center,
       child: SizedBox(
         height: 22.h,
@@ -80,9 +82,10 @@ class CustomImage extends StatelessWidget {
     );
   }
 
-  Widget _errorWidget() {
+  Widget _errorWidget(BuildContext context) {
     return Container(
-      color: backgroundColor,
+      color:
+          backgroundColor ?? context.colorScheme.surfaceContainerLowest,
       alignment: Alignment.center,
       child: Icon(Icons.broken_image_outlined, size: 34.iconRes),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomDatePicker extends StatelessWidget {
@@ -9,7 +10,7 @@ class CustomDatePicker extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 0.h),
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFF54392E), width: 1),
+        border: Border.all(color: context.colorScheme.primary, width: 1),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -21,7 +22,7 @@ class CustomDatePicker extends StatelessWidget {
             // ),
           ),
           SizedBox(width: 4.w),
-          Icon(Icons.calendar_today, color: Color(0xFF54392E), size: 20.r),
+          Icon(Icons.calendar_today, color: context.colorScheme.primary, size: 20.r),
         ],
       ),
     );

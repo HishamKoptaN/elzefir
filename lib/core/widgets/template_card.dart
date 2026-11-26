@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -13,10 +14,10 @@ class TemplateCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: context.colorScheme.shadow.withOpacity(0.1),
               blurRadius: 10.r,
               offset: Offset(0, 4.h),
             ),
@@ -30,17 +31,19 @@ class TemplateCard extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 margin: EdgeInsets.all(10.w),
-                decoration: BoxDecoration(color: const Color(0xFFFAFAFA)),
+                decoration: BoxDecoration(
+                  color: context.colorScheme.surfaceContainerLowest,
+                ),
                 child: ClipRRect(
                   child: SvgPicture.asset(
                    ' template.imageSvgPath',
                     fit: BoxFit.contain,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
-                        color: const Color(0xFFE0E0E0),
-                        child: const Icon(
+                        color: context.colorScheme.outlineVariant,
+                        child: Icon(
                           Icons.image_not_supported,
-                          color: Color(0xFF9E9E9E),
+                          color: context.colorScheme.onSurfaceVariant,
                           size: 50,
                         ),
                       );
@@ -61,7 +64,7 @@ class TemplateCard extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 16.sp,
-                        color: const Color(0xFF54392E),
+                        color: context.colorScheme.primary,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -71,7 +74,7 @@ class TemplateCard extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 10.sp,
-                        color: const Color(0xFF757575),
+                        color: context.colorScheme.onSurfaceVariant,
                       ),
                       textAlign: TextAlign.center,
                       maxLines: 2,
