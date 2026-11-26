@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_inputs/form_inputs.dart';
@@ -29,7 +30,7 @@ class ProfilePhoneWidget extends StatelessWidget {
         Container(
           height: 150.h,
           width: 1116.w,
-          decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
+          decoration: BoxDecoration(color: context.colorScheme.surface),
           child: Theme(
             data: Theme.of(context).copyWith(
               splashColor: Colors.transparent,
@@ -38,7 +39,9 @@ class ProfilePhoneWidget extends StatelessWidget {
             child: Directionality(
               textDirection: TextDirection.rtl,
               child: IconTheme(
-                data: const IconThemeData(color: Colors.black),
+                data: IconThemeData(
+                  color: context.colorScheme.onSurface,
+                ),
                 child: PhoneInput(
                   initialValue: PhoneNumber(
                     isoCode: IsoCode.values.firstWhere(
@@ -145,9 +148,9 @@ class ProfilePhoneWidget extends StatelessWidget {
                         showCountryCode: true,
                         noResultMessage: 'noResultMessage',
                         showSearchInput: true,
-                        searchInputDecoration: const InputDecoration(
-                          focusColor: Colors.white,
-                          fillColor: Colors.white,
+                        searchInputDecoration: InputDecoration(
+                          focusColor: context.colorScheme.surface,
+                          fillColor: context.colorScheme.surface,
                           hintText: 'بحث',
                           border: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -157,8 +160,10 @@ class ProfilePhoneWidget extends StatelessWidget {
                           disabledBorder: InputBorder.none,
                         ),
 
-                        defaultSearchInputIconColor: Colors.grey,
-                        bottomSheetDragHandlerColor: Colors.grey,
+                        defaultSearchInputIconColor:
+                        context.colorScheme.onSurfaceVariant,
+                        bottomSheetDragHandlerColor:
+                        context.colorScheme.onSurfaceVariant,
                         scrollPhysics: const BouncingScrollPhysics(),
                         flagSize: 50.sp,
                         flagShape: BoxShape.rectangle,
@@ -175,12 +180,12 @@ class ProfilePhoneWidget extends StatelessWidget {
                   countryCodeStyle: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 24.sp,
-                    color: Colors.black,
+                    color: context.colorScheme.onSurface,
                   ),
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 24.sp,
-                    color: Colors.black,
+                    color: context.colorScheme.onSurface,
                   ),
                 ),
               ),
