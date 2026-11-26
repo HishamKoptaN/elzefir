@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EmptySearchWidget extends StatefulWidget {
@@ -18,13 +19,13 @@ class _EmptySearchWidgetState extends State<EmptySearchWidget> {
         mainAxisSize: .min,
         spacing: 16.h,
         children: [
-          Icon(Icons.search_off, size: 64.w, color: const Color(0xFF878791)),
+          Icon(Icons.search_off, size: 64.w, color: context.colorScheme.onSurfaceVariant),
           Text(
             'لا توجد طلبات مطابقة',
             style: TextStyle(
               fontSize: 18.sp,
               fontWeight: FontWeight.w500,
-              color: const Color(0xFF878791),
+              color: context.colorScheme.onSurfaceVariant,
             ),
           ),
         ],

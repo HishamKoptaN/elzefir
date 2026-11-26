@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../../core/di/dependency_injection.dart';
 import '../../../../../../../core/utils/extensions/device_type_extension.dart';
@@ -31,9 +32,9 @@ class OrderItemsWidget extends StatelessWidget {
         return Container(
           padding: EdgeInsets.symmetric(vertical: 4.h.scaled(context)),
           decoration: BoxDecoration(
-            color: const Color(0xFFFBF9F6),
+            color: context.colorScheme.surfaceContainerLowest,
             border: Border.all(
-              color: const Color(0xFF5E3B2E).withOpacity(0.08),
+              color: context.colorScheme.primary.withOpacity(0.08),
               width: 1,
             ),
           ),
@@ -77,7 +78,7 @@ class OrderItemsWidget extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 18.sp.scaled(context),
                               fontWeight: FontWeight.w500,
-                              color: Colors.grey.shade600,
+                              color: context.colorScheme.onSurfaceVariant,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -96,7 +97,7 @@ class OrderItemsWidget extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 18.sp.scaled(context),
                               fontWeight: FontWeight.w500,
-                              color: Colors.grey.shade600,
+                              color: context.colorScheme.onSurfaceVariant,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,

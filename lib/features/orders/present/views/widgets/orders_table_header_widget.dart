@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UsersTableHeaderWidget extends StatelessWidget {
@@ -12,17 +13,17 @@ class UsersTableHeaderWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Row(
         children: [
-          _buildHeaderItem('معرف المستخدم', flex: 2),
-          _buildHeaderItem('الاسم', flex: 3),
-          _buildHeaderItem('الدور', flex: 2),
-          _buildHeaderItem('الحالة', flex: 2),
-          _buildHeaderItem('الإجراءات', flex: 1),
+          _buildHeaderItem(context, 'معرف المستخدم', flex: 2),
+          _buildHeaderItem(context, 'الاسم', flex: 3),
+          _buildHeaderItem(context, 'الدور', flex: 2),
+          _buildHeaderItem(context, 'الحالة', flex: 2),
+          _buildHeaderItem(context, 'الإجراءات', flex: 1),
         ],
       ),
     );
   }
 
-  Widget _buildHeaderItem(String title, {required int flex}) {
+  Widget _buildHeaderItem(BuildContext context, String title, {required int flex}) {
     return Expanded(
       flex: flex,
       child: Text(
@@ -31,7 +32,7 @@ class UsersTableHeaderWidget extends StatelessWidget {
         style: TextStyle(
           fontSize: 18.sp,
           fontWeight: FontWeight.bold,
-          color: const Color(0xFF6B7088),
+          color: context.colorScheme.onSurfaceVariant,
         ),
       ),
     );

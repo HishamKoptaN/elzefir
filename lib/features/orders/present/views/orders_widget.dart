@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/utils/extensions/theme_ext.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -145,8 +146,9 @@ class _OrdersWidgetState extends State<OrdersWidget> {
               child: Skeletonizer(
                 enabled: widget.isSearching,
                 effect: ShimmerEffect(
-                  baseColor: Colors.grey.shade300,
-                  highlightColor: Colors.grey.shade100,
+                  baseColor: context.colorScheme.outlineVariant,
+                  highlightColor:
+                    context.colorScheme.surfaceContainerLowest,
                   duration: const Duration(seconds: 1),
                 ),
                 child: widget.orders?.isEmpty ?? false

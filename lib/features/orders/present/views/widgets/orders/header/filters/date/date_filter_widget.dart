@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../../../../core/utils/extensions/theme_ext.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -70,7 +71,7 @@ class DateFilterView extends StatelessWidget {
                         icon: Icon(
                           Icons.close,
                           size: 25,
-                          color: Colors.red,
+                          color: context.colorScheme.error,
                         ),
                         onPressed: () {
                           getIt<DateBloc>().add(
