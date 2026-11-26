@@ -52,9 +52,9 @@ class UnitsWidget extends StatelessWidget {
           height: 70.0.h.scaled(context),
           padding: EdgeInsets.symmetric(vertical: 6.h.scaled(context)),
           decoration: BoxDecoration(
-            color: const Color(0xFFFBF9F6),
+            color: context.colorScheme.surfaceContainerLowest,
             border: Border.all(
-              color: const Color(0xFF5E3B2E).withOpacity(0.08),
+              color: context.colorScheme.primary.withOpacity(0.08),
               width: 1,
             ),
           ),
@@ -76,7 +76,7 @@ class UnitsWidget extends StatelessWidget {
                           child: Checkbox(
                             value: unit.isSelected,
                             activeColor: context.colorScheme.primary,
-                            checkColor: Colors.white,
+                            checkColor: context.colorScheme.onPrimary,
                             materialTapTargetSize:
                                 MaterialTapTargetSize.shrinkWrap,
                             onChanged: (value) {
@@ -129,8 +129,8 @@ class UnitsWidget extends StatelessWidget {
                 child: Container(
                   margin: .symmetric(horizontal: 10.w),
                   decoration: BoxDecoration(
-                    color: Colors.blue.shade50.withOpacity(0.6),
-                    border: Border.all(color: Colors.blue.shade100),
+                    color: context.colorScheme.hotlineBg.withOpacity(0.6),
+                    border: Border.all(color: context.colorScheme.hotlineBorder),
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
@@ -148,12 +148,12 @@ class UnitsWidget extends StatelessWidget {
                             Icons.picture_as_pdf,
                             size: 20,
                             color: unit.isGeneratedPdf
-                                ? Colors.green
-                                : Colors.red,
+                                ? context.colorScheme.statusDot
+                                : context.colorScheme.error,
                           ),
                           color: unit.isGeneratedPdf
-                              ? Colors.green
-                              : Colors.red,
+                              ? context.colorScheme.statusDot
+                              : context.colorScheme.error,
                           padding: EdgeInsets.zero,
                           constraints: BoxConstraints(),
                           onPressed: () async {
@@ -169,9 +169,9 @@ class UnitsWidget extends StatelessWidget {
                           icon: Icon(
                             Icons.photo_sharp,
                             size: 20,
-                            color: Colors.blue.shade700,
+                            color: context.colorScheme.brandNavy,
                           ),
-                          color: Colors.blue.shade700,
+                          color: context.colorScheme.brandNavy,
                           padding: EdgeInsets.zero,
                           constraints: BoxConstraints(),
                           onPressed: () {},
@@ -187,7 +187,7 @@ class UnitsWidget extends StatelessWidget {
                             Icons.visibility,
                              size: 20,
                           ),
-                          color: Colors.grey.shade700,
+                          color: context.colorScheme.onSurfaceVariant,
                           padding: EdgeInsets.zero,
                           constraints: BoxConstraints(),
                           onPressed: () {},
@@ -198,7 +198,7 @@ class UnitsWidget extends StatelessWidget {
                             Icons.print,
                            size: 20,
                           ),
-                          color: Colors.grey.shade700,
+                          color: context.colorScheme.onSurfaceVariant,
                           padding: EdgeInsets.zero,
                           constraints: BoxConstraints(),
                           onPressed: () {},
@@ -213,8 +213,10 @@ class UnitsWidget extends StatelessWidget {
                 child: Container(
                   margin: .symmetric(horizontal: 10.w),
                   decoration: BoxDecoration(
-                    color: Colors.orange.shade50.withOpacity(0.6),
-                    border: Border.all(color: Colors.orange.shade100),
+                    color: context.colorScheme.chefChoiceBg.withOpacity(0.6),
+                    border: Border.all(
+                        color: context.colorScheme.chefChoiceBorder,
+                      ),
                   ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
@@ -235,7 +237,9 @@ class UnitsWidget extends StatelessWidget {
                           icon: Icon(
                             Icons.picture_as_pdf,
                             size: 20,
-                            color: validLink(unit) ? Colors.red : Colors.grey,
+                            color: validLink(unit)
+                              ? context.colorScheme.error
+                              : context.colorScheme.onSurfaceVariant,
                           ),
                           onPressed: () {
                             if (unit.documentationLink != null &&
@@ -251,7 +255,7 @@ class UnitsWidget extends StatelessWidget {
                             Icons.visibility,
                             size: 20,
                           ),
-                          color: Colors.grey.shade700,
+                          color: context.colorScheme.onSurfaceVariant,
                         ),
                         IconButton(
                           tooltip: "رابط التوثيق بالدرايف",
@@ -279,8 +283,8 @@ class UnitsWidget extends StatelessWidget {
                             color:
                                 (unit.documentationLink != null &&
                                     unit.documentationLink!.isNotEmpty)
-                                ? Colors.green.shade700
-                                : Colors.grey.shade700,
+                                ? context.colorScheme.statusDot
+                                : context.colorScheme.onSurfaceVariant,
                           ),
                         ),
                       ],
