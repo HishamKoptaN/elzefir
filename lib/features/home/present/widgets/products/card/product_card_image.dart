@@ -32,7 +32,7 @@ class ProductCardImage extends StatelessWidget {
           context: context,
           barrierDismissible: true,
           barrierLabel: 'Close',
-          barrierColor: Colors.black87,
+          barrierColor: colors.onSurface.withValues(alpha: 0.87),
           pageBuilder: (_, _, _) {
             return Center(
               child: InteractiveViewer(

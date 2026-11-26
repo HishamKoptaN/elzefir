@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/utils/extensions/theme_ext.dart';
 import '../../../categories/domain/entities/categories_res_entity.dart';
 
@@ -23,7 +24,7 @@ class CategoriesNav extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: const Color(0xFFC3C7CE).withValues(alpha: .1),
+            color: context.colorScheme.outlineVariant.withValues(alpha: .1),
           ),
         ),
       ),
