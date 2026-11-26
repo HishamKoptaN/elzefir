@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+
 import '../../../core/responsive/responsive_extensions.dart';
 import '../../../core/utils/extensions/theme_ext.dart';
 
@@ -28,11 +29,7 @@ class AuthPageLayout extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/logos/logo_solid.png',
-                scale: context.responsive(
-                  mobile: 1.2,
-                  tablet: 1,
-                  desktop: 1,
-                ),
+                scale: context.responsive(mobile: 1.2, tablet: 1, desktop: 1),
               ),
               Gap(50.h),
               AuthTitleWidget(title: title),
@@ -61,7 +58,7 @@ class AuthTitleWidget extends StatelessWidget {
         fontSize: 45.sp,
         height: 39 / 35,
         letterSpacing: -0.114286,
-        color: const Color(0xFF54392E),
+        color: context.colorScheme.primary,
       ),
     );
   }
