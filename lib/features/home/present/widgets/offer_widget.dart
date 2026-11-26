@@ -71,7 +71,7 @@ class OfferWidget extends StatelessWidget {
                           _Pill(
                             text: 'وفر 90 ج.م',
                             background: colors.brandCoral,
-                            foreground: Colors.white,
+                            foreground: colors.onPrimary,
                           ),
                         ],
                       ),
@@ -82,7 +82,7 @@ class OfferWidget extends StatelessWidget {
                         maxLines: 1,
                         overflow: .ellipsis,
                         style: context.textTheme.bodyMedium?.copyWith(
-                          color: Colors.white70,
+                          color: colors.onPrimary.withValues(alpha: 0.7),
                           fontWeight: .w600,
                         ),
                       ),
@@ -93,7 +93,7 @@ class OfferWidget extends StatelessWidget {
                         maxLines: 2,
                         overflow: .ellipsis,
                         style: context.textTheme.headlineMedium?.copyWith(
-                          color: Colors.white,
+                          color: colors.onPrimary,
                           fontWeight: .w900,
                           height: 1.15,
                         ),
@@ -105,7 +105,7 @@ class OfferWidget extends StatelessWidget {
                         maxLines: 2,
                         overflow: .ellipsis,
                         style: context.textTheme.bodyMedium?.copyWith(
-                          color: Colors.white70,
+                          color: colors.onPrimary.withValues(alpha: 0.7),
                         ),
                       ),
                       SizedBox(height: 12.h),
@@ -143,13 +143,13 @@ class OfferWidget extends StatelessWidget {
                           Container(
                             padding: .symmetric(horizontal: 8.w, vertical: 4.h),
                             decoration: BoxDecoration(
-                              color: Colors.white.withValues(alpha: 0.15),
+                              color: colors.onPrimary.withValues(alpha: 0.15),
                               borderRadius: .circular(8.r),
                             ),
                             child: Text(
                               'قبل 380 ج.م',
                               style: context.textTheme.bodyMedium?.copyWith(
-                                color: Colors.white70,
+                                color: colors.onPrimary.withValues(alpha: 0.7),
                                 decoration: .lineThrough,
                                 fontWeight: .w600,
                               ),
@@ -184,12 +184,17 @@ class OfferWidget extends StatelessWidget {
                           ),
                           OutlinedButton.icon(
                             onPressed: () async {
-                              final uri = Uri(scheme: 'tel', path: '+201124497981');
+                              final uri = Uri(
+                                scheme: 'tel',
+                                path: '+201124497981',
+                              );
                               await launchUrl(uri);
                             },
                             style: OutlinedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              side: BorderSide(color: Colors.white.withValues(alpha: 0.8)),
+                              foregroundColor: colors.onPrimary,
+                              side: BorderSide(
+                                color: colors.onPrimary.withValues(alpha: 0.8),
+                              ),
                               padding: .symmetric(
                                 horizontal: 16.w,
                                 vertical: 12.h,
@@ -256,22 +261,23 @@ class _FeatureChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colorScheme;
     return Container(
       padding: .symmetric(horizontal: 8.w, vertical: 4.h),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.12),
+        color: colors.onPrimary.withValues(alpha: 0.12),
         borderRadius: .circular(999),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
+        border: Border.all(color: colors.onPrimary.withValues(alpha: 0.18)),
       ),
       child: Row(
         mainAxisSize: .min,
         spacing: 4.w,
         children: [
-          Icon(icon, size: 13.r, color: Colors.white),
+          Icon(icon, size: 13.r, color: colors.onPrimary),
           Text(
             label,
             style: context.textTheme.labelSmall?.copyWith(
-              color: Colors.white,
+              color: colors.onPrimary,
               fontWeight: .w600,
             ),
           ),

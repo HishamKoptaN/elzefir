@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/custom_image.dart';
 import '../../../../products/domain/entities/product_entity.dart';
 import '../products/category_badge_widget.dart';
@@ -21,14 +23,14 @@ class _AdditionCardState extends State<AdditionCard> {
     return Container(
       width: 800.w,
       decoration: BoxDecoration(
-        color: const Color(0xFFFFFFFF),
+        color: context.colorScheme.surface,
         borderRadius: .circular(12.r),
         border: Border.all(
-          color: const Color(0xFFC3C7CE).withValues(alpha: 0.1),
+          color: context.colorScheme.outlineVariant.withValues(alpha: 0.1),
         ),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.05),
+            color: context.colorScheme.shadow.withValues(alpha: 0.05),
             offset: Offset(0, 1),
             blurRadius: 2,
           ),
@@ -40,7 +42,7 @@ class _AdditionCardState extends State<AdditionCard> {
           Container(
             padding: .all(16.w),
             decoration: BoxDecoration(
-              color: Color(0xFFFFF1EA),
+              color: context.colorScheme.surfaceContainerLowest,
               borderRadius: .vertical(top: .circular(12.r)),
             ),
             child: Stack(
@@ -50,7 +52,7 @@ class _AdditionCardState extends State<AdditionCard> {
                   child: Container(
                     height: 224.h,
                     width: .infinity,
-                    color: Colors.grey.shade300,
+                    color: context.colorScheme.outlineVariant,
                     child: CustomImage(
                       image: widget.addition.image,
                       fit: BoxFit.cover,
@@ -73,7 +75,7 @@ class _AdditionCardState extends State<AdditionCard> {
                       style: TextStyle(
                         fontSize: 24.sp,
                         fontWeight: FontWeight.w700,
-                        color: const Color(0xFF28180D),
+                        color: context.colorScheme.onSurface,
                       ),
                       textAlign: .right,
                     ),
@@ -88,7 +90,7 @@ class _AdditionCardState extends State<AdditionCard> {
                     style: TextStyle(
                       fontSize: 16.sp,
                       height: 1.5,
-                      color: const Color(0xFF42474D),
+                      color: context.colorScheme.onSurfaceVariant,
                     ),
                     textAlign: .right,
                     maxLines: 2,
@@ -102,9 +104,5 @@ class _AdditionCardState extends State<AdditionCard> {
         ],
       ),
     );
-  }
-
-  Color accentColorCalc(Color baseColor) {
-    return const Color(0xFFF7E2D5);
   }
 }
