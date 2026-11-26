@@ -24,7 +24,7 @@ class DialogHeader extends StatelessWidget {
         color: context.colorScheme.primary,
         border: Border(
           bottom: BorderSide(
-            color: Colors.black.withValues(alpha: 0.3),
+            color: context.colorScheme.shadow.withValues(alpha: 0.3),
             width: 1.h,
           ),
         ),
@@ -39,7 +39,7 @@ class DialogHeader extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w700,
               fontSize: 20.sp,
-              color: Colors.white,
+              color: context.colorScheme.onPrimary,
             ),
           ),
           const Spacer(),
@@ -49,8 +49,14 @@ class DialogHeader extends StatelessWidget {
                 Navigator.of(context).pop();
               },
               child: Container(
-                decoration: BoxDecoration(color: const Color(0xFF313131)),
-                child: Icon(Icons.close, size: 20.iconRes, color: Colors.white),
+                decoration: BoxDecoration(
+                  color: context.colorScheme.brandNavyDeep,
+                ),
+                child: Icon(
+                  Icons.close,
+                  size: 20.iconRes,
+                  color: context.colorScheme.onPrimary,
+                ),
               ),
             ),
         ],

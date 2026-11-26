@@ -47,7 +47,9 @@ class ConfirmationDialog extends StatelessWidget {
       insetPadding: EdgeInsets.zero,
       child: IntrinsicWidth(
         child: Container(
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: BoxDecoration(
+            color: context.colorScheme.surface,
+          ),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: .min,
@@ -62,7 +64,7 @@ class ConfirmationDialog extends StatelessWidget {
                     message,
                     style: TextStyle(
                       fontSize: 20.sp,
-                      color: const Color(0xFF333333),
+                      color: context.colorScheme.onSurface,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -74,9 +76,12 @@ class ConfirmationDialog extends StatelessWidget {
                     vertical: 14.h,
                   ),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF9F9F9),
-                    border: const Border(
-                      top: BorderSide(color: Color(0xFFE0E0E0), width: 1),
+                    color: context.colorScheme.surfaceContainerLowest,
+                    border: Border(
+                      top: BorderSide(
+                        color: context.colorScheme.outlineVariant,
+                        width: 1,
+                      ),
                     ),
                   ),
                   child: Row(
@@ -90,15 +95,17 @@ class ConfirmationDialog extends StatelessWidget {
                             vertical: 10.h,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: const Color(0xFFE0E0E0)),
+                            color: context.colorScheme.surface,
+                            border: Border.all(
+                              color: context.colorScheme.outlineVariant,
+                            ),
                           ),
                           child: Text(
                             'إلغاء',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
-                              color: const Color(0xFF666666),
+                              color: context.colorScheme.onSurfaceVariant,
                             ),
                           ),
                         ),
@@ -119,7 +126,7 @@ class ConfirmationDialog extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
-                              color: Colors.white,
+                              color: context.colorScheme.onPrimary,
                             ),
                           ),
                         ),

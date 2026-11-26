@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../utils/extensions/theme_ext.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../responsive/responsive_extensions.dart';
 import '../../utils/extensions/scaled.dart';
@@ -40,7 +41,7 @@ class CustomSearchWidget extends StatelessWidget {
         onChanged: onChanged,
         decoration: InputDecoration(
           filled: true,
-          fillColor: Colors.white,
+          fillColor: context.colorScheme.surface,
           contentPadding: EdgeInsets.symmetric(
             horizontal: 12.w.scaled(context),
             vertical: 0,
@@ -48,19 +49,31 @@ class CustomSearchWidget extends StatelessWidget {
           hintText: hintText,
           hintStyle: TextStyle(
             fontSize: 16.sp.scaled(context),
-            color: Colors.grey,
+            color: context.colorScheme.onSurfaceVariant,
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Color(0xFFDFDFDF), width: 1),
+            borderSide: BorderSide(
+              color: context.colorScheme.outlineVariant,
+              width: 1,
+            ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Color(0xFF003A46), width: 1),
+            borderSide: BorderSide(
+              color: context.colorScheme.primary,
+              width: 1,
+            ),
           ),
           errorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.red, width: 1),
+            borderSide: BorderSide(
+              color: context.colorScheme.error,
+              width: 1,
+            ),
           ),
           disabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Color(0xFFDFDFDF), width: 1),
+            borderSide: BorderSide(
+              color: context.colorScheme.outlineVariant,
+              width: 1,
+            ),
           ),
           prefixIcon:
               prefixIcon ??
@@ -72,7 +85,7 @@ class CustomSearchWidget extends StatelessWidget {
                   desktop: 35.r.scaled(context),
                 ),
 
-                color: const Color(0xFF878790),
+                color: context.colorScheme.onSurfaceVariant,
               ),
           suffixIcon:
               suffixIcon ??
@@ -85,7 +98,7 @@ class CustomSearchWidget extends StatelessWidget {
                           tablet: 35.r.scaled(context),
                           desktop: 35.r.scaled(context),
                         ),
-                        color: const Color(0xFF878790),
+                        color: context.colorScheme.onSurfaceVariant,
                       ),
                       onPressed: onClear,
                     )
