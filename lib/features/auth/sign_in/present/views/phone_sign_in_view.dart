@@ -6,6 +6,7 @@ import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
 import 'package:gap/gap.dart';
 import 'package:phone_input/phone_input_package.dart';
+
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/routing/utils/navigation_service.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
@@ -97,7 +98,9 @@ class _PhoneSignInViewState extends State<PhoneSignInView> {
                     Container(
                       height: AuthSizes.fieldHeight(context),
                       width: AuthSizes.fieldWidth(context),
-                      decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
+                      decoration: BoxDecoration(
+                        color: context.colorScheme.surface,
+                      ),
                       child: Theme(
                         data: Theme.of(context).copyWith(
                           splashColor: Colors.transparent,
@@ -106,7 +109,9 @@ class _PhoneSignInViewState extends State<PhoneSignInView> {
                         child: Directionality(
                           textDirection: TextDirection.rtl,
                           child: IconTheme(
-                            data: const IconThemeData(color: Colors.black),
+                            data: IconThemeData(
+                              color: context.colorScheme.onSurface,
+                            ),
                             child: PhoneInput(
                               defaultCountry: IsoCode.SA,
                               onChanged: (phoneNumber) {
@@ -213,12 +218,12 @@ class _PhoneSignInViewState extends State<PhoneSignInView> {
                                     countryCodeStyle: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 28.sp,
-                                      color: Colors.black,
+                                      color: context.colorScheme.onSurface,
                                     ),
                                     countryNameStyle: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 28.sp,
-                                      color: Colors.black,
+                                      color: context.colorScheme.onSurface,
                                     ),
                                   ),
                               keyboardType: TextInputType.phone,
@@ -230,12 +235,12 @@ class _PhoneSignInViewState extends State<PhoneSignInView> {
                               countryCodeStyle: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 24.sp,
-                                color: Colors.black,
+                                color: context.colorScheme.onSurface,
                               ),
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 24.sp,
-                                color: Colors.black,
+                                color: context.colorScheme.onSurface,
                               ),
                             ),
                           ),

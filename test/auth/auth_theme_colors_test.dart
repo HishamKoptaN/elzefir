@@ -11,7 +11,9 @@ const themedAuthFiles = [
   'lib/features/auth/sign_in/otp_view.dart',
   'lib/features/auth/sign_in/present/views/widgets/sign_in_form.dart',
   'lib/features/auth/sign_in/present/views/sign_in_debug_auto_fill.dart',
+  'lib/features/auth/sign_in/present/views/phone_sign_in_view.dart',
   'lib/features/auth/sign_up/present/views/email_view.dart',
+  'lib/features/auth/sign_up/present/views/sign_up_view.dart',
 ];
 
 void main() {
