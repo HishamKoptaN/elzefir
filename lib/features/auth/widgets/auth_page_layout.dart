@@ -58,7 +58,7 @@ class AuthTitleWidget extends StatelessWidget {
         fontSize: 45.sp,
         height: 39 / 35,
         letterSpacing: -0.114286,
-        color: const Color(0xFF54392E),
+        color: context.colorScheme.primary,
       ),
     );
   }
