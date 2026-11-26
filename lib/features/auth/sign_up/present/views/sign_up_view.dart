@@ -1,4 +1,5 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_inputs/form_inputs.dart';
 import 'package:gap/gap.dart';
 import 'package:phone_input/phone_input_package.dart';
+
 import '../../../../../core/di/dependency_injection.dart';
 import '../../../../../core/utils/extensions/theme_ext.dart';
 import '../../../../../core/widgets/feedback/app_snackbar.dart';
@@ -156,7 +158,9 @@ class _SignUpViewState extends State<SignUpView> {
                           Container(
                             height: AuthSizes.fieldHeight(context),
                             width: AuthSizes.fieldWidth(context),
-                            decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
+                            decoration: BoxDecoration(
+                              color: context.colorScheme.surface,
+                            ),
                             child: Theme(
                               data: Theme.of(context).copyWith(
                                 splashColor: Colors.transparent,
@@ -165,8 +169,8 @@ class _SignUpViewState extends State<SignUpView> {
                               child: Directionality(
                                 textDirection: TextDirection.rtl,
                                 child: IconTheme(
-                                  data: const IconThemeData(
-                                    color: Colors.black,
+                                  data: IconThemeData(
+                                    color: context.colorScheme.onSurface,
                                   ),
                                   child: PhoneInput(
                                     defaultCountry: IsoCode.SA,
@@ -283,12 +287,14 @@ class _SignUpViewState extends State<SignUpView> {
                                           countryCodeStyle: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 28.sp,
-                                            color: Colors.black,
+                                            color:
+                                                context.colorScheme.onSurface,
                                           ),
                                           countryNameStyle: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 28.sp,
-                                            color: Colors.black,
+                                            color:
+                                                context.colorScheme.onSurface,
                                           ),
                                         ),
                                     keyboardType: TextInputType.phone,
@@ -300,12 +306,12 @@ class _SignUpViewState extends State<SignUpView> {
                                     countryCodeStyle: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 24.sp,
-                                      color: Colors.black,
+                                      color: context.colorScheme.onSurface,
                                     ),
                                     style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 24.sp,
-                                      color: Colors.black,
+                                      color: context.colorScheme.onSurface,
                                     ),
                                   ),
                                 ),
@@ -365,8 +371,10 @@ class _SignUpViewState extends State<SignUpView> {
                         width: AuthSizes.fieldWidth(context),
                         padding: EdgeInsets.all(10.r),
                         decoration: BoxDecoration(
-                          color: Colors.grey[50],
-                          border: Border.all(color: Colors.grey[300]!),
+                          color: context.colorScheme.surfaceContainerLowest,
+                          border: Border.all(
+                            color: context.colorScheme.outlineVariant,
+                          ),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -498,7 +506,9 @@ class _SignUpViewState extends State<SignUpView> {
             text,
             style: TextStyle(
               fontSize: 16.sp,
-              color: isSatisfied ? Colors.green : Colors.grey[600],
+              color: isSatisfied
+                  ? context.colorScheme.statusDot
+                  : context.colorScheme.onSurfaceVariant,
               fontWeight: isSatisfied ? FontWeight.bold : FontWeight.normal,
             ),
           ),
@@ -518,11 +528,14 @@ class DebugGap extends StatelessWidget {
     return Container(
       height: height,
       width: double.infinity,
-      color: Colors.red.withOpacity(.15),
+      color: context.colorScheme.error.withOpacity(.15),
       alignment: Alignment.center,
       child: Text(
         '${height.toStringAsFixed(1)} px',
-        style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+        style: TextStyle(
+          color: context.colorScheme.error,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
