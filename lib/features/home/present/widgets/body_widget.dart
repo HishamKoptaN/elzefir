@@ -82,7 +82,6 @@ class _BodyWidgetState extends State<BodyWidget> {
                 onAbout: widget.onAbout,
                 onContact: widget.onContact,
               ),
-              const LandingMarqueeSection(),
               const HomeStatusBadge(),
               ..._sections(info),
             ],
@@ -98,9 +97,15 @@ class _BodyWidgetState extends State<BodyWidget> {
   /// يُتجاهل، وما لم يُذكر يبقى في نهاية الصفحة بترتيبه الافتراضي.
   List<Widget> _sections(RestaurantInfoEntity info) {
     final blocks = <String, Widget>{
-      'hero': LandingHeroSection(
-        key: widget.heroKey,
-        onExplore: widget.onProcudcts,
+      'hero': Column(
+        spacing: 12.h,
+        children: [
+          LandingHeroSection(
+            key: widget.heroKey,
+            onExplore: widget.onProcudcts,
+          ),
+          const LandingMarqueeSection(),
+        ],
       ),
       'gallery': Column(
         spacing: 12.h,
