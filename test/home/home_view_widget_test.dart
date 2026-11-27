@@ -96,7 +96,7 @@ void main() {
     await getIt.reset();
   });
 
-  testWidgets('HomeView renders the six-section shell on mobile', (tester) async {
+  testWidgets('HomeView renders the seven-section shell on mobile', (tester) async {
     final originalOnError = FlutterError.onError;
     FlutterError.onError = (details) {
       final isOverflow = details.toString().contains('overflowed');
@@ -126,8 +126,9 @@ void main() {
 
     expect(find.byType(HomeView), findsOneWidget);
     expect(find.byType(FloatingSectionNav), findsOneWidget);
-    expect(find.byType(NavButton), findsNWidgets(6));
-    expect(find.text('القائمة'), findsOneWidget);
+    expect(find.byType(NavButton), findsNWidgets(7));
+    expect(find.bySemanticsLabel('الطلبات'), findsWidgets);
+    expect(find.bySemanticsLabel('القائمة'), findsWidgets);
   });
 
   testWidgets('navigation labels come from dashboard settings', (tester) async {
@@ -165,6 +166,6 @@ void main() {
     );
     await tester.pump();
 
-    expect(find.text('منيو اليوم'), findsWidgets);
+    expect(find.bySemanticsLabel('منيو اليوم'), findsWidgets);
   });
 }

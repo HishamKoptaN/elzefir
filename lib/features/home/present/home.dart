@@ -26,6 +26,7 @@ class _HomeViewState extends State<HomeView> {
   final galleryKey = GlobalKey();
   final productsKey = GlobalKey();
   final pricesKey = GlobalKey();
+  final ordersKey = GlobalKey();
   final aboutKey = GlobalKey();
   final contactKey = GlobalKey();
 
@@ -66,6 +67,11 @@ class _HomeViewState extends State<HomeView> {
         key: pricesKey,
       ),
       .new(
+        label: info.text('nav_orders', 'الطلبات'),
+        icon: FontAwesomeIcons.bagShopping,
+        key: ordersKey,
+      ),
+      .new(
         label: info.text('nav_about', 'من نحن'),
         icon: FontAwesomeIcons.bookOpen,
         key: aboutKey,
@@ -100,6 +106,7 @@ class _HomeViewState extends State<HomeView> {
             galleryKey: galleryKey,
             productsKey: productsKey,
             pricesKey: pricesKey,
+            ordersKey: ordersKey,
             aboutKey: aboutKey,
             contactKey: contactKey,
             onProcudcts: () {
