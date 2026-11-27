@@ -17,7 +17,7 @@ class _LandingMarqueeTrackState extends State<LandingMarqueeTrack>
     with SingleTickerProviderStateMixin {
   static const _itemWidth = 140.0;
   static const _gap = 16.0;
-  static const _millisecondsPerItem = 3333;
+  static const _millisecondsPerItem = 4761;
 
   late final AnimationController _scroll;
 
