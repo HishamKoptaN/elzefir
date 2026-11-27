@@ -21,12 +21,19 @@ class NavigationService {
     );
   }
 
+  /// تعطيل مؤقت لفتح صفحة تفاصيل المنتج من بطاقات الموقع.
+  /// تُعاد الصفحة بتغيير هذه القيمة إلى true فقط.
+  static const bool enableProductDetails = false;
+
   /// يفتح تفاصيل المنتج فوق الصفحة الحالية بدل استبدال مكدس التنقل،
   /// حتى يرجع زر الرجوع إلى نفس موضع التمرير في الصفحة الرئيسية.
   static Future<T?> pushProductDetails<T>({
     required BuildContext context,
     required ProductEntity product,
-  }) {
+  }) async {
+    if (!enableProductDetails) {
+      return null;
+    }
     return pushNamed<T>(
       context: context,
       routeName: DishDetailsView.routeName,

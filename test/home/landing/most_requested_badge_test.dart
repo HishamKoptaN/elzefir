@@ -44,4 +44,16 @@ void main() {
     );
     expect(find.text('الأكثر طلباً'), findsNothing);
   });
+
+  testWidgets('tapping the chef slide stays on home while details are disabled', (
+    tester,
+  ) async {
+    await pumpCard(
+      tester,
+      const ProductEntity(id: '3', name: 'سمك مشوي'),
+    );
+    await tester.tap(find.text('سمك مشوي'));
+    await tester.pumpAndSettle();
+    expect(tester.takeException(), isNull);
+  });
 }
