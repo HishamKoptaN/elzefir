@@ -43,7 +43,7 @@ class GalleryItem {
     return [
       GalleryItem(
         image: Assets.images.galleryExperience10y.path,
-        title: 'خبرة أكثر من 10 أعوام',
+        title: 'خبرة أكثر من 15 عاماً',
         caption: 'خبرة حقيقية في طهو الأسماك الطازجة',
       ),
       GalleryItem(

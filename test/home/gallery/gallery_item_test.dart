@@ -9,7 +9,7 @@ void main() {
     final first = GalleryItem.items.first;
 
     expect(first.image, 'assets/images/gallery_experience_10y.jpg');
-    expect(first.title, 'خبرة أكثر من 10 أعوام');
+    expect(first.title, 'خبرة أكثر من 15 عاماً');
   });
 
   test('reads gallery slides saved from the dashboard', () {
