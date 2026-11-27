@@ -20,11 +20,11 @@ class ProdEnv implements Env {
   }
   @override
   String get baseUrl {
-    return 'https://';
+    return 'https://coral-shark-547480.hostingersite.com/api/user/';
   }
   @override
   String get authBaseUrl {
-    return 'https://';
+    return 'https://coral-shark-547480.hostingersite.com/auth/';
   }
   @override
   String get publicUrl {
