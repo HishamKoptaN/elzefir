@@ -17,7 +17,7 @@ ErrorDocument 404 /index.html
         Header always set Cache-Control "max-age=604800, public"
     </FilesMatch>
     <FilesMatch "\.(js|mjs|wasm)$">
-        Header always set Cache-Control "public, max-age=86400, stale-while-revalidate=604800"
+        Header always set Cache-Control "public, no-cache, must-revalidate"
     </FilesMatch>
     <FilesMatch "^flutter_service_worker\.js$">
         Header always set Cache-Control "no-cache, no-store, must-revalidate"
