@@ -56,15 +56,26 @@ void main() {
     expect(find.text(orderNotice), findsNothing);
     await emitHours(tester, controller, closedHours());
     await emitHours(tester, controller, null);
+    expect(find.text('جارٍ التحقق من الحالة'), findsNothing);
     expect(find.text(orderNotice), findsNothing);
     expect(find.textContaining('يفتح'), findsNothing);
     await emitHours(tester, controller, closedHours());
     controller.addError(StateError('Working hours unavailable'));
     await tester.pump();
     await tester.pump();
-    expect(find.text('جارٍ التحقق من الحالة'), findsOneWidget);
+    expect(find.text('جارٍ التحقق من الحالة'), findsNothing);
+    expect(find.text('مغلق الآن'), findsOneWidget);
     expect(find.text(orderNotice), findsNothing);
     expect(find.textContaining('يفتح'), findsNothing);
+  });
+
+  testWidgets('Timeout stops the indefinite checking state', (tester) async {
+    await mountBadge(tester);
+    expect(find.text('جارٍ التحقق من الحالة'), findsOneWidget);
+    await tester.pump(const Duration(seconds: 5));
+    expect(find.text('جارٍ التحقق من الحالة'), findsNothing);
+    expect(find.text('مغلق الآن'), findsOneWidget);
+    expect(find.text(orderNotice), findsNothing);
   });
 
   testWidgets('Timer re-evaluates availability without a stream event', (

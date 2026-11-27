@@ -19,9 +19,26 @@ class StoreStatusBuilder extends StatefulWidget {
 }
 
 class _StoreStatusBuilderState extends State<StoreStatusBuilder> {
+  /// بديل آمن حين يتعذر قراءة ساعات العمل: لا يعد بفتح المطعم.
+  static const WorkingHoursEntity _fallbackHours = WorkingHoursEntity(
+    openMinutes: 9 * 60,
+    closeMinutes: 23 * 60,
+    days: [
+      DateTime.saturday,
+      DateTime.sunday,
+      DateTime.monday,
+      DateTime.tuesday,
+      DateTime.wednesday,
+      DateTime.thursday,
+    ],
+    isOpenOverride: false,
+  );
+
   late final Stream<WorkingHoursEntity?> _workingHoursStream =
       getIt<HomeUseCases>().watchWorkingHours();
   Timer? _ticker;
+  Timer? _fallbackTimer;
+  bool _timedOut = false;
 
   @override
   void initState() {
@@ -32,11 +49,18 @@ class _StoreStatusBuilderState extends State<StoreStatusBuilder> {
         setState(() {});
       }
     });
+    // لا نترك الواجهة في حالة «جارٍ التحقق» إلى أجل غير مسمى.
+    _fallbackTimer = Timer(const Duration(seconds: 5), () {
+      if (mounted) {
+        setState(() => _timedOut = true);
+      }
+    });
   }
 
   @override
   void dispose() {
     _ticker?.cancel();
+    _fallbackTimer?.cancel();
     super.dispose();
   }
 
@@ -45,7 +69,19 @@ class _StoreStatusBuilderState extends State<StoreStatusBuilder> {
     return StreamBuilder<WorkingHoursEntity?>(
       stream: _workingHoursStream,
       builder: (context, snapshot) {
-        final workingHours = snapshot.hasError ? null : snapshot.data;
+        final WorkingHoursEntity? workingHours;
+        if (snapshot.hasError ||
+            snapshot.connectionState == ConnectionState.done ||
+            (snapshot.connectionState == ConnectionState.active &&
+                snapshot.data == null)) {
+          workingHours = _fallbackHours;
+        } else if (snapshot.data != null) {
+          workingHours = snapshot.data;
+        } else if (_timedOut) {
+          workingHours = _fallbackHours;
+        } else {
+          workingHours = null;
+        }
         return widget.builder(context, workingHours);
       },
     );
