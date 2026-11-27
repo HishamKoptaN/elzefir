@@ -28,6 +28,7 @@ class BodyWidget extends StatefulWidget {
     required this.galleryKey,
     required this.productsKey,
     required this.pricesKey,
+    required this.ordersKey,
     required this.aboutKey,
     required this.contactKey,
     required this.onProcudcts,
@@ -40,6 +41,7 @@ class BodyWidget extends StatefulWidget {
   final GlobalKey galleryKey;
   final GlobalKey productsKey;
   final GlobalKey pricesKey;
+  final GlobalKey ordersKey;
   final GlobalKey aboutKey;
   final GlobalKey contactKey;
   final VoidCallback onProcudcts;
@@ -126,7 +128,10 @@ class _BodyWidgetState extends State<BodyWidget> {
         ),
       ),
       'prices': MenuPricesSection(key: widget.pricesKey),
-      'orders': const OrdersTeaserSection(),
+      'orders': KeyedSubtree(
+        key: widget.ordersKey,
+        child: const OrdersTeaserSection(),
+      ),
       'about': AboutSection(key: widget.aboutKey),
       'contact': FooterWidget(key: widget.contactKey, onAbout: widget.onAbout),
     };
