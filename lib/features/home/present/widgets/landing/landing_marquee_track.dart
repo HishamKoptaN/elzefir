@@ -15,8 +15,8 @@ class LandingMarqueeTrack extends StatefulWidget {
 
 class _LandingMarqueeTrackState extends State<LandingMarqueeTrack>
     with SingleTickerProviderStateMixin {
-  static const _itemWidth = 170.0;
-  static const _gap = 24.0;
+  static const _itemWidth = 140.0;
+  static const _gap = 16.0;
   static const _millisecondsPerItem = 3333;
 
   late final AnimationController _scroll;
