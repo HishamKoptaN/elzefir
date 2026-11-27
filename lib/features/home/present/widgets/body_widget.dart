@@ -13,6 +13,7 @@ import 'home_app_bar/home_status_badge.dart';
 import 'landing/landing_hero_section.dart';
 import 'landing/landing_marquee_section.dart';
 import 'menu_prices_section.dart';
+import 'orders/orders_teaser_section.dart';
 import 'products/products_auto_loader.dart';
 import 'products/products_list_section.dart';
 import 'products/products_section_header.dart';
@@ -93,7 +94,7 @@ class _BodyWidgetState extends State<BodyWidget> {
     );
   }
 
-  /// الأقسام الستة القابلة لإعادة الترتيب من الداشبورد. أي معرّف غير معروف
+  /// الأقسام السبعة القابلة لإعادة الترتيب من الداشبورد. أي معرّف غير معروف
   /// يُتجاهل، وما لم يُذكر يبقى في نهاية الصفحة بترتيبه الافتراضي.
   List<Widget> _sections(RestaurantInfoEntity info) {
     final blocks = <String, Widget>{
@@ -125,6 +126,7 @@ class _BodyWidgetState extends State<BodyWidget> {
         ),
       ),
       'prices': MenuPricesSection(key: widget.pricesKey),
+      'orders': const OrdersTeaserSection(),
       'about': AboutSection(key: widget.aboutKey),
       'contact': FooterWidget(key: widget.contactKey, onAbout: widget.onAbout),
     };
