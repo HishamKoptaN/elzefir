@@ -15,9 +15,9 @@ class LandingMarqueeTrack extends StatefulWidget {
 
 class _LandingMarqueeTrackState extends State<LandingMarqueeTrack>
     with SingleTickerProviderStateMixin {
-  static const _itemWidth = 170.0;
-  static const _gap = 24.0;
-  static const _secondsPerItem = 2;
+  static const _itemWidth = 140.0;
+  static const _gap = 16.0;
+  static const _millisecondsPerItem = 3333;
 
   late final AnimationController _scroll;
 
@@ -28,7 +28,9 @@ class _LandingMarqueeTrackState extends State<LandingMarqueeTrack>
     super.initState();
     _scroll = AnimationController(
       vsync: this,
-      duration: Duration(seconds: widget.names.length * _secondsPerItem),
+      duration: Duration(
+        milliseconds: widget.names.length * _millisecondsPerItem,
+      ),
     )..repeat();
   }
 
@@ -37,7 +39,7 @@ class _LandingMarqueeTrackState extends State<LandingMarqueeTrack>
     super.didUpdateWidget(old);
     if (old.names.length != widget.names.length) {
       _scroll.duration = Duration(
-        seconds: widget.names.length * _secondsPerItem,
+        milliseconds: widget.names.length * _millisecondsPerItem,
       );
     }
   }
