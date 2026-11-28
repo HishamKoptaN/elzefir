@@ -87,6 +87,7 @@ dependencies:
   cloud_firestore: ^6.10.2
   aws_s3_upload_lite: ^0.1.7
   freezed: ^4.0.0
+  package_info_plus: ^9.0.1
 dev_dependencies:
   retrofit_generator: ^10.0.1
   build_runner: ^2.6.0
