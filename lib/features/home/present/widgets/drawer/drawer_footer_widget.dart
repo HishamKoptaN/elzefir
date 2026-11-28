@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../core/build/app_version.dart';
 import '../../../../../../core/utils/extensions/theme_ext.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -66,13 +67,20 @@ class DrawerFooterWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 2),
-          Text(
-            'جميع الحقوق محفوظة • إصدار v1.1.0',
-            style: TextStyle(
-              fontFamily: 'Cairo',
-              fontSize: 10,
-              color: context.colorScheme.onSurfaceVariant,
-            ),
+          FutureBuilder<String>(
+            future: AppVersion.display,
+            builder: (context, snapshot) {
+              final version = snapshot.data ?? '';
+              final suffix = version.isEmpty ? '' : ' • إصدار v$version';
+              return Text(
+                'جميع الحقوق محفوظة$suffix',
+                style: TextStyle(
+                  fontFamily: 'Cairo',
+                  fontSize: 10,
+                  color: context.colorScheme.onSurfaceVariant,
+                ),
+              );
+            },
           ),
         ],
       ),
