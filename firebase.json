@@ -11,7 +11,7 @@
     ],
     "headers": [
       {
-        "source": "**/*.@(js|mjs|wasm)",
+        "source": "**/*.@(js|mjs|wasm|js.br|mjs.br|wasm.br|js.gz|mjs.gz|wasm.gz)",
         "headers": [
           {
             "key": "Cache-Control",
