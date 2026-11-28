@@ -44,8 +44,6 @@ dependencies:
   flutter_svg: ^2.3.0
   share_plus: ^10.1.2
   url_launcher: ^6.3.1
-  hijri: ^3.0.0
-  hijri_date: ^1.1.0
   currency_text_input_formatter: ^2.3.0
   number_words_reader: ^0.0.3
   flutter_skeleton_ui: ^0.0.6
