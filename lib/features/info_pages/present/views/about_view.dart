@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/build/app_version.dart';
 import '../../../home/present/widgets/restaurant_info_builder.dart';
 import '../content/about_content.dart';
 import '../content/site_sections.dart';
@@ -46,6 +47,23 @@ class AboutView extends StatelessWidget {
               title: about.ctaTitle ?? AboutContent.ctaTitle,
               subtitle: about.ctaSubtitle ?? AboutContent.ctaSubtitle,
               phone: about.ctaPhone ?? AboutContent.ctaPhone,
+            ),
+            FutureBuilder<String>(
+              future: AppVersion.display,
+              builder: (context, snapshot) {
+                final version = snapshot.data ?? '';
+                if (version.isEmpty) {
+                  return const SizedBox.shrink();
+                }
+                return Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Text(
+                    'إصدار التطبيق v$version',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                );
+              },
             ),
           ],
         );
